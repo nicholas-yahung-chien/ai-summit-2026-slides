@@ -20,7 +20,7 @@
 <style scoped>
 .gateway-comparison h1{font-size:43px;margin:12px 0 20px}
 table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:21px;line-height:1.45}
-th,td{text-align:left;vertical-align:top;padding:9px 18px;border-bottom:1px solid #c6c6c6}
+th,td{text-align:left;vertical-align:top;padding:7px 18px;border-bottom:1px solid #c6c6c6}
 thead th{padding-top:0;border-bottom:2px solid #0f62fe;font-size:25px;font-weight:500;color:#0043ce}
 thead th:first-child{width:23%;font-size:19px;color:#525252}
 thead span{display:block;font-size:16px;font-weight:400;color:#525252;margin-top:3px}
