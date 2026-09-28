@@ -23,9 +23,10 @@
 - 原貼文標題：Morning Bathrobe Rant: Rethinking Harnesses.
 - 原頁顯示 2026 年 9 月 12 日，下午 8:02（瀏覽器顯示時區）。
 - 原貼文影片已能直接播放，時長約4分19秒。頁面字幕軌未載入文字，改以 `yt-dlp` 從同一原貼文公開媒體取得英文自動字幕，未使用cookies、帳號或第三方轉載。
-- 引文：04:06.063–04:14.628，“Maybe I should not be considering the agents to be components in a software design.”（15個英文單詞）
-- 中文：也許，我不該把代理視為軟體設計中的組件。
-- 節錄從第二個Maybe開始；正常化標點，保留原文的試探語氣。
-- 經使用者授權，以本機環境中的API金鑰呼叫OpenAI `gpt-4o-transcribe`，對原影片238秒後的短音訊作不提供候選引文的獨立轉錄。所得選定句子與X字幕完全一致；中文翻譯保留Maybe的「也許」及components的「組件」。金鑰未写入檔案或日誌。
+- 目前引文：01:58.384–02:04.965，“Apparently the harness is doing the damage. That's not what I expected.”
+- 中文：看來，造成負面影響的正是這套 harness。這不是我原先預期的。
+- 連續兩句原話，只補上一般標點；Apparently以「看來」保留觀察與推斷的語氣。
+- 經使用者授權，以本機環境中的API金鑰呼叫OpenAI `gpt-4o-transcribe`，對涵蓋此段的原影片音訊作不提供候選引文的獨立轉錄。選定句子與X字幕完全一致。金鑰未寫入檔案或日誌。
+- 「當約束成為負擔」是講者歸納的小標，非直接引文；選句用以呈現模型改善後，舊有編排需要重新評估的重點。
 - 語境：他在自己的比較中發現單一代理勝過自建harness，因此重新檢視編排設計；影片02:28–02:50仍要求CRAP分數、mutation testing和unit tests，不能擴張為所有品質關卡均無必要。
 - 原始字幕留在git忽略的`artifacts/uncle-bob-rethinking.en.vtt`供核對，不把整段影片或完整字幕公開到Pages。

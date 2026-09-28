@@ -82,9 +82,10 @@ slides[2] = {
 slides[2].note += '\n視覺更新：依使用者提供的專訪封面原圖呈現，取代影片畫面截圖。'
 slides[3] = {
   frontmatter: { title:'Uncle Bob：重新思考 harness', class:'talk-page' },
-  content:'<UncleBobReflection english="Maybe I should not be considering the agents to be components in a software design." chinese="也許，我不該把代理視為軟體設計中的組件。" />',
+  content:'<UncleBobReflection english="Apparently the harness is doing the damage. That\'s not what I expected." chinese="看來，造成負面影響的正是這套 harness。這不是我原先預期的。" />',
   note:'14:35–14:37。貼文日期2026年9月12日，使用者提供原貼文截圖。引文直接依原貼文影片英文自動字幕04:06.063–04:14.628核對，從第二個Maybe開始節錄；補上一般標點，不改詞語。中文為講者翻譯。00:59–01:05他說自己實驗中單一代理優於自建harness；01:58–02:02認為harness造成負面影響。02:28–02:50放寬限制但仍要求CRAP分數、mutation testing與unit tests。這是個人實驗的反思，不是所有harness或品質關卡均無必要的結論，也不是可普遍套用的基準數據。原貼文：https://x.com/unclebobmartin/status/2098744156709441896。',
 }
+slides[3].note = '14:35–14:37。貼文日期2026年9月12日，使用者提供原貼文截圖。選定引文01:58.384–02:04.965：Apparently the harness is doing the damage. That\'s not what I expected. 以原貼文字幕及OpenAI gpt-4o-transcribe獨立音訊轉錄交叉核對一致，只補一般標點。中文為講者翻譯。頁上小標「當約束成為負擔」為講者歸納，非Uncle Bob原話。語境：他發現同一模型的單一代理優於自己建立的harness，並注意到代理能力已改善。因此本演講歸納為模型進步後應重新量測編排效益。02:28–02:50仍保留CRAP分數、mutation testing與unit tests，不是所有harness或品質關卡均無必要的結論，也不是通用基準數據。原貼文：https://x.com/unclebobmartin/status/2098744156709441896。'
 slides[19].content = slides[19].content.replace('Uncle Bob 原片措辭仍待核對；','Uncle Bob 引文已核對原片字幕；')
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
