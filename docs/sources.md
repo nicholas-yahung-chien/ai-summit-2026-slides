@@ -68,6 +68,20 @@
 核對 Uncle Bob 原片措辭與時間戳；在 IBM Bob 本人環境排演 demo，填入真實版本、耗時與可取得的消耗指標。不能把預備參考實作當成 Bob 的實際成果。
 # AI 演進圖目前版本（2026-09-28）
 
+## 最新：16 節點與 2026 年發布
+
+依要求移除 Dartmouth、反向傳播、GAN、DeepSeek-R1，加入下列已發布產品。這些是正式產品／能力更新，不標榜全部具有公認歷史突破地位；圖形的高度不代表評測分數。
+
+| 發布日 | 節點 | 官方核對 |
+|---|---|---|
+| 2026-02-05 | Claude Opus 4.6 | https://www.anthropic.com/news/claude-opus-4-6 |
+| 2026-03-05 | GPT-5.4 | https://openai.com/index/introducing-gpt-5-4/ |
+| 2026-05-19 | Gemini 3.5 Flash | https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/ |
+| 2026-07-24 | Claude Opus 5 | https://www.anthropic.com/news/claude-opus-5 |
+| 2026-09-22 | GPT-6 Sol / Luna | https://openai.com/index/gpt-6-astra/ （9 月 22 日更新段落） |
+
+## 前版紀錄
+
 最新修訂改為 15 個跨領域節點，移除頁面註解。保留 Deep Blue、Watson 的歷史地位；移除 watsonx、Bob V2、Jev 的產品發布與 vibe coding 用語。加入 Dartmouth、反向傳播、AlexNet、GAN、AlphaFold 2、o1、DeepSeek-R1。這是有文獻依據的代表性選取，並非唯一公認排行榜；近期推理模型的歷史地位仍在形成。
 
 核對依據：

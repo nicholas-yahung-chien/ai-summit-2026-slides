@@ -71,6 +71,7 @@ slides.splice(1, 1)
 slides[1].content = '<EvolutionChart />'
 slides[1].note = '14:31–14:34。12 個代表節點，以單一上升曲線呈現近年進展密集的敘事印象。橫軸僅列時間；時間非等距，曲線高度不是量測能力或成長率，不能由精選節點推算普遍突破週期。依序為圖靈測試、專家系統、Deep Blue、Watson、AlphaGo、Transformer、GPT-3、ChatGPT、watsonx、vibe coding、Bob V2、Jev。2011 年 Jeopardy! 冠軍是 Watson；watsonx 是 2023 年的平台。此處 AlphaGo 指 2016 年擊敗李世乭，2015 年已擊敗樊麾。LLM 沒有單一誕生日；Jev 發表不等於權重開源。圖表不提供來源連結或彈出視窗。'
 slides[1].note = '14:31–14:34。全領域的 15 個代表里程碑：圖靈測試、Dartmouth、DENDRAL 專家系統、1986 反向傳播代表論文、Deep Blue、Watson、AlexNet、GAN、AlphaGo、Transformer、GPT-3、AlphaFold 2、ChatGPT、o1、DeepSeek-R1。歷史根據包括電腦歷史博物館、諾貝爾獎科學背景與原始論文；沒有唯一公認的完整排行榜。Deep Blue 與 Watson 保留為歷史成果，watsonx、Bob V2、Jev 不列為全領域公認突破；vibe coding 屬開發方式與用語。o1 與 R1 是近期推理路線的代表，而非已具有與圖靈測試相同的歷史共識。2020.11 是 AlphaFold 2 的 CASP14 成果，2025.01 是 R1 發布日期，不是其 Nature 論文日期。時間軸非等距，曲線高度為敘事安排，不能推算實際成長率。頁面不顯示註解與來源連結。'
+slides[1].note = '14:31–14:34。16 個歷史里程碑與近期發布。依使用者要求移除 Dartmouth、反向傳播、GAN、DeepSeek-R1。新增 2026 年 2 月 5 日 Claude Opus 4.6、3 月 5 日 GPT-5.4、5 月 19 日 Gemini 3.5 Flash、7 月 24 日 Claude Opus 5、9 月 22 日 GPT-6 Sol 與 Luna，均已核對官方發布。近期事件是產品與能力更新，不宣稱每次發布均為公認的歷史突破。橫軸非等距，曲線高度為敘事安排，不是實測能力分數；圖上不顯示註解與來源。'
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})

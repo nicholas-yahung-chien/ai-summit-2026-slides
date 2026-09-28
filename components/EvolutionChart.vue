@@ -12,116 +12,124 @@ const points = [
     "ly": 469
   },
   {
-    "date": "1956",
-    "title": "Dartmouth",
-    "x": 195,
-    "y": 519,
-    "lx": 195,
-    "ly": 456
-  },
-  {
     "date": "1965",
     "title": "\u5c08\u5bb6\u7cfb\u7d71",
-    "x": 305,
-    "y": 512,
-    "lx": 305,
-    "ly": 440
-  },
-  {
-    "date": "1986",
-    "title": "\u53cd\u5411\u50b3\u64ad",
-    "x": 405,
-    "y": 500,
-    "lx": 405,
-    "ly": 415
+    "x": 215,
+    "y": 517,
+    "lx": 215,
+    "ly": 457
   },
   {
     "date": "1997",
     "title": "Deep Blue",
-    "x": 495,
-    "y": 482,
-    "lx": 480,
-    "ly": 382
+    "x": 345,
+    "y": 505,
+    "lx": 340,
+    "ly": 443
   },
   {
     "date": "2011",
     "title": "Watson",
-    "x": 570,
-    "y": 457,
-    "lx": 547,
-    "ly": 347
+    "x": 450,
+    "y": 487,
+    "lx": 425,
+    "ly": 424
   },
   {
     "date": "2012",
     "title": "AlexNet",
-    "x": 640,
-    "y": 426,
-    "lx": 604,
-    "ly": 311
-  },
-  {
-    "date": "2014",
-    "title": "GAN",
-    "x": 700,
-    "y": 391,
-    "lx": 658,
-    "ly": 274
+    "x": 535,
+    "y": 462,
+    "lx": 505,
+    "ly": 398
   },
   {
     "date": "2016",
     "title": "AlphaGo",
-    "x": 755,
-    "y": 352,
-    "lx": 708,
-    "ly": 234
+    "x": 605,
+    "y": 432,
+    "lx": 550,
+    "ly": 368
   },
   {
     "date": "2017",
     "title": "Transformer",
-    "x": 810,
-    "y": 310,
-    "lx": 751,
-    "ly": 193
+    "x": 670,
+    "y": 397,
+    "lx": 586,
+    "ly": 334
   },
   {
     "date": "2020.05",
     "title": "GPT-3",
-    "x": 862,
-    "y": 264,
-    "lx": 801,
-    "ly": 150
+    "x": 730,
+    "y": 359,
+    "lx": 637,
+    "ly": 300
   },
   {
     "date": "2020.11",
     "title": "AlphaFold 2",
-    "x": 910,
-    "y": 215,
-    "lx": 846,
-    "ly": 108
+    "x": 785,
+    "y": 317,
+    "lx": 688,
+    "ly": 266
   },
   {
     "date": "2022.11",
     "title": "ChatGPT",
-    "x": 956,
-    "y": 163,
-    "lx": 894,
-    "ly": 67
+    "x": 835,
+    "y": 271,
+    "lx": 730,
+    "ly": 232
   },
   {
     "date": "2024.09",
     "title": "o1",
-    "x": 1020,
-    "y": 106,
-    "lx": 987,
-    "ly": 39
+    "x": 881,
+    "y": 225,
+    "lx": 760,
+    "ly": 202
   },
   {
-    "date": "2025.01",
-    "title": "DeepSeek-R1",
+    "date": "2026.02",
+    "title": "Claude Opus 4.6",
+    "x": 925,
+    "y": 181,
+    "lx": 790,
+    "ly": 163
+  },
+  {
+    "date": "2026.03",
+    "title": "GPT-5.4",
+    "x": 968,
+    "y": 140,
+    "lx": 850,
+    "ly": 123
+  },
+  {
+    "date": "2026.05",
+    "title": "Gemini 3.5 Flash",
+    "x": 1010,
+    "y": 100,
+    "lx": 860,
+    "ly": 83
+  },
+  {
+    "date": "2026.07",
+    "title": "Claude Opus 5",
+    "x": 1052,
+    "y": 65,
+    "lx": 952,
+    "ly": 43
+  },
+  {
+    "date": "2026.09",
+    "title": "GPT-6 Sol / Luna",
     "x": 1094,
-    "y": 36,
-    "lx": 1080,
-    "ly": 6
+    "y": 30,
+    "lx": 1075,
+    "ly": 3
   }
 ]
 const slope = (i: number) => {
@@ -137,10 +145,10 @@ const curve = points.reduce((path,p,i) => {
 
 <template>
   <div class="acceleration-chart">
-    <div class="chart-intro"><p>AI EVOLUTION / 1950—2025</p><h2>突破，正在加速。</h2><span>從規則、學習，到生成與推理</span></div>
+    <div class="chart-intro"><p>AI EVOLUTION / 1950—2026</p><h2>突破，正在加速。</h2><span>從規則、學習，到生成與推理</span></div>
     <button class="replay-curve" @click.stop="replay++" @keydown.stop aria-label="重播演進曲線">↻ 重播</button>
     <svg :key="replay" viewBox="0 0 1184 650" role="img" aria-labelledby="evolution-title evolution-desc">
-      <title id="evolution-title">AI 演進的十五個重要里程碑</title>
+      <title id="evolution-title">AI 演進的十六個里程碑與產品發布</title>
       <desc id="evolution-desc">{{ points.map(p => `${p.date} ${p.title}`).join('、') }}。</desc>
       <defs>
         <linearGradient id="evolution-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f62fe" stop-opacity=".13"/><stop offset="1" stop-color="#0f62fe" stop-opacity=".015"/></linearGradient>
@@ -153,7 +161,7 @@ const curve = points.reduce((path,p,i) => {
         <path :d="`M${p.x} 552 V559`" stroke="#8d8d8d" />
         <text class="event-date" :transform="`translate(${p.x+3},577) rotate(-48)`" text-anchor="end">{{ p.date }}</text>
         <path :d="`M${p.x} ${p.y-12} L${p.lx} ${p.ly+12}`" fill="none" stroke="#8d8d8d" stroke-width="1" />
-        <text class="event-label" :class="{'recent-label':i>8}" :x="p.lx" :y="p.ly" text-anchor="middle">{{ p.title }}</text>
+        <text class="event-label" :class="{'recent-label':i>=11}" :x="p.lx" :y="p.ly" text-anchor="middle">{{ p.title }}</text>
       </g>
       <path class="curve-stroke" :d="curve" pathLength="1" fill="none" stroke="#0f62fe" stroke-width="4.5" stroke-linecap="round" />
       <g v-for="(p,i) in points" :key="p.title" class="event" :style="{animationDelay:`${i*.22}s`}">
