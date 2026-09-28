@@ -84,48 +84,48 @@ const points = [
     "ly": 232
   },
   {
-    "date": "2024.09",
-    "title": "o1",
+    "date": "2023",
+    "title": "RAG",
     "x": 881,
     "y": 225,
     "lx": 760,
     "ly": 202
   },
   {
-    "date": "2026.02",
-    "title": "Claude Opus 4.6",
+    "date": "2024",
+    "title": "Agentic AI",
     "x": 925,
     "y": 181,
     "lx": 790,
     "ly": 163
   },
   {
-    "date": "2026.03",
-    "title": "GPT-5.4",
+    "date": "2025.02",
+    "title": "Vibe coding",
     "x": 968,
     "y": 140,
     "lx": 850,
     "ly": 123
   },
   {
-    "date": "2026.05",
-    "title": "Gemini 3.5 Flash",
+    "date": "2026.02",
+    "title": "Agentic CI",
     "x": 1010,
     "y": 100,
     "lx": 860,
     "ly": 83
   },
   {
-    "date": "2026.07",
-    "title": "Claude Opus 5",
+    "date": "2026.02",
+    "title": "\u591a\u4ee3\u7406\u4e26\u884c\u958b\u767c",
     "x": 1052,
     "y": 65,
     "lx": 952,
     "ly": 43
   },
   {
-    "date": "2026.09",
-    "title": "GPT-6 Sol / Luna",
+    "date": "2026.03",
+    "title": "\u9577\u6642\u4efb\u52d9\u4ee3\u7406",
     "x": 1094,
     "y": 30,
     "lx": 1075,
@@ -145,10 +145,10 @@ const curve = points.reduce((path,p,i) => {
 
 <template>
   <div class="acceleration-chart">
-    <div class="chart-intro"><p>AI EVOLUTION / 1950—2026</p><h2>突破，正在加速。</h2><span>從規則、學習，到生成與推理</span></div>
+    <div class="chart-intro"><p>AI EVOLUTION / 1950—2026</p><h2>突破，正在加速。</h2><span>從生成答案，到協作完成任務</span></div>
     <button class="replay-curve" @click.stop="replay++" @keydown.stop aria-label="重播演進曲線">↻ 重播</button>
     <svg :key="replay" viewBox="0 0 1184 650" role="img" aria-labelledby="evolution-title evolution-desc">
-      <title id="evolution-title">AI 演進的十六個里程碑與產品發布</title>
+      <title id="evolution-title">AI 演進的十六個里程碑與應用趨勢</title>
       <desc id="evolution-desc">{{ points.map(p => `${p.date} ${p.title}`).join('、') }}。</desc>
       <defs>
         <linearGradient id="evolution-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f62fe" stop-opacity=".13"/><stop offset="1" stop-color="#0f62fe" stop-opacity=".015"/></linearGradient>
@@ -156,12 +156,12 @@ const curve = points.reduce((path,p,i) => {
       <path :d="`${curve} L1094 552 H80 Z`" fill="url(#evolution-area)" />
       <path d="M48 28 V552 H1147" fill="none" stroke="#a8a8a8" stroke-width="1.3" />
       <path d="M44 35 L48 27 L52 35 M1140 548 L1148 552 L1140 556" fill="none" stroke="#a8a8a8" stroke-width="1.3" />
-      <g v-for="(p,i) in points" :key="p.date" class="event" :style="{animationDelay:`${i*.22}s`}">
+      <g v-for="(p,i) in points" :key="p.title" class="event" :style="{animationDelay:`${i*.22}s`}">
         <path :d="`M${p.x} ${p.y+10} V552`" stroke="#0f62fe" :stroke-opacity="i<5?.09:.16" stroke-dasharray="2 6" />
         <path :d="`M${p.x} 552 V559`" stroke="#8d8d8d" />
         <text class="event-date" :transform="`translate(${p.x+3},577) rotate(-48)`" text-anchor="end">{{ p.date }}</text>
         <path :d="`M${p.x} ${p.y-12} L${p.lx} ${p.ly+12}`" fill="none" stroke="#8d8d8d" stroke-width="1" />
-        <text class="event-label" :class="{'recent-label':i>=11}" :x="p.lx" :y="p.ly" text-anchor="middle">{{ p.title }}</text>
+        <text class="event-label" :class="{'recent-label':i>=10}" :x="p.lx" :y="p.ly" text-anchor="middle">{{ p.title }}</text>
       </g>
       <path class="curve-stroke" :d="curve" pathLength="1" fill="none" stroke="#0f62fe" stroke-width="4.5" stroke-linecap="round" />
       <g v-for="(p,i) in points" :key="p.title" class="event" :style="{animationDelay:`${i*.22}s`}">

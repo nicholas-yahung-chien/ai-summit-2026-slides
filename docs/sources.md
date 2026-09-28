@@ -68,6 +68,23 @@
 核對 Uncle Bob 原片措辭與時間戳；在 IBM Bob 本人環境排演 demo，填入真實版本、耗時與可取得的消耗指標。不能把預備參考實作當成 Bob 的實際成果。
 # AI 演進圖目前版本（2026-09-28）
 
+## 最新：從產品版本改為應用趨勢
+
+保留 16 個節點；移除 o1 與五個 2026 模型版本，換為下列六個代表性應用方向。日期是論文／實務案例的時間錨點，不代表可量測的全產業「爆發日」。
+
+| 圖上時間 | 趨勢 | 依據與時間限制 |
+|---|---|---|
+| 2023 | RAG | 2023 年 12 月 LLM RAG 研究綜述 https://arxiv.org/abs/2312.10997 。RAG 原論文在 2020 年 https://arxiv.org/abs/2005.11401 ，2023 並非發明年。 |
+| 2024 | Agentic AI | 2024-12-19 實務模式整理 https://www.anthropic.com/engineering/building-effective-agents ，代理概念遠早於此。 |
+| 2025.02 | Vibe coding | 用語提出月份 https://www.ibm.com/think/topics/vibe-coding |
+| 2026.02 | Agentic CI | 2026-02-05 持續執行代理工作流的工程案例 https://github.blog/ai-and-ml/generative-ai/continuous-ai-in-practice-what-developers-can-automate-today-with-agentic-ci/ |
+| 2026.02 | 多代理並行開發 | 2026-02-05 並行代理建置編譯器實驗 https://www.anthropic.com/engineering/building-c-compiler 。多代理技術並非該年首創。 |
+| 2026.03 | 長時任務代理 | 2026-03-24 長時間應用開發與 harness 工程 https://www.anthropic.com/engineering/harness-design-long-running-apps 。2025 年已存在相關先行實務。 |
+
+這些案例可支持應用方向正在演進，不能單獨證明全市場採用率或突破速度；簡報講者備註保留此區分，圖上按使用者要求不列來源。
+
+## 歷次設計紀錄
+
 ## 最新：16 節點與 2026 年發布
 
 依要求移除 Dartmouth、反向傳播、GAN、DeepSeek-R1，加入下列已發布產品。這些是正式產品／能力更新，不標榜全部具有公認歷史突破地位；圖形的高度不代表評測分數。
