@@ -14,7 +14,7 @@ const results = [
 <template>
   <section :key="replay" class="swe-research" :class="{ instant: !active || $renderContext === 'print' }">
     <p class="eyebrow">RESEARCH 03 · SWE-ROUTER</p>
-    <h1>先探索，再判斷是否升級模型。</h1>
+    <h1>先探索，再判斷是否升級模型</h1>
     <div class="flow"><span><b>01</b> 低成本模型探索</span><i>→</i><span><b>02</b> 讀取執行軌跡</span><i>→</i><span><b>03</b> 繼續／升級模型</span></div>
     <div class="comparison">
       <div>
@@ -26,9 +26,9 @@ const results = [
           <div class="bar blue"><div class="track"><i :style="{ width: `${row.after * 100}%` }" /></div><b>{{ row.after.toFixed(3) }}</b></div>
         </div>
       </div>
-      <aside><h2>先探索的效益，<br>取決於任務分布。</h2><p>GPT-5 mini → Gemini 3 Pro Preview</p><p>Verified 改善；SWE-Smith 退步。<br>作者認為可能與跨程式庫的<br>任務分布改變有關。</p><p class="caveat">探索不保證更好；<br>應在團隊自己的任務上驗證。</p></aside>
+      <aside><h2>先探索的效益，<br>取決於任務分布</h2><p>GPT-5 mini → Gemini 3 Pro Preview</p><p>Verified 改善；SWE-Smith 退步<br>作者認為可能與跨程式庫的<br>任務分布改變有關</p><p class="caveat">探索不保證更好；<br>應在團隊自己的任務上驗證</p></aside>
     </div>
-    <p class="limits">指標非成功率或節省百分比；K 是探索步數，非難度分級。SWE-bench 保留測試集為 100 題。</p>
+    <p class="limits">指標非成功率或節省百分比；K 是探索步數，非難度分級。SWE-bench 保留測試集為 100 題</p>
     <div class="reference" lang="en">Son, S., Yoon, S., Tang, J., Wang, S., Wolf, L., &amp; Bogunovic, I. (2026). <a href="https://arxiv.org/abs/2607.00053" target="_blank" rel="noopener">SWE-Router: Routing in Multi-turn Agentic Software Engineering Tasks.</a> <em>The 5th Deep Learning for Code Workshop, ICML 2026.</em> arXiv:2607.00053v1. <a href="https://doi.org/10.48550/arXiv.2607.00053" target="_blank" rel="noopener">doi:10.48550/arXiv.2607.00053</a>. Data: Table 2; method and limits: §3, §5.1, Appendix A–B.</div>
   </section>
 </template>

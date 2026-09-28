@@ -16,7 +16,7 @@ const agents = [
 <template>
   <section :key="replay" class="study" :class="{ instant: !active || $renderContext === 'print' }" :aria-label="kind === 'agents' ? '單代理與多代理程式生成研究比較' : '多模型路由與單模型研究比較'">
     <p class="eyebrow">{{ kind === 'agents' ? 'RESEARCH 01 · CODE GENERATION' : 'RESEARCH 02 · MODEL ROUTING' }}</p>
-    <h1>{{ kind === 'agents' ? '增加代理，未必增加交付品質。' : '模型路由：提升品質，或降低費用。' }}</h1>
+    <h1>{{ kind === 'agents' ? '增加代理，未必增加交付品質' : '模型路由：提升品質，或降低費用' }}</h1>
     <p class="study-context">{{ kind === 'agents' ? 'AgentDropout · ACL 2025 ／ HumanEval · 同一 Llama3-8B-Instruct' : 'LLMRouterBench · ACL Findings 2026 ／ 多任務評測 · Avengers-Pro 路由' }}</p>
 
     <div v-if="kind === 'agents'" class="agent-chart">
@@ -36,7 +36,7 @@ const agents = [
       </div>
     </div>
 
-    <p v-if="kind === 'routing'" class="routing-note">兩項成果來自不同設定，不能解讀為同時「品質 +4.0%、費用 −31.7%」。</p>
+    <p v-if="kind === 'routing'" class="routing-note">兩項成果來自不同設定，不能解讀為同時「品質 +4.0%、費用 −31.7%」</p>
     <div class="study-reference" lang="en">
       <p v-if="kind === 'agents'">Zhexuan Wang, Yutong Wang, Xuebo Liu, Liang Ding, Miao Zhang, Jie Liu, and Min Zhang. 2025. <a href="https://aclanthology.org/2025.acl-long.1170/" target="_blank" rel="noopener">AgentDropout: Dynamic Agent Elimination for Token-Efficient and High-Performance LLM-Based Multi-Agent Collaboration.</a> In <em>Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, pages 24013–24035, Vienna, Austria. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2025.acl-long.1170" target="_blank" rel="noopener">doi:10.18653/v1/2025.acl-long.1170</a>. <b>Data: Tables 1–2.</b></p>
       <p v-else>Hao Li, Yiqun Zhang, Zhaoyan Guo, Chenxu Wang, Shengji Tang, Qiaosheng Zhang, Yang Chen, Biqing Qi, Peng Ye, Lei Bai, Zhen Wang, and Shuyue Hu. 2026. <a href="https://aclanthology.org/2026.findings-acl.1881/" target="_blank" rel="noopener">LLMRouterBench: A Massive Benchmark and Unified Framework for LLM Routing.</a> In <em>Findings of the Association for Computational Linguistics: ACL 2026</em>, pages 37733–37754, San Diego, California, United States. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2026.findings-acl.1881" target="_blank" rel="noopener">doi:10.18653/v1/2026.findings-acl.1881</a>. <b>Data: Figure 6; §3.4 (PerfGain / CostSave).</b></p>

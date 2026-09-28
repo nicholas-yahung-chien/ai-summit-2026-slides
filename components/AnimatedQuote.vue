@@ -22,7 +22,7 @@ function restart() { instant.value = false; replay.value++ }
 
 <template>
   <div class="animated-quote" :class="{ instant: instant || !active || $renderContext === 'print' }">
-    <blockquote :key="replay" :aria-label="english + '。' + chinese">
+    <blockquote :key="replay" :aria-label="english + ' ' + chinese">
       <p class="quote-en" lang="en" aria-hidden="true"><span class="quotation-mark">“</span><template v-for="(word, wi) in englishWords" :key="wi"><span :class="word.space ? 'quote-space' : 'quote-word'"><span v-for="letter in word.chars" :key="letter.index" class="quote-letter" :style="{ animationDelay: `${350 + letter.index * 23}ms` }">{{ letter.char }}</span></span></template><span class="quotation-mark">”</span></p>
       <p class="quote-zh" lang="zh-Hant" aria-hidden="true"><span v-for="(char, i) in chineseChars" :key="i" class="quote-letter" :style="{ animationDelay: `${translationDelay + i * 48}ms` }">{{ char }}</span></p>
     </blockquote>

@@ -7,7 +7,7 @@ const labelY = (row,t,index) => y(row.score) + (t === 0 && index === 1 ? 29 : -1
 </script>
 <template>
   <svg class="scatter" viewBox="0 0 1136 324" role="img" aria-labelledby="scatter-title">
-    <title id="scatter-title">RouterArena：不同難度的成本與準確率。GPT-5：容易95.1%、5.68美元，中等68.6%、14.80美元，困難27.5%、35.73美元；Azure Router：容易93.3%、0.30美元，中等59.5%、0.63美元，困難17.9%、1.05美元。費用為每千次查詢美元。</title>
+    <title id="scatter-title">RouterArena：不同難度的成本與準確率。GPT-5：容易95.1%、5.68美元，中等68.6%、14.80美元，困難27.5%、35.73美元；Azure Router：容易93.3%、0.30美元，中等59.5%、0.63美元，困難17.9%、1.05美元。費用為每千次查詢美元</title>
     <text x="0" y="20" class="heading">準確率 ↑</text>
     <circle cx="765" cy="15" r="6" class="point"/><text x="780" y="22" class="legend">GPT-5</text><path d="M 897 8 l 7 7 l -7 7 l -7 -7 Z" class="point"/><text x="912" y="22" class="legend">Azure Router</text>
     <g v-for="tick in [0,25,50,75,100]" :key="tick"><line x1="65" :y1="y(tick)" x2="1005" :y2="y(tick)" class="grid"/><text x="52" :y="y(tick)+5" text-anchor="end" class="tick">{{tick}}%</text></g>

@@ -4,7 +4,7 @@ const costX = value => 95 + value / 10000 * 860
 </script>
 <template>
   <svg class="dumbbells" viewBox="0 0 1136 240" role="img" aria-labelledby="dumbbell-title">
-    <title id="dumbbell-title">評分：GPT-4 9.3、RouteLLM 8.8；推算每百萬次請求費用：GPT-4 8,870 美元、RouteLLM 約 1,267 美元。</title>
+    <title id="dumbbell-title">評分：GPT-4 9.3、RouteLLM 8.8；推算每百萬次請求費用：GPT-4 8,870 美元、RouteLLM 約 1,267 美元</title>
     <text x="0" y="22" class="heading">評測分數 ↑</text><text x="400" y="22" class="unit">GPT-4 呼叫占比：100% → 13.4%</text><text x="1136" y="22" text-anchor="end" class="delta">差 0.5 分</text>
     <line x1="95" y1="76" x2="955" y2="76" class="axis" />
     <g v-for="tick in [0,2,4,6,8,10]" :key="tick"><line :x1="95+tick*86" y1="72" :x2="95+tick*86" y2="81" class="tick"/><text :x="95+tick*86" y="102" text-anchor="middle" class="tick-text">{{tick}}</text></g>

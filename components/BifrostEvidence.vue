@@ -18,10 +18,10 @@ const gateways = [{ name: 'LiteLLM', version: '1.101.0', value: 44.05 }, { name:
     <h1>Bifrost 效益比較：使用費用與傳輸效能</h1>
     <div class="evidence-content">
       <section>
-        <h2>官方實測：MCP Code Mode</h2>
-        <p class="context">Claude Sonnet 4.6 · 每輪 64–65 題 · 估算總費用 USD ↓</p>
+        <h2>Code Mode 降低工具使用費用</h2>
+        <p class="context">Bifrost · Sonnet 4.6 · 每輪 64–65 題 · 估算總費用 USD ↓</p>
         <div class="legend"><span><i class="off" />關閉</span><span><i class="on" />開啟 Code Mode</span></div>
-        <div class="cost-chart" role="img" aria-label="Code Mode 費用：96 個工具，104.04 降至 46.06 美元；251 個工具，180.07 降至 29.80 美元；508 個工具，約 377 降至 29 美元。共用 0 至 400 美元刻度。">
+        <div class="cost-chart" role="img" aria-label="Code Mode 費用：96 個工具，104.04 降至 46.06 美元；251 個工具，180.07 降至 29.80 美元；508 個工具，約 377 降至 29 美元。共用 0 至 400 美元刻度">
           <div class="gridlines"><span v-for="tick in [400, 300, 200, 100, 0]" :key="tick">{{ tick }}</span></div>
           <div v-for="(round, index) in rounds" :key="round.tools" class="cost-group" :style="{ '--delay': `${index * 250 + 150}ms` }">
             <div class="columns">
@@ -33,12 +33,12 @@ const gateways = [{ name: 'LiteLLM', version: '1.101.0', value: 44.05 }, { name:
             <div class="pass">通過率 {{ round.pass }}</div>
           </div>
         </div>
-        <p class="limit">官方觀察：第二輪關閉 Code Mode 時，6 題呼叫了不存在的工具；<br>重新執行並選用正確工具後，6 題全數通過。</p>
+        <p class="limit">Bifrost 觀察：第二輪關閉 Code Mode 時，6 題呼叫了不存在的工具；<br>重新執行並選用正確工具後，6 題全數通過</p>
       </section>
       <section class="external">
-        <h2>ENTERPILOT：Gateway 延遲</h2>
-        <p class="context">2026.09.18 · 模擬後端 · p50 毫秒（ms）↓</p>
-        <div class="latency-chart" role="img" aria-label="Gateway p50 延遲：LiteLLM 1.101.0 為 44.05 毫秒，Bifrost 2.2.1 為 4.30 毫秒。共用 0 至 50 毫秒刻度。">
+        <h2>Bifrost 的傳輸延遲更低</h2>
+        <p class="context">ENTERPILOT · 模擬後端 · p50（ms）↓</p>
+        <div class="latency-chart" role="img" aria-label="Gateway p50 延遲：LiteLLM 1.101.0 為 44.05 毫秒，Bifrost 2.2.1 為 4.30 毫秒。共用 0 至 50 毫秒刻度">
           <div v-for="(item, index) in gateways" :key="item.name" class="latency-row" :class="{ winner: index === 1 }" :style="{ '--delay': `${850 + index * 350}ms` }">
             <div class="latency-label"><span>{{ item.name }} <small>{{ item.version }}</small></span><b>{{ item.value.toFixed(2) }} <small>ms</small></b></div>
             <div class="track"><i :style="{ width: `${item.value / 50 * 100}%` }" /></div>
@@ -46,7 +46,7 @@ const gateways = [{ name: 'LiteLLM', version: '1.101.0', value: 44.05 }, { name:
           <div class="axis"><span>0</span><span>25</span><span>50 ms</span></div>
         </div>
         <p class="latency-finding">p50 延遲低 <strong>90.2%</strong></p>
-        <p class="limit">相較 LiteLLM，依上列數據計算。<br>AWS c7i.large · 併發 10 · 5 輪測試<br>GoModel 團隊測試，未比較答案品質。</p>
+        <p class="limit">相較 LiteLLM，依上列數據計算<br>AWS c7i.large · 併發 10 · 5 輪測試<br>GoModel 團隊測試，未比較答案品質</p>
       </section>
     </div>
     <div class="citations" lang="en">

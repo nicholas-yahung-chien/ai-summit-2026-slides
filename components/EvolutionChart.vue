@@ -165,7 +165,7 @@ const curve = points.reduce((path,p,i) => {
     <button class="replay-curve" @click.stop="replay++" @keydown.stop aria-label="重播演進曲線">↻ 重播</button>
     <svg :key="replay" viewBox="0 0 1184 650" role="img" aria-labelledby="evolution-title evolution-desc">
       <title id="evolution-title">AI 演進的十八個里程碑與應用趨勢</title>
-      <desc id="evolution-desc">{{ points.map(p => `${p.date} ${p.title}`).join('、') }}。</desc>
+      <desc id="evolution-desc">{{ points.map(p => `${p.date} ${p.title}`).join('、') }}</desc>
       <defs>
         <linearGradient id="evolution-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f62fe" stop-opacity=".13"/><stop offset="1" stop-color="#0f62fe" stop-opacity=".015"/></linearGradient>
       </defs>

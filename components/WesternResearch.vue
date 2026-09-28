@@ -33,15 +33,15 @@ const savings = (1 - routingCost / baselineCost) * 100
             <span>{{ row.name }}</span><div class="track"><i :style="{ width: `${row.value / 60 * 100}%`, background: index === 0 ? '#0f62fe' : '#697785' }" /></div><b>{{ row.value.toFixed(1) }}%</b>
           </div>
         </div>
-        <aside><p class="aside-label">這次測試的結果</p><h2>在程式修復測試中，<br>單代理的平均表現較好。</h2><p>修程式需要掌握前後脈絡。<br>能不能分工，要看任務怎麼拆。</p><p class="counterpoint">同一研究中，能拆開處理的<span class="highlight-task">金融分析任務</span>，多代理就有幫助。</p></aside>
+        <aside><p class="aside-label">這次測試的結果</p><h2>在程式修復測試中，<br>單代理的平均表現較好</h2><p>修程式需要掌握前後脈絡<br>能不能分工，要看任務怎麼拆</p><p class="counterpoint">同一研究中，能拆開處理的<span class="highlight-task">金融分析任務</span>，多代理就有幫助</p></aside>
       </div>
-      <p class="limits">測試涵蓋 20 題、8 種模型，結果仍有較大不確定性；不能推廣到所有程式任務，也未比較同條件下的費用。</p>
+      <p class="limits">測試涵蓋 20 題、8 種模型，結果仍有較大不確定性；不能推廣到所有程式任務，也未比較同條件下的費用</p>
     </template>
     <template v-else>
       <div class="route-heading">MT-Bench 評測 · GPT-4 與 Mixtral 8×7B 搭配使用 · RouteLLM</div>
       <RouteDumbbells :baseline-cost="baselineCost" :routing-cost="routingCost" :savings="savings" />
       <p class="takeaway">估算費用減少 {{ savings.toFixed(1) }}% <span>／ 評分少 0.5 分，約為 GPT-4 的 95%</span></p>
-      <p class="limits cost-assumptions">費用按論文當時價格估算，不是實際帳單或目前報價；每次以輸入 95、輸出 264 tokens 計算。<br>每百萬輸入／輸出 tokens：GPT-4 $10／$30、Mixtral $0.24／$0.24；另計每百萬次請求 $3.32 的路由成本。</p>
+      <p class="limits cost-assumptions">費用按論文當時價格估算，不是實際帳單或目前報價；每次以輸入 95、輸出 264 tokens 計算<br>每百萬輸入／輸出 tokens：GPT-4 $10／$30、Mixtral $0.24／$0.24；另計每百萬次請求 $3.32 的路由成本</p>
     </template>
 
     <ResearchCitation :source="kind" />
