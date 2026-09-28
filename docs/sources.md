@@ -66,7 +66,13 @@
 ## 演講前仍需完成
 
 核對 Uncle Bob 原片措辭與時間戳；在 IBM Bob 本人環境排演 demo，填入真實版本、耗時與可取得的消耗指標。不能把預備參考實作當成 Bob 的實際成果。
-# AI 演進圖更新（2026-09-28）
+# AI 演進圖目前版本（2026-09-28）
+
+依使用者修訂，第 2 頁顯示 12 個節點的單一二維曲線：1950 圖靈測試、1965 專家系統、1997 Deep Blue、2011 Watson、2016 AlphaGo、2017 Transformer、2020 GPT-3、2022 ChatGPT、2023 watsonx、2025.02 vibe coding、2026.07 Bob V2、2026.09 Jev。橫軸只有時間，節點旁為簡短標籤；取消圖上的來源連結及說明彈窗。曲線與非等距時間為概念敘事，不表示實測能力或突破週期。
+
+以下保留前次 24 節點版本的研究紀錄，並非目前的顯示內容。
+
+## 前版研究紀錄
 
 第 2 頁收錄 24 個代表節點：1950 圖靈測試、1956 Dartmouth、1958 感知器、1965 DENDRAL 專家系統、1966 ELIZA、1986 反向傳播代表論文、1997 Deep Blue、2011 Watson、2012 AlexNet、2014 GAN、2015/2016 AlphaGo、2017 Transformer、2018 GPT、2020 GPT-3、2021 Copilot、2022 ChatGPT、2023 watsonx、2024 o1-preview/MCP、2025 vibe coding/多代理研究系統、2026 Bob V2/Jev。
 

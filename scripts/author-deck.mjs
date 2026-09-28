@@ -69,7 +69,7 @@ slides[4].note += '\n補充查證：已在 YouTube 原片頁直接確認串流�
 // Omit the agenda slide from the published deck; preserve source indices above.
 slides.splice(1, 1)
 slides[1].content = '<EvolutionChart />'
-slides[1].note = '14:31–14:34。24 個代表里程碑，由左至右、由上至下。三段折線是敘事時間軸，不是量測能力，也不能由節點密度推算 AI 的迭代速度。點選節點可查看說明與來源。2011 年 Jeopardy! 冠軍是 IBM Watson；watsonx 是 2023 年的平台。AlphaGo 分列 2015 年擊敗樊麾與 2016 年擊敗李世乭。LLM 以 GPT、GPT-3 等代表節點呈現，沒有單一誕生日。Jev 發表不等於模型權重開源。完整節點來源收錄於 data/ai-milestones.ts。'
+slides[1].note = '14:31–14:34。12 個代表節點，以單一上升曲線呈現近年進展密集的敘事印象。橫軸僅列時間；時間非等距，曲線高度不是量測能力或成長率，不能由精選節點推算普遍突破週期。依序為圖靈測試、專家系統、Deep Blue、Watson、AlphaGo、Transformer、GPT-3、ChatGPT、watsonx、vibe coding、Bob V2、Jev。2011 年 Jeopardy! 冠軍是 Watson；watsonx 是 2023 年的平台。此處 AlphaGo 指 2016 年擊敗李世乭，2015 年已擊敗樊麾。LLM 沒有單一誕生日；Jev 發表不等於權重開源。圖表不提供來源連結或彈出視窗。'
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})
