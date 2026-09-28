@@ -1,5 +1,11 @@
 <script setup>
+import { computed, ref, watch } from 'vue'
+import { useSlideContext } from '@slidev/client'
 defineProps({ kind: { type: String, required: true } })
+const { $page, $nav, $renderContext } = useSlideContext()
+const active = computed(() => $page.value === $nav.value.currentSlideNo)
+const replay = ref(0)
+watch(active, value => { if (value) replay.value++ })
 const agents = [
   { name: '單代理', detail: 'Vanilla', quality: 53.33, tokens: 116, label: '116K', color: '#0f62fe' },
   { name: '多代理・多輪', detail: '未精簡協作', quality: 49.17, tokens: 3092, label: '3,092K', color: '#697785' },
@@ -8,14 +14,14 @@ const agents = [
 </script>
 
 <template>
-  <section class="study" :aria-label="kind === 'agents' ? '單代理與多代理程式生成研究比較' : '多模型路由與單模型研究比較'">
+  <section :key="replay" class="study" :class="{ instant: !active || $renderContext === 'print' }" :aria-label="kind === 'agents' ? '單代理與多代理程式生成研究比較' : '多模型路由與單模型研究比較'">
     <p class="eyebrow">{{ kind === 'agents' ? 'RESEARCH 01 · CODE GENERATION' : 'RESEARCH 02 · MODEL ROUTING' }}</p>
     <h1>{{ kind === 'agents' ? '增加代理，未必增加交付品質。' : '選對模型，能降低推理費用。' }}</h1>
     <p class="study-context">{{ kind === 'agents' ? 'AgentDropout · ACL 2025 ／ HumanEval · 同一 Llama3-8B-Instruct' : 'LLMRouterBench · ACL Findings 2026 ／ 多任務評測 · Avengers-Pro 路由' }}</p>
 
     <div v-if="kind === 'agents'" class="agent-chart">
       <div class="chart-head"><span>同一程式生成評測</span><span>品質 · Pass@1 ↑<small>0–60%</small></span><span>資源成本 · 總 tokens ↓<small>0–3,200K</small></span></div>
-      <div v-for="row in agents" :key="row.name" class="chart-row">
+      <div v-for="(row, index) in agents" :key="row.name" class="chart-row" :style="{ '--bar-delay': `${200 + index * 350}ms` }">
         <div class="row-name">{{ row.name }}<small>{{ row.detail }}</small></div>
         <div class="bar-cell"><strong :style="{ color: row.color }">{{ row.quality }}<span>%</span></strong><div class="track"><i :style="{ width: `${row.quality / 60 * 100}%`, background: row.color }" /></div></div>
         <div class="bar-cell"><strong :style="{ color: row.color }">{{ row.label }}</strong><div class="track"><i :style="{ width: `${row.tokens / 3200 * 100}%`, background: row.color }" /></div></div>
@@ -30,9 +36,11 @@ const agents = [
       </div>
     </div>
 
-    <p class="study-takeaway">{{ kind === 'agents' ? '與 Uncle Bob 的觀察相呼應：協作負擔，需要被驗證。' : '從「增加執行者」，走向「把工作交給合適的模型」。' }}</p>
-    <p class="study-caveat">{{ kind === 'agents' ? '整批輸入＋輸出 tokens；費用代理指標，非美元帳單。此設定不代表所有多代理系統。' : '多任務整體結果，非程式生成專屬；非每題保證。研究結果不是 Jev 或 IBM Bob 的實測。' }}</p>
-    <a class="study-source" :href="kind === 'agents' ? 'https://aclanthology.org/2025.acl-long.1170.pdf' : 'https://aclanthology.org/2026.findings-acl.1881.pdf'" target="_blank" rel="noopener">{{ kind === 'agents' ? 'AgentDropout · Tables 1–2 ↗' : 'LLMRouterBench · Figure 6 · CostSave ↗' }}</a>
+    <p v-if="kind === 'routing'" class="study-takeaway">從「增加執行者」，走向「把工作交給合適的模型」。</p>
+    <div class="study-reference" lang="en">
+      <p v-if="kind === 'agents'">Zhexuan Wang, Yutong Wang, Xuebo Liu, Liang Ding, Miao Zhang, Jie Liu, and Min Zhang. 2025. <a href="https://aclanthology.org/2025.acl-long.1170/" target="_blank" rel="noopener">AgentDropout: Dynamic Agent Elimination for Token-Efficient and High-Performance LLM-Based Multi-Agent Collaboration.</a> In <em>Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, pages 24013–24035, Vienna, Austria. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2025.acl-long.1170" target="_blank" rel="noopener">doi:10.18653/v1/2025.acl-long.1170</a>. <b>Data: Tables 1–2.</b></p>
+      <p v-else>Hao Li, Yiqun Zhang, Zhaoyan Guo, Chenxu Wang, Shengji Tang, Qiaosheng Zhang, Yang Chen, Biqing Qi, Peng Ye, Lei Bai, Zhen Wang, and Shuyue Hu. 2026. <a href="https://aclanthology.org/2026.findings-acl.1881/" target="_blank" rel="noopener">LLMRouterBench: A Massive Benchmark and Unified Framework for LLM Routing.</a> In <em>Findings of the Association for Computational Linguistics: ACL 2026</em>, pages 37733–37754, San Diego, California, United States. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2026.findings-acl.1881" target="_blank" rel="noopener">doi:10.18653/v1/2026.findings-acl.1881</a>. <b>Data: Figure 6 (CostSave).</b></p>
+    </div>
   </section>
 </template>
 
@@ -49,13 +57,23 @@ const agents = [
 .bar-cell strong { display:block; font-size:31px; line-height:1.3; font-weight:600; font-variant-numeric:tabular-nums; }
 .bar-cell strong span { font-size:22px; }
 .track { height:10px; background:#e0e5eb; width:100%; }
-.track i { display:block; height:100%; }
-.study .study-takeaway { font-size:27px; color:#0043ce; margin-top:18px; font-weight:500; }
-.study .study-caveat { font-size:17px; color:#525252; margin-top:11px; }
-.study-source { display:inline-block; font-size:16px; color:#0043ce; margin-top:7px; text-decoration:underline; text-underline-offset:3px; }
-.route-path { display:flex; gap:24px; align-items:center; font-size:23px; margin-top:28px; padding:14px 0; border-top:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8; }
+.track i { display:block; height:100%; transform-origin:left center; animation:bar-reveal 800ms cubic-bezier(.22,1,.36,1) var(--bar-delay,200ms) both; }
+.bar-cell strong,.cost-row b { animation:value-reveal 400ms ease-out calc(var(--bar-delay,200ms) + 400ms) both; }
+.cost-row:nth-of-type(2) { --bar-delay:650ms; }
+.saving { animation:value-reveal 450ms ease-out 1300ms both; }
+@keyframes bar-reveal { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+@keyframes value-reveal { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:none; } }
+.instant .track i,.instant .bar-cell strong,.instant .cost-row b,.instant .saving { animation:none; }
+@media (prefers-reduced-motion:reduce) { .track i,.bar-cell strong,.cost-row b,.saving { animation:none !important; } }
+@media print { .track i,.bar-cell strong,.cost-row b,.saving { animation:none !important; } }
+.study .study-takeaway { font-size:27px; color:#0043ce; margin-top:10px; font-weight:500; }
+.study-reference { position:absolute; left:72px; right:72px; bottom:83px; padding-top:12px; border-top:1px solid #c6c6c6; font-size:15px; line-height:1.45; color:#393939; }
+.study-reference a { color:#0043ce; text-decoration:none; }
+.study-reference a:hover { text-decoration:underline; }
+.study-reference b { font-weight:600; }
+.route-path { display:flex; gap:24px; align-items:center; font-size:23px; margin-top:20px; padding:10px 0; border-top:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8; }
 .route-path b { color:#0f62fe; font-weight:400; }
-.routing-columns { display:grid; grid-template-columns:1fr 1fr; gap:55px; margin-top:24px; }
+.routing-columns { display:grid; grid-template-columns:1fr 1fr; gap:55px; margin-top:16px; }
 .routing-columns > div + div { border-left:1px solid #c6c6c6; padding-left:40px; }
 .routing-columns h2 { font-size:25px; margin:0 0 14px; }
 .routing-columns h2 span { display:block; font-size:17px; color:#525252; font-weight:400; margin-top:3px; }
