@@ -85,14 +85,14 @@ class: talk-page
 -->
 
 ---
-title: 多模型路由：維持品質，降低推理費用
+title: 多模型路由：品質與費用的兩種最佳化目標
 class: talk-page
 ---
 
 <ResearchComparison kind="routing" />
 
 <!--
-14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6與Section 3.4的CostSave定義。採Avengers-Pro相對最佳單一模型GPT-5的CostSave=31.7%；這是選取平均品質不低於Best Single的最低費用設定。將GPT-5費用歸一為100，路由為68.3；品質以基準100表示，路由標示≥100，不捏造實際正確率或假稱剛好等於100。論文另外的PerfGain=4.0%是另一個最高品質設定，不能同時與31.7%節省相乘使用。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。路由每次選模型，不等於多代理共同推理；費用下降不等於token數量下降。其他routers未必勝過最佳單模型，模型互補與選擇準確性才重要。此研究提供後續Jev與IBM Bob模型選擇的概念依據，非兩項產品採用該演算法或取得同樣成效的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。
+14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6、Section 3.4。品質優先：Avengers-Pro最高平均正確率比最佳單模型GPT-5相對提升4.0%，即1.04倍，不是增加4個百分點，也不代表每100題多答對4題。費用優先：在平均品質不低於GPT-5的設定中選擇最低費用，CostSave為31.7%，費用為基準0.683倍。這是不同設定的兩項指標，不能宣稱同時品質提升4%且省31.7%。圖條均由零起算；左右衡量不同指標，不能比較兩欄條長。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。其他路由器未必優於最佳單模型；模型互補與路由準確性才重要。費用下降不等於token減少。此研究支持模型選擇的概念，非Jev或IBM Bob使用該演算法或獲得相同成果的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。
 -->
 
 ---

@@ -16,7 +16,7 @@ const agents = [
 <template>
   <section :key="replay" class="study" :class="{ instant: !active || $renderContext === 'print' }" :aria-label="kind === 'agents' ? '單代理與多代理程式生成研究比較' : '多模型路由與單模型研究比較'">
     <p class="eyebrow">{{ kind === 'agents' ? 'RESEARCH 01 · CODE GENERATION' : 'RESEARCH 02 · MODEL ROUTING' }}</p>
-    <h1>{{ kind === 'agents' ? '增加代理，未必增加交付品質。' : '選對模型，能降低推理費用。' }}</h1>
+    <h1>{{ kind === 'agents' ? '增加代理，未必增加交付品質。' : '模型路由：提升品質，或降低費用。' }}</h1>
     <p class="study-context">{{ kind === 'agents' ? 'AgentDropout · ACL 2025 ／ HumanEval · 同一 Llama3-8B-Instruct' : 'LLMRouterBench · ACL Findings 2026 ／ 多任務評測 · Avengers-Pro 路由' }}</p>
 
     <div v-if="kind === 'agents'" class="agent-chart">
@@ -29,17 +29,17 @@ const agents = [
     </div>
 
     <div v-else class="routing-chart">
-      <div class="route-path"><span>相同任務集</span><b>→</b><span>依任務選模型</span><b>→</b><span>維持整體品質</span></div>
+      <div class="route-path"><span>相同任務集 · 對照固定 GPT-5</span><b>→</b><span>兩種最佳化目標，兩種設定</span></div>
       <div class="routing-columns">
-        <div><h2>整體品質<span>以最佳單模型為 100</span></h2><div class="indexed"><span>固定 GPT-5</span><b>100</b></div><div class="indexed selected"><span>多模型路由</span><b>≥100</b></div><p>選取達到基準品質的最低費用設定</p></div>
-        <div><h2>推理費用<span>以最佳單模型為 100</span></h2><div class="cost-row"><span>固定 GPT-5</span><div class="track"><i style="width:100%;background:#697785" /></div><b>100</b></div><div class="cost-row"><span>多模型路由</span><div class="track"><i style="width:68.3%;background:#0f62fe" /></div><b>68.3</b></div><p class="saving">−31.7% <span>費用，非 token 數量</span></p></div>
+        <div><h2>01 ／ 品質優先<span>取平均正確率最高的路由設定</span></h2><p class="saving quality-gain">+4.0% <span>平均正確率 · 相對提升</span></p><div class="cost-row"><span>固定 GPT-5</span><div class="track"><i style="width:96.1538%;background:#697785" /></div><b>1.00×</b></div><div class="cost-row"><span>多模型路由</span><div class="track"><i style="width:100%;background:#0f62fe" /></div><b>1.04×</b></div><p>相對基準提升 4%，不是增加 4 個百分點</p></div>
+        <div><h2>02 ／ 費用優先<span>品質不低於 GPT-5，取最低費用設定</span></h2><p class="saving">−31.7% <span>推理費用</span></p><div class="cost-row"><span>固定 GPT-5</span><div class="track"><i style="width:100%;background:#697785" /></div><b>1.00×</b></div><div class="cost-row"><span>多模型路由</span><div class="track"><i style="width:68.3%;background:#0f62fe" /></div><b>0.683×</b></div><p>維持基準品質，費用約為原本的三分之二</p></div>
       </div>
     </div>
 
-    <p v-if="kind === 'routing'" class="study-takeaway">從「增加執行者」，走向「把工作交給合適的模型」。</p>
+    <p v-if="kind === 'routing'" class="routing-note">兩項成果來自不同設定，不能解讀為同時「品質 +4.0%、費用 −31.7%」。</p>
     <div class="study-reference" lang="en">
       <p v-if="kind === 'agents'">Zhexuan Wang, Yutong Wang, Xuebo Liu, Liang Ding, Miao Zhang, Jie Liu, and Min Zhang. 2025. <a href="https://aclanthology.org/2025.acl-long.1170/" target="_blank" rel="noopener">AgentDropout: Dynamic Agent Elimination for Token-Efficient and High-Performance LLM-Based Multi-Agent Collaboration.</a> In <em>Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, pages 24013–24035, Vienna, Austria. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2025.acl-long.1170" target="_blank" rel="noopener">doi:10.18653/v1/2025.acl-long.1170</a>. <b>Data: Tables 1–2.</b></p>
-      <p v-else>Hao Li, Yiqun Zhang, Zhaoyan Guo, Chenxu Wang, Shengji Tang, Qiaosheng Zhang, Yang Chen, Biqing Qi, Peng Ye, Lei Bai, Zhen Wang, and Shuyue Hu. 2026. <a href="https://aclanthology.org/2026.findings-acl.1881/" target="_blank" rel="noopener">LLMRouterBench: A Massive Benchmark and Unified Framework for LLM Routing.</a> In <em>Findings of the Association for Computational Linguistics: ACL 2026</em>, pages 37733–37754, San Diego, California, United States. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2026.findings-acl.1881" target="_blank" rel="noopener">doi:10.18653/v1/2026.findings-acl.1881</a>. <b>Data: Figure 6 (CostSave).</b></p>
+      <p v-else>Hao Li, Yiqun Zhang, Zhaoyan Guo, Chenxu Wang, Shengji Tang, Qiaosheng Zhang, Yang Chen, Biqing Qi, Peng Ye, Lei Bai, Zhen Wang, and Shuyue Hu. 2026. <a href="https://aclanthology.org/2026.findings-acl.1881/" target="_blank" rel="noopener">LLMRouterBench: A Massive Benchmark and Unified Framework for LLM Routing.</a> In <em>Findings of the Association for Computational Linguistics: ACL 2026</em>, pages 37733–37754, San Diego, California, United States. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2026.findings-acl.1881" target="_blank" rel="noopener">doi:10.18653/v1/2026.findings-acl.1881</a>. <b>Data: Figure 6; §3.4 (PerfGain / CostSave).</b></p>
     </div>
   </section>
 </template>
@@ -71,18 +71,19 @@ const agents = [
 .study-reference a { color:#0043ce; text-decoration:none; }
 .study-reference a:hover { text-decoration:underline; }
 .study-reference b { font-weight:600; }
-.route-path { display:flex; gap:24px; align-items:center; font-size:23px; margin-top:20px; padding:10px 0; border-top:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8; }
+.route-path { display:flex; gap:24px; align-items:center; font-size:23px; margin-top:14px; padding:7px 0; border-top:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8; }
 .route-path b { color:#0f62fe; font-weight:400; }
 .routing-columns { display:grid; grid-template-columns:1fr 1fr; gap:55px; margin-top:16px; }
 .routing-columns > div + div { border-left:1px solid #c6c6c6; padding-left:40px; }
-.routing-columns h2 { font-size:25px; margin:0 0 14px; }
+.routing-columns h2 { font-size:25px; margin:0 0 6px; }
 .routing-columns h2 span { display:block; font-size:17px; color:#525252; font-weight:400; margin-top:3px; }
 .indexed { display:flex; justify-content:space-between; align-items:center; font-size:23px; height:54px; }
 .indexed b { font-size:35px; font-weight:500; }
 .selected { color:#0043ce; }
-.routing-columns p { font-size:17px; color:#525252; margin-top:13px; }
-.cost-row { display:grid; grid-template-columns:126px 1fr 68px; align-items:center; gap:12px; height:54px; font-size:21px; }
+.routing-columns p { font-size:17px; color:#525252; margin-top:7px; }
+.cost-row { display:grid; grid-template-columns:126px 1fr 86px; align-items:center; gap:12px; height:44px; font-size:21px; }
 .cost-row b { font-size:28px; font-weight:500; text-align:right; }
-.routing-columns .saving { font-size:35px; font-weight:600; color:#0043ce; margin-top:9px; }
+.study .routing-note { font-size:18px; color:#525252; margin-top:0; }
+.routing-columns .saving { font-size:44px; font-weight:600; color:#0043ce; margin-top:5px; }
 .saving span { font-size:18px; font-weight:400; }
 </style>

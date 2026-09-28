@@ -97,9 +97,9 @@ slides[4] = {
   note:'14:37–14:39（2分鐘）。AgentDropout，ACL 2025，Tables 1–2，Llama3-8B-Instruct、HumanEval。同一基準：Vanilla Pass@1 53.33%，prompt 91K + completion 25K = 116K；MAS round=T 49.17%，2.6M + 492K = 3,092K；AgentDropout 55.84%，1.1M + 359K = 1,459K。都是論文整批評測用量，非單題，K=千；加總依原表約數。這是相同模型的資源成本比較，不是等預算實驗，也不是美元費用；輸入與輸出可能不同價，快取亦影響帳單。單代理此處為Vanilla，並非最佳化的完整開發代理。結果支持「額外編排可能增加消耗卻降低品質」這種現象，與Uncle Bob個人感受相呼應，但不能證明他的個案因果，也不表示所有多代理都較差。精簡後品質高於Vanilla，代價仍較大，必須保留此列避免片面選數據。來源：https://aclanthology.org/2025.acl-long.1170.pdf。',
 }
 slides[5] = {
-  frontmatter: { title:'多模型路由：維持品質，降低推理費用', class:'talk-page' },
+  frontmatter: { title:'多模型路由：品質與費用的兩種最佳化目標', class:'talk-page' },
   content:'<ResearchComparison kind="routing" />',
-  note:'14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6與Section 3.4的CostSave定義。採Avengers-Pro相對最佳單一模型GPT-5的CostSave=31.7%；這是選取平均品質不低於Best Single的最低費用設定。將GPT-5費用歸一為100，路由為68.3；品質以基準100表示，路由標示≥100，不捏造實際正確率或假稱剛好等於100。論文另外的PerfGain=4.0%是另一個最高品質設定，不能同時與31.7%節省相乘使用。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。路由每次選模型，不等於多代理共同推理；費用下降不等於token數量下降。其他routers未必勝過最佳單模型，模型互補與選擇準確性才重要。此研究提供後續Jev與IBM Bob模型選擇的概念依據，非兩項產品採用該演算法或取得同樣成效的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。',
+  note:'14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6、Section 3.4。品質優先：Avengers-Pro最高平均正確率比最佳單模型GPT-5相對提升4.0%，即1.04倍，不是增加4個百分點，也不代表每100題多答對4題。費用優先：在平均品質不低於GPT-5的設定中選擇最低費用，CostSave為31.7%，費用為基準0.683倍。這是不同設定的兩項指標，不能宣稱同時品質提升4%且省31.7%。圖條均由零起算；左右衡量不同指標，不能比較兩欄條長。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。其他路由器未必優於最佳單模型；模型互補與路由準確性才重要。費用下降不等於token減少。此研究支持模型選擇的概念，非Jev或IBM Bob使用該演算法或獲得相同成果的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。',
 }
 slides[6] = { ...jevSlide, note:jevSlide.note.replace('14:37–14:39（2 分鐘）','14:41–14:42（1 分鐘）') }
 slides[20].content += '<div class="supplement-links"><a href="https://aclanthology.org/2026.findings-acl.1881.pdf" target="_blank" rel="noopener">LLMRouterBench · ACL Findings 2026 · Figure 6 ↗</a></div>'
