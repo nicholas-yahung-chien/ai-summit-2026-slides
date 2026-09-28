@@ -63,7 +63,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
 
 <template>
   <section class="bob-architecture" aria-label="IBM Bob On-premise 架構">
-    <header><h1>IBM Bob On-premise 架構</h1></header>
+    <header><h1>IBM Bob 的企業內部部署架構</h1></header>
     <svg class="architecture-canvas" viewBox="25 105 1865 870" role="img" aria-labelledby="bob-architecture-title">
       <title id="bob-architecture-title">IBM Bob：前端、OpenShift 服務與資料層，以及三種模型部署選項</title>
       <defs>

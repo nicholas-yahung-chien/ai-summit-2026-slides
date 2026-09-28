@@ -23,7 +23,7 @@ const labelY = (row,t,index) => y(row.score) + (t === 0 && index === 1 ? 29 : -1
       </g>
     </g>
   </svg>
-  <p class="difficulty">42 模型答對數分級：容易 ≥20 ／ 中等 5–19 ／ 困難 ≤4</p>
+  <p class="difficulty">依 42 個模型中答對的數量分級：容易 ≥20 ／ 中等 5–19 ／ 困難 ≤4</p>
 </template>
 <style scoped>
 .scatter{display:block;width:100%;height:273px;overflow:visible;font:18px 'IBM Plex Sans','Noto Sans TC',sans-serif;fill:#393939}.heading{font-size:20px}.legend,.unit,.tick{font-size:16px;fill:#525252}.grid{stroke:#dfe3e8;stroke-dasharray:3 5}.axis{stroke:#8d99a5;stroke-width:1}.connector{stroke:#8d99a5;stroke-width:1.5}.point{fill:#525e6b;stroke:#f4f4f4;stroke-width:1.5}.label{font-size:18px;paint-order:stroke;stroke:#f4f4f4;stroke-width:4px;stroke-linejoin:round}.blue{fill:#0043ce;font-weight:600}.difficulty{font-size:15px!important;color:#525252;margin:0!important}

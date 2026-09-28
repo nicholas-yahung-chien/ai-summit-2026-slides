@@ -23,7 +23,7 @@ const savings = (1 - routingCost / baselineCost) * 100
 <template>
   <section :key="replay" class="western" :class="{ instant: !active || $renderContext === 'print' }">
     <p class="eyebrow">{{ kind === 'agents' ? 'RESEARCH 01 · GOOGLE × MIT' : 'RESEARCH 02 · ROUTELLM' }}</p>
-    <h1>{{ kind === 'agents' ? '程式修復：更多代理，未必更好。' : '保留約 95% 評分，減少昂貴模型呼叫。' }}</h1>
+    <h1>{{ kind === 'agents' ? '程式修復表現比較：單代理 vs 多代理' : '品質與費用比較：單模型 vs 多模型路由' }}</h1>
 
     <template v-if="kind === 'agents'">
       <div class="agent-layout">
@@ -33,15 +33,15 @@ const savings = (1 - routingCost / baselineCost) * 100
             <span>{{ row.name }}</span><div class="track"><i :style="{ width: `${row.value / 60 * 100}%`, background: index === 0 ? '#0f62fe' : '#697785' }" /></div><b>{{ row.value.toFixed(1) }}%</b>
           </div>
         </div>
-        <aside><p class="aside-label">比較結果</p><h2>在程式修復測試情境下，<br>單代理平均較佳。</h2><p>程式修復需要共享上下文；<br>協作效益取決於任務結構。</p><p class="counterpoint">同篇研究中，可拆分的<span class="highlight-task">金融分析任務</span>則受益於多代理。</p></aside>
+        <aside><p class="aside-label">這次測試的結果</p><h2>在程式修復測試中，<br>單代理的平均表現較好。</h2><p>修程式需要掌握前後脈絡。<br>能不能分工，要看任務怎麼拆。</p><p class="counterpoint">同一研究中，能拆開處理的<span class="highlight-task">金融分析任務</span>，多代理就有幫助。</p></aside>
       </div>
-      <p class="limits">20 題子集、8 種模型；單一配置信賴區間寬。此圖不代表所有程式任務，也不提供同設定費用比較。</p>
+      <p class="limits">測試涵蓋 20 題、8 種模型，結果仍有較大不確定性；不能推廣到所有程式任務，也未比較同條件下的費用。</p>
     </template>
     <template v-else>
-      <div class="route-heading">MT-Bench ／ Matrix Factorization · Arena + Judge 訓練資料 · CPT(50%) 設定</div>
+      <div class="route-heading">MT-Bench 評測 · GPT-4 與 Mixtral 8×7B 搭配使用 · RouteLLM</div>
       <RouteDumbbells :baseline-cost="baselineCost" :routing-cost="routingCost" :savings="savings" />
-      <p class="takeaway">推算節省 {{ savings.toFixed(1) }}% 費用 <span>／ 評分 9.3 → 8.8，約保留 95%</span></p>
-      <p class="limits cost-assumptions">依論文歷史價格推算，非實測帳單或現行報價。每次假設 95 輸入＋264 輸出 tokens。<br>每百萬輸入／輸出 tokens：GPT-4 $10／$30、Mixtral $0.24／$0.24；另含 $3.32 路由開銷／百萬次請求。</p>
+      <p class="takeaway">估算費用減少 {{ savings.toFixed(1) }}% <span>／ 評分少 0.5 分，約為 GPT-4 的 95%</span></p>
+      <p class="limits cost-assumptions">費用按論文當時價格估算，不是實際帳單或目前報價；每次以輸入 95、輸出 264 tokens 計算。<br>每百萬輸入／輸出 tokens：GPT-4 $10／$30、Mixtral $0.24／$0.24；另計每百萬次請求 $3.32 的路由成本。</p>
     </template>
 
     <ResearchCitation :source="kind" />
@@ -63,7 +63,7 @@ aside { border-left:1px solid #c6c6c6; padding-left:30px; }
 .western aside h2 { font-size:30px; line-height:1.5; margin:8px 0 12px; color:#0043ce; }
 .western aside p { font-size:19px; line-height:1.6; }
 .western aside .counterpoint { margin-top:13px; color:#525252; }
-.highlight-task { color:#0043ce; font-weight:500; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
+.highlight-task { color:#0043ce; font-weight:500; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; white-space:nowrap; }
 .western .limits { font-size:17px; color:#525252; margin-top:18px; line-height:1.5; }
 .route-heading { margin-top:18px; font-size:19px; color:#525252; }
 .western .takeaway { font-size:25px; color:#0043ce; margin-top:8px; padding-top:0; border:0; }

@@ -4,12 +4,12 @@ import interviewFrame from '../assets/uncle-bob-cover.jpg'
 
 <template>
   <section class="interview-story">
-    <div class="interview-heading"><span>UNCLE BOB · THE HARNESS</span><span>精簡提示，交由工具驗證</span></div>
+    <div class="interview-heading"><span>UNCLE BOB · THE HARNESS</span><span>Uncle Bob 的 Harness 設計原則</span></div>
     <figure>
       <img :src="interviewFrame" alt="Uncle Bob on Software Fundamentals and AI 專訪封面，Uncle Bob 與 Matt Pocock" />
       <figcaption><time datetime="2026-08-19">2026.08.19</time><span>Matt Pocock × Robert C. Martin</span></figcaption>
     </figure>
-    <AnimatedQuote english="The key with agents is to trim that initial prompt down to its absolute minimum … and then do deterministic tools after the fact." chinese="運用代理的關鍵，是把初始提示精簡到最低限度……然後再用確定性工具做後續檢查。" />
+    <AnimatedQuote english="The key with agents is to trim that initial prompt down to its absolute minimum … and then do deterministic tools after the fact." chinese="使用代理的關鍵，是把一開始的提示縮到最精簡……再交給按固定規則運作的工具做後續檢查。" />
   </section>
 </template>
 

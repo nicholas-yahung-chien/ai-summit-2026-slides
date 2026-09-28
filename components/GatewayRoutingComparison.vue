@@ -1,16 +1,16 @@
 <template>
   <section class="gateway-comparison">
     <p class="eyebrow">04 · MODEL ROUTING</p>
-    <h1>路由的三個層次，兩種不同的角色。</h1>
+    <h1>AI 路由在三種層次的比較：Bifrost vs Jev</h1>
     <table aria-label="Bifrost 企業版與 Jev 路由功能比較">
-      <thead><tr><th>路由層次</th><th>Bifrost 企業版<span>AI Gateway · 含開源核心能力</span></th><th>Jev<span>決策模型 · 官方 SDK 開源</span></th></tr></thead>
+      <thead><tr><th>路由功能</th><th>Bifrost 企業版<span>AI Gateway · 整合路由與管理</span></th><th>Jev<span>決策模型 · 官方 SDK 開源</span></th></tr></thead>
       <tbody>
-        <tr><th><small>01 / POLICY</small>政策路由</th><td><strong>原生規則與治理</strong><p>CEL 規則依團隊、預算、區域等條件，<br>選擇模型、供應商與備援路徑。</p></td><td><strong>提供判斷，程式執行政策</strong><p>可依準則分類；權限、預算限制<br>與實際分流需由外部系統實作。</p></td></tr>
-        <tr><th><small>02 / COMPLEXITY</small>語意複雜度路由</th><td><strong>語意分類 → 三級模型分流</strong><p>Embedding 比對範例，分為簡／中／難；<br>可加 LLM 後備分類器。<em>Complexity Router · Beta</em></p></td><td><strong>專用模型 → 自訂結構化決策</strong><p>判斷意圖、複雜度與選項；<br>回傳機率／信心，由程式選擇處理器。</p></td></tr>
-        <tr><th><small>03 / OPERATIONS</small>負載平衡</th><td><strong>企業版自適應負載平衡</strong><p>依延遲、錯誤與容量等訊號，<br>調整供應商與 API Key 的流量。</p></td><td><strong>需搭配 Gateway／應用程式</strong><p>決策 API 本身不提供模型供應商<br>流量管理、Key 輪替與自動容錯。</p></td></tr>
+        <tr><th><small>01 / POLICY</small>政策路由</th><td><strong>按企業規則分配請求</strong><p>依團隊、預算、區域等條件，<br>設定模型、供應商與備援順序。</p></td><td><strong>協助判斷，由程式執行</strong><p>可按指定條件分類；權限、預算<br>與實際分流，仍由其他系統管理。</p></td></tr>
+        <tr><th><small>02 / COMPLEXITY</small>語意複雜度路由</th><td><strong>看任務難度，分配模型</strong><p>比對語意範例，分為簡單／中等／複雜；<br>無法分類時，可再請 LLM 判斷。<em>Complexity Router · Beta</em></p></td><td><strong>按任務內容，協助做選擇</strong><p>判斷意圖、難度與選項，附上機率；<br>再由程式決定交給誰處理。</p></td></tr>
+        <tr><th><small>03 / OPERATIONS</small>負載平衡</th><td><strong>依服務狀況，自動調整流量</strong><p>觀察速度、錯誤與可用容量，<br>調整供應商與 API Key 的流量。</p></td><td><strong>這部分需要 Gateway 配合</strong><p>Jev 本身不管理供應商流量，<br>也不負責 Key 輪替與故障切換。</p></td></tr>
       </tbody>
     </table>
-    <p class="scope">比較上游現行功能，非 IBM Bob 啟用清單。Jev 公開 SDK，不等於模型權重開源。</p>
+    <p class="scope">以上為產品功能；IBM Bob 實際採用項目需另行確認。Jev 開源的是 SDK，未見模型權重公開。</p>
     <div class="citations" lang="en">
       <p>Maxim AI. (n.d.). <a href="https://docs.getbifrost.ai/providers/routing-rules" target="_blank" rel="noopener"><em>Routing rules</em></a>; <a href="https://docs.getbifrost.ai/features/governance/complexity-router" target="_blank" rel="noopener"><em>Complexity router</em></a>; <a href="https://docs.getbifrost.ai/enterprise/adaptive-load-balancing" target="_blank" rel="noopener"><em>Adaptive load balancing</em></a>. Bifrost documentation.</p>
       <p>TypeSafe AI. (n.d.). <a href="https://docs.typesafe.ai/patterns/intent-routing" target="_blank" rel="noopener"><em>Intent routing</em></a>; <a href="https://docs.typesafe.ai/confidence" target="_blank" rel="noopener"><em>Confidence</em></a>; <a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener"><em>Models</em></a>; <a href="https://github.com/typesafe-ai" target="_blank" rel="noopener"><em>Official repositories</em></a>. Retrieved September 28, 2026.</p>

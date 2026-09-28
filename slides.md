@@ -42,7 +42,7 @@ hideInToc: false
 -->
 
 ---
-title: AI 演進：從智慧問題到代理式交付
+title: AI 發展的重要里程碑
 class: talk-page chart-page
 hide: false
 hideInToc: false
@@ -56,7 +56,7 @@ hideInToc: false
 -->
 
 ---
-title: Uncle Bob：讓工具判定通過
+title: Uncle Bob 的 Harness 設計原則
 class: talk-page uncle-interview-page
 hide: false
 hideInToc: false
@@ -69,20 +69,20 @@ hideInToc: false
 -->
 
 ---
-title: Uncle Bob：重新思考 harness
+title: Uncle Bob 對 Harness 的重新思考
 class: talk-page
 hide: false
 hideInToc: false
 ---
 
-<UncleBobReflection english="Apparently the harness is doing the damage. That's not what I expected." chinese="看來，造成負面影響的正是這套 harness。這不是我原先預期的。" />
+<UncleBobReflection english="Apparently the harness is doing the damage. That's not what I expected." chinese="看來，反而是這套 harness 在幫倒忙。這是我沒想到的。" />
 
 <!--
 14:35–14:37。貼文日期2026年9月12日，使用者提供原貼文截圖。選定引文01:58.384–02:04.965：Apparently the harness is doing the damage. That's not what I expected. 以原貼文字幕及OpenAI gpt-4o-transcribe獨立音訊轉錄交叉核對一致，只補一般標點。中文為講者翻譯。頁上小標「當約束成為負擔」為講者歸納，非Uncle Bob原話。語境：他發現同一模型的單一代理優於自己建立的harness，並注意到代理能力已改善。因此本演講歸納為模型進步後應重新量測編排效益。02:28–02:50仍保留CRAP分數、mutation testing與unit tests，不是所有harness或品質關卡均無必要的結論，也不是通用基準數據。原貼文：https://x.com/unclebobmartin/status/2098744156709441896。
 -->
 
 ---
-title: 研究：Google 與 MIT 的單代理與多代理比較
+title: 程式修復表現比較：單代理 vs 多代理
 class: talk-page
 hide: false
 hideInToc: false
@@ -95,7 +95,7 @@ hideInToc: false
 -->
 
 ---
-title: 研究：RouteLLM 的品質與模型呼叫取捨
+title: 品質與費用比較：單模型 vs 多模型路由
 class: talk-page
 hide: false
 hideInToc: false
@@ -109,7 +109,7 @@ hideInToc: false
 -->
 
 ---
-title: RouterArena：不同難度下的品質與費用取捨
+title: 不同任務難度下的準確率與費用比較
 class: talk-page
 hide: false
 hideInToc: false
@@ -122,7 +122,7 @@ hideInToc: false
 -->
 
 ---
-title: IBM Bob On-prem：部署架構
+title: IBM Bob 的企業內部部署架構
 class: talk-page bob-onprem-page
 hide: false
 hideInToc: false
@@ -135,7 +135,7 @@ hideInToc: false
 -->
 
 ---
-title: Bifrost 與 Jev：三層路由能力比較
+title: AI 路由在三種層次的比較：Bifrost vs Jev
 class: talk-page gateway-research-page
 hide: false
 hideInToc: false
@@ -148,7 +148,7 @@ Bifrost 上游现行能力不等於 IBM Bob 啟用清單。Complexity Router 為
 -->
 
 ---
-title: Bifrost：官方與第三方量化效益
+title: Bifrost 效益比較：使用費用與傳輸效能
 class: talk-page gateway-research-page
 hide: false
 hideInToc: false

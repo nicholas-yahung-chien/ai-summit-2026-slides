@@ -13,7 +13,7 @@ defineProps<{ english?: string; chinese?: string }>()
       </figure>
       <div class="reflection-quote">
         <template v-if="english && chinese">
-          <p class="reflection-label">當約束成為負擔</p>
+          <p class="reflection-label">Uncle Bob 對 Harness 的重新思考</p>
           <AnimatedQuote :english="english" :chinese="chinese" />
         </template>
         <template v-else>

@@ -1,28 +1,28 @@
 <template>
   <section class="bifrost-evidence">
     <p class="eyebrow">05 · BIFROST EVIDENCE</p>
-    <h1>量化效益，先看「最佳化了什麼」。</h1>
+    <h1>Bifrost 效益比較：使用費用與傳輸效能</h1>
     <div class="evidence-content">
       <section class="official">
         <h2>官方實測：MCP Code Mode</h2>
-        <p class="context">固定 Claude Sonnet 4.6 · 每輪 64–65 題 · 按需載入工具</p>
+        <p class="context">同樣使用 Claude Sonnet 4.6 · 每輪 64–65 題 · 需要時才載入工具</p>
         <table aria-label="Bifrost Code Mode 官方成本比較">
-          <thead><tr><th>工具數</th><th>估算費用 USD<br><span>關閉 → 開啟</span></th><th>節省</th><th>報告通過率<br><span>關閉 → 開啟</span></th></tr></thead>
+          <thead><tr><th>工具數</th><th>估算費用 USD<br><span>關閉 → 開啟</span></th><th>省下費用</th><th>測試通過率<br><span>關閉 → 開啟</span></th></tr></thead>
           <tbody>
             <tr><th>96<small>6 servers</small></th><td>$104.04 → $46.06</td><td class="saving">55.7%</td><td>100 → 100%</td></tr>
             <tr><th>251<small>11 servers</small></th><td>$180.07 → $29.80</td><td class="saving">83.4%</td><td>98.5 → 100%</td></tr>
             <tr><th>508<small>16 servers</small></th><td>≈ $377 → $29</td><td class="saving">92.2%</td><td>100 → 100%</td></tr>
           </tbody>
         </table>
-        <p class="limit">廠商內部測試；第二輪含失敗後重跑紀錄，<br>通過率不等同嚴格的首次成功率。</p>
+        <p class="limit">這是廠商內部測試；第二輪有失敗後重新測試的紀錄，<br>因此通過率不代表每題第一次就成功。</p>
       </section>
       <section class="external">
         <h2>其他公開實測</h2>
-        <div class="external-result"><h3>小工具集：未觀察到節費</h3><p class="context">Ahmed · v1.4.14 · 1 server／19 tools</p><p class="number">$0.065 → $0.067 <span>／請求</span></p><p>Code Mode 費用約增加 <b>3%</b>。<br><small>個人產品評測，非大規模研究。</small></p></div>
-        <div class="external-result"><h3>Gateway：可比較傳輸效能</h3><p class="context">ENTERPILOT · 2026.09.18 · 模擬後端</p><p class="number">4.30 <span>vs</span> 44.05 <span>ms · p50</span></p><p>Bifrost 2.2.1 ／ LiteLLM 1.101.0<br><small>GoModel 團隊維護；未測答案正確率。</small></p></div>
+        <div class="external-result"><h3>工具少時，不一定省錢</h3><p class="context">Ahmed · v1.4.14 · 1 server／19 tools</p><p class="number">$0.065 → $0.067 <span>／請求</span></p><p>開啟 Code Mode 後，費用增加約 <b>3%</b>。<br><small>個人小規模測試。</small></p></div>
+        <div class="external-result"><h3>轉送請求，也有速度差異</h3><p class="context">ENTERPILOT · 2026.09.18 · 模擬後端</p><p class="number">4.30 <span>vs</span> 44.05 <span>ms · p50</span></p><p>Bifrost 2.2.1 ／ LiteLLM 1.101.0<br><small>GoModel 團隊測試，未比較答案品質。</small></p></div>
       </section>
     </div>
-    <p class="boundary">以上不是多模型路由成效；目前未找到其節費與正確率的公開對照驗證。</p>
+    <p class="boundary">這些數據反映工具使用與傳輸效率，不代表模型路由後的費用與準確率。</p>
     <div class="citations" lang="en">
       <p>Maxim AI. (n.d.). <a href="https://github.com/maximhq/bifrost-benchmarking/blob/main/mcp-code-mode-benchmark/benchmark_report.md" target="_blank" rel="noopener"><em>MCP Code Mode benchmark report</em></a> [Technical report]. GitHub. Summary; Rounds 1–3.</p>
       <p>Ahmed, R. (2026, March). <a href="https://r-eehan.github.io/bifrost-product-evaluation/" target="_blank" rel="noopener"><em>Bifrost: LLM &amp; MCP Gateway evaluation</em></a> [Product evaluation].</p>

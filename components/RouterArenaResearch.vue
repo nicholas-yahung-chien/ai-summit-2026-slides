@@ -14,10 +14,10 @@ const tiers = [
 <template>
   <section :key="replay" class="arena" :class="{ instant:!active || $renderContext === 'print' }">
     <p class="eyebrow">RESEARCH 03 · ROUTERARENA</p>
-    <h1>不同難度，不同的品質與費用取捨。</h1>
+    <h1>不同任務難度下的準確率與費用比較</h1>
     <ArenaScatter :tiers="tiers" />
-    <p class="takeaway">路由可明顯降低費用，並在容易與中等任務上維持具競爭力的準確率。</p>
-    <p class="limits">一般查詢評測，非完整程式代理流程；模型池不同。</p>
+    <p class="takeaway">路由能省下不少費用；準確率的差距，還要看任務難度。</p>
+    <p class="limits">這裡比較一般問答，不是完整的程式開發流程；兩者可使用的模型也不同。</p>
     <ResearchCitation source="arena" />
   </section>
 </template>

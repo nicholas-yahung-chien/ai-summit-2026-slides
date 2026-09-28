@@ -161,7 +161,7 @@ const curve = points.reduce((path,p,i) => {
 
 <template>
   <div class="acceleration-chart">
-    <div class="chart-intro"><p>AI EVOLUTION / 1950—2026</p><h2>突破，正在加速。</h2><span>從生成答案，到協作完成任務</span></div>
+    <div class="chart-intro"><p>AI EVOLUTION / 1950—2026</p><h2>AI 發展的重要里程碑</h2><span>從回答問題，到協助我們完成工作</span></div>
     <button class="replay-curve" @click.stop="replay++" @keydown.stop aria-label="重播演進曲線">↻ 重播</button>
     <svg :key="replay" viewBox="0 0 1184 650" role="img" aria-labelledby="evolution-title evolution-desc">
       <title id="evolution-title">AI 演進的十八個里程碑與應用趨勢</title>
