@@ -157,7 +157,7 @@ hideInToc: false
 <BifrostEvidence />
 
 <!--
-Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題，tokens 累計整個 agent loop。R2 OFF 有六題重跑通過，仍有一題失敗，因此為 98.5%。費用與節省比例沿用原報告估算。個人評測只有 19 個工具及舊版本。ENTERPILOT 是 GoModel 相關團隊；模擬後端 p50 是 Gateway 效能，不是模型品質。尚未找到 Bifrost 模型路由費用與正確率成對公開對照，不將數據套用為 IBM Bob 成效。
+Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題，tokens 累計整個 agent loop。R2 OFF 有六題重跑通過，仍有一題失敗，因此為 98.5%。費用與節省比例沿用原報告估算。ENTERPILOT 是 GoModel 相關團隊；模擬後端 p50 是 Gateway 效能，不是模型品質。尚未找到 Bifrost 模型路由費用與正確率成對公開對照，不將數據套用為 IBM Bob 成效。
 -->
 
 ---
