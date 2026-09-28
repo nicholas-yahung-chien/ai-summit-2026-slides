@@ -131,6 +131,11 @@ slides.splice(6, 0, {
   content:'<RouterArenaResearch />',
   note:'14:40-14:41. RouterArena Table 6: GPT-5 vs Azure Router, easy 95.1/$5.68 vs 93.3/$0.30; medium 68.6/$14.80 vs 59.5/$0.63; hard 27.5/$35.73 vs 17.9/$1.05. Accuracy in percent; USD per 1000 queries. Difficulty: number of correct models among 42; easy >=20, medium 5-19, hard <=4. General query benchmark, not a multi-turn coding agent evaluation. Different model pools; GPT-5 is a service baseline with potential internal routing. No causal claim that harder tasks benefit more from multiple models. Not a Jev or IBM Bob product evaluation. Source: https://arxiv.org/pdf/2510.00202, Table 6 and section 6.3.',
 })
+slides.splice(7, 0, {
+  frontmatter: { title:'IBM Bob On-prem：部署架構', class:'talk-page bob-onprem-page' },
+  content:'<BobOnPremArchitecture />',
+  note:'使用者提供之 GA 草稿重繪與 AI 美化。保留機密與草稿標示，使用者明確要求發布供檢視。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。',
+})
 slides.push(...hiddenStudies)
 for (const slide of slides) {
   slide.note = slide.note.replaceAll('第21頁', '第20頁')

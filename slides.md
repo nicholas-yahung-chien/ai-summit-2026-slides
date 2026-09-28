@@ -122,6 +122,19 @@ hideInToc: false
 -->
 
 ---
+title: IBM Bob On-prem：部署架構
+class: talk-page bob-onprem-page
+hide: false
+hideInToc: false
+---
+
+<BobOnPremArchitecture />
+
+<!--
+使用者提供之 GA 草稿重繪與 AI 美化。保留機密與草稿標示，使用者明確要求發布供檢視。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。
+-->
+
+---
 title: Jev：把決策與生成分工
 class: talk-page
 hide: false
