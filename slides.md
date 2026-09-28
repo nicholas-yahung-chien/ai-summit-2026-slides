@@ -47,7 +47,7 @@ class: talk-page chart-page
 <EvolutionChart />
 
 <!--
-14:31–14:34。12 個代表節點，以單一上升曲線呈現近年進展密集的敘事印象。橫軸僅列時間；時間非等距，曲線高度不是量測能力或成長率，不能由精選節點推算普遍突破週期。依序為圖靈測試、專家系統、Deep Blue、Watson、AlphaGo、Transformer、GPT-3、ChatGPT、watsonx、vibe coding、Bob V2、Jev。2011 年 Jeopardy! 冠軍是 Watson；watsonx 是 2023 年的平台。此處 AlphaGo 指 2016 年擊敗李世乭，2015 年已擊敗樊麾。LLM 沒有單一誕生日；Jev 發表不等於權重開源。圖表不提供來源連結或彈出視窗。
+14:31–14:34。全領域的 15 個代表里程碑：圖靈測試、Dartmouth、DENDRAL 專家系統、1986 反向傳播代表論文、Deep Blue、Watson、AlexNet、GAN、AlphaGo、Transformer、GPT-3、AlphaFold 2、ChatGPT、o1、DeepSeek-R1。歷史根據包括電腦歷史博物館、諾貝爾獎科學背景與原始論文；沒有唯一公認的完整排行榜。Deep Blue 與 Watson 保留為歷史成果，watsonx、Bob V2、Jev 不列為全領域公認突破；vibe coding 屬開發方式與用語。o1 與 R1 是近期推理路線的代表，而非已具有與圖靈測試相同的歷史共識。2020.11 是 AlphaFold 2 的 CASP14 成果，2025.01 是 R1 發布日期，不是其 Nature 論文日期。時間軸非等距，曲線高度為敘事安排，不能推算實際成長率。頁面不顯示註解與來源連結。
 -->
 
 ---

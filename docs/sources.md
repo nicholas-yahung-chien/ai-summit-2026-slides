@@ -68,6 +68,19 @@
 核對 Uncle Bob 原片措辭與時間戳；在 IBM Bob 本人環境排演 demo，填入真實版本、耗時與可取得的消耗指標。不能把預備參考實作當成 Bob 的實際成果。
 # AI 演進圖目前版本（2026-09-28）
 
+最新修訂改為 15 個跨領域節點，移除頁面註解。保留 Deep Blue、Watson 的歷史地位；移除 watsonx、Bob V2、Jev 的產品發布與 vibe coding 用語。加入 Dartmouth、反向傳播、AlexNet、GAN、AlphaFold 2、o1、DeepSeek-R1。這是有文獻依據的代表性選取，並非唯一公認排行榜；近期推理模型的歷史地位仍在形成。
+
+核對依據：
+- 電腦歷史博物館的 AI 時間軸（含 DENDRAL、Deep Blue、Watson）：https://www.computerhistory.org/timeline/ai-robotics/
+- 諾貝爾物理獎科學背景（1986 反向傳播等）：https://www.nobelprize.org/uploads/2024/11/advanced-physicsprize2024-3.pdf
+- AlexNet 原論文與 ImageNet 2012 結果：https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html 、https://www.image-net.org/challenges/LSVRC/2012/
+- GAN 原論文：https://arxiv.org/abs/1406.2661
+- 諾貝爾化學獎對 AlphaFold 2 的認定（成果於 2020 年發表）：https://www.nobelprize.org/prizes/chemistry/2024/press-release/
+- o1 原始研究說明：https://openai.com/index/learning-to-reason-with-llms/
+- DeepSeek-R1 發布與同行評審論文：https://deepseek.com/en/news/deepseek-r1/ 、https://www.nature.com/articles/s41586-025-09422-z
+
+以下為前次修訂紀錄。
+
 依使用者修訂，第 2 頁顯示 12 個節點的單一二維曲線：1950 圖靈測試、1965 專家系統、1997 Deep Blue、2011 Watson、2016 AlphaGo、2017 Transformer、2020 GPT-3、2022 ChatGPT、2023 watsonx、2025.02 vibe coding、2026.07 Bob V2、2026.09 Jev。橫軸只有時間，節點旁為簡短標籤；取消圖上的來源連結及說明彈窗。曲線與非等距時間為概念敘事，不表示實測能力或突破週期。
 
 以下保留前次 24 節點版本的研究紀錄，並非目前的顯示內容。

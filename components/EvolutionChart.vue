@@ -3,18 +3,126 @@ import { ref } from 'vue'
 const replay = ref(0)
 // Deliberately nonuniform time spacing and illustrative heights; not measured growth.
 const points = [
-  { date:'1950', title:'圖靈測試', x:80, y:522, lx:80, ly:469 },
-  { date:'1965', title:'專家系統', x:245, y:515, lx:245, ly:460 },
-  { date:'1997', title:'Deep Blue', x:402, y:499, lx:402, ly:444 },
-  { date:'2011', title:'IBM Watson', x:530, y:472, lx:510, ly:411 },
-  { date:'2016', title:'AlphaGo', x:640, y:435, lx:597, ly:374 },
-  { date:'2017', title:'Transformer', x:735, y:389, lx:628, ly:331 },
-  { date:'2020', title:'GPT-3 · LLM', x:816, y:336, lx:694, ly:278 },
-  { date:'2022', title:'ChatGPT', x:885, y:278, lx:760, ly:220 },
-  { date:'2023', title:'IBM watsonx', x:946, y:219, lx:795, ly:166 },
-  { date:'2025.02', title:'Vibe coding', x:1001, y:160, lx:849, ly:110 },
-  { date:'2026.07', title:'IBM Bob V2', x:1050, y:99, lx:900, ly:55 },
-  { date:'2026.09', title:'Jev', x:1094, y:36, lx:1130, ly:29 },
+  {
+    "date": "1950",
+    "title": "\u5716\u9748\u6e2c\u8a66",
+    "x": 80,
+    "y": 522,
+    "lx": 80,
+    "ly": 469
+  },
+  {
+    "date": "1956",
+    "title": "Dartmouth",
+    "x": 195,
+    "y": 519,
+    "lx": 195,
+    "ly": 456
+  },
+  {
+    "date": "1965",
+    "title": "\u5c08\u5bb6\u7cfb\u7d71",
+    "x": 305,
+    "y": 512,
+    "lx": 305,
+    "ly": 440
+  },
+  {
+    "date": "1986",
+    "title": "\u53cd\u5411\u50b3\u64ad",
+    "x": 405,
+    "y": 500,
+    "lx": 405,
+    "ly": 415
+  },
+  {
+    "date": "1997",
+    "title": "Deep Blue",
+    "x": 495,
+    "y": 482,
+    "lx": 480,
+    "ly": 382
+  },
+  {
+    "date": "2011",
+    "title": "Watson",
+    "x": 570,
+    "y": 457,
+    "lx": 547,
+    "ly": 347
+  },
+  {
+    "date": "2012",
+    "title": "AlexNet",
+    "x": 640,
+    "y": 426,
+    "lx": 604,
+    "ly": 311
+  },
+  {
+    "date": "2014",
+    "title": "GAN",
+    "x": 700,
+    "y": 391,
+    "lx": 658,
+    "ly": 274
+  },
+  {
+    "date": "2016",
+    "title": "AlphaGo",
+    "x": 755,
+    "y": 352,
+    "lx": 708,
+    "ly": 234
+  },
+  {
+    "date": "2017",
+    "title": "Transformer",
+    "x": 810,
+    "y": 310,
+    "lx": 751,
+    "ly": 193
+  },
+  {
+    "date": "2020.05",
+    "title": "GPT-3",
+    "x": 862,
+    "y": 264,
+    "lx": 801,
+    "ly": 150
+  },
+  {
+    "date": "2020.11",
+    "title": "AlphaFold 2",
+    "x": 910,
+    "y": 215,
+    "lx": 846,
+    "ly": 108
+  },
+  {
+    "date": "2022.11",
+    "title": "ChatGPT",
+    "x": 956,
+    "y": 163,
+    "lx": 894,
+    "ly": 67
+  },
+  {
+    "date": "2024.09",
+    "title": "o1",
+    "x": 1020,
+    "y": 106,
+    "lx": 987,
+    "ly": 39
+  },
+  {
+    "date": "2025.01",
+    "title": "DeepSeek-R1",
+    "x": 1094,
+    "y": 36,
+    "lx": 1080,
+    "ly": 6
+  }
 ]
 const slope = (i: number) => {
   const a = points[Math.max(0,i-1)], b = points[Math.min(points.length-1,i+1)]
@@ -29,11 +137,11 @@ const curve = points.reduce((path,p,i) => {
 
 <template>
   <div class="acceleration-chart">
-    <div class="chart-intro"><p>AI EVOLUTION / 1950—2026</p><h2>突破，正在加速。</h2><span>從專用智慧，到代理式開發</span></div>
+    <div class="chart-intro"><p>AI EVOLUTION / 1950—2025</p><h2>突破，正在加速。</h2><span>從規則、學習，到生成與推理</span></div>
     <button class="replay-curve" @click.stop="replay++" @keydown.stop aria-label="重播演進曲線">↻ 重播</button>
     <svg :key="replay" viewBox="0 0 1184 650" role="img" aria-labelledby="evolution-title evolution-desc">
-      <title id="evolution-title">AI 演進的十二個重要里程碑</title>
-      <desc id="evolution-desc">1950 圖靈測試、1965 專家系統、1997 Deep Blue、2011 IBM Watson、2016 AlphaGo、2017 Transformer、2020 GPT-3、2022 ChatGPT、2023 IBM watsonx、2025 年 2 月 Vibe coding、2026 年 7 月 IBM Bob V2、2026 年 9 月 Jev。時間軸非等距；曲線高度為概念示意，不代表實測能力或成長率。</desc>
+      <title id="evolution-title">AI 演進的十五個重要里程碑</title>
+      <desc id="evolution-desc">{{ points.map(p => `${p.date} ${p.title}`).join('、') }}。</desc>
       <defs>
         <linearGradient id="evolution-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f62fe" stop-opacity=".13"/><stop offset="1" stop-color="#0f62fe" stop-opacity=".015"/></linearGradient>
       </defs>
@@ -49,11 +157,10 @@ const curve = points.reduce((path,p,i) => {
       </g>
       <path class="curve-stroke" :d="curve" pathLength="1" fill="none" stroke="#0f62fe" stroke-width="4.5" stroke-linecap="round" />
       <g v-for="(p,i) in points" :key="p.title" class="event" :style="{animationDelay:`${i*.22}s`}">
-        <circle v-if="i===11" :cx="p.x" :cy="p.y" r="17" fill="#0f62fe" opacity=".1" />
+        <circle v-if="i===points.length-1" :cx="p.x" :cy="p.y" r="17" fill="#0f62fe" opacity=".1" />
         <circle :cx="p.x" :cy="p.y" :r="i>8?6.5:5.5" fill="#0f62fe" stroke="#f4f4f4" stroke-width="3" />
       </g>
     </svg>
-    <p class="chart-footnote">精選里程碑 · 時間軸非等距 · 曲線為概念示意，非實測成長率</p>
   </div>
 </template>
 
@@ -71,7 +178,6 @@ svg .recent-label { fill:#0043ce; }
 svg .event-date { font-size:18px !important; fill:#525252; font-variant-numeric:tabular-nums; }
 .curve-stroke { stroke-dasharray:1; animation:trace 2.8s ease-in both; }
 .event { animation:appear .4s both; }
-.chart-footnote { position:absolute; bottom:0; left:80px; font-size:14px; color:#6f6f6f; }
 @keyframes trace { from {stroke-dashoffset:1} to {stroke-dashoffset:0} }
 @keyframes appear { from {opacity:0} to {opacity:1} }
 @media(prefers-reduced-motion:reduce) { .curve-stroke,.event { animation:none; } }
