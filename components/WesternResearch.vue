@@ -27,7 +27,7 @@ const routes = [
 
 <template>
   <section :key="replay" class="western" :class="{ instant: !active || $renderContext === 'print' }">
-    <p class="eyebrow">{{ kind === 'agents' ? 'RESEARCH 01B · GOOGLE × MIT' : 'RESEARCH 02B · ROUTELLM' }}</p>
+    <p class="eyebrow">{{ kind === 'agents' ? 'RESEARCH 01 · GOOGLE × MIT' : 'RESEARCH 02 · ROUTELLM' }}</p>
     <h1>{{ kind === 'agents' ? '程式修復：更多代理，未必更好。' : '保留約 95% 評分，減少昂貴模型呼叫。' }}</h1>
 
     <template v-if="kind === 'agents'">
