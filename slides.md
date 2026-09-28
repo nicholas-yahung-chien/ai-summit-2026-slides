@@ -30,6 +30,8 @@ defaults:
   transition: fade
 layout: summit
 class: cover-page formal-cover
+hide: false
+hideInToc: false
 ---
 
 <div class="cover-kicker">AI SUMMIT <span>2026</span></div>
@@ -42,6 +44,8 @@ class: cover-page formal-cover
 ---
 title: AI 演進：從智慧問題到代理式交付
 class: talk-page chart-page
+hide: false
+hideInToc: false
 ---
 
 <EvolutionChart />
@@ -54,6 +58,8 @@ class: talk-page chart-page
 ---
 title: Uncle Bob：讓工具判定通過
 class: talk-page uncle-interview-page
+hide: false
+hideInToc: false
 ---
 
 <UncleBobInterview />
@@ -65,6 +71,8 @@ class: talk-page uncle-interview-page
 ---
 title: Uncle Bob：重新思考 harness
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <UncleBobReflection english="Apparently the harness is doing the damage. That's not what I expected." chinese="看來，造成負面影響的正是這套 harness。這不是我原先預期的。" />
@@ -74,53 +82,50 @@ class: talk-page
 -->
 
 ---
-title: 程式生成：單代理與多代理的品質與成本
+title: 研究：Google 與 MIT 的單代理與多代理比較
 class: talk-page
----
-
-<ResearchComparison kind="agents" />
-
-<!--
-14:37–14:39（2分鐘）。AgentDropout，ACL 2025，Tables 1–2，Llama3-8B-Instruct、HumanEval。同一基準：Vanilla Pass@1 53.33%，prompt 91K + completion 25K = 116K；MAS round=T 49.17%，2.6M + 492K = 3,092K；AgentDropout 55.84%，1.1M + 359K = 1,459K。都是論文整批評測用量，非單題，K=千；加總依原表約數。這是相同模型的資源成本比較，不是等預算實驗，也不是美元費用；輸入與輸出可能不同價，快取亦影響帳單。單代理此處為Vanilla，並非最佳化的完整開發代理。結果支持「額外編排可能增加消耗卻降低品質」這種現象，與Uncle Bob個人感受相呼應，但不能證明他的個案因果，也不表示所有多代理都較差。精簡後品質高於Vanilla，代價仍較大，必須保留此列避免片面選數據。來源：https://aclanthology.org/2025.acl-long.1170.pdf。
--->
-
----
-title: 補充研究：Google 與 MIT 的單代理與多代理比較
-class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <WesternResearch kind="agents" />
 
 <!--
-補充候選頁，暫不增加原35分鐘演講配置。Kim等人，Towards a Science of Scaling Agent Systems，arXiv:2512.08296v3，2026-04-08，Google Research、Google DeepMind與MIT，預印本，不宣稱已同儕審查。引用第13–14頁正文報告的SWE-bench Verified跨模型平均值：單代理52.2%、Hybrid51.1%、Centralized50.6%、Decentralized49.4%、Independent44.4%。研究整體260配置六基準；程式修復只使用20題子集與8模型，單格信賴區間寬，不能宣稱每個模型上均顯著勝出。圖表為論文正文報告的點估計，不與Table 5跨任務tokens或成本相配，也不創造同設定費用差異。Finance-Agent可拆分任务多代理則有改善，不能據此得出多代理普遍較差或harness無用。來源：https://arxiv.org/pdf/2512.08296v3。
+14:37–14:38:30，正式主線研究。Kim等人，Towards a Science of Scaling Agent Systems，arXiv:2512.08296v3，2026-04-08，Google Research、Google DeepMind與MIT，預印本，不宣稱已同儕審查。引用第13–14頁正文報告的SWE-bench Verified跨模型平均值：單代理52.2%、Hybrid51.1%、Centralized50.6%、Decentralized49.4%、Independent44.4%。研究整體260配置六基準；程式修復只使用20題子集與8模型，單格信賴區間寬，不能宣稱每個模型上均顯著勝出。圖表為論文正文報告的點估計，不與Table 5跨任務tokens或成本相配，也不創造同設定費用差異。Finance-Agent可拆分任务多代理則有改善，不能據此得出多代理普遍較差或harness無用。來源：https://arxiv.org/pdf/2512.08296v3。
 -->
 
 ---
-title: 多模型路由：品質與費用的兩種最佳化目標
+title: 研究：RouteLLM 的品質與模型呼叫取捨
 class: talk-page
----
-
-<ResearchComparison kind="routing" />
-
-<!--
-14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6、Section 3.4。品質優先：Avengers-Pro最高平均正確率比最佳單模型GPT-5相對提升4.0%，即1.04倍，不是增加4個百分點，也不代表每100題多答對4題。費用優先：在平均品質不低於GPT-5的設定中選擇最低費用，CostSave為31.7%，費用為基準0.683倍。這是不同設定的兩項指標，不能宣稱同時品質提升4%且省31.7%。圖條均由零起算；左右衡量不同指標，不能比較兩欄條長。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。其他路由器未必優於最佳單模型；模型互補與路由準確性才重要。費用下降不等於token減少。此研究支持模型選擇的概念，非Jev或IBM Bob使用該演算法或獲得相同成果的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。
--->
-
----
-title: 補充研究：RouteLLM 的品質與模型呼叫取捨
-class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <WesternResearch kind="routing" />
 
 <!--
-補充候選頁，暫不增加原35分鐘演講配置，供使用者決定替代或補充。RouteLLM正式ICLR 2025論文，UC Berkeley、Anyscale、Canva。Table 1，Matrix Factorization，Arena+Judge訓練，CPT(50%)：GPT-4呼叫比例13.40%，達到MT-Bench 8.8分，GPT-4基準9.3分（約95%）。CPT(50%)是強弱模型之間performance gap recovery的50%，不是GPT-4表現的50%。其餘86.6%呼叫Mixtral 8x7B。不是品質提升，也不是節省86.6%的美元或tokens；圖上兩個指標来自同一設定。主要模型為gpt-4-1106-preview與Mixtral 8x7B，非2026最新模型，非程式生成專屬測試，不能當作Jev或IBM Bob的實測成效。原文PDF用with，正式proceedings目錄用from，此頁引用採正式目錄題名。來源：https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf。
+14:38:30–14:40，正式主線研究。RouteLLM正式ICLR 2025論文，UC Berkeley、Anyscale、Canva。Table 1，Matrix Factorization，Arena+Judge訓練，CPT(50%)：GPT-4呼叫比例13.40%，達到MT-Bench 8.8分，GPT-4基準9.3分（約95%）。CPT(50%)是強弱模型之間performance gap recovery的50%，不是GPT-4表現的50%。其餘86.6%呼叫Mixtral 8x7B。不是品質提升，也不是節省86.6%的美元或tokens；圖上兩個指標来自同一設定。主要模型為gpt-4-1106-preview與Mixtral 8x7B，非2026最新模型，非程式生成專屬測試，不能當作Jev或IBM Bob的實測成效。原文PDF用with，正式proceedings目錄用from，此頁引用採正式目錄題名。來源：https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf。
 費用示意新增：每百萬次請求，兩模型均假設每次95輸入+264輸出tokens（採附錄D訓練集平均長度，不是MT-Bench實測長度）。GPT-4每百萬輸入$10、輸出$30；Mixtral輸入輸出均$0.24。固定GPT-4 = 95×10+264×30 = $8,870。路由 = 0.134×8870 + 0.866×359×0.24 + 3.32 = $1,266.51456，約$1,267，節省85.7214%，顯示85.7%。$3.32為Table 7 Matrix Factorization路由器每百萬次請求開銷，已含其embedding估算。此為把Table 1路由比例與附錄D價格假設結合的講者推算，不是論文直接量得的整批MT-Bench帳單；不包含訓練、重試、快取差異或其他營運成本，不是2026即時報價，也不是token節省。保留分數9.3/8.8以揭露品質取捨。Table 6的3.66倍與隨機路由比率一致，未拿來作為全部GPT-4的費用基準。研究資助揭露含IBM等多家機構，不稱為與IBM無關的獨立驗證。
+-->
+
+---
+title: SWE-Router：先探索，再判斷是否升級模型
+class: talk-page
+hide: false
+hideInToc: false
+---
+
+<SweRouterResearch />
+
+<!--
+14:40–14:41。Son等人（2026），SWE-Router，ICML 2026第五屆Deep Learning for Code工作坊，非主會議。UCL、UNIST、PSL、Basel。Table 2同一模型對GPT-5 mini/Gemini 3 Pro Preview：K=0與K=4的Route-AUC，SWE-bench Verified 0.549→0.709；SWE-Smith 0.626→0.546。兩組圖共用0–1顯示尺度（非指標理論上下限），由零起算。Route-AUC是成本—解題率曲線的正規化綜合量，不是成功率、美元或token節省比例；不能把0.160寫成解題率提升16個百分點。K是探索步數而非任務難度，無難度分組結論。升級模型從原始任務重啟，探索成本仍計入；非多代理協作。mix-1將SWE-bench 500題中的4/5用於訓練，保留測試100題。SWE-Smith跨程式庫分布變化導致部分路由不優於基準。方法採Qwen2.5-Coder-7B價值頭；所列歐美韓機構不代表模型來源全部為歐美。Table 1是收集資料費用，不當作路由節省數據。此研究不是Jev或IBM Bob的產品效益驗證。來源：https://arxiv.org/pdf/2607.00053，Table 2、§3、§5.1、Appendix A–B。
 -->
 
 ---
 title: Jev：把決策與生成分工
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">2026.09.15 · JEV</p>
@@ -133,6 +138,8 @@ class: talk-page
 ---
 title: 減少協作浪費，才是節省 token 的關鍵
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">EVIDENCE 02 · COMMUNICATION PRUNING</p>
@@ -145,6 +152,8 @@ class: talk-page
 ---
 title: 模型路由：降低費用與減少 token 不同
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">EVIDENCE 03 · MODEL ROUTING</p>
@@ -157,6 +166,8 @@ class: talk-page
 ---
 title: IBM Bob V2：三層產品架構
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">04 · IBM BOB</p>
@@ -169,6 +180,8 @@ class: talk-page
 ---
 title: IBM Bob：任務分工與模型選擇
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">TASK EXECUTION · CONCEPTUAL VIEW</p>
@@ -181,6 +194,8 @@ class: talk-page
 ---
 title: Bobalytics：看見採用與消耗
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">ENTERPRISE VISIBILITY</p>
@@ -193,6 +208,8 @@ class: talk-page
 ---
 title: SDLC 的新重心：理解、並行與記憶
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">05 · PRACTITIONER PERSPECTIVES</p>
@@ -205,6 +222,8 @@ class: talk-page
 ---
 title: 三種代表性的 AI 開發實務
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">THREE PRACTICAL APPROACHES</p>
@@ -217,6 +236,8 @@ class: talk-page
 ---
 title: 今天示範：以驗收規格驅動一個小功能
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">DEMO DESIGN · SPEC-DRIVEN LOOP</p>
@@ -229,6 +250,8 @@ class: talk-page
 ---
 title: Live demo：用 IBM Bob 完成一個交付循環
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">06 · LIVE DEMO · 7 MINUTES</p>
@@ -241,6 +264,8 @@ class: talk-page
 ---
 title: 示範驗收：四種行為，四份證據
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">DEMO · ACCEPTANCE</p>
@@ -253,18 +278,22 @@ class: talk-page
 ---
 title: 示範備援：保留交付軌跡
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">DEMO · FALLBACK</p>
 <h1>如果現場連線中斷，<br>沿著同一份證據走完。</h1><div class="method-rows"><div><b>規格</b><span>demo/README.md</span><small>行為與範圍</small></div><div><b>驗收</b><span>registration.test.mjs</span><small>可執行案例</small></div><div><b>參考實作</b><span>demo/reference/</span><small>預先準備，非現場生成</small></div></div><p class="takeaway">記錄觀察到的耗時與消耗；未量測的欄位留白。</p>
 
 <!--
-示範備援頁，正常情況可直接跳至第21頁。參考實作是為簡報預先準備且以 Node 驗證的版本，不冒充 Bob 實際輸出。若無網路，用 node --test demo/reference/registration.test.mjs 檢查備援結果並解釋設計取捨。
+示範備援頁，正常情況可直接跳至第20頁。參考實作是為簡報預先準備且以 Node 驗證的版本，不冒充 Bob 實際輸出。若無網路，用 node --test demo/reference/registration.test.mjs 檢查備援結果並解釋設計取捨。
 -->
 
 ---
 title: 把代理能力，轉成團隊的交付能力
 class: closing-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">BUILD AI · TAKE IT BACK TO YOUR TEAM</p><div class="closing-copy"><h1>清楚的意圖。<br>適量的協作。<br><span style="color:#a6c8ff">可驗證的交付。</span></h1><p>Nicholas Chien / 錢亞宏</p><span class="closing-date">2026.10.23 · AI SUMMIT</span></div><SummitArt class="closing-art" />
@@ -276,6 +305,8 @@ class: closing-page
 ---
 title: 參考資料：事件與產品
 class: talk-page reference-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">APPENDIX A · SOURCES</p>
@@ -288,6 +319,8 @@ class: talk-page reference-page
 ---
 title: 參考資料：實驗與開發方法
 class: talk-page
+hide: false
+hideInToc: false
 ---
 
 <p class="eyebrow">APPENDIX B · SOURCES</p>
@@ -295,4 +328,32 @@ class: talk-page
 
 <!--
 附錄，不计入35分鐘。所有研究數字採明確來源的特定實驗；不做跨論文模型、資料集或 token 計價的直接排名。
+-->
+
+---
+title: 隱藏補充｜程式生成：單代理與多代理的品質與成本
+class: talk-page
+hide: true
+hideInToc: true
+---
+
+<ResearchComparison kind="agents" />
+
+<!--
+隱藏補充資料；不列入正式播放。
+14:37–14:39（2分鐘）。AgentDropout，ACL 2025，Tables 1–2，Llama3-8B-Instruct、HumanEval。同一基準：Vanilla Pass@1 53.33%，prompt 91K + completion 25K = 116K；MAS round=T 49.17%，2.6M + 492K = 3,092K；AgentDropout 55.84%，1.1M + 359K = 1,459K。都是論文整批評測用量，非單題，K=千；加總依原表約數。這是相同模型的資源成本比較，不是等預算實驗，也不是美元費用；輸入與輸出可能不同價，快取亦影響帳單。單代理此處為Vanilla，並非最佳化的完整開發代理。結果支持「額外編排可能增加消耗卻降低品質」這種現象，與Uncle Bob個人感受相呼應，但不能證明他的個案因果，也不表示所有多代理都較差。精簡後品質高於Vanilla，代價仍較大，必須保留此列避免片面選數據。來源：https://aclanthology.org/2025.acl-long.1170.pdf。
+-->
+
+---
+title: 隱藏補充｜多模型路由：品質與費用的兩種最佳化目標
+class: talk-page
+hide: true
+hideInToc: true
+---
+
+<ResearchComparison kind="routing" />
+
+<!--
+隱藏補充資料；不列入正式播放。
+14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6、Section 3.4。品質優先：Avengers-Pro最高平均正確率比最佳單模型GPT-5相對提升4.0%，即1.04倍，不是增加4個百分點，也不代表每100題多答對4題。費用優先：在平均品質不低於GPT-5的設定中選擇最低費用，CostSave為31.7%，費用為基準0.683倍。這是不同設定的兩項指標，不能宣稱同時品質提升4%且省31.7%。圖條均由零起算；左右衡量不同指標，不能比較兩欄條長。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。其他路由器未必優於最佳單模型；模型互補與路由準確性才重要。費用下降不等於token減少。此研究支持模型選擇的概念，非Jev或IBM Bob使用該演算法或獲得相同成果的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。
 -->

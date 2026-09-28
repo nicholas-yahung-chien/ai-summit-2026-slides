@@ -2,6 +2,7 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js'
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 import { fileURLToPath } from 'node:url'
+import { readFile, writeFile } from 'node:fs/promises'
 const root = fileURLToPath(new URL('../', import.meta.url))
 const sources = {
   history: ['Turing（1950）', 'https://academic.oup.com/mind/article/LIX/236/433/986238'],
@@ -117,7 +118,32 @@ slides.splice(5, 0, {
 })
 for (const slide of slides) slide.note = slide.note.replaceAll('第19頁', '第21頁')
 slides[7].note += '\n費用示意新增：每百萬次請求，兩模型均假設每次95輸入+264輸出tokens（採附錄D訓練集平均長度，不是MT-Bench實測長度）。GPT-4每百萬輸入$10、輸出$30；Mixtral輸入輸出均$0.24。固定GPT-4 = 95×10+264×30 = $8,870。路由 = 0.134×8870 + 0.866×359×0.24 + 3.32 = $1,266.51456，約$1,267，節省85.7214%，顯示85.7%。$3.32為Table 7 Matrix Factorization路由器每百萬次請求開銷，已含其embedding估算。此為把Table 1路由比例與附錄D價格假設結合的講者推算，不是論文直接量得的整批MT-Bench帳單；不包含訓練、重試、快取差異或其他營運成本，不是2026即時報價，也不是token節省。保留分數9.3/8.8以揭露品質取捨。Table 6的3.66倍與隨機路由比率一致，未拿來作為全部GPT-4的費用基準。研究資助揭露含IBM等多家機構，不稱為與IBM無關的獨立驗證。'
+// Promote the western studies; retain the two original studies as hidden appendices.
+const hiddenStudies = slides.filter(slide => slide.content.includes('<ResearchComparison '))
+for (const slide of hiddenStudies) {
+  slides.splice(slides.indexOf(slide), 1)
+  Object.assign(slide.frontmatter, { hide:true, hideInToc:true })
+  slide.frontmatter.title = '隱藏補充｜' + slide.frontmatter.title
+  slide.note = '隱藏補充資料；不列入正式播放。\n' + slide.note
+}
+slides.splice(6, 0, {
+  frontmatter: { title:'SWE-Router：先探索，再判斷是否升級模型', class:'talk-page' },
+  content:'<SweRouterResearch />',
+  note:'14:40–14:41。Son等人（2026），SWE-Router，ICML 2026第五屆Deep Learning for Code工作坊，非主會議。UCL、UNIST、PSL、Basel。Table 2同一模型對GPT-5 mini/Gemini 3 Pro Preview：K=0與K=4的Route-AUC，SWE-bench Verified 0.549→0.709；SWE-Smith 0.626→0.546。兩組圖共用0–1顯示尺度（非指標理論上下限），由零起算。Route-AUC是成本—解題率曲線的正規化綜合量，不是成功率、美元或token節省比例；不能把0.160寫成解題率提升16個百分點。K是探索步數而非任務難度，無難度分組結論。升級模型從原始任務重啟，探索成本仍計入；非多代理協作。mix-1將SWE-bench 500題中的4/5用於訓練，保留測試100題。SWE-Smith跨程式庫分布變化導致部分路由不優於基準。方法採Qwen2.5-Coder-7B價值頭；所列歐美韓機構不代表模型來源全部為歐美。Table 1是收集資料費用，不當作路由節省數據。此研究不是Jev或IBM Bob的產品效益驗證。來源：https://arxiv.org/pdf/2607.00053，Table 2、§3、§5.1、Appendix A–B。',
+})
+slides.push(...hiddenStudies)
+for (const slide of slides) {
+  slide.note = slide.note.replaceAll('第21頁', '第20頁')
+  if (slide.content.includes('<WesternResearch')) {
+    slide.frontmatter.title = slide.frontmatter.title.replace('補充研究：', '研究：')
+    slide.note = slide.note.replace(/補充候選頁，[^。]*。/, slide.content.includes('kind="agents"') ? '14:37–14:38:30，正式主線研究。' : '14:38:30–14:40，正式主線研究。')
+  }
+}
 const client = new Client({name:'summit-author',version:'1.0.0'})
+// MCP numbers only visible slides. Temporarily reveal appendices for stable updates,
+// then apply hide flags after all numbered operations have finished.
+const deckPath = fileURLToPath(new URL('../slides.md', import.meta.url))
+await writeFile(deckPath, (await readFile(deckPath, 'utf8')).replace(/^hide: true$/gm, 'hide: false'))
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})
 async function call(name,args) { const r=await client.callTool({name,arguments:args}); if(r.isError) throw new Error(JSON.stringify(r)); return r }
 try {
@@ -128,8 +154,11 @@ try {
   for(let i=0;i<slides.length;i++) {
     const slide=slides[i]
     if(i===0) Object.assign(slide.frontmatter,{title:'以代理式 AI 重塑軟體開發生命週期',author:'Nicholas Chien / 錢亞宏',info:'Build AI｜打造企業 AI 創新基礎。2026.10.23 14:30–15:05。內容初稿，來源與限制見備註。',duration:'35min'})
-    await call(i<count?'slidev-update-slide':'slidev-insert-slide',{...(i<count?{no:i+1}:{after:i}),...slide})
+    await call(i<count?'slidev-update-slide':'slidev-insert-slide',{...(i<count?{no:i+1}:{after:i}),...slide,frontmatter:{...slide.frontmatter,hide:false,hideInToc:!!slide.frontmatter.hideInToc}})
     console.log(`Authored ${i+1}/${slides.length}: ${slide.frontmatter.title}`)
   }
   for(let n=count;n>slides.length;n--) await call('slidev-remove-slide',{no:n})
 } finally { await client.close() }
+let authoredDeck = await readFile(deckPath, 'utf8')
+authoredDeck = authoredDeck.replace(/(^title: 隱藏補充[^\n]*\n)([\s\S]*?)(?=^---$)/gm, block => block.replace(/^hide: false$/m, 'hide: true'))
+await writeFile(deckPath, authoredDeck)
