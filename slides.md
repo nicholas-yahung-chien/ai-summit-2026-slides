@@ -59,7 +59,7 @@ class: talk-page uncle-interview-page
 <UncleBobInterview />
 
 <!--
-14:34–14:35。專訪於2026年8月19日由Matt Pocock直播。引用原片17:01–17:08的英文字幕，節錄從口語重複的第二個you must開始。You must change the code until this tool says that it's okay. 中文為講者翻譯。原片16:55起說明確定性工具讓代理反覆修改，17:28–17:33也說這是用品質換取生產力的取捨，不能解讀成約束越多越好。畫面為原片約17:24。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=1021s。
+14:34–14:35。專訪於2026年8月19日由Matt Pocock直播。引用原片17:01–17:08的英文字幕，節錄從口語重複的第二個you must開始。You must change the code until this tool says that it's okay. 中文為講者翻譯。原片16:55起說明確定性工具讓代理反覆修改，17:28–17:33也說這是犧牲部分生產力以換取較高品質的取捨，不能解讀成約束越多越好。畫面為原片約17:24。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=1021s。
 -->
 
 ---
