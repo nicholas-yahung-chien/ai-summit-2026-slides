@@ -18,6 +18,8 @@ html,body { font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
 .slide-footer b { color:var(--summit-blue); font-weight:500; }
 .slide-footer i { display:inline-block; height:10px; border-left:1px solid #8d8d8d; margin:0 12px; }
 .slide-footer .page-number { margin-left:auto; font-size:17px; font-variant-numeric:tabular-nums; }
+.slide-footer .ibm-logo { width:80px; height:32px; object-fit:contain; flex-shrink:0; filter:brightness(0); }
+.statement-page .slide-footer .ibm-logo,.closing-page .slide-footer .ibm-logo { filter:brightness(0) invert(1); }
 .cover-page.summit-layout { padding:0; }
 .cover-kicker { position:absolute; top:46px; left:72px; font-size:25px; letter-spacing:.06em; font-weight:600; }
 .cover-kicker span { color:var(--summit-blue); font-weight:400; margin-left:10px; }
