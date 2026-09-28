@@ -33,7 +33,7 @@ const gateways = [{ name: 'LiteLLM', version: '1.101.0', value: 44.05 }, { name:
             <div class="pass">通過率 {{ round.pass }}</div>
           </div>
         </div>
-        <p class="limit">廠商內部測試；第二輪包含失敗後重測，通過率並非首次成功率。<br>節省比例沿用報告；第三輪費用為約數。</p>
+        <p class="limit">官方觀察：第二輪關閉 Code Mode 時，6 題呼叫了不存在的工具；<br>重新執行並選用正確工具後，6 題全數通過。</p>
       </section>
       <section class="external">
         <h2>ENTERPILOT：Gateway 延遲</h2>
@@ -49,7 +49,6 @@ const gateways = [{ name: 'LiteLLM', version: '1.101.0', value: 44.05 }, { name:
         <p class="limit">相較 LiteLLM，依上列數據計算。<br>AWS c7i.large · 併發 10 · 5 輪測試<br>GoModel 團隊測試，未比較答案品質。</p>
       </section>
     </div>
-    <p class="boundary">以上為工具使用與傳輸效率，並非模型路由後的費用與準確率。</p>
     <div class="citations" lang="en">
       <p>Maxim AI. (n.d.). <a href="https://github.com/maximhq/bifrost-benchmarking/blob/main/mcp-code-mode-benchmark/benchmark_report.md" target="_blank" rel="noopener"><em>MCP Code Mode benchmark report</em></a> [Technical report]. GitHub. Summary; Rounds 1–3.</p>
       <p>ENTERPILOT. (2026). <a href="https://github.com/ENTERPILOT/ai-gateway-reproducible-benchmark" target="_blank" rel="noopener"><em>AI gateway reproducible benchmark</em></a> [Benchmark code and results]. GitHub. Run: 20260918-212130. Retrieved September 29, 2026.</p>
