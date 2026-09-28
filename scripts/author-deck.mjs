@@ -104,6 +104,18 @@ slides[5] = {
 slides[6] = { ...jevSlide, note:jevSlide.note.replace('14:37–14:39（2 分鐘）','14:41–14:42（1 分鐘）') }
 slides[20].content += '<div class="supplement-links"><a href="https://aclanthology.org/2026.findings-acl.1881.pdf" target="_blank" rel="noopener">LLMRouterBench · ACL Findings 2026 · Figure 6 ↗</a></div>'
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
+// Review supplements: insert after original pages 5 and 6, preserving both originals.
+slides.splice(6, 0, {
+  frontmatter: { title:'補充研究：RouteLLM 的品質與模型呼叫取捨', class:'talk-page' },
+  content:'<WesternResearch kind="routing" />',
+  note:'補充候選頁，暫不增加原35分鐘演講配置，供使用者決定替代或補充。RouteLLM正式ICLR 2025論文，UC Berkeley、Anyscale、Canva。Table 1，Matrix Factorization，Arena+Judge訓練，CPT(50%)：GPT-4呼叫比例13.40%，達到MT-Bench 8.8分，GPT-4基準9.3分（約95%）。CPT(50%)是強弱模型之間performance gap recovery的50%，不是GPT-4表現的50%。其餘86.6%呼叫Mixtral 8x7B。不是品質提升，也不是節省86.6%的美元或tokens；圖上兩個指標来自同一設定。主要模型為gpt-4-1106-preview與Mixtral 8x7B，非2026最新模型，非程式生成專屬測試，不能當作Jev或IBM Bob的實測成效。原文PDF用with，正式proceedings目錄用from，此頁引用採正式目錄題名。來源：https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf。',
+})
+slides.splice(5, 0, {
+  frontmatter: { title:'補充研究：Google 與 MIT 的單代理與多代理比較', class:'talk-page' },
+  content:'<WesternResearch kind="agents" />',
+  note:'補充候選頁，暫不增加原35分鐘演講配置。Kim等人，Towards a Science of Scaling Agent Systems，arXiv:2512.08296v3，2026-04-08，Google Research、Google DeepMind與MIT，預印本，不宣稱已同儕審查。引用第13–14頁正文報告的SWE-bench Verified跨模型平均值：單代理52.2%、Hybrid51.1%、Centralized50.6%、Decentralized49.4%、Independent44.4%。研究整體260配置六基準；程式修復只使用20題子集與8模型，單格信賴區間寬，不能宣稱每個模型上均顯著勝出。圖表為論文正文報告的點估計，不與Table 5跨任務tokens或成本相配，也不創造同設定費用差異。Finance-Agent可拆分任务多代理則有改善，不能據此得出多代理普遍較差或harness無用。來源：https://arxiv.org/pdf/2512.08296v3。',
+})
+for (const slide of slides) slide.note = slide.note.replaceAll('第19頁', '第21頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})
 async function call(name,args) { const r=await client.callTool({name,arguments:args}); if(r.isError) throw new Error(JSON.stringify(r)); return r }

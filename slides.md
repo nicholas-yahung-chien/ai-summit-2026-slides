@@ -85,6 +85,17 @@ class: talk-page
 -->
 
 ---
+title: 補充研究：Google 與 MIT 的單代理與多代理比較
+class: talk-page
+---
+
+<WesternResearch kind="agents" />
+
+<!--
+補充候選頁，暫不增加原35分鐘演講配置。Kim等人，Towards a Science of Scaling Agent Systems，arXiv:2512.08296v3，2026-04-08，Google Research、Google DeepMind與MIT，預印本，不宣稱已同儕審查。引用第13–14頁正文報告的SWE-bench Verified跨模型平均值：單代理52.2%、Hybrid51.1%、Centralized50.6%、Decentralized49.4%、Independent44.4%。研究整體260配置六基準；程式修復只使用20題子集與8模型，單格信賴區間寬，不能宣稱每個模型上均顯著勝出。圖表為論文正文報告的點估計，不與Table 5跨任務tokens或成本相配，也不創造同設定費用差異。Finance-Agent可拆分任务多代理則有改善，不能據此得出多代理普遍較差或harness無用。來源：https://arxiv.org/pdf/2512.08296v3。
+-->
+
+---
 title: 多模型路由：品質與費用的兩種最佳化目標
 class: talk-page
 ---
@@ -93,6 +104,17 @@ class: talk-page
 
 <!--
 14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6、Section 3.4。品質優先：Avengers-Pro最高平均正確率比最佳單模型GPT-5相對提升4.0%，即1.04倍，不是增加4個百分點，也不代表每100題多答對4題。費用優先：在平均品質不低於GPT-5的設定中選擇最低費用，CostSave為31.7%，費用為基準0.683倍。這是不同設定的兩項指標，不能宣稱同時品質提升4%且省31.7%。圖條均由零起算；左右衡量不同指標，不能比較兩欄條長。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。其他路由器未必優於最佳單模型；模型互補與路由準確性才重要。費用下降不等於token減少。此研究支持模型選擇的概念，非Jev或IBM Bob使用該演算法或獲得相同成果的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。
+-->
+
+---
+title: 補充研究：RouteLLM 的品質與模型呼叫取捨
+class: talk-page
+---
+
+<WesternResearch kind="routing" />
+
+<!--
+補充候選頁，暫不增加原35分鐘演講配置，供使用者決定替代或補充。RouteLLM正式ICLR 2025論文，UC Berkeley、Anyscale、Canva。Table 1，Matrix Factorization，Arena+Judge訓練，CPT(50%)：GPT-4呼叫比例13.40%，達到MT-Bench 8.8分，GPT-4基準9.3分（約95%）。CPT(50%)是強弱模型之間performance gap recovery的50%，不是GPT-4表現的50%。其餘86.6%呼叫Mixtral 8x7B。不是品質提升，也不是節省86.6%的美元或tokens；圖上兩個指標来自同一設定。主要模型為gpt-4-1106-preview與Mixtral 8x7B，非2026最新模型，非程式生成專屬測試，不能當作Jev或IBM Bob的實測成效。原文PDF用with，正式proceedings目錄用from，此頁引用採正式目錄題名。來源：https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf。
 -->
 
 ---
@@ -236,7 +258,7 @@ class: talk-page
 <h1>如果現場連線中斷，<br>沿著同一份證據走完。</h1><div class="method-rows"><div><b>規格</b><span>demo/README.md</span><small>行為與範圍</small></div><div><b>驗收</b><span>registration.test.mjs</span><small>可執行案例</small></div><div><b>參考實作</b><span>demo/reference/</span><small>預先準備，非現場生成</small></div></div><p class="takeaway">記錄觀察到的耗時與消耗；未量測的欄位留白。</p>
 
 <!--
-示範備援頁，正常情況可直接跳至第19頁。參考實作是為簡報預先準備且以 Node 驗證的版本，不冒充 Bob 實際輸出。若無網路，用 node --test demo/reference/registration.test.mjs 檢查備援結果並解釋設計取捨。
+示範備援頁，正常情況可直接跳至第21頁。參考實作是為簡報預先準備且以 Node 驗證的版本，不冒充 Bob 實際輸出。若無網路，用 node --test demo/reference/registration.test.mjs 檢查備援結果並解釋設計取捨。
 -->
 
 ---
