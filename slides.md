@@ -60,6 +60,7 @@ class: talk-page uncle-interview-page
 
 <!--
 14:34–14:35。專訪於2026年8月19日由Matt Pocock直播。引用原片17:01–17:08的英文字幕，節錄從口語重複的第二個you must開始。You must change the code until this tool says that it's okay. 中文為講者翻譯。原片16:55起說明確定性工具讓代理反覆修改，17:28–17:33也說這是犧牲部分生產力以換取較高品質的取捨，不能解讀成約束越多越好。畫面為原片約17:24。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=1021s。
+視覺更新：依使用者提供的專訪封面原圖呈現，取代影片畫面截圖。
 -->
 
 ---
@@ -67,12 +68,10 @@ title: Uncle Bob：重新思考 harness
 class: talk-page
 ---
 
-<p class="eyebrow">2026 · UNCLE BOB</p>
-<h1>需要重新評估的，<br>是約束的成本與效益。</h1><div class="event-pair"><section><span>08.19 · Matt Pocock 訪談</span><h2>多代理與品質關卡</h2><p>SwarmForge 可確認包含<br>隔離工作區、交接與核准流程。</p></section><section><span>09.12 · 本人發布短片</span><h2>Rethinking Harnesses</h2><p>重新思考編排框架，<br>以及模型進步後的工作方式。</p></section></div><p class="takeaway">保留必要的驗證，持續量測編排本身的負擔。</p><div class="source-line"><a href="https://www.youtube.com/watch?v=zcLPGC-tvgk" target="_blank" rel="noopener">Matt Pocock × Uncle Bob（08.19） ↗</a> · <a href="https://x.com/unclebobmartin/status/2098744156709441896" target="_blank" rel="noopener">Rethinking Harnesses 原貼文（09.12） ↗</a></div>
+<UncleBobReflection english="Maybe I should not be considering the agents to be components in a software design." chinese="也許，我不該把代理視為軟體設計中的組件。" />
 
 <!--
-14:35–14:37（2 分鐘）。8/19 Matt Pocock 訪談影片線索：https://www.youtube.com/watch?v=zcLPGC-tvgk。原始影片尚未取得逐字內容；9/12 影片由本人網站連出：https://x.com/unclebobmartin/status/2098744156709441896。尚未直接核對影片口述，不將「safe gate 不再必要」作為確定引言，也不給 token 降幅數字。本人專案名稱是 SwarmForge；safe gate 暫視為使用者對品質關卡的描述。登台前需核對原片、時間戳與語境。
-補充查證：已在 YouTube 原片頁直接確認串流日期為2026年8月19日；原片章節 10:20 為 Deterministic tools vs steering、18:02 為 Multi-agent systems。X 原貼文日期與作者也已直接確認。YouTube 轉錄稿面板持續載入，尚未核對完整措辭。
+14:35–14:37。貼文日期2026年9月12日，使用者提供原貼文截圖。引文直接依原貼文影片英文自動字幕04:06.063–04:14.628核對，從第二個Maybe開始節錄；補上一般標點，不改詞語。中文為講者翻譯。00:59–01:05他說自己實驗中單一代理優於自建harness；01:58–02:02認為harness造成負面影響。02:28–02:50放寬限制但仍要求CRAP分數、mutation testing與unit tests。這是個人實驗的反思，不是所有harness或品質關卡均無必要的結論，也不是可普遍套用的基準數據。原貼文：https://x.com/unclebobmartin/status/2098744156709441896。
 -->
 
 ---
@@ -260,7 +259,7 @@ class: talk-page reference-page
 ---
 
 <p class="eyebrow">APPENDIX A · SOURCES</p>
-<h1>事件與產品資料</h1><div class="reference-list"><a href="https://academic.oup.com/mind/article/LIX/236/433/986238" target="_blank" rel="noopener">Turing（1950） ↗</a><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Transformer（2017） ↗</a><a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Anthropic 多代理研究系統（2025） ↗</a><a href="https://www.cleancoder.com/" target="_blank" rel="noopener">Uncle Bob 本人網站 ↗</a><a href="https://github.com/unclebob/swarm-forge" target="_blank" rel="noopener">SwarmForge 專案 ↗</a><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe：Jev 發布（2026.09.15） ↗</a><a href="https://bob.ibm.com/blog/bob-v2-release-announcement/" target="_blank" rel="noopener">IBM Bob V2 官方架構說明 ↗</a><a href="https://newsroom.ibm.com/2026-07-09-ibm-advances-enterprise-ai-software-development-with-multi-agent-capabilities-and-specialized-modernization-workflows" target="_blank" rel="noopener">IBM 官方公告（2026.07.09） ↗</a><a href="https://bob.ibm.com/docs/ide/features/bobalytics" target="_blank" rel="noopener">Bobalytics 官方文件 ↗</a></div><p class="reference-note">資料檢視日：2026.09.28。Uncle Bob 原片措辭仍待核對；Jev 不標為開源權重。</p>
+<h1>事件與產品資料</h1><div class="reference-list"><a href="https://academic.oup.com/mind/article/LIX/236/433/986238" target="_blank" rel="noopener">Turing（1950） ↗</a><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Transformer（2017） ↗</a><a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Anthropic 多代理研究系統（2025） ↗</a><a href="https://www.cleancoder.com/" target="_blank" rel="noopener">Uncle Bob 本人網站 ↗</a><a href="https://github.com/unclebob/swarm-forge" target="_blank" rel="noopener">SwarmForge 專案 ↗</a><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe：Jev 發布（2026.09.15） ↗</a><a href="https://bob.ibm.com/blog/bob-v2-release-announcement/" target="_blank" rel="noopener">IBM Bob V2 官方架構說明 ↗</a><a href="https://newsroom.ibm.com/2026-07-09-ibm-advances-enterprise-ai-software-development-with-multi-agent-capabilities-and-specialized-modernization-workflows" target="_blank" rel="noopener">IBM 官方公告（2026.07.09） ↗</a><a href="https://bob.ibm.com/docs/ide/features/bobalytics" target="_blank" rel="noopener">Bobalytics 官方文件 ↗</a></div><p class="reference-note">資料檢視日：2026.09.28。Uncle Bob 引文已核對原片字幕；Jev 不標為開源權重。</p>
 
 <!--
 附錄，不计入35分鐘。每一項為可點選的一手來源。公開頁面包含講者備註，所以這裡不放內部資料。

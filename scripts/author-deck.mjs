@@ -79,6 +79,13 @@ slides[2] = {
   content:'<UncleBobInterview />',
   note:'14:34–14:35。專訪於2026年8月19日由Matt Pocock直播。引用原片17:01–17:08的英文字幕，節錄從口語重複的第二個you must開始。You must change the code until this tool says that it\'s okay. 中文為講者翻譯。原片16:55起說明確定性工具讓代理反覆修改，17:28–17:33也說這是犧牲部分生產力以換取較高品質的取捨，不能解讀成約束越多越好。畫面為原片約17:24。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=1021s。',
 }
+slides[2].note += '\n視覺更新：依使用者提供的專訪封面原圖呈現，取代影片畫面截圖。'
+slides[3] = {
+  frontmatter: { title:'Uncle Bob：重新思考 harness', class:'talk-page' },
+  content:'<UncleBobReflection english="Maybe I should not be considering the agents to be components in a software design." chinese="也許，我不該把代理視為軟體設計中的組件。" />',
+  note:'14:35–14:37。貼文日期2026年9月12日，使用者提供原貼文截圖。引文直接依原貼文影片英文自動字幕04:06.063–04:14.628核對，從第二個Maybe開始節錄；補上一般標點，不改詞語。中文為講者翻譯。00:59–01:05他說自己實驗中單一代理優於自建harness；01:58–02:02認為harness造成負面影響。02:28–02:50放寬限制但仍要求CRAP分數、mutation testing與unit tests。這是個人實驗的反思，不是所有harness或品質關卡均無必要的結論，也不是可普遍套用的基準數據。原貼文：https://x.com/unclebobmartin/status/2098744156709441896。',
+}
+slides[19].content = slides[19].content.replace('Uncle Bob 原片措辭仍待核對；','Uncle Bob 引文已核對原片字幕；')
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})
