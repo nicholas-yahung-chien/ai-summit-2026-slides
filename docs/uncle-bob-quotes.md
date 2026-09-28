@@ -5,11 +5,11 @@
 - 原始影片：https://www.youtube.com/watch?v=zcLPGC-tvgk
 - Matt Pocock，LIVE: Uncle Bob on Software Fundamentals in the Age of AI。
 - 日期直接由 YouTube「串流直播日期」核對。
-- 引文（17:01–17:08，依原片英文字幕）：“You must change the code until this tool says that it's okay.”
-- 中文翻譯：你必須持續修改程式碼，直到這個工具判定通過。
-- 口語重複的第一個「you must」未納入節錄；節錄從第二個「you must」開始，僅將首字母及標點正規化。
-- 語境：16:55 起，他說確定性工具將代理放入反覆修改的迴圈。17:28–17:33 承認這是在用生產力換取品質，且存在代價界線；並非主張約束越多越好。
-- 畫面：原片約 17:24 的訪談畫面，2026-09-28 由瀏覽器擷取。英文及中文逐字浮現，可重播或直接顯示全文；減少動態效果與列印模式直接顯示。
+- 引文（14:56–15:14，依先前直接讀取的YouTube原片轉錄稿）：“The key with agents is to trim that initial prompt down to its absolute minimum … and then do deterministic tools after the fact.”
+- 中文翻譯：運用代理的關鍵，是把初始提示精簡到最低限度……然後再用確定性工具做後續檢查。
+- 省略號略去中間對提示優先性的說明及對談應答；兩個片段保留原話，僅正常化首字母和標點。不是一個未經刪節的連續句子。
+- 語境：14:02–14:50談上下文中間的規則容易被忽略，而確定性工具不會以相同方式消失。設計原則是精簡提示、以工具約束輸出；不是工具與編排越多越好。
+- 視覺：使用者提供的專訪封面原圖；日期放在圖下，以IBM藍與底線強調。英文及中文逐字浮現，可重播或直接顯示全文；減少動態效果與列印模式直接顯示。
 
 ## 使用者提供的視覺素材
 

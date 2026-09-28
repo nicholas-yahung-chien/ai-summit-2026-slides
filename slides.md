@@ -59,8 +59,7 @@ class: talk-page uncle-interview-page
 <UncleBobInterview />
 
 <!--
-14:34–14:35。專訪於2026年8月19日由Matt Pocock直播。引用原片17:01–17:08的英文字幕，節錄從口語重複的第二個you must開始。You must change the code until this tool says that it's okay. 中文為講者翻譯。原片16:55起說明確定性工具讓代理反覆修改，17:28–17:33也說這是犧牲部分生產力以換取較高品質的取捨，不能解讀成約束越多越好。畫面為原片約17:24。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=1021s。
-視覺更新：依使用者提供的專訪封面原圖呈現，取代影片畫面截圖。
+14:34–14:35。專訪日期2026年8月19日。引文依先前已直接讀取的YouTube原片轉錄稿14:56–15:14：The key with agents is to trim that initial prompt down to its absolute minimum … and then do deterministic tools after the fact. 省略號略去中間對提示優先性的說明及對談應答，保留原話、不另造句。中文為講者翻譯。語境是長篇規則可能在上下文中被忽略，確定性工具不以同樣方式消失；因此初始提示要精簡，接著用工具檢查。與第4頁對照：工具約束有價值，但模型進步後，編排負擔仍需重新評估。小標為講者歸納，非原話。視覺使用使用者提供的封面原圖，日期置於圖下，以IBM藍及底線強調。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=896s。
 -->
 
 ---
