@@ -40,19 +40,25 @@ const routes = [
   'M1345 445 V520', 'M1500 445 V642 H1545',
 ]
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
+function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' }
+function lineHeight(node: any) { return node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
 function lines(node: any) {
   if (node.id === 'ide') return ['IBM Bob IDE']
   if (node.id === 'auth') return ['Auth Server']
   if (node.id === 'local') return ['OPTION 1 · OpenShift AI', 'Local Models', 'All Modes']
   if (node.id === 'metrics') return ['Metrics Collector', 'Open Metrics', 'Forwarder']
+  if (node.id === 'ragproxy') return ['Z RAG', 'server', 'proxy']
+  if (node.id === 'ragmcp') return ['Z RAG', 'MCP', 'Server']
+  if (node.id === 'zu') return ['Z Understand']
+  if (node.id === 'zr') return ['Z Refactor']
   return node.label.split('\n')
 }
 function textY(node: any) {
   if (node.id === 'auth') return node.y + 23
   if (node.id === 'local') return node.y + 62
-  return node.y + node.h / 2 - (lines(node).length - 1) * 12 + 7
+  return node.y + node.h / 2 - (lines(node).length - 1) * lineHeight(node) / 2 + (node.parent === 'ppz' ? 5 : 6)
 }
-function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 22 : 0) }
+function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30 : hasNotation(node) ? 13 : 0) }
 </script>
 
 <template>
@@ -72,19 +78,19 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 22
       <g class="connections"><path v-for="(d,i) in routes" :key="i" :d="d" marker-end="url(#bob-arrow)" /></g>
       <g v-for="node in components" :key="node.id" :data-component="node.id" class="component">
         <rect :x="node.x" :y="node.y" :width="node.w" :height="node.h" rx="3" :fill="node.fill || (node.kind==='DataObject' ? '#eee5f4' : '#edf3fc')" />
-        <use v-if="!logos[node.id] && node.id !== 'crd' && node.kind !== 'Node'" href="#bob-component" :x="node.x+node.w-22" :y="node.y+7" class="notation" />
+        <use v-if="hasNotation(node)" href="#bob-component" :transform="`translate(${node.x+8} ${node.y+node.h/2-7}) scale(.72)`" class="notation" />
         <image v-if="node.id==='ide'" :href="bob" :x="node.x+12" :y="node.y+3" width="48" :height="node.h-6" />
         <image v-if="node.id==='auth'" :href="keycloak" :x="node.x+22" :y="node.y+32" :width="node.w-44" height="24" />
-        <text :x="textX(node)" :y="textY(node)" :class="{ compact:node.parent==='ppz', hosting:node.kind==='Node' }">
-          <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? 24 : 0">{{ line }}</tspan>
+        <text :x="textX(node)" :y="textY(node)" :class="{ compact:node.parent==='ppz', narrow:['zu','zr'].includes(node.id), hosting:node.kind==='Node' }">
+          <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? lineHeight(node) : 0">{{ line }}</tspan>
         </text>
       </g>
       <g v-for="(item,i) in data" :key="i" class="data-item" :transform="`translate(${73+i*174},868)`">
         <rect width="163" height="80" rx="3" />
-        <image v-if="item.logo && !['OpenSearch','Redis'].includes(item.title)" :href="item.logo" x="10" y="9" width="32" height="33" />
-        <image v-if="['OpenSearch','Redis'].includes(item.title)" :href="item.logo!" x="10" y="10" width="143" height="27" />
-        <text v-else :x="item.logo ? 100 : 81.5" y="29" class="data-title">{{ item.title }}</text>
-        <text x="81.5" :y="item.lines.length===1 ? 61 : 54"><tspan v-for="(line,j) in item.lines" :key="j" x="81.5" :dy="j ? 19 : 0">{{ line }}</tspan></text>
+        <image v-if="item.logo && !['OpenSearch','Redis'].includes(item.title)" :href="item.logo" x="10" y="7" width="30" height="26" />
+        <image v-if="['OpenSearch','Redis'].includes(item.title)" :href="item.logo!" x="10" y="8" width="143" height="23" />
+        <text v-else :x="item.logo ? 100 : 81.5" y="26" class="data-title">{{ item.title }}</text>
+        <text x="81.5" :y="item.lines.length===1 ? 61 : 55"><tspan v-for="(line,j) in item.lines" :key="j" x="81.5" :dy="j ? 18 : 0">{{ line }}</tspan></text>
       </g>
       <text x="1545" y="213" class="routing-label"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
     </svg>
@@ -103,12 +109,13 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .connections path { fill:none; stroke:#526779; stroke-width:1.8; }
 .component rect { stroke:#a4b8cd; stroke-width:1.2; }
 .component text { fill:#182c40; font-size:21px; text-anchor:middle; }
-.component text.compact { font-size:17px; }
+.component text.compact { font-size:15px; }
+.component text.narrow { font-size:17px; }
 .component text.hosting { font-size:20px; }
 .notation { color:#7890a5; }
 .data-item rect { fill:#eef7f1; stroke:#a7bfb0; }
-.data-item text { text-anchor:middle; font-size:17px; fill:#243d33; }
-.data-item .data-title { font-weight:600; font-size:18px; }
+.data-item text { text-anchor:middle; font-size:16px; fill:#243d33; }
+.data-item .data-title { font-weight:600; font-size:17px; }
 .routing-label { font-size:22px; fill:#0f62fe; font-weight:500; }
 .architecture-meta { position:absolute; left:72px; right:72px; bottom:78px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
 .legend { display:flex; gap:20px; }
