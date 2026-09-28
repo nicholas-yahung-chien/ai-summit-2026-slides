@@ -38,7 +38,7 @@ const routes = [
             <span>{{ row.name }}</span><div class="track"><i :style="{ width: `${row.value / 60 * 100}%`, background: index === 0 ? '#0f62fe' : '#697785' }" /></div><b>{{ row.value.toFixed(1) }}%</b>
           </div>
         </div>
-        <aside><p class="aside-label">比較結果</p><h2>這組程式修復測試，<br>單代理平均較佳。</h2><p>程式修復需要共享上下文；<br>協作效益取決於任務結構。</p><p class="counterpoint">同篇研究中，可拆分的金融分析任務則受益於多代理。</p></aside>
+        <aside><p class="aside-label">比較結果</p><h2>在程式修復測試情境下，<br>單代理平均較佳。</h2><p>程式修復需要共享上下文；<br>協作效益取決於任務結構。</p><p class="counterpoint">同篇研究中，可拆分的<span class="highlight-task">金融分析任務</span>則受益於多代理。</p></aside>
       </div>
       <p class="limits">20 題子集、8 種模型；單一配置信賴區間寬。此圖不代表所有程式任務，也不提供同設定費用比較。</p>
     </template>
@@ -77,6 +77,7 @@ aside { border-left:1px solid #c6c6c6; padding-left:30px; }
 .western aside h2 { font-size:30px; line-height:1.5; margin:8px 0 12px; color:#0043ce; }
 .western aside p { font-size:19px; line-height:1.6; }
 .western aside .counterpoint { margin-top:13px; color:#525252; }
+.highlight-task { color:#0043ce; font-weight:500; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
 .western .limits { font-size:17px; color:#525252; margin-top:18px; line-height:1.5; }
 .reference { position:absolute; left:72px; right:72px; bottom:83px; border-top:1px solid #c6c6c6; padding-top:12px; font-size:15px; line-height:1.45; color:#393939; }
 .reference a { color:#0043ce; text-decoration:none; }
