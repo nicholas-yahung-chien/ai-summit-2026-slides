@@ -8,7 +8,7 @@ const { $page } = useSlideContext()
     <slot />
     <footer class="slide-footer">
       <span>AI SUMMIT <b>2026</b></span>
-      <span>10.23 <i></i> 設計樣稿</span>
+      <span>10.23 <i></i> BUILD AI</span>
       <span class="page-number">{{ String($page).padStart(2, '0') }}</span>
     </footer>
   </main>
