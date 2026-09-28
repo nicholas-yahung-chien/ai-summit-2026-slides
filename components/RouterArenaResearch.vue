@@ -32,10 +32,10 @@ const tiers = [
   </section>
 </template>
 <style scoped>
-.arena h1 {font-size:43px;margin:14px 0 24px;letter-spacing:-.035em}
+.arena h1 {font-size:43px;margin:14px 0 16px;letter-spacing:-.035em}
 .heading {display:grid;grid-template-columns:230px 175px 1fr 1fr;gap:20px;border-bottom:1px solid #a8a8a8;padding-bottom:12px;font-size:19px}
 .heading small {font-size:14px;color:#525252}
-.tier {display:grid;grid-template-columns:230px 1fr;gap:20px;border-bottom:1px solid #d8dce2;padding:7px 0}
+.tier {display:grid;grid-template-columns:230px 1fr;gap:20px;border-bottom:1px solid #d8dce2;padding:5px 0}
 .label h2 {font-size:27px;margin:7px 0 3px}.label p {font-size:16px;color:#525252;margin:0}
 .row {display:grid;grid-template-columns:175px 1fr 1fr;gap:20px;align-items:center;height:37px;font-size:20px}
 .row b {display:block;font-size:20px;line-height:24px;font-weight:500;color:#697785}.track {height:6px;background:#e0e5eb;margin-top:3px}
