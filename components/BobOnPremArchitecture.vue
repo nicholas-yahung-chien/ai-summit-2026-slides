@@ -57,7 +57,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 22
 
 <template>
   <section class="bob-architecture" aria-label="IBM Bob On-premise 架構">
-    <header><h1>IBM Bob <span>／ On-premise 架構</span></h1><span class="draft">GA DRAFT</span></header>
+    <header><h1>IBM Bob On-premise 架構</h1></header>
     <svg class="architecture-canvas" viewBox="25 105 1865 870" role="img" aria-labelledby="bob-architecture-title">
       <title id="bob-architecture-title">IBM Bob：前端、OpenShift 服務與資料層，以及三種模型部署選項</title>
       <defs>
@@ -89,17 +89,14 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 22
       <text x="1545" y="213" class="routing-label"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
     </svg>
     <div class="architecture-meta"><div class="legend"><span><i class="application" />Application</span><span><i class="technology" />Technology</span><span><i class="ppz" />PPZ</span><span><i class="management" />Deployment management</span></div><span>K8s cluster support: future</span></div>
-    <p class="confidential">IBM CONFIDENTIAL · CURRENT DRAFT, SUBJECT TO CHANGE</p>
   </section>
 </template>
 
 <style scoped>
 .bob-architecture { position:absolute; inset:0; color:#161616; }
-header { position:absolute; top:18px; left:30px; right:30px; display:flex; align-items:center; justify-content:space-between; }
-.bob-architecture header h1 { font-size:30px; line-height:1.2; margin:0; font-weight:600; letter-spacing:-.6px; }
-header h1 span { font-weight:400; }
-.draft { font-size:13px; letter-spacing:.12em; color:#6f6f6f; }
-.architecture-canvas { position:absolute; top:64px; left:16px; width:calc(100% - 32px); height:550px; overflow:visible; font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
+header { position:absolute; top:26px; left:72px; right:72px; }
+.bob-architecture header h1 { font-size:46px; line-height:1.22; margin:0; font-weight:700; letter-spacing:-.04em; }
+.architecture-canvas { position:absolute; top:94px; left:16px; width:calc(100% - 32px); height:522px; overflow:visible; font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
 .boundary rect { stroke:#bac7d2; stroke-width:1.3; }
 .boundary.cluster rect { stroke:#8ba999; }
 .boundary text { font-size:20px; font-weight:600; fill:#344b60; }
@@ -113,10 +110,9 @@ header h1 span { font-weight:400; }
 .data-item text { text-anchor:middle; font-size:17px; fill:#243d33; }
 .data-item .data-title { font-weight:600; font-size:18px; }
 .routing-label { font-size:22px; fill:#0f62fe; font-weight:500; }
-.architecture-meta { position:absolute; left:30px; right:30px; bottom:87px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
+.architecture-meta { position:absolute; left:72px; right:72px; bottom:78px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
 .legend { display:flex; gap:20px; }
 .legend span { display:flex; align-items:center; gap:6px; }
 .legend i { width:12px; height:9px; border:1px solid #b8c3cc; }
 .application { background:#edf3fc; }.technology { background:#def0e2; }.ppz { background:#e0e5ff; }.management { background:#fff1d6; }
-.confidential { position:absolute; left:30px; bottom:67px; margin:0; color:#a2191f; font-size:10px; letter-spacing:.04em; line-height:1; }
 </style>

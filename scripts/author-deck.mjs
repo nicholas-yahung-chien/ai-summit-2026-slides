@@ -134,7 +134,7 @@ slides.splice(6, 0, {
 slides.splice(7, 0, {
   frontmatter: { title:'IBM Bob On-prem：部署架構', class:'talk-page bob-onprem-page' },
   content:'<BobOnPremArchitecture />',
-  note:'使用者提供之 GA 草稿重繪，現以網頁原生 SVG 呈現，替換先前 AI 點陣圖。官方品牌素材及 IBM Db2 Carbon 圖示來源見 assets/architecture-logos/README.md。保留機密與草稿標示，使用者要求發布供檢視。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。',
+  note:'使用者提供之 GA 草稿重繪，現以網頁原生 SVG 呈現，替換先前 AI 點陣圖。官方品牌素材及 IBM Db2 Carbon 圖示來源見 assets/architecture-logos/README.md。依使用者要求，頁面移除 GA DRAFT 與 IBM CONFIDENTIAL 等標示。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。',
 })
 slides.push(...hiddenStudies)
 for (const slide of slides) {
