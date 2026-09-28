@@ -66,3 +66,10 @@
 ## 演講前仍需完成
 
 核對 Uncle Bob 原片措辭與時間戳；在 IBM Bob 本人環境排演 demo，填入真實版本、耗時與可取得的消耗指標。不能把預備參考實作當成 Bob 的實際成果。
+# AI 演進圖更新（2026-09-28）
+
+第 2 頁收錄 24 個代表節點：1950 圖靈測試、1956 Dartmouth、1958 感知器、1965 DENDRAL 專家系統、1966 ELIZA、1986 反向傳播代表論文、1997 Deep Blue、2011 Watson、2012 AlexNet、2014 GAN、2015/2016 AlphaGo、2017 Transformer、2018 GPT、2020 GPT-3、2021 Copilot、2022 ChatGPT、2023 watsonx、2024 o1-preview/MCP、2025 vibe coding/多代理研究系統、2026 Bob V2/Jev。
+
+每個節點的原始論文、機構或產品發布來源與限定說明，集中於 [data/ai-milestones.ts](../data/ai-milestones.ts)，也可在圖上點選節點查看。DENDRAL 使用 Feigenbaum 的 ACM 訪談；vibe coding 原始 X 貼文無法由研究工具讀取，以 IBM 說明交叉核對月份，不引用未讀取的原文。
+
+圖中事件為精選，不涵蓋完整 AI 歷史，也不能由事件密度證明迭代加速。三段折線按事件等距排列，高度無量測意義。Watson（2011 Jeopardy!）與 watsonx（2023 平台）分列；AlphaGo 首次擊敗職業棋士的範圍限定為完整棋盤、無讓子。LLM 並無單一誕生日，反向傳播 1986 也非最早發明時間。

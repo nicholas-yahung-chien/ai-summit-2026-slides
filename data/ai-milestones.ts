@@ -1,0 +1,32 @@
+export const eras = [
+  { title: '01  提出問題 → 專用智慧', span: '1950—2011', color: '#0043ce' },
+  { title: '02  深度學習 → 大型語言模型', span: '2012—2021', color: '#007d79' },
+  { title: '03  對話介面 → 代理式開發', span: '2022—2026', color: '#6929c4' },
+]
+// Selected events, not an exhaustive history or a quantitative capability series.
+export const milestones = [
+  ['1950','圖靈測試','模仿遊戲','Turing 以模仿遊戲探討機器智慧；不是當年已有 AI 通過測試。','https://academic.oup.com/mind/article/LIX/236/433/986238'],
+  ['1956','Dartmouth','AI 研究議程','1955 年提案、1956 年夏季研究計畫，使人工智慧成為明確的研究議程。','https://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html'],
+  ['1958','感知器','從資料學習','Rosenblatt 發表感知器研究並展示早期學習機器；研究源自 1957 年。','https://news.cornell.edu/stories/2019/09/professors-perceptron-paved-way-ai-60-years-too-soon'],
+  ['1965','專家系統','DENDRAL','DENDRAL 計畫開始：以領域知識推論分子結構，是早期專家系統的代表。','https://amturing.acm.org/pdf/FiegenbaumTuringTranscript.pdf'],
+  ['1966','ELIZA','規則式對話','Weizenbaum 發表 ELIZA；以模式匹配模擬對話，不等同於理解語意。','https://cse.buffalo.edu/~rapaport/572/S02/weizenbaum.eliza.1966reprint.pdf'],
+  ['1986','反向傳播','多層網路訓練','Rumelhart、Hinton 與 Williams 的代表性論文推廣反向傳播；不是該方法最早的起源。','https://www.nature.com/articles/323533a0'],
+  ['1997','Deep Blue','擊敗西洋棋王','IBM Deep Blue 在標準比賽條件下，以整場對局結果擊敗世界冠軍 Garry Kasparov。','https://www.ibm.com/history/deep-blue'],
+  ['2011.02','IBM Watson','Jeopardy! 奪冠','Watson 擊敗 Ken Jennings 與 Brad Rutter。這是 Watson，不是 2023 年才發表的 watsonx。','https://www.ibm.com/history/watson-jeopardy'],
+  ['2012','AlexNet','影像辨識突破','深度卷積神經網路在 ImageNet 競賽取得突破，帶動深度學習普及。','https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html'],
+  ['2014','GAN','對抗式生成','Goodfellow 等人提出生成器與判別器的對抗式訓練框架，是生成模型的重要路線。','https://arxiv.org/abs/1406.2661'],
+  ['2015.10','AlphaGo','擊敗職業棋士','AlphaGo 以 5:0 擊敗樊麾：首次在完整棋盤、無讓子的圍棋賽中擊敗人類職業棋士；並非 AI 第一次贏任何圍棋對局。','https://deepmind.google/research/highlighted-research/alphago/the-challenge-match'],
+  ['2016.03','AlphaGo','4:1 勝李世乭','AlphaGo 在首爾以 4:1 擊敗頂尖棋士李世乭，與 2015 年樊麾之戰分開列示。','https://deepmind.google/research/highlighted-research/alphago/the-challenge-match'],
+  ['2017.06','Transformer','Attention 架構','Attention Is All You Need 提出 Transformer，成為後續許多大型語言模型的重要架構。','https://arxiv.org/abs/1706.03762'],
+  ['2018.06','GPT','生成式預訓練','以生成式預訓練搭配微調處理語言任務；LLM 沒有單一公認的誕生日，這裡列代表節點。','https://openai.com/index/language-unsupervised/'],
+  ['2020.05','GPT-3／LLM','少樣本學習','1750 億參數的 GPT-3 展示透過提示進行少樣本學習的能力。','https://arxiv.org/abs/2005.14165'],
+  ['2021.06','GitHub Copilot','AI 程式碼補全','GitHub 發表 Copilot 技術預覽，讓 AI 建議程式碼進入開發者日常工具。','https://github.blog/news-insights/product-news/introducing-github-copilot-ai-pair-programmer/'],
+  ['2022.11','ChatGPT','對話式生成 AI','ChatGPT 研究預覽公開，以對話介面讓使用者操作大型語言模型。','https://openai.com/index/chatgpt/'],
+  ['2023.05','IBM watsonx','企業 AI 平台','IBM 發表 watsonx AI 與資料平台；不是 2011 年參加 Jeopardy! 的 Watson。','https://newsroom.ibm.com/2023-05-09-IBM-Unveils-the-Watsonx-Platform-to-Power-Next-Generation-Foundation-Models-for-Business'],
+  ['2024.09','o1-preview','推理時計算','OpenAI 發表 o1-preview，以強化學習與回答前的推理提升複雜任務表現。','https://openai.com/index/learning-to-reason-with-llms/'],
+  ['2024.11','MCP','模型連接工具','Anthropic 公開 Model Context Protocol，提供 AI 應用連接資料與工具的開放協定。','https://www.anthropic.com/news/model-context-protocol'],
+  ['2025.02','Vibe coding','自然語言寫程式','Karpathy 提出 vibe coding 一詞，描述以自然語言與執行結果引導生成程式的方式；不等於完整軟體工程。','https://www.ibm.com/think/topics/vibe-coding'],
+  ['2025.06','多代理協作','研究系統實例','Anthropic 分享多代理研究系統的工程經驗；這是代表性案例，不是多代理技術的起點。','https://www.anthropic.com/engineering/multi-agent-research-system'],
+  ['2026.07','IBM Bob V2','代理式開發','Bob V2 以多代理、多模型與開發工作流程支援企業軟體工程。','https://bob.ibm.com/blog/bob-v2-release-announcement/'],
+  ['2026.09','Jev','專用決策模型','TypeSafe 發表 System One 模型 Jev，主打結構化決策。發表與早期存取不等於已開源模型權重。','https://typesafe.ai/blog/introducing-system-one-models-and-jev'],
+].map(([date,title,subtitle,detail,source]) => ({date,title,subtitle,detail,source}))

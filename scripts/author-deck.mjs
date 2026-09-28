@@ -68,6 +68,8 @@ slides[4].content = slides[4].content.replace('08.19 · 訪談線索','08.19 · 
 slides[4].note += '\n補充查證：已在 YouTube 原片頁直接確認串流日期為2026年8月19日；原片章節 10:20 為 Deterministic tools vs steering、18:02 為 Multi-agent systems。X 原貼文日期與作者也已直接確認。YouTube 轉錄稿面板持續載入，尚未核對完整措辭。'
 // Omit the agenda slide from the published deck; preserve source indices above.
 slides.splice(1, 1)
+slides[1].content = '<EvolutionChart />'
+slides[1].note = '14:31–14:34。24 個代表里程碑，由左至右、由上至下。三段折線是敘事時間軸，不是量測能力，也不能由節點密度推算 AI 的迭代速度。點選節點可查看說明與來源。2011 年 Jeopardy! 冠軍是 IBM Watson；watsonx 是 2023 年的平台。AlphaGo 分列 2015 年擊敗樊麾與 2016 年擊敗李世乭。LLM 以 GPT、GPT-3 等代表節點呈現，沒有單一誕生日。Jev 發表不等於模型權重開源。完整節點來源收錄於 data/ai-milestones.ts。'
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})

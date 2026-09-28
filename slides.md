@@ -44,11 +44,10 @@ title: AI 演進：從智慧問題到代理式交付
 class: talk-page chart-page
 ---
 
-<p class="eyebrow">01 · ACCELERATION</p>
-<h1>從「能思考嗎？」到「能交付嗎？」</h1><EvolutionChart /><div class="source-line"><a href="https://academic.oup.com/mind/article/LIX/236/433/986238" target="_blank" rel="noopener">Turing（1950） ↗</a> · <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Transformer（2017） ↗</a> · <a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Anthropic 多代理研究系統（2025） ↗</a></div>
+<EvolutionChart />
 
 <!--
-14:32–14:34（2 分鐘）。動畫折線是概念敘事，不能讀成 AI 能力的實測成長曲線。依序說明 1950 圖靈的問題、2017 Transformer、2025 Anthropic 多代理研究系統、2026 年 Bob 與 Jev。近年事件變密集是本演講的觀察，所選里程碑並非完整歷史或普遍迭代速率的統計證明。Bob 與 Jev 的日期來源見後續各頁。
+14:31–14:34。24 個代表里程碑，由左至右、由上至下。三段折線是敘事時間軸，不是量測能力，也不能由節點密度推算 AI 的迭代速度。點選節點可查看說明與來源。2011 年 Jeopardy! 冠軍是 IBM Watson；watsonx 是 2023 年的平台。AlphaGo 分列 2015 年擊敗樊麾與 2016 年擊敗李世乭。LLM 以 GPT、GPT-3 等代表節點呈現，沒有單一誕生日。Jev 發表不等於模型權重開源。完整節點來源收錄於 data/ai-milestones.ts。
 -->
 
 ---

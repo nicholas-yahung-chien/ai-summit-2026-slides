@@ -9,6 +9,11 @@ const nav = useNav()
 const { status, passed, duration, toggle, reset } = useTimer()
 const { currentPage, total, isPresenter, isPrintMode } = nav
 const shown = ref(true)
+// Give the full-page timeline (slide 2) the canvas; H or the button restores controls.
+watch(currentPage, (page, previous) => {
+  if (page === 2) shown.value = false
+  else if (previous === 2) shown.value = true
+}, { immediate: true })
 const pageInput = ref('1')
 const error = ref('')
 const field = ref<HTMLInputElement>()
@@ -77,7 +82,7 @@ onUnmounted(() => window.removeEventListener('keydown', keyHandler))
 .clock-label { font-size:12px; color:#525252; }
 .summit-controls input { width:43px; height:34px; color:#161616; background:#f4f4f4; border:1px solid #8d8d8d; text-align:center; border-radius:0; }
 .summit-controls #page-error { position:absolute; bottom:100%; left:0; padding:8px 12px; background:#fff1f1; border:1px solid #da1e28; color:#750e13; margin-bottom:6px; }
-.summit-reopen { position:fixed; bottom:12px; right:12px; z-index:1000; color:#0043ce; background:#fff; border:1px solid #c6c6c6; padding:8px 14px; font:14px 'Noto Sans TC',sans-serif; cursor:pointer; }
+.summit-reopen { position:fixed; bottom:12px; left:12px; z-index:1000; color:#0043ce; background:#fff; border:1px solid #c6c6c6; padding:8px 14px; font:14px 'Noto Sans TC',sans-serif; cursor:pointer; }
 @media(max-width:760px) { .summit-controls { width:calc(100% - 16px); gap:7px; flex-wrap:wrap; justify-content:center; bottom:8px; } .control-timer { border:0; padding:0 4px; } .clock-label { display:none; } .summit-controls button,.summit-controls a { min-height:40px; } }
 @media print { .summit-controls,.summit-reopen { display:none !important; } }
 </style>
