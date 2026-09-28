@@ -68,6 +68,19 @@
 核對 Uncle Bob 原片措辭與時間戳；在 IBM Bob 本人環境排演 demo，填入真實版本、耗時與可取得的消耗指標。不能把預備參考實作當成 Bob 的實際成果。
 # AI 演進圖目前版本（2026-09-28）
 
+## 最新：延伸至 2026 年 8 月，共 18 節點
+
+移除 AlexNet、Transformer，保留 2026.03 長時任務代理，新增以下四項。月份指可核對的案例／報告公開時間，不是技術誕生或已證實的全產業爆發點。
+
+| 圖上月份 | 標籤 | 證據與限制 |
+|---|---|---|
+| 2026.04 | 代理託管服務 | 4/8 Anthropic 的託管長時代理架構案例：https://www.anthropic.com/engineering/managed-agents |
+| 2026.05 | 搜尋代理化 | 5/19 Google I/O Search 公告：https://blog.google/products-and-platforms/products/search/search-io-2026/ 。各功能推出時程不同，不表示全部當天全面可用。 |
+| 2026.06 | 代理走入辦公 | 6/25 原始使用研究：https://arxiv.org/abs/2606.26959 。Codex 使用與非開發職務的案例；單一供應商樣本，不外推成全市場採用率。 |
+| 2026.08 | 代理成為使用者 | 8/14 Hugging Face 平台觀測報告第 6 節：https://huggingface.co/blog/state-of-open-models-summer-2026 。代理搜尋、上傳與操作 Hub 的流量紀錄主要截至 7 月，8 月是報告月份。 |
+
+## 前版紀錄
+
 ## 最新：從產品版本改為應用趨勢
 
 保留 16 個節點；移除 o1 與五個 2026 模型版本，換為下列六個代表性應用方向。日期是論文／實務案例的時間錨點，不代表可量測的全產業「爆發日」。
