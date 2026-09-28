@@ -1,0 +1,10 @@
+{
+  "postgresql.svg": "https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg",
+  "keycloak.svg": "https://www.keycloak.org/resources/images/logo.svg",
+  "opensearch.svg": "https://opensearch.org/wp-content/uploads/2024/08/opensearch_logo_default.svg",
+  "openshift.svg": "https://www.redhat.com/rhdc/managed-files/Logo-Red_Hat-OpenShift_Container_Platform-A-Standard-RGB_0.svg",
+  "bob.svg": "https://bob.ibm.com/icon.svg?v=1",
+  "bob-mascot.webp": "https://bob.ibm.com/assets/bob-standing-BECrMjXJ.webp",
+  "redis.svg": "https://raw.githubusercontent.com/redis/docs/main/static/images/icon_logo/redis-logo.svg",
+  "ibm-db2.svg": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/32/ibm--db2.svg"
+}

@@ -1,14 +1,122 @@
 <script setup lang="ts">
-import architecture from '../assets/bob-onprem-architecture.png'
+import model from './bob-onprem-model.json'
+import postgres from '../assets/architecture-logos/postgresql.svg'
+import keycloak from '../assets/architecture-logos/keycloak.svg'
+import opensearch from '../assets/architecture-logos/opensearch.svg'
+import openshift from '../assets/architecture-logos/openshift.svg'
+import bob from '../assets/architecture-logos/bob-mascot.webp'
+import redis from '../assets/architecture-logos/redis.svg'
+import db2 from '../assets/architecture-logos/ibm-db2.svg'
+
+const containers = ['front', 'cluster', 'service', 'data', 'ext', 'ppz']
+const source = model.nodes as Record<string, any>
+function position(id: string): { x: number, y: number } {
+  const node = source[id]
+  const parent = node.parent === '1' ? { x: 0, y: 0 } : position(node.parent)
+  return { x: parent.x + node.x, y: parent.y + node.y }
+}
+const nodes = Object.entries(source).map(([id, node]) => ({ id, ...node, ...position(id) }))
+const groups = nodes.filter(n => containers.includes(n.id))
+const components = nodes.filter(n => !containers.includes(n.id) && n.parent !== 'data')
+const data = [
+  { title:'PostgreSQL', lines:['Auth config', '& sessions'], logo:postgres },
+  { title:'PostgreSQL', lines:['Bobalytics', 'Admin & config'], logo:postgres },
+  { title:'Sink', lines:['Metrics'], logo:null },
+  { title:'IBM Db2', lines:['Z Understand', 'data'], logo:db2 },
+  { title:'OpenSearch', lines:['RAG corpus'], logo:opensearch },
+  { title:'Vector', lines:['Audit data'], logo:null },
+  { title:'Postgres', lines:['Telemetry', 'storage'], logo:postgres },
+  { title:'Redis', lines:['Telemetry', 'cache'], logo:redis },
+]
+const routes = [
+  'M175 228 V370 H170 V401', 'M175 255 H360 V401', 'M260 432 H305',
+  'M500 228 V270 H737 V401', 'M760 228 V270', 'M1020 228 V270 H737', 'M1280 228 V270 H1020',
+  'M737 463 V503', 'M290 534 H320 V506 H345', 'M320 534 V577 H345',
+  'M525 506 H565 V543 H620', 'M525 577 H565 V543',
+  'M855 535 H910 V496 H965', 'M910 535 V600 H965',
+  'M737 583 V638 H677 V665', 'M818 695 H828',
+  'M855 560 H940 V747 H692 V757', 'M940 747 H857 V757',
+  'M1077 638 V665', 'M1190 600 H1220 V445 H1500 V437 H1545',
+  'M1345 445 V520', 'M1500 445 V642 H1545',
+]
+const logos: Record<string,string> = { ide:bob, auth:keycloak }
+function lines(node: any) {
+  if (node.id === 'ide') return ['IBM Bob IDE']
+  if (node.id === 'auth') return ['Auth Server']
+  if (node.id === 'local') return ['OPTION 1 · OpenShift AI', 'Local Models', 'All Modes']
+  if (node.id === 'metrics') return ['Metrics Collector', 'Open Metrics', 'Forwarder']
+  return node.label.split('\n')
+}
+function textY(node: any) {
+  if (node.id === 'auth') return node.y + 23
+  if (node.id === 'local') return node.y + 62
+  return node.y + node.h / 2 - (lines(node).length - 1) * 12 + 7
+}
+function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 22 : 0) }
 </script>
 
 <template>
-  <figure class="bob-onprem-figure">
-    <img :src="architecture" alt="IBM Bob On-prem 架構：前端、OpenShift 服務與資料層，以及 Bifrost 連接本機 OpenShift AI、公有雲與私有基礎設施三種模型部署選項。" />
-  </figure>
+  <section class="bob-architecture" aria-label="IBM Bob On-premise 架構">
+    <header><h1>IBM Bob <span>／ On-premise 架構</span></h1><span class="draft">GA DRAFT</span></header>
+    <svg class="architecture-canvas" viewBox="25 105 1865 870" role="img" aria-labelledby="bob-architecture-title">
+      <title id="bob-architecture-title">IBM Bob：前端、OpenShift 服務與資料層，以及三種模型部署選項</title>
+      <defs>
+        <marker id="bob-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#526779" stroke-width="1.5" /></marker>
+        <g id="bob-component"><path d="M4 0H17V19H4 M0 4H8V9H0Z M0 12H8V17H0Z" fill="none" stroke="currentColor" stroke-width="1.3" /></g>
+      </defs>
+      <g v-for="group in groups" :key="group.id" :class="['boundary',group.id]">
+        <rect :x="group.x" :y="group.y" :width="group.w" :height="group.h" rx="9" :fill="group.fill" />
+        <text :x="group.x+18" :y="group.y+29">{{ group.label }}</text>
+        <image v-if="group.id==='cluster'" :href="openshift" :x="group.x+1200" :y="group.y+7" width="180" height="38" />
+      </g>
+      <g class="connections"><path v-for="(d,i) in routes" :key="i" :d="d" marker-end="url(#bob-arrow)" /></g>
+      <g v-for="node in components" :key="node.id" :data-component="node.id" class="component">
+        <rect :x="node.x" :y="node.y" :width="node.w" :height="node.h" rx="3" :fill="node.fill || (node.kind==='DataObject' ? '#eee5f4' : '#edf3fc')" />
+        <use v-if="!logos[node.id] && node.id !== 'crd' && node.kind !== 'Node'" href="#bob-component" :x="node.x+node.w-22" :y="node.y+7" class="notation" />
+        <image v-if="node.id==='ide'" :href="bob" :x="node.x+12" :y="node.y+3" width="48" :height="node.h-6" />
+        <image v-if="node.id==='auth'" :href="keycloak" :x="node.x+22" :y="node.y+32" :width="node.w-44" height="24" />
+        <text :x="textX(node)" :y="textY(node)" :class="{ compact:node.parent==='ppz', hosting:node.kind==='Node' }">
+          <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? 24 : 0">{{ line }}</tspan>
+        </text>
+      </g>
+      <g v-for="(item,i) in data" :key="i" class="data-item" :transform="`translate(${73+i*174},868)`">
+        <rect width="163" height="80" rx="3" />
+        <image v-if="item.logo && !['OpenSearch','Redis'].includes(item.title)" :href="item.logo" x="10" y="9" width="32" height="33" />
+        <image v-if="['OpenSearch','Redis'].includes(item.title)" :href="item.logo!" x="10" y="10" width="143" height="27" />
+        <text v-else :x="item.logo ? 100 : 81.5" y="29" class="data-title">{{ item.title }}</text>
+        <text x="81.5" :y="item.lines.length===1 ? 61 : 54"><tspan v-for="(line,j) in item.lines" :key="j" x="81.5" :dy="j ? 19 : 0">{{ line }}</tspan></text>
+      </g>
+      <text x="1545" y="213" class="routing-label"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
+    </svg>
+    <div class="architecture-meta"><div class="legend"><span><i class="application" />Application</span><span><i class="technology" />Technology</span><span><i class="ppz" />PPZ</span><span><i class="management" />Deployment management</span></div><span>K8s cluster support: future</span></div>
+    <p class="confidential">IBM CONFIDENTIAL · CURRENT DRAFT, SUBJECT TO CHANGE</p>
+  </section>
 </template>
 
 <style scoped>
-.bob-onprem-figure { position:absolute; inset:12px 14px 70px; margin:0; display:flex; align-items:center; justify-content:center; }
-.bob-onprem-figure img { width:100%; height:100%; object-fit:contain; }
+.bob-architecture { position:absolute; inset:0; color:#161616; }
+header { position:absolute; top:18px; left:30px; right:30px; display:flex; align-items:center; justify-content:space-between; }
+.bob-architecture header h1 { font-size:30px; line-height:1.2; margin:0; font-weight:600; letter-spacing:-.6px; }
+header h1 span { font-weight:400; }
+.draft { font-size:13px; letter-spacing:.12em; color:#6f6f6f; }
+.architecture-canvas { position:absolute; top:64px; left:16px; width:calc(100% - 32px); height:550px; overflow:visible; font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
+.boundary rect { stroke:#bac7d2; stroke-width:1.3; }
+.boundary.cluster rect { stroke:#8ba999; }
+.boundary text { font-size:20px; font-weight:600; fill:#344b60; }
+.connections path { fill:none; stroke:#526779; stroke-width:1.8; }
+.component rect { stroke:#a4b8cd; stroke-width:1.2; }
+.component text { fill:#182c40; font-size:21px; text-anchor:middle; }
+.component text.compact { font-size:17px; }
+.component text.hosting { font-size:20px; }
+.notation { color:#7890a5; }
+.data-item rect { fill:#eef7f1; stroke:#a7bfb0; }
+.data-item text { text-anchor:middle; font-size:17px; fill:#243d33; }
+.data-item .data-title { font-weight:600; font-size:18px; }
+.routing-label { font-size:22px; fill:#0f62fe; font-weight:500; }
+.architecture-meta { position:absolute; left:30px; right:30px; bottom:87px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
+.legend { display:flex; gap:20px; }
+.legend span { display:flex; align-items:center; gap:6px; }
+.legend i { width:12px; height:9px; border:1px solid #b8c3cc; }
+.application { background:#edf3fc; }.technology { background:#def0e2; }.ppz { background:#e0e5ff; }.management { background:#fff1d6; }
+.confidential { position:absolute; left:30px; bottom:67px; margin:0; color:#a2191f; font-size:10px; letter-spacing:.04em; line-height:1; }
 </style>

@@ -1,0 +1,688 @@
+{
+  "nodes": {
+    "front": {
+      "label": "01  /  FRONTEND TIER",
+      "x": 35,
+      "y": 110,
+      "w": 1450,
+      "h": 140,
+      "kind": "Grouping",
+      "parent": "1",
+      "fill": "#f4f7fb"
+    },
+    "cluster": {
+      "label": "RED HAT OPENSHIFT CLUSTER",
+      "x": 35,
+      "y": 290,
+      "w": 1450,
+      "h": 680,
+      "kind": "Node",
+      "parent": "1",
+      "fill": "#f5faf7"
+    },
+    "service": {
+      "label": "02  /  SERVICE PLANE",
+      "x": 20,
+      "y": 55,
+      "w": 1150,
+      "h": 465,
+      "kind": "Grouping",
+      "parent": "cluster",
+      "fill": "#f7f9fc"
+    },
+    "data": {
+      "label": "03  /  DATA PLANE",
+      "x": 20,
+      "y": 535,
+      "w": 1410,
+      "h": 120,
+      "kind": "Grouping",
+      "parent": "cluster",
+      "fill": "#edf5ee"
+    },
+    "ext": {
+      "label": "EXTERNAL MODEL HOSTING",
+      "x": 1520,
+      "y": 290,
+      "w": 355,
+      "h": 465,
+      "kind": "Grouping",
+      "parent": "1",
+      "fill": "#f4f7fb"
+    },
+    "admincli": {
+      "label": "Bob onprem\nadmin CLI",
+      "x": 25,
+      "y": 56,
+      "w": 230,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "front",
+      "fill": "#fff1d6"
+    },
+    "ide": {
+      "label": "IDE",
+      "x": 350,
+      "y": 56,
+      "w": 230,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "front",
+      "fill": null
+    },
+    "cli": {
+      "label": "CLI",
+      "x": 610,
+      "y": 56,
+      "w": 230,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "front",
+      "fill": null
+    },
+    "dashboard": {
+      "label": "Admin Dashboard",
+      "x": 870,
+      "y": 56,
+      "w": 230,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "front",
+      "fill": null
+    },
+    "zui": {
+      "label": "Z Understand",
+      "x": 1130,
+      "y": 56,
+      "w": 230,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "front",
+      "fill": null
+    },
+    "operator": {
+      "label": "Bob Operator",
+      "x": 25,
+      "y": 56,
+      "w": 180,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": "#fff1d6"
+    },
+    "crd": {
+      "label": "CRD",
+      "x": 250,
+      "y": 56,
+      "w": 110,
+      "h": 62,
+      "kind": "DataObject",
+      "parent": "service",
+      "fill": "#fff1d6"
+    },
+    "ingress": {
+      "label": "Cluster Ingress",
+      "x": 565,
+      "y": 56,
+      "w": 235,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "auth": {
+      "label": "Auth Server\n(Keycloak)",
+      "x": 25,
+      "y": 158,
+      "w": 210,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "authz": {
+      "label": "Bob-authz",
+      "x": 290,
+      "y": 135,
+      "w": 180,
+      "h": 52,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "authn": {
+      "label": "Bob-authn",
+      "x": 290,
+      "y": 206,
+      "w": 180,
+      "h": 52,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "gateway": {
+      "label": "API Gateway\n(OpenResty)",
+      "x": 565,
+      "y": 158,
+      "w": 235,
+      "h": 80,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": "#d0e2ff"
+    },
+    "inference": {
+      "label": "Inference Service",
+      "x": 910,
+      "y": 120,
+      "w": 225,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "bifrost": {
+      "label": "Model Gateway\n(Bifrost)",
+      "x": 910,
+      "y": 218,
+      "w": 225,
+      "h": 75,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": "#d0e2ff"
+    },
+    "bobadmin": {
+      "label": "Bob Admin",
+      "x": 25,
+      "y": 310,
+      "w": 210,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "metrics": {
+      "label": "Metrics Collector\nOpen Metrics Forwarder",
+      "x": 290,
+      "y": 302,
+      "w": 225,
+      "h": 78,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "audit": {
+      "label": "Audit logs\nMetering Service",
+      "x": 910,
+      "y": 320,
+      "w": 225,
+      "h": 62,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": null
+    },
+    "ppz": {
+      "label": "PPZ",
+      "x": 565,
+      "y": 275,
+      "w": 310,
+      "h": 120,
+      "kind": "Grouping",
+      "parent": "service",
+      "fill": "#e8edff"
+    },
+    "zproxy": {
+      "label": "zProxy",
+      "x": 12,
+      "y": 45,
+      "w": 90,
+      "h": 60,
+      "kind": "ApplicationComponent",
+      "parent": "ppz",
+      "fill": "#e0e5ff"
+    },
+    "ragproxy": {
+      "label": "Z RAG\nserver proxy",
+      "x": 112,
+      "y": 45,
+      "w": 86,
+      "h": 60,
+      "kind": "ApplicationComponent",
+      "parent": "ppz",
+      "fill": "#e0e5ff"
+    },
+    "ragmcp": {
+      "label": "Z RAG\nMCP Server",
+      "x": 208,
+      "y": 45,
+      "w": 90,
+      "h": 60,
+      "kind": "ApplicationComponent",
+      "parent": "ppz",
+      "fill": "#e0e5ff"
+    },
+    "local": {
+      "label": "OPTION 1\nOpenShift AI\nLocal Models\nAll Modes",
+      "x": 1190,
+      "y": 230,
+      "w": 240,
+      "h": 160,
+      "kind": "Node",
+      "parent": "cluster",
+      "fill": "#def0e2"
+    },
+    "public": {
+      "label": "OPTION 2 / PUBLIC CLOUD\nFrontier Model\nAll modes",
+      "x": 25,
+      "y": 80,
+      "w": 305,
+      "h": 135,
+      "kind": "Node",
+      "parent": "ext",
+      "fill": "#dceaff"
+    },
+    "private": {
+      "label": "OPTION 3 / PRIVATE INFRA\nFrontier Models\nAll modes",
+      "x": 25,
+      "y": 285,
+      "w": 305,
+      "h": 135,
+      "kind": "Node",
+      "parent": "ext",
+      "fill": "#e9e4f7"
+    },
+    "authdb": {
+      "label": "PostgreSQL\nAuth config & sessions",
+      "x": 20,
+      "y": 43,
+      "w": 225,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "admindb": {
+      "label": "PostgreSQL\nBobalytics / Admin / config",
+      "x": 267,
+      "y": 43,
+      "w": 235,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "sink": {
+      "label": "Sink",
+      "x": 525,
+      "y": 43,
+      "w": 105,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "db2": {
+      "label": "DB2\nZ Understand data",
+      "x": 655,
+      "y": 43,
+      "w": 180,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "search": {
+      "label": "OpenSearch\nRAG corpus",
+      "x": 857,
+      "y": 43,
+      "w": 165,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "vector": {
+      "label": "Vector\nAudit data",
+      "x": 1045,
+      "y": 43,
+      "w": 105,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "pg": {
+      "label": "Postgres\nTelemetry storage",
+      "x": 1170,
+      "y": 43,
+      "w": 105,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "redis": {
+      "label": "Redis\nTelemetry cache",
+      "x": 1295,
+      "y": 43,
+      "w": 100,
+      "h": 66,
+      "kind": "SystemSoftware",
+      "parent": "data",
+      "fill": null
+    },
+    "zu": {
+      "label": "Z Understand",
+      "x": 565,
+      "y": 412,
+      "w": 145,
+      "h": 42,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": "#e0e5ff"
+    },
+    "zr": {
+      "label": "Z Refactor",
+      "x": 730,
+      "y": 412,
+      "w": 145,
+      "h": 42,
+      "kind": "ApplicationComponent",
+      "parent": "service",
+      "fill": "#e0e5ff"
+    }
+  },
+  "edges": [
+    [
+      "admincli",
+      "operator",
+      []
+    ],
+    [
+      "admincli",
+      "crd",
+      []
+    ],
+    [
+      "operator",
+      "crd",
+      []
+    ],
+    [
+      "ide",
+      "ingress",
+      [
+        [
+          500,
+          270
+        ],
+        [
+          737,
+          270
+        ]
+      ]
+    ],
+    [
+      "cli",
+      "ingress",
+      [
+        [
+          760,
+          270
+        ],
+        [
+          737,
+          270
+        ]
+      ]
+    ],
+    [
+      "dashboard",
+      "ingress",
+      [
+        [
+          1020,
+          270
+        ],
+        [
+          737,
+          270
+        ]
+      ]
+    ],
+    [
+      "zui",
+      "ingress",
+      [
+        [
+          1280,
+          270
+        ],
+        [
+          737,
+          270
+        ]
+      ]
+    ],
+    [
+      "ingress",
+      "gateway",
+      []
+    ],
+    [
+      "auth",
+      "authz",
+      []
+    ],
+    [
+      "auth",
+      "authn",
+      []
+    ],
+    [
+      "authz",
+      "gateway",
+      []
+    ],
+    [
+      "authn",
+      "gateway",
+      []
+    ],
+    [
+      "gateway",
+      "inference",
+      []
+    ],
+    [
+      "gateway",
+      "bifrost",
+      []
+    ],
+    [
+      "gateway",
+      "zproxy",
+      []
+    ],
+    [
+      "gateway",
+      "metrics",
+      [
+        [
+          570,
+          620
+        ],
+        [
+          457,
+          620
+        ]
+      ]
+    ],
+    [
+      "gateway",
+      "bobadmin",
+      [
+        [
+          550,
+          625
+        ],
+        [
+          160,
+          625
+        ]
+      ]
+    ],
+    [
+      "auth",
+      "bobadmin",
+      []
+    ],
+    [
+      "ragproxy",
+      "ragmcp",
+      []
+    ],
+    [
+      "gateway",
+      "zu",
+      [
+        [
+          940,
+          595
+        ],
+        [
+          940,
+          747
+        ],
+        [
+          692,
+          747
+        ]
+      ]
+    ],
+    [
+      "gateway",
+      "zr",
+      [
+        [
+          940,
+          595
+        ],
+        [
+          940,
+          747
+        ],
+        [
+          857,
+          747
+        ]
+      ]
+    ],
+    [
+      "bifrost",
+      "audit",
+      []
+    ],
+    [
+      "bifrost",
+      "local",
+      [
+        [
+          1220,
+          600
+        ],
+        [
+          1220,
+          445
+        ],
+        [
+          1345,
+          445
+        ]
+      ]
+    ],
+    [
+      "bifrost",
+      "public",
+      [
+        [
+          1220,
+          600
+        ],
+        [
+          1220,
+          445
+        ],
+        [
+          1500,
+          445
+        ],
+        [
+          1500,
+          437
+        ]
+      ]
+    ],
+    [
+      "bifrost",
+      "private",
+      [
+        [
+          1220,
+          600
+        ],
+        [
+          1220,
+          445
+        ],
+        [
+          1500,
+          445
+        ],
+        [
+          1500,
+          642
+        ]
+      ]
+    ],
+    [
+      "auth",
+      "authdb",
+      []
+    ],
+    [
+      "bobadmin",
+      "admindb",
+      []
+    ],
+    [
+      "metrics",
+      "sink",
+      []
+    ],
+    [
+      "zu",
+      "db2",
+      []
+    ],
+    [
+      "zr",
+      "search",
+      []
+    ],
+    [
+      "audit",
+      "vector",
+      []
+    ],
+    [
+      "audit",
+      "pg",
+      []
+    ],
+    [
+      "audit",
+      "redis",
+      []
+    ]
+  ]
+}

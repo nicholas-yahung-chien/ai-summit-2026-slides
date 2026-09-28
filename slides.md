@@ -131,7 +131,7 @@ hideInToc: false
 <BobOnPremArchitecture />
 
 <!--
-使用者提供之 GA 草稿重繪與 AI 美化。保留機密與草稿標示，使用者明確要求發布供檢視。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。
+使用者提供之 GA 草稿重繪，現以網頁原生 SVG 呈現，替換先前 AI 點陣圖。官方品牌素材及 IBM Db2 Carbon 圖示來源見 assets/architecture-logos/README.md。保留機密與草稿標示，使用者要求發布供檢視。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。
 -->
 
 ---
