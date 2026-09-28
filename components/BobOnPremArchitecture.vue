@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import model from './bob-onprem-model.json'
-import { computed, ref, watch, onUnmounted } from 'vue'
-import { useSlideContext } from '@slidev/client'
 import postgres from '../assets/architecture-logos/postgresql.svg'
 import keycloak from '../assets/architecture-logos/keycloak.svg'
 import opensearch from '../assets/architecture-logos/opensearch.svg'
@@ -41,46 +39,6 @@ const routes = [
   'M1077 638 V665', 'M1190 600 H1220 V445 H1500 V437 H1545',
   'M1345 445 V520', 'M1500 445 V642 H1545',
 ]
-const flow = ref('model')
-const hosting = ref('local')
-const step = ref(-1)
-const running = ref(false)
-const playId = ref(0)
-let timer: ReturnType<typeof setTimeout> | undefined
-const { $page, $nav } = useSlideContext()
-const journeys = computed(() => {
-  if (flow.value === 'deployment') return [
-    { d: routes[0], label: 'Admin CLI → Bob Operator', nodes: ['admincli', 'operator'] },
-    { d: routes[2], label: 'Bob Operator → CRD', nodes: ['operator', 'crd'] },
-  ]
-  const start = [
-    { d: routes[3], label: 'IBM Bob IDE → Cluster Ingress', nodes: ['ide', 'ingress'] },
-    { d: routes[7], label: 'Cluster Ingress → API Gateway', nodes: ['ingress', 'gateway'] },
-  ]
-  if (flow.value === 'tools') return [...start,
-    { d: routes[14], label: 'API Gateway → zProxy', nodes: ['gateway', 'zproxy'] },
-  ]
-  const destinations: Record<string, string> = {
-    local: 'M1190 600 H1220 V445 H1345 V520',
-    public: routes[19],
-    private: 'M1190 600 H1220 V445 H1500 V642 H1545',
-  }
-  return [...start,
-    { d: routes[13], label: 'API Gateway → Bifrost', nodes: ['gateway', 'bifrost'] },
-    { d: destinations[hosting.value], label: `Bifrost → ${hosting.value === 'local' ? 'OpenShift AI' : hosting.value === 'public' ? 'Public Cloud' : 'Private Infrastructure'}`, nodes: ['bifrost', hosting.value] },
-  ]
-})
-const current = computed(() => journeys.value[step.value])
-function stop() { clearTimeout(timer); running.value = false }
-function reset() { stop(); step.value = -1 }
-function advance() {
-  if (step.value < journeys.value.length - 1) { step.value++; timer = setTimeout(advance, 1700) }
-  else stop()
-}
-function play() { reset(); playId.value++; running.value = true; advance() }
-watch([flow, hosting], reset)
-watch(() => $nav.value.currentSlideNo, page => { if (page !== $page.value) reset() })
-onUnmounted(stop)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
 function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' }
 function lineHeight(node: any) { return node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
@@ -135,18 +93,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
         <text x="81.5" :y="item.lines.length===1 ? 61 : 55"><tspan v-for="(line,j) in item.lines" :key="j" x="81.5" :dy="j ? 18 : 0">{{ line }}</tspan></text>
       </g>
       <text x="1545" y="213" class="routing-label"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
-      <g v-if="current" class="flow-overlay" aria-hidden="true">
-        <path :key="`${playId}-${step}`" :d="current.d" pathLength="1" class="flow-trace" />
-        <rect v-for="id in current.nodes" :key="id" :x="position(id).x-3" :y="position(id).y-3" :width="source[id].w+6" :height="source[id].h+6" rx="5" class="flow-node" />
-      </g>
     </svg>
-    <div class="flow-controls" @click.stop @keydown.stop>
-      <label>流向示意 <select v-model="flow" aria-label="選擇流向"><option value="model">模型請求</option><option value="tools">Z 工具</option><option value="deployment">部署管理</option></select></label>
-      <select v-if="flow==='model'" v-model="hosting" aria-label="模型部署選項"><option value="local">OpenShift AI</option><option value="public">Public Cloud</option><option value="private">Private Infrastructure</option></select>
-      <button type="button" @click="running ? stop() : play()">{{ running ? '停止' : step >= 0 ? '重播' : '播放' }}</button>
-      <button type="button" @click="reset">清除</button>
-      <span role="status">{{ current ? `${step+1}/${journeys.length} · ${current.label}` : '選擇路徑，逐段查看流向' }}</span>
-    </div>
     <div class="architecture-meta"><div class="legend"><span><i class="application" />Application</span><span><i class="technology" />Technology</span><span><i class="ppz" />PPZ</span><span><i class="management" />Deployment management</span></div><span>K8s cluster support: future</span></div>
   </section>
 </template>
@@ -170,12 +117,7 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .data-item text { text-anchor:middle; font-size:16px; fill:#243d33; }
 .data-item .data-title { font-weight:600; font-size:17px; }
 .routing-label { font-size:22px; fill:#0f62fe; font-weight:500; }
-.architecture-meta { position:absolute; left:72px; right:72px; bottom:70px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
-.flow-controls{position:absolute;left:72px;right:72px;bottom:86px;display:flex;align-items:center;gap:8px;font-size:12px;color:#393939}
-.flow-controls label{display:flex;align-items:center;gap:8px}.flow-controls select,.flow-controls button{font:inherit;border:1px solid #c6c6c6;border-radius:3px;padding:3px 7px;background:#f4f7fb;color:#0043ce}.flow-controls button{cursor:pointer}.flow-controls span{margin-left:6px}.flow-controls :focus-visible{outline:2px solid #0f62fe;outline-offset:2px}
-.flow-overlay{pointer-events:none}.flow-trace{fill:none;stroke:#0f62fe;stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;animation:trace-flow 1.3s ease-out both}.flow-node{fill:none;stroke:#0f62fe;stroke-width:3}
-@keyframes trace-flow{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
-@media(prefers-reduced-motion:reduce){.flow-trace{animation:none}}@media print{.flow-controls,.flow-overlay{display:none}}
+.architecture-meta { position:absolute; left:72px; right:72px; bottom:78px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
 .legend { display:flex; gap:20px; }
 .legend span { display:flex; align-items:center; gap:6px; }
 .legend i { width:12px; height:9px; border:1px solid #b8c3cc; }
