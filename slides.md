@@ -135,17 +135,29 @@ hideInToc: false
 -->
 
 ---
-title: Jev：把決策與生成分工
-class: talk-page
+title: Bifrost 與 Jev：三層路由能力比較
+class: talk-page gateway-research-page
 hide: false
 hideInToc: false
 ---
 
-<p class="eyebrow">2026.09.15 · JEV</p>
-<h1>不是每個決策，<br>都需要生成一大段文字。</h1><div class="talk-columns"><section><span class="metric-label">INPUT</span><h2>工作狀態</h2><p>任務、候選選項<br>與明確的輸出型別。</p></section><section><span class="metric-label">DECISION</span><h2>型別化決策</h2><p>分類、排序、路由<br>或風險判斷。</p></section><section><span class="metric-label">ACTION</span><h2>合適的執行者</h2><p>交給工具、代理<br>或生成模型處理。</p></section></div><p class="takeaway">Jev 是早期存取的決策模型；不能據此宣稱模型權重已開源。</p><div class="source-line"><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe：Jev 發布（2026.09.15） ↗</a></div>
+<GatewayRoutingComparison />
 
 <!--
-14:41–14:42（1 分鐘）。官方描述為 System One 模型，輸出型別化機率值，與自由文字生成分工。這張圖是應用示意，不是 IBM Bob 的內部實作。供應商宣稱的延遲與成本改善屬特定工作流；本演講不把它當成通用程式開發基準。SDK 開放與模型權重開源是兩件事。
+Bifrost 上游现行能力不等於 IBM Bob 啟用清單。Complexity Router 為 Beta。Jev 官方 SDK 開源，未找到模型權重開源授權。Confidence 不等於被選模型成功率。依 2026-09-28 官方資料核對。
+-->
+
+---
+title: Bifrost：官方與第三方量化效益
+class: talk-page gateway-research-page
+hide: false
+hideInToc: false
+---
+
+<BifrostEvidence />
+
+<!--
+Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題，tokens 累計整個 agent loop。R2 OFF 有六題重跑通過，仍有一題失敗，因此為 98.5%。費用與節省比例沿用原報告估算。個人評測只有 19 個工具及舊版本。ENTERPILOT 是 GoModel 相關團隊；模擬後端 p50 是 Gateway 效能，不是模型品質。尚未找到 Bifrost 模型路由費用與正確率成對公開對照，不將數據套用為 IBM Bob 成效。
 -->
 
 ---

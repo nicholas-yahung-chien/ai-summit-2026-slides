@@ -94,6 +94,7 @@ html,body { font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
 .formal-cover .cover-art { right:0; top:72px; width:690px; height:auto; object-fit:contain; opacity:1; }
 .formal-cover .cover-copy .eyebrow { font-size:23px; letter-spacing:.015em; }
 .talk-page h1 { margin:15px 0 26px; font-size:54px; }
+.slidev-layout.summit-layout.gateway-research-page { padding-top:34px; }
 .talk-columns { display:grid; grid-auto-columns:1fr; grid-auto-flow:column; gap:34px; margin-top:32px; }
 .talk-columns section { border-top:3px solid #0f62fe; padding-top:15px; }
 .talk-columns section:nth-child(2) { border-color:#007d79; }
