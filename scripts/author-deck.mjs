@@ -66,6 +66,9 @@ slides[13] = {
 slides[21].content += '<div class="supplement-links">'+['ayman','henrik','garry'].map(k=>`<a href="${sources[k][1]}" target="_blank" rel="noopener">${sources[k][0]} ↗</a>`).join('')+'</div>'
 slides[4].content = slides[4].content.replace('08.19 · 訪談線索','08.19 · Matt Pocock 訪談').replace('09.12 · 本人網站已列出','09.12 · 本人發布短片').replace(cite('uncle','swarm'),cite('interview','rethink'))
 slides[4].note += '\n補充查證：已在 YouTube 原片頁直接確認串流日期為2026年8月19日；原片章節 10:20 為 Deterministic tools vs steering、18:02 為 Multi-agent systems。X 原貼文日期與作者也已直接確認。YouTube 轉錄稿面板持續載入，尚未核對完整措辭。'
+// Omit the agenda slide from the published deck; preserve source indices above.
+slides.splice(1, 1)
+for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})
 async function call(name,args) { const r=await client.callTool({name,arguments:args}); if(r.isError) throw new Error(JSON.stringify(r)); return r }

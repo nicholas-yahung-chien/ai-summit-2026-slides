@@ -40,18 +40,6 @@ class: cover-page formal-cover
 -->
 
 ---
-title: 35 分鐘，從模型進展走到交付
-class: talk-page
----
-
-<p class="eyebrow">THE JOURNEY · 35 MINUTES</p>
-<h1>從 AI 的進展，<br>走到團隊的下一次交付。</h1><div class="schedule-grid"><div><b>04′</b><span>AI 演進</span></div><div><b>05′</b><span>近期事件</span></div><div><b>06′</b><span>成本與證據</span></div><div><b>06′</b><span>IBM Bob</span></div><div><b>05′</b><span>SDLC 轉變</span></div><div><b>07′</b><span>現場示範</span></div><div><b>02′</b><span>帶回團隊</span></div></div><p class="takeaway">核心問題：如何把代理能力，變成可驗證的交付能力？</p>
-
-<!--
-14:31–14:32（1 分鐘）。前 4 分鐘包含封面與本頁。三個帶走的重點：降低協作浪費、保留交付證據、按風險分配人的注意力。
--->
-
----
 title: AI 演進：從智慧問題到代理式交付
 class: talk-page chart-page
 ---
@@ -253,7 +241,7 @@ class: talk-page
 <h1>如果現場連線中斷，<br>沿著同一份證據走完。</h1><div class="method-rows"><div><b>規格</b><span>demo/README.md</span><small>行為與範圍</small></div><div><b>驗收</b><span>registration.test.mjs</span><small>可執行案例</small></div><div><b>參考實作</b><span>demo/reference/</span><small>預先準備，非現場生成</small></div></div><p class="takeaway">記錄觀察到的耗時與消耗；未量測的欄位留白。</p>
 
 <!--
-示範備援頁，正常情況可直接跳至第20頁。參考實作是為簡報預先準備且以 Node 驗證的版本，不冒充 Bob 實際輸出。若無網路，用 node --test demo/reference/registration.test.mjs 檢查備援結果並解釋設計取捨。
+示範備援頁，正常情況可直接跳至第19頁。參考實作是為簡報預先準備且以 Node 驗證的版本，不冒充 Bob 實際輸出。若無網路，用 node --test demo/reference/registration.test.mjs 檢查備援結果並解釋設計取捨。
 -->
 
 ---
