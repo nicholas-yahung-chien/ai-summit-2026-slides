@@ -33,7 +33,7 @@ defineProps<{ english?: string; chinese?: string }>()
 figure { margin:0; }
 figure img { display:block; width:395px; height:475px; object-fit:contain; object-position:top center; }
 figcaption { display:flex; align-items:baseline; justify-content:space-between; border-top:1px solid #c6c6c6; margin-top:12px; padding-top:10px; }
-figcaption time { color:#0043ce; font-size:25px; font-weight:500; }
+figcaption time { color:#0043ce; font-size:23px; font-weight:600; font-variant-numeric:tabular-nums; letter-spacing:.04em; text-decoration:underline; text-decoration-thickness:3px; text-underline-offset:6px; }
 figcaption span { color:#525252; font-size:16px; }
 .reflection-label { font-size:24px; color:#525252; margin-bottom:26px; }
 .reflection-quote { border-left:3px solid #0f62fe; padding-left:32px; }
