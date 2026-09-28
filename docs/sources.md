@@ -2,6 +2,10 @@
 
 檢視日：2026-09-28。簡報中的「本演講分析」不是文獻事實；研究數據不代表 IBM Bob 實測。
 
+## 首頁主視覺
+
+依使用者指示直接使用對話提供的主視覺。從本機活動範本 `IBM AI Summit 2026_Taiwan_PPT Template.pptx` 擷取與附件視覺一致的 `ppt/media/image3.jpeg`（1417×1141），原樣存為 `assets/summit-key-visual.jpeg`，不重繪、不變色、不裁切；僅以 CSS 等比例縮放。此圖僅用於本次高峰會簡報，不額外宣告開放授權。
+
 ## 歷史與事件
 
 - [Turing, Computing Machinery and Intelligence (1950)](https://academic.oup.com/mind/article/LIX/236/433/986238)：圖靈測試的原始論文。

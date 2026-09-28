@@ -67,5 +67,5 @@ codex mcp add ai-summit-slidev -- node /absolute/project/node_modules/@slidev/cl
 
 依賴限制：2026-09-28 的 npm audit 回報 Slidev 53 上游依賴共 13 項通報（2 low、1 moderate、10 high），包含 Mermaid、匯出及編輯器依賴；建議的整體修復涉及退版至 Slidev 52。本專案維持已驗證的 53.0.0 MCP 功能，未執行強制降版。公開 Pages 只提供建置後靜態內容，不提供 MCP／開發伺服器；加入外來 Markdown、圖表或匯出流程前應再檢視對應通報。
 
-使用者提供的高峰會主視覺作為色調與層疊節奏參考。此專案未納入原始主視覺圖片；向量圖不是官方 logo。
+首頁直接使用使用者指定的高峰會主視覺，圖片從本機活動範本 `IBM AI Summit 2026_Taiwan_PPT Template.pptx` 的 `ppt/media/image3.jpeg` 原樣擷取，與對話提供圖片視覺一致。以完整構圖呈現，無重繪或色彩調整。結尾保留原創向量圖；該向量圖不是官方 logo。
 本專案不是 IBM 官方網站；品牌名稱的使用不表示官方背書。
