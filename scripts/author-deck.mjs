@@ -88,6 +88,21 @@ slides[3] = {
 }
 slides[3].note = '14:35–14:37。貼文日期2026年9月12日，使用者提供原貼文截圖。選定引文01:58.384–02:04.965：Apparently the harness is doing the damage. That\'s not what I expected. 以原貼文字幕及OpenAI gpt-4o-transcribe獨立音訊轉錄交叉核對一致，只補一般標點。中文為講者翻譯。頁上小標「當約束成為負擔」為講者歸納，非Uncle Bob原話。語境：他發現同一模型的單一代理優於自己建立的harness，並注意到代理能力已改善。因此本演講歸納為模型進步後應重新量測編排效益。02:28–02:50仍保留CRAP分數、mutation testing與unit tests，不是所有harness或品質關卡均無必要的結論，也不是通用基準數據。原貼文：https://x.com/unclebobmartin/status/2098744156709441896。'
 slides[19].content = slides[19].content.replace('Uncle Bob 原片措辭仍待核對；','Uncle Bob 引文已核對原片字幕；')
+// Put controlled evidence between Uncle Bob's experience and the product discussion.
+// Reuse the original Jev page in place of the now-duplicated AgentDropout page.
+const jevSlide = slides[4]
+slides[4] = {
+  frontmatter: { title:'程式生成：單代理與多代理的品質與成本', class:'talk-page' },
+  content:'<ResearchComparison kind="agents" />',
+  note:'14:37–14:39（2分鐘）。AgentDropout，ACL 2025，Tables 1–2，Llama3-8B-Instruct、HumanEval。同一基準：Vanilla Pass@1 53.33%，prompt 91K + completion 25K = 116K；MAS round=T 49.17%，2.6M + 492K = 3,092K；AgentDropout 55.84%，1.1M + 359K = 1,459K。都是論文整批評測用量，非單題，K=千；加總依原表約數。這是相同模型的資源成本比較，不是等預算實驗，也不是美元費用；輸入與輸出可能不同價，快取亦影響帳單。單代理此處為Vanilla，並非最佳化的完整開發代理。結果支持「額外編排可能增加消耗卻降低品質」這種現象，與Uncle Bob個人感受相呼應，但不能證明他的個案因果，也不表示所有多代理都較差。精簡後品質高於Vanilla，代價仍較大，必須保留此列避免片面選數據。來源：https://aclanthology.org/2025.acl-long.1170.pdf。',
+}
+slides[5] = {
+  frontmatter: { title:'多模型路由：維持品質，降低推理費用', class:'talk-page' },
+  content:'<ResearchComparison kind="routing" />',
+  note:'14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6與Section 3.4的CostSave定義。採Avengers-Pro相對最佳單一模型GPT-5的CostSave=31.7%；這是選取平均品質不低於Best Single的最低費用設定。將GPT-5費用歸一為100，路由為68.3；品質以基準100表示，路由標示≥100，不捏造實際正確率或假稱剛好等於100。論文另外的PerfGain=4.0%是另一個最高品質設定，不能同時與31.7%節省相乘使用。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。路由每次選模型，不等於多代理共同推理；費用下降不等於token數量下降。其他routers未必勝過最佳單模型，模型互補與選擇準確性才重要。此研究提供後續Jev與IBM Bob模型選擇的概念依據，非兩項產品採用該演算法或取得同樣成效的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。',
+}
+slides[6] = { ...jevSlide, note:jevSlide.note.replace('14:37–14:39（2 分鐘）','14:41–14:42（1 分鐘）') }
+slides[20].content += '<div class="supplement-links"><a href="https://aclanthology.org/2026.findings-acl.1881.pdf" target="_blank" rel="noopener">LLMRouterBench · ACL Findings 2026 · Figure 6 ↗</a></div>'
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})

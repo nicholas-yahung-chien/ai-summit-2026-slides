@@ -74,6 +74,28 @@ class: talk-page
 -->
 
 ---
+title: 程式生成：單代理與多代理的品質與成本
+class: talk-page
+---
+
+<ResearchComparison kind="agents" />
+
+<!--
+14:37–14:39（2分鐘）。AgentDropout，ACL 2025，Tables 1–2，Llama3-8B-Instruct、HumanEval。同一基準：Vanilla Pass@1 53.33%，prompt 91K + completion 25K = 116K；MAS round=T 49.17%，2.6M + 492K = 3,092K；AgentDropout 55.84%，1.1M + 359K = 1,459K。都是論文整批評測用量，非單題，K=千；加總依原表約數。這是相同模型的資源成本比較，不是等預算實驗，也不是美元費用；輸入與輸出可能不同價，快取亦影響帳單。單代理此處為Vanilla，並非最佳化的完整開發代理。結果支持「額外編排可能增加消耗卻降低品質」這種現象，與Uncle Bob個人感受相呼應，但不能證明他的個案因果，也不表示所有多代理都較差。精簡後品質高於Vanilla，代價仍較大，必須保留此列避免片面選數據。來源：https://aclanthology.org/2025.acl-long.1170.pdf。
+-->
+
+---
+title: 多模型路由：維持品質，降低推理費用
+class: talk-page
+---
+
+<ResearchComparison kind="routing" />
+
+<!--
+14:39–14:41（2分鐘）。LLMRouterBench，ACL Findings 2026，Figure 6與Section 3.4的CostSave定義。採Avengers-Pro相對最佳單一模型GPT-5的CostSave=31.7%；這是選取平均品質不低於Best Single的最低費用設定。將GPT-5費用歸一為100，路由為68.3；品質以基準100表示，路由標示≥100，不捏造實際正確率或假稱剛好等於100。論文另外的PerfGain=4.0%是另一個最高品質設定，不能同時與31.7%節省相乘使用。多任務總體結果，不能宣稱是程式生成專屬結果或每題都省。路由每次選模型，不等於多代理共同推理；費用下降不等於token數量下降。其他routers未必勝過最佳單模型，模型互補與選擇準確性才重要。此研究提供後續Jev與IBM Bob模型選擇的概念依據，非兩項產品採用該演算法或取得同樣成效的證明。來源：https://aclanthology.org/2026.findings-acl.1881.pdf。
+-->
+
+---
 title: Jev：把決策與生成分工
 class: talk-page
 ---
@@ -82,31 +104,7 @@ class: talk-page
 <h1>不是每個決策，<br>都需要生成一大段文字。</h1><div class="talk-columns"><section><span class="metric-label">INPUT</span><h2>工作狀態</h2><p>任務、候選選項<br>與明確的輸出型別。</p></section><section><span class="metric-label">DECISION</span><h2>型別化決策</h2><p>分類、排序、路由<br>或風險判斷。</p></section><section><span class="metric-label">ACTION</span><h2>合適的執行者</h2><p>交給工具、代理<br>或生成模型處理。</p></section></div><p class="takeaway">Jev 是早期存取的決策模型；不能據此宣稱模型權重已開源。</p><div class="source-line"><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe：Jev 發布（2026.09.15） ↗</a></div>
 
 <!--
-14:37–14:39（2 分鐘）。官方描述為 System One 模型，輸出型別化機率值，與自由文字生成分工。這張圖是應用示意，不是 IBM Bob 的內部實作。供應商宣稱的延遲與成本改善屬特定工作流；本演講不把它當成通用程式開發基準。SDK 開放與模型權重開源是兩件事。
--->
-
----
-title: 技術債的成本結構改變了
-class: talk-page
----
-
-<p class="eyebrow">03 · THE ECONOMICS</p>
-<h1>重寫變便宜，<br>理解與驗證仍然有成本。</h1><div class="event-pair"><section><span>HUMAN-CENTRIC</span><h2>人天與協作時間</h2><p>理解既有程式、修改設計、<br>跨團隊溝通與維護。</p></section><section><span>AGENT-ASSISTED</span><h2>Token ＋ 驗證成本</h2><p>上下文、重試與工具呼叫，<br>加上人的審查與營運風險。</p></section></div><p class="takeaway">架構的價值轉向：縮小上下文、清楚介面、可驗證的邊界。</p>
-
-<!--
-14:39–14:41（2 分鐘）。這是本演講的分析框架，不是文獻證明技術債已完全由人天轉成 token。Patterns 與 architecture 不只為人天服務，也處理可靠性、安全、可變更性。總成本可拆成人工時間、模型與工具費用、等待時間、失敗風險。
--->
-
----
-title: 同一基準：代理多，不代表 token 少
-class: talk-page
----
-
-<p class="eyebrow">EVIDENCE 01 · SAME BENCHMARK</p>
-<h1>多代理的效益，需要一起看成本。</h1><p class="table-context">HumanEval · Llama3-8B-Instruct · 論文表 1、2</p><table class="research-table"><thead><tr><th>方法</th><th>輸入 tokens</th><th>輸出 tokens</th><th>Pass@1</th></tr></thead><tbody><tr><td>單代理 Vanilla</td><td>91K</td><td>25K</td><td>53.33%</td></tr><tr><td>多代理 · 多輪</td><td>2.6M</td><td>492K</td><td>49.17%</td></tr><tr class="emphasis"><td>AgentDropout</td><td>1.1M</td><td>359K</td><td>55.84%</td></tr></tbody></table><p class="takeaway">刪減無效協作有幫助；仍不能推論「多代理普遍比較省」。</p><div class="source-line"><a href="https://aclanthology.org/2025.acl-long.1170.pdf" target="_blank" rel="noopener">AgentDropout · ACL 2025 · Tables 1–2 ↗</a></div>
-
-<!--
-14:41–14:42（1 分鐘）。資料為論文報告的同一 HumanEval 實驗設定與整批 token 數，K=千、M=百萬，不是每題平均。呈現 Llama3-8B 的一個反例，而非所有模型的通則。這個結果也不能外推為 IBM Bob 的測量結果。多代理多輪對應 MAS round=T。來源精度本來就是 K/M，避免自行給出過度精確的倍數。
+14:41–14:42（1 分鐘）。官方描述為 System One 模型，輸出型別化機率值，與自由文字生成分工。這張圖是應用示意，不是 IBM Bob 的內部實作。供應商宣稱的延遲與成本改善屬特定工作流；本演講不把它當成通用程式開發基準。SDK 開放與模型權重開源是兩件事。
 -->
 
 ---
@@ -270,7 +268,7 @@ class: talk-page
 ---
 
 <p class="eyebrow">APPENDIX B · SOURCES</p>
-<h1>實驗與開發方法</h1><div class="reference-list"><a href="https://aclanthology.org/2025.acl-long.1170.pdf" target="_blank" rel="noopener">AgentDropout · ACL 2025 · Tables 1–2 ↗</a><a href="https://arxiv.org/html/2410.02506v1" target="_blank" rel="noopener">AgentPrune · arXiv v1 · Table 3 ↗</a><a href="https://sky.cs.berkeley.edu/project/routellm/" target="_blank" rel="noopener">RouteLLM · UC Berkeley（2024） ↗</a><a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Anthropic：開發最佳實務 ↗</a><a href="https://github.com/github/spec-kit" target="_blank" rel="noopener">GitHub Spec Kit ↗</a><a href="https://www.ibm.com/think/topics/ai-dlc" target="_blank" rel="noopener">IBM：AI-DLC ↗</a></div><p class="reference-note">論文結果保留各自模型、任務與分母；不可當作 IBM Bob 的實測成效。<br>完整限制、計算與示範腳本收錄於 GitHub 專案 docs/。</p><div class="supplement-links"><a href="https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html" target="_blank" rel="noopener">Ayman Nadeem：Plan Mode Is Dead（09.24） ↗</a><a href="https://www.linkedin.com/posts/hkniberg_its-interesting-how-agentic-engineering-activity-7498285675310678016-NQvh" target="_blank" rel="noopener">Henrik Kniberg：代理並行的實務觀察 ↗</a><a href="https://ai.engineer/talks/eBUyTS7SzV4-every-company-should-have-brain" target="_blank" rel="noopener">Garry Tan：Every company should have a Brain ↗</a></div>
+<h1>實驗與開發方法</h1><div class="reference-list"><a href="https://aclanthology.org/2025.acl-long.1170.pdf" target="_blank" rel="noopener">AgentDropout · ACL 2025 · Tables 1–2 ↗</a><a href="https://arxiv.org/html/2410.02506v1" target="_blank" rel="noopener">AgentPrune · arXiv v1 · Table 3 ↗</a><a href="https://sky.cs.berkeley.edu/project/routellm/" target="_blank" rel="noopener">RouteLLM · UC Berkeley（2024） ↗</a><a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Anthropic：開發最佳實務 ↗</a><a href="https://github.com/github/spec-kit" target="_blank" rel="noopener">GitHub Spec Kit ↗</a><a href="https://www.ibm.com/think/topics/ai-dlc" target="_blank" rel="noopener">IBM：AI-DLC ↗</a></div><p class="reference-note">論文結果保留各自模型、任務與分母；不可當作 IBM Bob 的實測成效。<br>完整限制、計算與示範腳本收錄於 GitHub 專案 docs/。</p><div class="supplement-links"><a href="https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html" target="_blank" rel="noopener">Ayman Nadeem：Plan Mode Is Dead（09.24） ↗</a><a href="https://www.linkedin.com/posts/hkniberg_its-interesting-how-agentic-engineering-activity-7498285675310678016-NQvh" target="_blank" rel="noopener">Henrik Kniberg：代理並行的實務觀察 ↗</a><a href="https://ai.engineer/talks/eBUyTS7SzV4-every-company-should-have-brain" target="_blank" rel="noopener">Garry Tan：Every company should have a Brain ↗</a></div><div class="supplement-links"><a href="https://aclanthology.org/2026.findings-acl.1881.pdf" target="_blank" rel="noopener">LLMRouterBench · ACL Findings 2026 · Figure 6 ↗</a></div>
 
 <!--
 附錄，不计入35分鐘。所有研究數字採明確來源的特定實驗；不做跨論文模型、資料集或 token 計價的直接排名。
