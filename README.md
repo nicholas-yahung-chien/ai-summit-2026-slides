@@ -19,6 +19,7 @@ npm run preview
 ```
 
 `main` 推送後，GitHub Actions 執行設定檢查、控制邏輯測試與正式建置，再部署到 GitHub Pages。
+線上簡報：<https://nicholas-yahung-chien.github.io/ai-summit-2026-slides/>
 Pull request 只執行驗證與建置。Pages 的來源為 GitHub Actions。
 使用 hash routing，`/ai-summit-2026-slides/#/4` 可直接開啟第 4 頁並重新整理。
 若改 repo 名称，請同步調整 package.json 的 build base。
@@ -59,6 +60,10 @@ codex mcp add ai-summit-slidev -- node /absolute/project/node_modules/@slidev/cl
 - `components/SummitArt.vue`：原創層疊向量圖形。
 - `global-top.vue`：頁碼跳轉與共用計時控制。
 - `docs/design-plan.md`：設計決策與待確認內容。
+
+相容性：目前鎖定 `floating-vue` 5.2.2，避免 5.4.0 與 Shiki TwoSlash 的元件結構不相容造成啟動錯誤。升級時需重新測試工具提示與講者模式。
+
+依賴限制：2026-09-28 的 npm audit 回報 Slidev 53 上游依賴共 13 項通報（2 low、1 moderate、10 high），包含 Mermaid、匯出及編輯器依賴；建議的整體修復涉及退版至 Slidev 52。本專案維持已驗證的 53.0.0 MCP 功能，未執行強制降版。公開 Pages 只提供建置後靜態內容，不提供 MCP／開發伺服器；加入外來 Markdown、圖表或匯出流程前應再檢視對應通報。
 
 使用者提供的高峰會主視覺作為色調與層疊節奏參考。此專案未納入原始主視覺圖片；向量圖不是官方 logo。
 本專案不是 IBM 官方網站；品牌名稱的使用不表示官方背書。

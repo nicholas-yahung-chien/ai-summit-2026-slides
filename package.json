@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "slidev --port 3030",
     "build": "slidev build --base /ai-summit-2026-slides/",
-    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "preview": "vite preview --base /ai-summit-2026-slides/ --host 127.0.0.1 --port 4173",
     "mcp": "slidev mcp slides.md",
     "check": "node scripts/check.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "verify:mcp": "node scripts/verify-mcp.mjs"
   },
   "engines": {
     "node": ">=22.12.0"
@@ -21,5 +22,8 @@
     "@slidev/cli": "53.0.0",
     "@slidev/theme-default": "0.25.0",
     "vue": "3.5.43"
+  },
+  "overrides": {
+    "floating-vue": "5.2.2"
   }
 }
