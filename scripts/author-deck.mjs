@@ -74,6 +74,11 @@ slides[1].note = '14:31–14:34。全領域的 15 個代表里程碑：圖靈測
 slides[1].note = '14:31–14:34。16 個歷史里程碑與近期發布。依使用者要求移除 Dartmouth、反向傳播、GAN、DeepSeek-R1。新增 2026 年 2 月 5 日 Claude Opus 4.6、3 月 5 日 GPT-5.4、5 月 19 日 Gemini 3.5 Flash、7 月 24 日 Claude Opus 5、9 月 22 日 GPT-6 Sol 與 Luna，均已核對官方發布。近期事件是產品與能力更新，不宣稱每次發布均為公認的歷史突破。橫軸非等距，曲線高度為敘事安排，不是實測能力分數；圖上不顯示註解與來源。'
 slides[1].note = '14:31–14:34。16 個歷史里程碑與應用趨勢。近年改為：2023 RAG、2024 Agentic AI、2025.02 vibe coding、2026.02 Agentic CI、2026.02 多代理並行開發、2026.03 長時任務代理。RAG 原論文在 2020 年，此處 2023 取 LLM 應用研究綜述的代表時間，不是發明年或精確爆發點。2024 Agentic AI 以年底已出現的實務模式為依據，不表示代理概念始於該年。Vibe coding 用語在 2025.02 提出。2026 節點分別依 GitHub Continuous AI、Anthropic 並行代理編譯器實驗與長時任務 harness 設計案例，表示工程實踐的深化，不代表這些方法於 2026 首創，也不能用單一廠商案例證明全產業已普及。兩個 2026.02 節點同月。時間非等距、曲線高度為敘事安排；畫面不顯示來源及註解。'
 slides[1].note += '\n最新修訂：移除 AlexNet 與 Transformer，新增 2026.04 代理託管服務（Anthropic 4/8 工程案例）、2026.05 搜尋代理化（Google I/O 5/19 公告，部分功能為後續推出計畫）、2026.06 代理走入辦公（6/25 Codex 使用研究，單一供應商樣本，非全市場普及證明）、2026.08 代理成為使用者（Hugging Face 8/14 平台報告，觀測期間主要至 7 月）。目前共 18 節點。這四個日期為公告或研究公開時間，而非概念首次出現或確切爆發日；曲線不表示實測成長率。'
+slides[2] = {
+  frontmatter: { title:'Uncle Bob：讓工具判定通過', class:'talk-page uncle-interview-page' },
+  content:'<UncleBobInterview />',
+  note:'14:34–14:35。專訪於2026年8月19日由Matt Pocock直播。引用原片17:01–17:08的英文字幕，節錄從口語重複的第二個you must開始。You must change the code until this tool says that it\'s okay. 中文為講者翻譯。原片16:55起說明確定性工具讓代理反覆修改，17:28–17:33也說這是用品質換取生產力的取捨，不能解讀成約束越多越好。畫面為原片約17:24。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=1021s。',
+}
 for (const slide of slides) slide.note = slide.note.replace('第20頁', '第19頁')
 const client = new Client({name:'summit-author',version:'1.0.0'})
 const transport = new StdioClientTransport({ command:process.execPath,args:[fileURLToPath(new URL('../node_modules/@slidev/cli/bin/slidev.mjs',import.meta.url)),'mcp',fileURLToPath(new URL('../slides.md',import.meta.url))],cwd:root,stderr:'pipe'})

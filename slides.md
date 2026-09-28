@@ -52,15 +52,14 @@ class: talk-page chart-page
 -->
 
 ---
-title: 近期事件：工作流也在快速改變
-class: talk-page
+title: Uncle Bob：讓工具判定通過
+class: talk-page uncle-interview-page
 ---
 
-<p class="eyebrow">02 · TWO SIGNALS</p>
-<h1>模型在進步，<br>工作流也需要重新設計。</h1><div class="talk-columns"><section><span class="metric-label">SIGNAL 01</span><h2>重新評估編排</h2><p>Uncle Bob：<br>從協作框架到<br>重新思考 harness。</p></section><section><span class="metric-label">SIGNAL 02</span><h2>決策專門化</h2><p>Jev：<br>將路由與分類等決策<br>交給專用模型。</p></section></div><div class="source-line"><a href="https://www.cleancoder.com/" target="_blank" rel="noopener">Uncle Bob 本人網站 ↗</a> · <a href="https://github.com/unclebob/swarm-forge" target="_blank" rel="noopener">SwarmForge 專案 ↗</a> · <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe：Jev 發布（2026.09.15） ↗</a></div>
+<UncleBobInterview />
 
 <!--
-14:34–14:35（1 分鐘）。這兩件事的共同啟示，是不要把昨天模型的限制永久寫進今天的工作流。這是講者歸納，並非兩者合作或 IBM 使用 Jev 的證據。
+14:34–14:35。專訪於2026年8月19日由Matt Pocock直播。引用原片17:01–17:08的英文字幕，節錄從口語重複的第二個you must開始。You must change the code until this tool says that it's okay. 中文為講者翻譯。原片16:55起說明確定性工具讓代理反覆修改，17:28–17:33也說這是用品質換取生產力的取捨，不能解讀成約束越多越好。畫面為原片約17:24。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=1021s。
 -->
 
 ---
