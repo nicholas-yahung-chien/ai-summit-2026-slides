@@ -54,10 +54,7 @@ const routes = [
       <p class="limits cost-assumptions">依論文歷史價格推算，非實測帳單或現行報價。每次假設 95 輸入＋264 輸出 tokens。<br>每百萬輸入／輸出 tokens：GPT-4 $10／$30、Mixtral $0.24／$0.24；另含 $3.32 路由開銷／百萬次請求。</p>
     </template>
 
-    <div class="reference" lang="en">
-      <p v-if="kind === 'agents'">Yubin Kim, Ken Gu, Chanwoo Park, Chunjong Park, Samuel Schmidgall, A. Ali Heydari, Yao Yan, Zhihan Zhang, Yuchen Zhuang, Yun Liu, Mark Malhotra, Paul Pu Liang, Hae Won Park, Yuzhe Yang, Xuhai Xu, Yilun Du, Shwetak Patel, Tim Althoff, Daniel McDuff, and Xin Liu. 2026. <a href="https://arxiv.org/abs/2512.08296v3" target="_blank" rel="noopener">Towards a Science of Scaling Agent Systems.</a> arXiv preprint arXiv:2512.08296, version 3, April 8. <a href="https://doi.org/10.48550/arXiv.2512.08296" target="_blank" rel="noopener">doi:10.48550/arXiv.2512.08296</a>. <b>Data: §4, pp. 13–14; sample limitations: §5, Appendix F.</b></p>
-      <p v-else>Isaac Ong, Amjad Almahairi, Vincent Wu, Wei-Lin Chiang, Tianhao Wu, Joseph E. Gonzalez, M Waleed Kadous, and Ion Stoica. 2025. <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html" target="_blank" rel="noopener">RouteLLM: Learning to Route LLMs from Preference Data.</a> In <em>Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)</em>. <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf" target="_blank" rel="noopener">Official proceedings, Tables 1 and 7; Appendix D.</a></p>
-    </div>
+    <ResearchCitation :source="kind" />
   </section>
 </template>
 
@@ -79,9 +76,6 @@ aside { border-left:1px solid #c6c6c6; padding-left:30px; }
 .western aside .counterpoint { margin-top:13px; color:#525252; }
 .highlight-task { color:#0043ce; font-weight:500; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
 .western .limits { font-size:17px; color:#525252; margin-top:18px; line-height:1.5; }
-.reference { position:absolute; left:72px; right:72px; bottom:83px; border-top:1px solid #c6c6c6; padding-top:12px; font-size:15px; line-height:1.45; color:#393939; }
-.reference a { color:#0043ce; text-decoration:none; }
-.reference a:hover { text-decoration:underline; }
 .route-heading { margin-top:18px; font-size:19px; color:#525252; }
 .route-grid { display:grid; grid-template-columns:205px 1fr 1fr; gap:38px; align-items:center; }
 .head { font-size:23px; margin-top:14px; padding-bottom:10px; border-bottom:1px solid #a8a8a8; }

@@ -28,7 +28,7 @@ const tiers = [
     </div>
     <p class="takeaway">路由可明顯降低費用，並在容易與中等任務上維持具競爭力的準確率。</p>
     <p class="limits">一般查詢評測，非完整程式代理流程；模型池不同。</p>
-    <div class="reference" lang="en">Lu, Y., Liu, R., Yuan, J., Cui, X., Zhang, S., Liu, H., &amp; Xing, J. (2025). <a href="https://arxiv.org/abs/2510.00202" target="_blank" rel="noopener">RouterArena: An Open Platform for Comprehensive Comparison of LLM Routers.</a> arXiv:2510.00202. <a href="https://doi.org/10.48550/arXiv.2510.00202" target="_blank" rel="noopener">doi:10.48550/arXiv.2510.00202</a>. Data: Table 6; difficulty analysis: §6.3. Figures follow the linked arXiv manuscript.</div>
+    <ResearchCitation source="arena" />
   </section>
 </template>
 <style scoped>
@@ -43,7 +43,6 @@ const tiers = [
 .winner b {color:#0043ce}.winner i {background:#0f62fe}
 .arena .takeaway {font-size:23px;color:#0043ce;margin:15px 0 7px;padding:0;border:0}
 .limits {font-size:16px;color:#525252;margin:0}
-.reference {position:absolute;left:72px;right:72px;bottom:83px;border-top:1px solid #c6c6c6;padding-top:12px;font-size:15px;line-height:1.45;color:#393939}.reference a {color:#0043ce}
 @keyframes grow {from {transform:scaleX(0)}to {transform:scaleX(1)}}.instant .track i {animation:none}
 @media(prefers-reduced-motion:reduce){.track i {animation:none}}
 </style>
