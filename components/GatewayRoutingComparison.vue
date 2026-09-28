@@ -5,9 +5,9 @@
     <table aria-label="Bifrost 企業版與 Jev 路由功能比較">
       <thead><tr><th>路由功能</th><th>Bifrost 企業版<span>AI Gateway · 整合路由與管理</span></th><th>Jev<span>決策模型 · 官方 SDK 開源</span></th></tr></thead>
       <tbody>
-        <tr><th><small>01 / POLICY</small>政策路由</th><td><strong>按企業規則分配請求</strong><p>依團隊、預算、區域等條件，<br>設定模型、供應商與備援順序。</p></td><td><strong>協助判斷，由程式執行</strong><p>可按指定條件分類；權限、預算<br>與實際分流，仍由其他系統管理。</p></td></tr>
-        <tr><th><small>02 / COMPLEXITY</small>語意複雜度路由</th><td><strong>看任務難度，分配模型</strong><p>比對語意範例，分為簡單／中等／複雜；<br>無法分類時，可再請 LLM 判斷。<em>Complexity Router · Beta</em></p></td><td><strong>按任務內容，協助做選擇</strong><p>判斷意圖、難度與選項，附上機率；<br>再由程式決定交給誰處理。</p></td></tr>
-        <tr><th><small>03 / OPERATIONS</small>負載平衡</th><td><strong>依服務狀況，自動調整流量</strong><p>觀察速度、錯誤與可用容量，<br>調整供應商與 API Key 的流量。</p></td><td><strong>這部分需要 Gateway 配合</strong><p>Jev 本身不管理供應商流量，<br>也不負責 Key 輪替與故障切換。</p></td></tr>
+        <tr><th><small>01 / POLICY</small>政策路由</th><td><strong><span class="supported">支援</span>企業政策路由</strong><p>依團隊、預算、區域等條件，<br>設定模型、供應商與備援順序。</p></td><td><strong><span class="unsupported">未內建</span>政策路由</strong><p><span class="unsupported">權限與預算控管</span>需由其他系統提供；<br>模型的判斷不等於政策的執行。</p></td></tr>
+        <tr><th><small>02 / COMPLEXITY</small>語意複雜度路由</th><td><strong><span class="supported">支援</span>難度分類與分流</strong><p>比對語意範例，分為簡單／中等／複雜；<br>無法分類時，可再請 LLM 判斷。<em>Complexity Router · Beta · 需設定分類與路由</em></p></td><td><strong><span class="supported">支援決策判斷</span>，分流需自行串接</strong><p>判斷意圖、難度與選項，附上機率；<br><span class="unsupported">未內建請求轉送</span>，由應用程式執行。</p></td></tr>
+        <tr><th><small>03 / OPERATIONS</small>負載平衡</th><td><strong><span class="supported">支援</span>自適應負載平衡</strong><p>觀察速度、錯誤與可用容量，<br>自動調整供應商與 API Key 的流量。</p></td><td><strong><span class="unsupported">未內建</span>負載平衡</strong><p><span class="unsupported">流量調整、Key 輪替與故障切換</span>，<br>需由 Gateway 或其他系統提供。</p></td></tr>
       </tbody>
     </table>
     <p class="scope">以上為產品功能；IBM Bob 實際採用項目需另行確認。Jev 開源的是 SDK，未見模型權重公開。</p>
@@ -27,6 +27,7 @@ thead span{display:block;font-size:16px;font-weight:400;color:#525252;margin-top
 tbody th{font-size:23px;font-weight:500;padding-left:0}
 th small{display:block;font-size:13px;font-weight:400;letter-spacing:.1em;color:#0043ce;margin-bottom:6px}
 td strong{font-size:22px;font-weight:500}td p{font-size:18px;line-height:1.4;color:#393939;margin:4px 0 0!important}td em{display:block;font-style:normal;font-size:13px;color:#525252;margin-top:3px}
+.supported{color:#0e6027;font-weight:600}.unsupported{color:#a2191f;font-weight:600}
 .conclusion{font-size:24px;color:#0043ce;margin-top:17px!important}.scope{font-size:15px;color:#525252;margin-top:5px!important}
 .citations{position:absolute;bottom:83px;left:72px;right:72px;border-top:1px solid #c6c6c6;padding-top:9px;font-size:13px;line-height:1.5;color:#393939}.citations p{font:inherit;padding-left:16px;text-indent:-16px;margin:0 0 3px}.citations a{color:#0043ce;text-decoration:none}.citations a:hover{text-decoration:underline}.citations a:focus-visible{outline:2px solid #0f62fe}
 </style>
