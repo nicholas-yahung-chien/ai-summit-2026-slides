@@ -197,7 +197,7 @@ const curve = points.reduce((path,p,i) => {
 .replay-curve { position:absolute; left:80px; top:206px; z-index:1; color:#0043ce; font-size:16px; border-bottom:1px solid #a6c8ff; padding:2px 0; cursor:pointer; }
 .replay-curve:focus-visible { outline:3px solid #0f62fe; outline-offset:5px; }
 svg { width:1184px; height:650px; overflow:visible; }
-svg .event-label { font-size:23px !important; font-weight:600; fill:#161616; paint-order:stroke; stroke:#f4f4f4; stroke-width:7px; stroke-linejoin:round; }
+svg .event-label { font-size:20px !important; font-weight:600; fill:#161616; paint-order:stroke; stroke:#f4f4f4; stroke-width:6px; stroke-linejoin:round; }
 svg .recent-label { fill:#0043ce; }
 svg .event-date { font-size:18px !important; fill:#525252; font-variant-numeric:tabular-nums; }
 .curve-stroke { stroke-dasharray:1; animation:trace 2.8s ease-in both; }
