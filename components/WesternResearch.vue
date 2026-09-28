@@ -13,9 +13,15 @@ const agents = [
   { name: '分散協調多代理', value: 49.4 },
   { name: '獨立執行多代理', value: 44.4 },
 ]
+// Cost per million requests; identical 95 input + 264 output tokens assumed.
+// Historical Appendix D prices and Table 7 routing overhead, not an invoice.
+const baselineCost = 95 * 10 + 264 * 30
+const routingCost = 0.134 * baselineCost + 0.866 * (95 + 264) * 0.24 + 3.32
+const savings = (1 - routingCost / baselineCost) * 100
+const money = value => value.toLocaleString('en-US', { maximumFractionDigits: 0 })
 const routes = [
-  { name: '固定 GPT-4', score: 9.3, calls: 100, color: '#697785' },
-  { name: 'RouteLLM', score: 8.8, calls: 13.4, color: '#0f62fe' },
+  { name: '固定 GPT-4', score: 9.3, calls: 100, cost: baselineCost, color: '#697785' },
+  { name: 'RouteLLM', score: 8.8, calls: 13.4, cost: routingCost, color: '#0f62fe' },
 ]
 </script>
 
@@ -39,19 +45,19 @@ const routes = [
     </template>
     <template v-else>
       <div class="route-heading">MT-Bench ／ Matrix Factorization · Arena + Judge 訓練資料 · CPT(50%) 設定</div>
-      <div class="route-grid head"><span>同一評測設定</span><span>評測分數 <small>0–10 分</small></span><span>GPT-4 呼叫比例 <small>0–100%</small></span></div>
+      <div class="route-grid head"><span>同一評測設定</span><span>評測分數 <small>0–10 分</small></span><span>推算費用 · USD <small>每百萬次請求</small></span></div>
       <div v-for="(row, index) in routes" :key="row.name" class="route-grid route-row" :style="{ '--delay': `${200 + index * 450}ms` }">
-        <span>{{ row.name }}</span>
+        <span>{{ row.name }}<small class="call-share">GPT-4 呼叫 {{ row.calls }}%</small></span>
         <div><b :style="{ color: row.color }">{{ row.score.toFixed(1) }}<small> / 10</small></b><div class="track"><i :style="{ width: `${row.score * 10}%`, background: row.color }" /></div></div>
-        <div><b :style="{ color: row.color }">{{ row.calls.toFixed(1) }}<small>%</small></b><div class="track"><i :style="{ width: `${row.calls}%`, background: row.color }" /></div></div>
+        <div><b :style="{ color: row.color }">${{ money(row.cost) }}</b><div class="track"><i :style="{ width: `${row.cost / baselineCost * 100}%`, background: row.color }" /></div></div>
       </div>
-      <p class="takeaway">評分下降 0.5 分；其餘 86.6% 查詢交給 Mixtral。</p>
-      <p class="limits">13.4% 是 GPT-4 呼叫比例，不是總費用或 token 比例。一般任務評測，非程式生成專屬結果。</p>
+      <p class="takeaway">推算節省 {{ savings.toFixed(1) }}% 費用 <span>／ 評分 9.3 → 8.8，約保留 95%</span></p>
+      <p class="limits cost-assumptions">依論文歷史價格推算，非實測帳單或現行報價。每次假設 95 輸入＋264 輸出 tokens。<br>每百萬輸入／輸出 tokens：GPT-4 $10／$30、Mixtral $0.24／$0.24；另含 $3.32 路由開銷／百萬次請求。</p>
     </template>
 
     <div class="reference" lang="en">
       <p v-if="kind === 'agents'">Yubin Kim, Ken Gu, Chanwoo Park, Chunjong Park, Samuel Schmidgall, A. Ali Heydari, Yao Yan, Zhihan Zhang, Yuchen Zhuang, Yun Liu, Mark Malhotra, Paul Pu Liang, Hae Won Park, Yuzhe Yang, Xuhai Xu, Yilun Du, Shwetak Patel, Tim Althoff, Daniel McDuff, and Xin Liu. 2026. <a href="https://arxiv.org/abs/2512.08296v3" target="_blank" rel="noopener">Towards a Science of Scaling Agent Systems.</a> arXiv preprint arXiv:2512.08296, version 3, April 8. <a href="https://doi.org/10.48550/arXiv.2512.08296" target="_blank" rel="noopener">doi:10.48550/arXiv.2512.08296</a>. <b>Data: §4, pp. 13–14; sample limitations: §5, Appendix F.</b></p>
-      <p v-else>Isaac Ong, Amjad Almahairi, Vincent Wu, Wei-Lin Chiang, Tianhao Wu, Joseph E. Gonzalez, M Waleed Kadous, and Ion Stoica. 2025. <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html" target="_blank" rel="noopener">RouteLLM: Learning to Route LLMs from Preference Data.</a> In <em>Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)</em>. <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf" target="_blank" rel="noopener">Official proceedings, Table 1, §5.1.</a></p>
+      <p v-else>Isaac Ong, Amjad Almahairi, Vincent Wu, Wei-Lin Chiang, Tianhao Wu, Joseph E. Gonzalez, M Waleed Kadous, and Ion Stoica. 2025. <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html" target="_blank" rel="noopener">RouteLLM: Learning to Route LLMs from Preference Data.</a> In <em>Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)</em>. <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf" target="_blank" rel="noopener">Official proceedings, Tables 1 and 7; Appendix D.</a></p>
     </div>
   </section>
 </template>
@@ -76,15 +82,18 @@ aside { border-left:1px solid #c6c6c6; padding-left:30px; }
 .reference { position:absolute; left:72px; right:72px; bottom:83px; border-top:1px solid #c6c6c6; padding-top:12px; font-size:15px; line-height:1.45; color:#393939; }
 .reference a { color:#0043ce; text-decoration:none; }
 .reference a:hover { text-decoration:underline; }
-.route-heading { margin-top:25px; font-size:19px; color:#525252; }
+.route-heading { margin-top:18px; font-size:19px; color:#525252; }
 .route-grid { display:grid; grid-template-columns:205px 1fr 1fr; gap:38px; align-items:center; }
-.head { font-size:23px; margin-top:20px; padding-bottom:12px; border-bottom:1px solid #a8a8a8; }
+.head { font-size:23px; margin-top:14px; padding-bottom:10px; border-bottom:1px solid #a8a8a8; }
 .head small { font-size:17px; margin-left:10px; color:#525252; }
-.route-row { height:75px; font-size:26px; border-bottom:1px solid #d8dce2; }
+.route-row { height:66px; font-size:26px; border-bottom:1px solid #d8dce2; }
 .route-row b { display:block; font-size:36px; line-height:1.4; font-weight:500; }
 .route-row b small { font-size:22px; }
 .western .takeaway { font-size:25px; color:#0043ce; margin-top:12px; }
 .western .takeaway + .limits { margin-top:8px; }
+.call-share { display:block; font-size:17px; color:#525252; margin-top:3px; }
+.western .takeaway span { font-size:21px; }
+.western .cost-assumptions { font-size:16px; line-height:1.5; }
 @keyframes grow { from { transform:scaleX(0); } to { transform:scaleX(1); } }
 @keyframes appear { from { opacity:0; } to { opacity:1; } }
 .instant .track i,.instant b { animation:none; }
