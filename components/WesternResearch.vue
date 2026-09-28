@@ -20,8 +20,8 @@ const routingCost = 0.134 * baselineCost + 0.866 * (95 + 264) * 0.24 + 3.32
 const savings = (1 - routingCost / baselineCost) * 100
 const money = value => value.toLocaleString('en-US', { maximumFractionDigits: 0 })
 const routes = [
-  { name: '固定 GPT-4', score: 9.3, calls: 100, cost: baselineCost, color: '#697785' },
-  { name: 'RouteLLM', score: 8.8, calls: 13.4, cost: routingCost, color: '#0f62fe' },
+  { name: '固定 GPT-4', score: 9.3, calls: 100, cost: baselineCost, scoreColor: '#0f62fe', color: '#697785' },
+  { name: 'RouteLLM', score: 8.8, calls: 13.4, cost: routingCost, scoreColor: '#697785', color: '#0f62fe' },
 ]
 </script>
 
@@ -47,7 +47,7 @@ const routes = [
       <div class="route-grid head"><span>同一評測設定</span><span>評測分數 <small>0–10 分</small></span><span>推算費用 · USD <small>每百萬次請求</small></span></div>
       <div v-for="(row, index) in routes" :key="row.name" class="route-grid route-row" :style="{ '--delay': `${200 + index * 450}ms` }">
         <span>{{ row.name }}<small class="call-share">GPT-4 呼叫 {{ row.calls }}%</small></span>
-        <div><b :style="{ color: row.color }">{{ row.score.toFixed(1) }}<small> / 10</small></b><div class="track"><i :style="{ width: `${row.score * 10}%`, background: row.color }" /></div></div>
+        <div><b :style="{ color: row.scoreColor }">{{ row.score.toFixed(1) }}<small> / 10</small></b><div class="track"><i :style="{ width: `${row.score * 10}%`, background: row.scoreColor }" /></div></div>
         <div><b :style="{ color: row.color }">${{ money(row.cost) }}</b><div class="track"><i :style="{ width: `${row.cost / baselineCost * 100}%`, background: row.color }" /></div></div>
       </div>
       <p class="takeaway">推算節省 {{ savings.toFixed(1) }}% 費用 <span>／ 評分 9.3 → 8.8，約保留 95%</span></p>

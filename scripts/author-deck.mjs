@@ -127,9 +127,9 @@ for (const slide of hiddenStudies) {
   slide.note = '隱藏補充資料；不列入正式播放。\n' + slide.note
 }
 slides.splice(6, 0, {
-  frontmatter: { title:'SWE-Router：先探索，再判斷是否升級模型', class:'talk-page' },
-  content:'<SweRouterResearch />',
-  note:'14:40–14:41。Son等人（2026），SWE-Router，ICML 2026第五屆Deep Learning for Code工作坊，非主會議。UCL、UNIST、PSL、Basel。Table 2同一模型對GPT-5 mini/Gemini 3 Pro Preview：K=0與K=4的Route-AUC，SWE-bench Verified 0.549→0.709；SWE-Smith 0.626→0.546。兩組圖共用0–1顯示尺度（非指標理論上下限），由零起算。Route-AUC是成本—解題率曲線的正規化綜合量，不是成功率、美元或token節省比例；不能把0.160寫成解題率提升16個百分點。K是探索步數而非任務難度，無難度分組結論。升級模型從原始任務重啟，探索成本仍計入；非多代理協作。mix-1將SWE-bench 500題中的4/5用於訓練，保留測試100題。SWE-Smith跨程式庫分布變化導致部分路由不優於基準。方法採Qwen2.5-Coder-7B價值頭；所列歐美韓機構不代表模型來源全部為歐美。Table 1是收集資料費用，不當作路由節省數據。此研究不是Jev或IBM Bob的產品效益驗證。來源：https://arxiv.org/pdf/2607.00053，Table 2、§3、§5.1、Appendix A–B。',
+  frontmatter: { title:'RouterArena：不同難度下的品質與費用取捨', class:'talk-page' },
+  content:'<RouterArenaResearch />',
+  note:'14:40-14:41. RouterArena Table 6: GPT-5 vs Azure Router, easy 95.1/$5.68 vs 93.3/$0.30; medium 68.6/$14.80 vs 59.5/$0.63; hard 27.5/$35.73 vs 17.9/$1.05. Accuracy in percent; USD per 1000 queries. Difficulty: number of correct models among 42; easy >=20, medium 5-19, hard <=4. General query benchmark, not a multi-turn coding agent evaluation. Different model pools; GPT-5 is a service baseline with potential internal routing. No causal claim that harder tasks benefit more from multiple models. Not a Jev or IBM Bob product evaluation. Source: https://arxiv.org/pdf/2510.00202, Table 6 and section 6.3.',
 })
 slides.push(...hiddenStudies)
 for (const slide of slides) {
