@@ -29,7 +29,6 @@ const routes = [
   <section :key="replay" class="western" :class="{ instant: !active || $renderContext === 'print' }">
     <p class="eyebrow">{{ kind === 'agents' ? 'RESEARCH 01B · GOOGLE × MIT' : 'RESEARCH 02B · ROUTELLM' }}</p>
     <h1>{{ kind === 'agents' ? '程式修復：更多代理，未必更好。' : '保留約 95% 評分，減少昂貴模型呼叫。' }}</h1>
-    <p class="context">{{ kind === 'agents' ? 'Google Research / DeepMind · MIT ／ 2026.04 · arXiv v3 預印本' : 'UC Berkeley · Anyscale · Canva ／ ICLR 2025 · 同儕審查論文' }}</p>
 
     <template v-if="kind === 'agents'">
       <div class="agent-layout">
@@ -39,7 +38,7 @@ const routes = [
             <span>{{ row.name }}</span><div class="track"><i :style="{ width: `${row.value / 60 * 100}%`, background: index === 0 ? '#0f62fe' : '#697785' }" /></div><b>{{ row.value.toFixed(1) }}%</b>
           </div>
         </div>
-        <aside><p class="aside-label">比較結果</p><h2>此設定下，<br>單代理平均較佳。</h2><p>程式修復需要共享上下文；<br>協作效益取決於任務結構。</p><p class="counterpoint">同篇研究中，可拆分的金融分析任務則受益於多代理。</p></aside>
+        <aside><p class="aside-label">比較結果</p><h2>這組程式修復測試，<br>單代理平均較佳。</h2><p>程式修復需要共享上下文；<br>協作效益取決於任務結構。</p><p class="counterpoint">同篇研究中，可拆分的金融分析任務則受益於多代理。</p></aside>
       </div>
       <p class="limits">20 題子集、8 種模型；單一配置信賴區間寬。此圖不代表所有程式任務，也不提供同設定費用比較。</p>
     </template>
