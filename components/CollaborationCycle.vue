@@ -6,11 +6,11 @@ const active = computed(() => $page.value === $nav.value.currentSlideNo)
 const replay = ref(0)
 watch(active, value => { if (value) replay.value++ })
 const stages = [
-  { name: '釐清', human: '說明目標與限制', ai: '探索現況、提出問題', tx: 796, ty: 10, color: '#0043ce', leader: 'M568 23 H779' },
-  { name: '規劃', human: '選擇方案與取捨', ai: '提出步驟與設計', tx: 838, ty: 151, color: '#0f62fe', leader: 'M762 162 H821' },
-  { name: '實作', human: '確認範圍、處理分歧', ai: '分段修改程式', tx: 792, ty: 321, color: '#0072c3', leader: 'M695 390 H775' },
-  { name: '驗證', human: '判斷是否符合需求', ai: '執行測試、呈現結果', tx: 10, ty: 321, color: '#005d5d', leader: 'M332 390 H441' },
-  { name: '回饋', human: '指出差距、調整方向', ai: '修正並更新文件', tx: 10, ty: 151, color: '#003a6d', leader: 'M332 162 H374' },
+  { name: '釐清', human: '說明目標與限制', ai: '探索現況、提出問題', tx: 796, ty: 10, color: '#0043ce', leader: 'M568 27 V12 H779' },
+  { name: '規劃', human: '選擇方案與取捨', ai: '提出步驟與設計', tx: 838, ty: 151, color: '#0f62fe', leader: 'M750 155 L777 132 H821' },
+  { name: '實作', human: '確認範圍、處理分歧', ai: '分段修改程式', tx: 792, ty: 321, color: '#0072c3', leader: 'M695 362 L723 390 H775' },
+  { name: '驗證', human: '判斷是否符合需求', ai: '執行測試、呈現結果', tx: 10, ty: 321, color: '#005d5d', leader: 'M441 362 L413 390 H332' },
+  { name: '回饋', human: '指出差距、調整方向', ai: '修正並更新文件', tx: 10, ty: 151, color: '#003a6d', leader: 'M386 155 L359 132 H332' },
 ]
 const point = (angle, radius = 149) => ({ x: 568 + radius * Math.cos(angle * Math.PI / 180), y: 215 + radius * Math.sin(angle * Math.PI / 180) })
 const coords = p => `${p.x} ${p.y}`
@@ -36,17 +36,18 @@ const nodes = stages.map((stage, i) => {
         <g id="cycle-human" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10" cy="6" r="3.5"/><path d="M3 21v-4a7 7 0 0 1 14 0v4M6 18v3m8-3v3"/></g>
         <g id="cycle-ai" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="6" width="17" height="14" rx="2"/><path d="M10.5 2v4M0 11v5m21-5v5M7 16h7"/><circle cx="7" cy="11" r=".7"/><circle cx="14" cy="11" r=".7"/></g>
       </defs>
-      <g v-for="(stage, i) in nodes" :key="stage.name" :style="{ '--delay': `${i * .9}s` }">
+      <g v-for="(stage, i) in nodes" :key="stage.name" :style="{ '--ring-delay': `${i * .07}s`, '--line-delay': `${.7 + i * .055}s`, '--copy-delay': `${1.2 + i * .055}s` }">
+        <g class="ring-piece">
         <path :d="stage.path" :fill="stage.color" stroke="#f4f4f4" stroke-width="4" stroke-linejoin="round" class="ring-segment" />
-        <path :d="stage.path" fill="#fff" class="segment-light" />
         <text :x="stage.x" :y="stage.y-12" text-anchor="middle" class="number">0{{ i+1 }}</text>
         <text :x="stage.x" :y="stage.y+21" text-anchor="middle" class="ring-title">{{ stage.name }}</text>
-        <path :d="stage.leader" fill="none" :stroke="stage.color" stroke-width="1.5" opacity=".5" />
-        <g :transform="`translate(${stage.tx} ${stage.ty})`" class="stage-copy">
+        </g>
+        <path :d="stage.leader" class="leader" pathLength="1" fill="none" :stroke="stage.color" stroke-width="1.5" stroke-linejoin="round" opacity=".65" />
+        <g :transform="`translate(${stage.tx} ${stage.ty})`"><g class="stage-copy">
           <text class="stage-title" :fill="stage.color" x="0" y="0">0{{ i+1 }} · {{ stage.name }}</text>
           <g transform="translate(0 19)" class="human"><use href="#cycle-human"/><text x="31" y="19">人｜{{ stage.human }}</text></g>
           <g transform="translate(0 50)" class="ai"><use href="#cycle-ai"/><text x="31" y="19">AI｜{{ stage.ai }}</text></g>
-        </g>
+        </g></g>
       </g>
       <text x="568" y="213" text-anchor="middle" class="center-title">共同理解</text>
       <text x="568" y="251" text-anchor="middle" class="center-subtitle">在每一輪中累積</text>
@@ -64,15 +65,17 @@ h1{font-size:42px!important;line-height:1.2!important;margin:12px 0 10px!importa
 .stage-title{font-size:20px;font-weight:600}
 .stage-copy text:not(.stage-title){font-size:21px;fill:currentColor}
 .human{color:#393939}.ai{color:#0043ce}
-.number{font-size:18px;fill:#fff;opacity:.85}.ring-title{font-size:28px;font-weight:600;fill:#fff}
-.ring-segment{animation:segment-enter .65s cubic-bezier(.16,1,.3,1) var(--delay) both;transform-box:fill-box;transform-origin:center}
-.segment-light{opacity:0;animation:segment-light 1.2s ease-in-out var(--delay) both;pointer-events:none}
+.number{font-size:18px;fill:#fff;opacity:.85}.ring-title{font-size:24px;font-weight:600;fill:#fff}
+.ring-piece{animation:segment-enter .4s cubic-bezier(.16,1,.3,1) var(--ring-delay) both;transform-box:fill-box;transform-origin:center}
+.leader{stroke-dasharray:1;stroke-dashoffset:0;animation:line-wipe .28s ease-out var(--line-delay) both}
+.stage-copy{animation:copy-enter .28s cubic-bezier(.16,1,.3,1) var(--copy-delay) both}
 .center-title{font-size:30px;font-weight:600;fill:#0043ce}.center-subtitle{font-size:20px;fill:#525252}
 .sources{position:absolute;bottom:80px;left:72px;right:72px;border-top:1px solid #d6d6d6;padding-top:10px;font-size:12px;color:#525252}
 .sources a{color:#525252;text-decoration:none;border-bottom:1px dotted #8d8d8d}
-@keyframes segment-enter{from{opacity:.3;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
-@keyframes segment-light{0%,100%{opacity:0}30%{opacity:.22}}
-.instant .ring-segment,.instant .segment-light{animation:none}
-@media(prefers-reduced-motion:reduce){.ring-segment,.segment-light{animation:none!important}}
-@media print{.ring-segment,.segment-light{animation:none!important}.replay{display:none}}
+@keyframes segment-enter{from{opacity:0;transform:translateY(7px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes line-wipe{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes copy-enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.instant .ring-piece,.instant .leader,.instant .stage-copy{animation:none}
+@media(prefers-reduced-motion:reduce){.ring-piece,.leader,.stage-copy{animation:none!important}}
+@media print{.ring-piece,.leader,.stage-copy{animation:none!important}.replay{display:none}}
 </style>
