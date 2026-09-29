@@ -174,6 +174,19 @@ hideInToc: false
 -->
 
 ---
+title: 人機協作短迴圈：小步實作、持續校準
+class: talk-page
+hide: false
+hideInToc: false
+---
+
+<CollaborationCycle />
+
+<!--
+五階段為跨來源歸納，非 Bob 官方標準 SDLC。順時針由釐清、規劃、實作、驗證到回饋，回到釐清；重要決策由人掌握，AI 可連續完成一段工作，不代表每一步都要人工核准。資料：IBM AI pair programming 教學；Rahul Garg (2026-03-03), Design-First Collaboration。必要時重播一次循環，講解每階段的人與 AI 分工。
+-->
+
+---
 title: 減少協作浪費，才是節省 token 的關鍵
 class: talk-page
 hide: false
