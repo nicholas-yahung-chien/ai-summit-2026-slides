@@ -40,7 +40,8 @@ const nodes = stages.map((stage, i) => {
       <g v-for="(stage, i) in nodes" :key="stage.name" :style="{ '--ring-delay': `${i * .22}s`, '--line-delay': `${2.2 + i * .18}s`, '--copy-delay': `${4 + i * .18}s` }">
         <g class="ring-piece">
         <circle :cx="stage.x" :cy="stage.y" r="53" :fill="stage.color" opacity=".045" />
-        <path :d="stage.path" fill="none" :stroke="stage.color" stroke-width="6" stroke-linecap="round" :marker-end="`url(#local-arrow-${i})`" class="ring-segment" />
+        <path :d="stage.path" pathLength="1" fill="none" :stroke="stage.color" stroke-width="6" stroke-linecap="round" class="ring-segment" />
+        <path :d="stage.path" fill="none" stroke="transparent" stroke-width="6" :marker-end="`url(#local-arrow-${i})`" class="loop-arrow" />
         <text :x="stage.x" :y="stage.y-14" text-anchor="middle" class="number" :fill="stage.color">0{{ i+1 }}</text>
         <text :x="stage.x" :y="stage.y+16" text-anchor="middle" class="ring-title" :fill="stage.color">{{ stage.name }}</text>
         <text :x="stage.x" :y="stage.y+38" text-anchor="middle" class="loop-caption">提出 · 檢視 · 修正</text>
@@ -70,7 +71,9 @@ h1{font-size:42px!important;line-height:1.2!important;margin:12px 0 10px!importa
 .stage-copy text:not(.stage-title){font-size:21px;fill:currentColor}
 .human{color:#393939}.ai{color:#0043ce}
 .number{font-size:16px;opacity:.85}.ring-title{font-size:24px;font-weight:600}.loop-caption{font-size:11px;fill:#525252}
-.ring-piece{animation:segment-enter 1.1s cubic-bezier(.16,1,.3,1) var(--ring-delay) both;transform-box:fill-box;transform-origin:center}
+.ring-piece{animation:segment-enter .35s cubic-bezier(.16,1,.3,1) var(--ring-delay) both;transform-box:fill-box;transform-origin:center}
+.ring-segment{stroke-dasharray:1;stroke-dashoffset:0;animation:line-wipe 1.1s linear var(--ring-delay) both}
+.loop-arrow{animation:arrow-reveal .16s ease-out calc(var(--ring-delay) + 1.1s) both}
 .leader{stroke-dasharray:1;stroke-dashoffset:0;animation:line-wipe .8s ease-out var(--line-delay) both}
 .stage-copy{animation:copy-enter .8s cubic-bezier(.16,1,.3,1) var(--copy-delay) both}
 .center-title{font-size:25px;font-weight:600;fill:#0043ce}.center-subtitle{font-size:15px;fill:#525252}
@@ -78,8 +81,9 @@ h1{font-size:42px!important;line-height:1.2!important;margin:12px 0 10px!importa
 .sources a{color:#525252;text-decoration:none;border-bottom:1px dotted #8d8d8d}
 @keyframes segment-enter{from{opacity:0;transform:translateY(7px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes line-wipe{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes arrow-reveal{from{opacity:0}to{opacity:1}}
 @keyframes copy-enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-.instant .ring-piece,.instant .leader,.instant .stage-copy{animation:none}
-@media(prefers-reduced-motion:reduce){.ring-piece,.leader,.stage-copy{animation:none!important}}
-@media print{.ring-piece,.leader,.stage-copy{animation:none!important}.replay{display:none}}
+.instant .ring-piece,.instant .ring-segment,.instant .loop-arrow,.instant .leader,.instant .stage-copy{animation:none}
+@media(prefers-reduced-motion:reduce){.ring-piece,.ring-segment,.loop-arrow,.leader,.stage-copy{animation:none!important}}
+@media print{.ring-piece,.ring-segment,.loop-arrow,.leader,.stage-copy{animation:none!important}.replay{display:none}}
 </style>
