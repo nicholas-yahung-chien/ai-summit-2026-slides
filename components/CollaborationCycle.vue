@@ -36,7 +36,7 @@ const nodes = stages.map((stage, i) => {
         <g id="cycle-human" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10" cy="6" r="3.5"/><path d="M3 21v-4a7 7 0 0 1 14 0v4M6 18v3m8-3v3"/></g>
         <g id="cycle-ai" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="6" width="17" height="14" rx="2"/><path d="M10.5 2v4M0 11v5m21-5v5M7 16h7"/><circle cx="7" cy="11" r=".7"/><circle cx="14" cy="11" r=".7"/></g>
       </defs>
-      <g v-for="(stage, i) in nodes" :key="stage.name" :style="{ '--ring-delay': `${i * .11}s`, '--line-delay': `${1.1 + i * .085}s`, '--copy-delay': `${1.9 + i * .085}s` }">
+      <g v-for="(stage, i) in nodes" :key="stage.name" :style="{ '--ring-delay': `${i * .22}s`, '--line-delay': `${2.2 + i * .18}s`, '--copy-delay': `${4 + i * .18}s` }">
         <g class="ring-piece">
         <path :d="stage.path" :fill="stage.color" stroke="#f4f4f4" stroke-width="4" stroke-linejoin="round" class="ring-segment" />
         <text :x="stage.x" :y="stage.y-12" text-anchor="middle" class="number">0{{ i+1 }}</text>
@@ -66,9 +66,9 @@ h1{font-size:42px!important;line-height:1.2!important;margin:12px 0 10px!importa
 .stage-copy text:not(.stage-title){font-size:21px;fill:currentColor}
 .human{color:#393939}.ai{color:#0043ce}
 .number{font-size:18px;fill:#fff;opacity:.85}.ring-title{font-size:24px;font-weight:600;fill:#fff}
-.ring-piece{animation:segment-enter .6s cubic-bezier(.16,1,.3,1) var(--ring-delay) both;transform-box:fill-box;transform-origin:center}
-.leader{stroke-dasharray:1;stroke-dashoffset:0;animation:line-wipe .42s ease-out var(--line-delay) both}
-.stage-copy{animation:copy-enter .42s cubic-bezier(.16,1,.3,1) var(--copy-delay) both}
+.ring-piece{animation:segment-enter 1.1s cubic-bezier(.16,1,.3,1) var(--ring-delay) both;transform-box:fill-box;transform-origin:center}
+.leader{stroke-dasharray:1;stroke-dashoffset:0;animation:line-wipe .8s ease-out var(--line-delay) both}
+.stage-copy{animation:copy-enter .8s cubic-bezier(.16,1,.3,1) var(--copy-delay) both}
 .center-title{font-size:30px;font-weight:600;fill:#0043ce}.center-subtitle{font-size:20px;fill:#525252}
 .sources{position:absolute;bottom:80px;left:72px;right:72px;border-top:1px solid #d6d6d6;padding-top:10px;font-size:12px;color:#525252}
 .sources a{color:#525252;text-decoration:none;border-bottom:1px dotted #8d8d8d}
