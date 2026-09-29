@@ -42,7 +42,7 @@ const sortedRows = order.map(name => ({ ...rows.find(row => row.name === name), 
       <colgroup><col style="width:22%"><col style="width:29%"><col style="width:29%"><col style="width:20%"></colgroup>
       <thead><tr><th>方法／人的參與</th><th>典型流程</th><th>文件與留存產物</th><th>代表實作</th></tr></thead>
       <tbody><tr v-for="row in sortedRows" :key="row.name">
-        <th><strong>{{ row.name }}</strong><small v-if="row.name === 'AI 結對程式設計'">AI Pair Programming</small><small>{{ row.human }}</small></th>
+        <th><strong>{{ row.name }}</strong><small>{{ row.human }}</small></th>
         <td class="flow"><span v-for="line in row.steps" :key="line">{{ line }}</span></td>
         <td class="documents"><b>{{ row.docs }}</b><small>{{ row.detail }}</small></td>
         <td><div class="examples"><a v-for="example in row.examples" :key="example.name" :href="example.url" target="_blank" rel="noopener">{{ example.name }} ↗</a></div></td>
