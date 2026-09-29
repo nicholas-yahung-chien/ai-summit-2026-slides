@@ -161,6 +161,19 @@ Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題�
 -->
 
 ---
+title: AI 代理時代的軟體開發生命週期
+class: talk-page gateway-research-page
+hide: false
+hideInToc: false
+---
+
+<AgenticLifecycle />
+
+<!--
+依官方文件歸納六類可組合的方法，並非六套互斥標準或市占率排名。AI-DLC 涵蓋完整生命週期；SDD 著重規格到驗收；人機短迴圈、測試驗證、Issue-to-PR 與 Continuous AI 是不同範圍的工作流程。這些為已存在的代理開發實務，不假設 AGI 已實現。多代理、多模型與 harness 為實作架構選擇，非另一套 SDLC。
+-->
+
+---
 title: 減少協作浪費，才是節省 token 的關鍵
 class: talk-page
 hide: false
