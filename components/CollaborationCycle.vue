@@ -7,19 +7,18 @@ const replay = ref(0)
 watch(active, value => { if (value) replay.value++ })
 const stages = [
   { name: '釐清', human: '說明目標與限制', ai: '探索現況、提出問題', tx: 796, ty: 10, color: '#0043ce', leader: 'M568 27 V12 H779' },
-  { name: '規劃', human: '選擇方案與取捨', ai: '提出步驟與設計', tx: 838, ty: 151, color: '#0f62fe', leader: 'M750 155 L777 132 H821' },
-  { name: '實作', human: '確認範圍、處理分歧', ai: '分段修改程式', tx: 792, ty: 321, color: '#0072c3', leader: 'M695 362 L723 390 H775' },
-  { name: '驗證', human: '判斷是否符合需求', ai: '執行測試、呈現結果', tx: 10, ty: 321, color: '#005d5d', leader: 'M441 362 L413 390 H332' },
-  { name: '回饋', human: '指出差距、調整方向', ai: '修正並更新文件', tx: 10, ty: 125, color: '#003a6d', leader: 'M386 155 L359 132 H332' },
+  { name: '規劃', human: '選擇方案與取捨', ai: '提出步驟與設計', tx: 838, ty: 151, color: '#0f62fe', leader: 'M763 155 L790 132 H821' },
+  { name: '實作', human: '確認範圍、處理分歧', ai: '分段修改程式', tx: 792, ty: 321, color: '#0072c3', leader: 'M703 373 L723 390 H775' },
+  { name: '驗證', human: '判斷是否符合需求', ai: '執行測試、呈現結果', tx: 10, ty: 321, color: '#005d5d', leader: 'M433 373 L413 390 H332' },
+  { name: '回饋', human: '整合成果、確認下一輪', ai: '整理決策、更新文件', tx: 10, ty: 125, color: '#003a6d', leader: 'M373 155 L346 132 H332' },
 ]
-const point = (angle, radius = 149) => ({ x: 568 + radius * Math.cos(angle * Math.PI / 180), y: 215 + radius * Math.sin(angle * Math.PI / 180) })
+const point = (angle, radius = 140) => ({ x: 568 + radius * Math.cos(angle * Math.PI / 180), y: 215 + radius * Math.sin(angle * Math.PI / 180) })
 const coords = p => `${p.x} ${p.y}`
 const nodes = stages.map((stage, i) => {
   const angle = -90 + i * 72
-  const start = angle - 36, end = angle + 34
-  const outerStart = point(start, 184), outerEnd = point(end, 184)
-  const tip = point(end + 12, 149), innerEnd = point(end, 114), innerStart = point(start, 114), notch = point(start + 12, 149)
-  return { ...stage, ...point(angle - 3), path: `M ${coords(outerStart)} A184 184 0 0 1 ${coords(outerEnd)} L${coords(tip)} L${coords(innerEnd)} A114 114 0 0 0 ${coords(innerStart)} L${coords(notch)} Z` }
+  const center = point(angle)
+  const local = degrees => ({ x: center.x + 62 * Math.cos(degrees * Math.PI / 180), y: center.y + 62 * Math.sin(degrees * Math.PI / 180) })
+  return { ...stage, ...center, path: `M${coords(local(-65))} A62 62 0 1 1 ${coords(local(255))}`, next: `M${coords(point(angle + 29))} A140 140 0 0 1 ${coords(point(angle + 43))}` }
 })
 </script>
 
@@ -27,20 +26,25 @@ const nodes = stages.map((stage, i) => {
   <section class="collaboration-cycle" :class="{ instant: !active || $renderContext === 'print' }">
     <p class="eyebrow">07 · HUMAN–AI COLLABORATION</p>
     <h1>人機協作短迴圈：小步實作、持續校準</h1>
-    <p class="intro">人決定方向，AI 推進工作，每一輪都用結果確認下一步</p>
+    <p class="intro">每個階段都反覆提出、檢視與修正，必要時回到前一階段</p>
     <button class="replay" @click="replay++" aria-label="重播五階段循環動畫">重播循環 ↻</button>
     <svg :key="replay" class="cycle" viewBox="0 0 1136 450" role="img" aria-labelledby="cycle-title cycle-desc">
       <title id="cycle-title">人機協作短迴圈的五個階段</title>
-      <desc id="cycle-desc">由釐清、規劃、實作、驗證到回饋，再回到釐清，每個階段列出人與 AI 的工作</desc>
+      <desc id="cycle-desc">五個相連的小迴圈代表釐清、規劃、實作、驗證與回饋，各階段內反覆提出、檢視與修正，必要時可回到前一階段；第五階段回饋是整合成果與確認下一輪方向</desc>
       <defs>
+        <marker v-for="(stage,i) in nodes" :id="`local-arrow-${i}`" :key="stage.name" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M1 1 L9 5 L1 9 Z" :fill="stage.color" /></marker>
+        <marker id="stage-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8d9db3" stroke-width="1.5"/></marker>
         <g id="cycle-human" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10" cy="6" r="3.5"/><path d="M3 21v-4a7 7 0 0 1 14 0v4M6 18v3m8-3v3"/></g>
         <g id="cycle-ai" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="6" width="17" height="14" rx="2"/><path d="M10.5 2v4M0 11v5m21-5v5M7 16h7"/><circle cx="7" cy="11" r=".7"/><circle cx="14" cy="11" r=".7"/></g>
       </defs>
       <g v-for="(stage, i) in nodes" :key="stage.name" :style="{ '--ring-delay': `${i * .22}s`, '--line-delay': `${2.2 + i * .18}s`, '--copy-delay': `${4 + i * .18}s` }">
         <g class="ring-piece">
-        <path :d="stage.path" :fill="stage.color" stroke="#f4f4f4" stroke-width="4" stroke-linejoin="round" class="ring-segment" />
-        <text :x="stage.x" :y="stage.y-12" text-anchor="middle" class="number">0{{ i+1 }}</text>
-        <text :x="stage.x" :y="stage.y+21" text-anchor="middle" class="ring-title">{{ stage.name }}</text>
+        <circle :cx="stage.x" :cy="stage.y" r="53" :fill="stage.color" opacity=".045" />
+        <path :d="stage.path" fill="none" :stroke="stage.color" stroke-width="6" stroke-linecap="round" :marker-end="`url(#local-arrow-${i})`" class="ring-segment" />
+        <text :x="stage.x" :y="stage.y-14" text-anchor="middle" class="number" :fill="stage.color">0{{ i+1 }}</text>
+        <text :x="stage.x" :y="stage.y+16" text-anchor="middle" class="ring-title" :fill="stage.color">{{ stage.name }}</text>
+        <text :x="stage.x" :y="stage.y+38" text-anchor="middle" class="loop-caption">提出 · 檢視 · 修正</text>
+        <path :d="stage.next" fill="none" stroke="#8d9db3" stroke-width="2" marker-end="url(#stage-arrow)" />
         </g>
         <path :d="stage.leader" class="leader" pathLength="1" fill="none" :stroke="stage.color" stroke-width="1.5" stroke-linejoin="round" opacity=".65" />
         <g :transform="`translate(${stage.tx} ${stage.ty})`"><g class="stage-copy">
@@ -50,7 +54,7 @@ const nodes = stages.map((stage, i) => {
         </g></g>
       </g>
       <text x="568" y="213" text-anchor="middle" class="center-title">共同理解</text>
-      <text x="568" y="251" text-anchor="middle" class="center-subtitle">在每一輪中累積</text>
+      <text x="568" y="241" text-anchor="middle" class="center-subtitle">在每一輪中累積</text>
     </svg>
     <p class="sources">流程依下列資料歸納：<a href="https://bob.ibm.com/docs/ide/tutorials/ai-pair-programming-with-ibm-bob" target="_blank" rel="noopener">IBM · AI pair programming with IBM Bob</a> · <a href="https://www.martinfowler.com/articles/reduce-friction-ai/design-first-collaboration.html" target="_blank" rel="noopener">Garg (2026) · Design-First Collaboration</a></p>
   </section>
@@ -65,11 +69,11 @@ h1{font-size:42px!important;line-height:1.2!important;margin:12px 0 10px!importa
 .stage-title{font-size:20px;font-weight:600}
 .stage-copy text:not(.stage-title){font-size:21px;fill:currentColor}
 .human{color:#393939}.ai{color:#0043ce}
-.number{font-size:18px;fill:#fff;opacity:.85}.ring-title{font-size:24px;font-weight:600;fill:#fff}
+.number{font-size:16px;opacity:.85}.ring-title{font-size:24px;font-weight:600}.loop-caption{font-size:11px;fill:#525252}
 .ring-piece{animation:segment-enter 1.1s cubic-bezier(.16,1,.3,1) var(--ring-delay) both;transform-box:fill-box;transform-origin:center}
 .leader{stroke-dasharray:1;stroke-dashoffset:0;animation:line-wipe .8s ease-out var(--line-delay) both}
 .stage-copy{animation:copy-enter .8s cubic-bezier(.16,1,.3,1) var(--copy-delay) both}
-.center-title{font-size:30px;font-weight:600;fill:#0043ce}.center-subtitle{font-size:20px;fill:#525252}
+.center-title{font-size:25px;font-weight:600;fill:#0043ce}.center-subtitle{font-size:15px;fill:#525252}
 .sources{position:absolute;bottom:80px;left:72px;right:72px;border-top:1px solid #d6d6d6;padding-top:10px;font-size:12px;color:#525252}
 .sources a{color:#525252;text-decoration:none;border-bottom:1px dotted #8d8d8d}
 @keyframes segment-enter{from{opacity:0;transform:translateY(7px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
