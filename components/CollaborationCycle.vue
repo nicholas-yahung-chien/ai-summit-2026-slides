@@ -32,7 +32,7 @@ const nodes = stages.map((stage, i) => {
       <title id="cycle-title">人機協作短迴圈的五個階段</title>
       <desc id="cycle-desc">五個相連的小迴圈代表釐清、規劃、實作、驗證與回饋，各階段內反覆提出、檢視與修正，必要時可回到前一階段；第五階段回饋是整合成果與確認下一輪方向</desc>
       <defs>
-        <marker v-for="(stage,i) in nodes" :id="`local-arrow-${i}`" :key="stage.name" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M1 1 L9 5 L1 9 Z" :fill="stage.color" /></marker>
+        <marker v-for="(stage,i) in nodes" :id="`local-arrow-${i}`" :key="stage.name" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M1 1 L9 5 L1 9 Z" :fill="stage.color" /></marker>
         <marker id="stage-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8d9db3" stroke-width="1.5"/></marker>
         <g id="cycle-human" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10" cy="6" r="3.5"/><path d="M3 21v-4a7 7 0 0 1 14 0v4M6 18v3m8-3v3"/></g>
         <g id="cycle-ai" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="6" width="17" height="14" rx="2"/><path d="M10.5 2v4M0 11v5m21-5v5M7 16h7"/><circle cx="7" cy="11" r=".7"/><circle cx="14" cy="11" r=".7"/></g>
@@ -40,7 +40,7 @@ const nodes = stages.map((stage, i) => {
       <g v-for="(stage, i) in nodes" :key="stage.name" :style="{ '--ring-delay': `${i * .22}s`, '--line-delay': `${2.2 + i * .18}s`, '--copy-delay': `${4 + i * .18}s` }">
         <g class="ring-piece">
         <circle :cx="stage.x" :cy="stage.y" r="53" :fill="stage.color" opacity=".045" />
-        <path :d="stage.path" pathLength="1" fill="none" :stroke="stage.color" stroke-width="6" stroke-linecap="round" class="ring-segment" />
+        <path :d="stage.path" pathLength="1" fill="none" :stroke="stage.color" stroke-width="6" stroke-linecap="butt" class="ring-segment" />
         <path :d="stage.path" fill="none" stroke="transparent" stroke-width="6" :marker-end="`url(#local-arrow-${i})`" class="loop-arrow" />
         <text :x="stage.x" :y="stage.y-14" text-anchor="middle" class="number" :fill="stage.color">0{{ i+1 }}</text>
         <text :x="stage.x" :y="stage.y+16" text-anchor="middle" class="ring-title" :fill="stage.color">{{ stage.name }}</text>
