@@ -10,7 +10,7 @@ const stages = [
   { name: '規劃', human: '選擇方案與取捨', ai: '提出步驟與設計', tx: 838, ty: 151, color: '#0f62fe', leader: 'M750 155 L777 132 H821' },
   { name: '實作', human: '確認範圍、處理分歧', ai: '分段修改程式', tx: 792, ty: 321, color: '#0072c3', leader: 'M695 362 L723 390 H775' },
   { name: '驗證', human: '判斷是否符合需求', ai: '執行測試、呈現結果', tx: 10, ty: 321, color: '#005d5d', leader: 'M441 362 L413 390 H332' },
-  { name: '回饋', human: '指出差距、調整方向', ai: '修正並更新文件', tx: 10, ty: 151, color: '#003a6d', leader: 'M386 155 L359 132 H332' },
+  { name: '回饋', human: '指出差距、調整方向', ai: '修正並更新文件', tx: 10, ty: 125, color: '#003a6d', leader: 'M386 155 L359 132 H332' },
 ]
 const point = (angle, radius = 149) => ({ x: 568 + radius * Math.cos(angle * Math.PI / 180), y: 215 + radius * Math.sin(angle * Math.PI / 180) })
 const coords = p => `${p.x} ${p.y}`

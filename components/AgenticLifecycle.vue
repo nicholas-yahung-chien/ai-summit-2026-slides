@@ -20,7 +20,7 @@ const rows = [
 }))
 const order = ['人機協作短迴圈', 'AI-DLC', 'SDD', '測試與驗收驅動', 'Issue-to-PR', 'Continuous AI']
 const evidence = {
-  '人機協作短迴圈': { human: '持續討論與逐步審查', docs: '依需求產生', detail: '計畫、技術文件；Bob 教學有留存', steps: ['探索 → 規劃 → 修改', '驗證 → 回饋'] },
+  '人機協作短迴圈': { human: '持續討論與逐步審查', docs: '依需求產生', detail: '計畫、技術文件', steps: ['探索 → 規劃 → 修改', '驗證 → 回饋'] },
   'AI-DLC': { human: '團隊協作與關鍵決策', docs: '明確留存', detail: '需求、計畫、設計存入儲存庫', steps: ['業務意圖 → 需求釐清', '建構驗證 → 部署營運'] },
   'SDD': { human: '審核規格與階段成果', docs: '明確留存', detail: '規格、設計、任務清單', steps: ['規格 → 設計 → 任務拆解', '實作 → 對照規格驗收'] },
   '測試與驗收驅動': { human: '定義驗收、處理例外', docs: '測試產物為主', detail: '測試碼、驗證結果；設計文件另訂', steps: ['成功條件 → 測試 → 實作', '驗證 → 修正'] },
@@ -49,7 +49,7 @@ const sortedRows = order.map(name => ({ ...rows.find(row => row.name === name), 
       </tr></tbody>
     </table>
     </div>
-    <p class="sources">依各列官方文件歸納，排序為情境示意，非量測排名 · 無強制規格文件 ≠ 沒有留存產物 · 查閱日期 2026-09-29</p>
+    <p class="sources">依各列官方文件歸納 · 查閱日期 2026-09-29</p>
   </section>
 </template>
 <style scoped>
