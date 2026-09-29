@@ -174,7 +174,7 @@ hideInToc: false
 -->
 
 ---
-title: 人機協作短迴圈：小步實作、持續校準
+title: AI 結對程式設計：小步實作、持續校準
 class: talk-page
 hide: false
 hideInToc: false

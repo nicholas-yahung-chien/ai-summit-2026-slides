@@ -24,12 +24,12 @@ const nodes = stages.map((stage, i) => {
 
 <template>
   <section class="collaboration-cycle" :class="{ instant: !active || $renderContext === 'print' }">
-    <p class="eyebrow">07 · HUMAN–AI COLLABORATION</p>
-    <h1>人機協作短迴圈：小步實作、持續校準</h1>
+    <p class="eyebrow">07 · AI PAIR PROGRAMMING</p>
+    <h1>AI 結對程式設計：小步實作、持續校準</h1>
     <p class="intro">每個階段都反覆提出、檢視與修正，必要時回到前一階段</p>
     <button class="replay" @click="replay++" aria-label="重播五階段循環動畫">重播循環 ↻</button>
     <svg :key="replay" class="cycle" viewBox="0 0 1136 450" role="img" aria-labelledby="cycle-title cycle-desc">
-      <title id="cycle-title">人機協作短迴圈的五個階段</title>
+      <title id="cycle-title">AI 結對程式設計的五個階段</title>
       <desc id="cycle-desc">五個相連的小迴圈代表釐清、規劃、實作、驗證與回饋，各階段內反覆提出、檢視與修正，必要時可回到前一階段；第五階段回饋是整合成果與確認下一輪方向</desc>
       <defs>
         <marker v-for="(stage,i) in nodes" :id="`local-arrow-${i}`" :key="stage.name" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M1 1 L9 5 L1 9 Z" :fill="stage.color" /></marker>

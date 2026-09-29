@@ -8,19 +8,19 @@ watch(active, value => { if (value) replay.value++ })
 const rows = [
   { name: 'AI-DLC', label: 'AI 驅動的完整生命週期', flow: '業務意圖 → 需求釐清 → 建構驗證 → 部署營運', change: 'AI 提案與執行，人掌握關鍵決策', example: 'AWS AI-DLC', url: 'https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/' },
   { name: 'SDD', label: '規格驅動開發', flow: '規格 → 設計 → 任務拆解 → 實作驗收', change: '以持續維護的規格引導實作與驗收', example: 'GitHub Spec Kit · Kiro', url: 'https://github.github.com/spec-kit/reference/agentic-sdd.html' },
-  { name: '人機協作短迴圈', label: '工程師與代理共同推進', flow: '探索 → 規劃 → 修改 → 驗證 → 回饋', change: '工程師指導與審查，代理完成多步工作', example: 'Claude Code · IBM Bob', url: 'https://bob.ibm.com/docs/ide/tutorials/ai-pair-programming-with-ibm-bob' },
+  { name: 'AI 結對程式設計', label: '工程師與代理共同推進', flow: '探索 → 規劃 → 修改 → 驗證 → 回饋', change: '工程師指導與審查，代理完成多步工作', example: 'Claude Code · IBM Bob', url: 'https://bob.ibm.com/docs/ide/tutorials/ai-pair-programming-with-ibm-bob' },
   { name: '測試與驗收驅動', label: 'Agentic TDD／驗證迴圈', flow: '成功條件 → 測試 → 實作 → 驗證修正', change: '代理依可執行的檢查結果反覆改進', example: 'Claude Code 驗證流程', url: 'https://code.claude.com/docs/en/best-practices#give-claude-a-way-to-verify-its-work' },
   { name: 'Issue-to-PR', label: '任務委派式開發', flow: '任務 → 背景執行 → PR → 審查合併', change: '人交付明確任務，代理交回可審查變更', example: 'GitHub Copilot cloud agent', url: 'https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent' },
   { name: 'Continuous AI', label: '持續代理式工程', flow: '事件／排程 → 分析修正 → CI 驗證 → 回饋', change: '代理持續參與維護，補強現有 CI/CD', example: 'GitHub Agentic Workflows', url: 'https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/' },
 ].map(row => ({ ...row, examples: row.name === 'SDD'
   ? [{ name: 'GitHub Spec Kit', url: row.url }, { name: 'Kiro', url: 'https://kiro.dev/docs/specs/' }]
-  : row.name === '人機協作短迴圈'
+  : row.name === 'AI 結對程式設計'
     ? [{ name: 'Claude Code', url: 'https://code.claude.com/docs/en/best-practices#explore-first-then-plan-then-code' }, { name: 'IBM Bob', url: row.url }]
     : [{ name: row.example, url: row.url }]
 }))
-const order = ['人機協作短迴圈', 'AI-DLC', 'SDD', '測試與驗收驅動', 'Issue-to-PR', 'Continuous AI']
+const order = ['AI 結對程式設計', 'AI-DLC', 'SDD', '測試與驗收驅動', 'Issue-to-PR', 'Continuous AI']
 const evidence = {
-  '人機協作短迴圈': { human: '持續討論與逐步審查', docs: '依需求產生', detail: '計畫、技術文件', steps: ['探索 → 規劃 → 修改', '驗證 → 回饋'] },
+  'AI 結對程式設計': { human: '持續討論與逐步審查', docs: '依需求產生', detail: '計畫、技術文件', steps: ['探索 → 規劃 → 修改', '驗證 → 回饋'] },
   'AI-DLC': { human: '團隊協作與關鍵決策', docs: '明確留存', detail: '需求、計畫、設計存入儲存庫', steps: ['業務意圖 → 需求釐清', '建構驗證 → 部署營運'] },
   'SDD': { human: '審核規格與階段成果', docs: '明確留存', detail: '規格、設計、任務清單', steps: ['規格 → 設計 → 任務拆解', '實作 → 對照規格驗收'] },
   '測試與驗收驅動': { human: '定義驗收、處理例外', docs: '測試產物為主', detail: '測試碼、驗證結果；設計文件另訂', steps: ['成功條件 → 測試 → 實作', '驗證 → 修正'] },
@@ -42,7 +42,7 @@ const sortedRows = order.map(name => ({ ...rows.find(row => row.name === name), 
       <colgroup><col style="width:22%"><col style="width:29%"><col style="width:29%"><col style="width:20%"></colgroup>
       <thead><tr><th>方法／人的參與</th><th>典型流程</th><th>文件與留存產物</th><th>代表實作</th></tr></thead>
       <tbody><tr v-for="row in sortedRows" :key="row.name">
-        <th><strong>{{ row.name }}</strong><small>{{ row.human }}</small></th>
+        <th><strong>{{ row.name }}</strong><small v-if="row.name === 'AI 結對程式設計'">AI Pair Programming</small><small>{{ row.human }}</small></th>
         <td class="flow"><span v-for="line in row.steps" :key="line">{{ line }}</span></td>
         <td class="documents"><b>{{ row.docs }}</b><small>{{ row.detail }}</small></td>
         <td><div class="examples"><a v-for="example in row.examples" :key="example.name" :href="example.url" target="_blank" rel="noopener">{{ example.name }} ↗</a></div></td>
