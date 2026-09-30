@@ -140,7 +140,22 @@ hideInToc: false
 -->
 
 ---
-title: AI 路由在三種層次的比較：Bifrost vs Jev
+title: Jev 路由：選擇模型，也能調整推理強度
+class: talk-page
+---
+
+<JevRoutingEvidence />
+
+<!--
+兩種做法分別改變模型選擇與同一模型的推理強度，不是兩種多代理架構
+左：Khanna / Vaaya 2026-09-20 商業平台自測，50 個合成文字任務每組重複三次，控制 Opus 4.6，路由候選另含 Gemini 2.5 Flash Lite 與 GPT-4.1 Mini。總費用含 Jev 呼叫與平台費，由每次用量記錄加總；通過率衡量指定規則與格式，不是一般智慧或程式修復成功率
+右：robertn702 2026-09-25 社群彙整的 preselected holdout，6 個 SWE-bench Verified issue 各重複六次，非 36 個獨立任務。兩組均通過，不能證明所有任務品質相等。輸出含推理；耗時含路由。原報告未提供美元成本，不能將 16.3% 寫成節費率；輸入與快取也會影響帳單
+兩種資料都是早期自報實測，非同儕審查論文，不能比較左右百分比孰優。其他研究也可能未節費：LLM Gateway pilot 的中價固定模型較路由便宜，suenot 的親子代理完整流程也有增費結果，詳見 docs/jev-routing-evidence.md
+銜接：Jev 提供判斷，但企業上線還需要實際轉送、政策、備援與容量治理，下一頁說明責任分工
+-->
+
+---
+title: 從模型選擇到企業治理：Jev 與 Bifrost 的分工
 class: talk-page gateway-research-page
 hide: false
 hideInToc: false
