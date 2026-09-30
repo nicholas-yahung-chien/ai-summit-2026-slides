@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import ibmLogo from '../assets/ibm-logo.png'
 const replay = ref(0)
 // Deliberately nonuniform time spacing and illustrative heights; not measured growth.
 const points = [
@@ -22,6 +23,7 @@ const points = [
   {
     "date": "1997",
     "title": "Deep Blue",
+    "ibmLogoX": 238,
     "x": 340,
     "y": 507,
     "lx": 330,
@@ -30,6 +32,7 @@ const points = [
   {
     "date": "2011",
     "title": "Watson",
+    "ibmLogoX": 345,
     "x": 440,
     "y": 490,
     "lx": 425,
@@ -178,6 +181,7 @@ const curve = points.reduce((path,p,i) => {
         <text class="event-date" :transform="`translate(${p.x+3},577) rotate(-48)`" text-anchor="end">{{ p.date }}</text>
         <path :d="`M${p.x} ${p.y-12} L${p.lx} ${p.ly+12}`" fill="none" stroke="#8d8d8d" stroke-width="1" />
         <text class="event-label" :class="{'recent-label':i>=8}" :x="p.lx" :y="p.ly" text-anchor="middle">{{ p.title }}</text>
+        <image v-if="p.ibmLogoX !== undefined" :href="ibmLogo" :x="p.ibmLogoX" :y="p.ly-13" width="32" height="13" preserveAspectRatio="xMidYMid meet"><title>IBM</title></image>
       </g>
       <path class="curve-stroke" :d="curve" pathLength="1" fill="none" stroke="#0f62fe" stroke-width="4.5" stroke-linecap="round" />
       <g v-for="(p,i) in points" :key="p.title" class="event" :style="{animationDelay:`${i*.22}s`}">
