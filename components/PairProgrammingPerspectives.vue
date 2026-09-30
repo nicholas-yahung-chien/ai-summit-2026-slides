@@ -30,10 +30,10 @@ watch(active, value => { if (value) restart() })
         </div>
       </article>
       <article>
-        <div class="theme"><span>03</span><div><h2>改善機制<br>提升成果品質</h2><p class="scope">延伸觀點 · On the loop</p></div></div>
+        <div class="theme"><span>03</span><h2>小步迭代<br>及早修正</h2></div>
         <div class="quotation">
-          <AnimatedQuote english="We continuously improve the quality of the outcomes we get by continuously improving the harness." chinese="透過持續改善 harness，我們也持續提升成果品質" :delay="10000" :controls="false" :show-all="showAll" />
-          <p class="attribution">Morris, K. (2026, March 4). <a href="https://martinfowler.com/articles/exploring-gen-ai/humans-and-agents.html" target="_blank" rel="noopener"><cite>Humans and agents in software engineering loops</cite></a>. MartinFowler.com.</p>
+          <AnimatedQuote english="By iterating in small loops, we greatly reduce the chance of catastrophic errors and we can course-correct quickly." chinese="透過小步迴圈反覆改進，我們能大幅降低嚴重錯誤的機會，並迅速修正方向" :delay="10000" :controls="false" :show-all="showAll" />
+          <p class="attribution">Osmani, A. (2026, January 4). <a href="https://addyosmani.com/blog/ai-coding-workflow/" target="_blank" rel="noopener"><cite>My LLM coding workflow going into 2026</cite></a>. AddyOsmani.com.</p>
         </div>
       </article>
     </div>
@@ -51,7 +51,6 @@ article{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:12px 0 12p
 :deep(blockquote){border:0!important;padding:0!important;margin:0!important;background:none!important}
 :deep(.quote-en){font-size:22px;line-height:1.38;font-weight:500;color:#161616;letter-spacing:normal;margin:0}
 :deep(.quote-zh){font-size:21px;line-height:1.45;color:#0043ce;margin:8px 0 0;font-weight:400}
-.scope{font-size:11px;line-height:1.4;color:#525252;margin:5px 0 0}
 .speaker{font-size:12px;color:#525252;margin:0;line-height:1.3}
 .attribution{font-size:12px;line-height:1.45;color:#525252;margin:6px 0 0}
 .attribution a{color:inherit;text-decoration:none;border-bottom:1px dotted #8d8d8d}
