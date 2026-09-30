@@ -34,16 +34,16 @@
 </template>
 
 <style scoped>
-h1{font-size:38px!important;line-height:1.25!important;letter-spacing:-1px;margin:12px 0 24px!important}
+h1{font-size:38px!important;line-height:1.25!important;letter-spacing:-1px;margin:12px 0 16px!important}
 .perspectives{border-top:1px solid #a8b7c9}
-article{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:19px 0 17px;border-bottom:1px solid #d6dce4}
+article{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:12px 0 12px;border-bottom:1px solid #d6dce4}
 .theme{display:flex;gap:14px;border-right:2px solid #a6c8ff}
 .theme span{font-size:16px;color:#0f62fe;padding-top:4px}
 .theme h2{font-size:23px;line-height:1.45;font-weight:600;color:#0043ce;margin:0}
 blockquote{font-size:22px;line-height:1.38;font-weight:500;color:#161616;border:0!important;padding:0!important;margin:0!important;background:none!important}
 .translation{font-size:21px;line-height:1.45;color:#0043ce;margin:8px 0 0}
-.speaker{font-size:13px;color:#525252;margin:3px 0 0}
-.attribution{font-size:12px;line-height:1.45;color:#525252;margin:10px 0 0}
+.speaker{font-size:12px;color:#525252;margin:0;line-height:1.3}
+.attribution{font-size:12px;line-height:1.45;color:#525252;margin:6px 0 0}
 .attribution a{color:inherit;text-decoration:none;border-bottom:1px dotted #8d8d8d}
 .attribution a:hover{color:#0043ce}
 .translation-note{font-size:12px;color:#6f6f6f;margin:8px 0 0;text-align:right}
