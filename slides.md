@@ -187,6 +187,19 @@ hideInToc: false
 -->
 
 ---
+title: AI 結對程式設計的價值：共同思考、持續改善
+class: talk-page
+hide: false
+hideInToc: false
+---
+
+<PairProgrammingPerspectives />
+
+<!--
+三篇為方法論與實務觀點文章，不是對照實驗。引文各自保留原意，中文為翻譯。Garg 引自 Conclusion；Fowler 引自對談中其段落的側欄摘句；Morris 引自 Humans on the loop。第二篇強調用 LLM 探索抽象概念，仍由人透過測試與重構塑造可演進的結構。第三篇主張人改善 harness（規格、品質檢查、工作流程），不是要求每個內迴圈都由人審查。三者提供互補的協作原則，不代表共同提出同一套五階段方法論。
+-->
+
+---
 title: 減少協作浪費，才是節省 token 的關鍵
 class: talk-page
 hide: false
