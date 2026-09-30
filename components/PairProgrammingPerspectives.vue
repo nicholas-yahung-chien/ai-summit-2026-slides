@@ -11,7 +11,7 @@ watch(active, value => { if (value) restart() })
 
 <template>
   <section class="pair-perspectives">
-    <p class="eyebrow">08 · AI PAIR PROGRAMMING</p>
+    <p class="eyebrow">07 · AI PAIR PROGRAMMING</p>
     <h1>AI 結對程式設計：協作的價值與人的角色</h1>
     <div :key="replay" class="perspectives">
       <article>

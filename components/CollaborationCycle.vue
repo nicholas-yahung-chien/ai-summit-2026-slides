@@ -24,7 +24,7 @@ const nodes = stages.map((stage, i) => {
 
 <template>
   <section class="collaboration-cycle" :class="{ instant: !active || $renderContext === 'print' }">
-    <p class="eyebrow">07 · AI PAIR PROGRAMMING</p>
+    <p class="eyebrow">08 · AI PAIR PROGRAMMING</p>
     <h1>AI 結對程式設計：小步實作、持續校準</h1>
     <p class="intro">每個階段都反覆提出、檢視與修正，必要時回到前一階段</p>
     <button class="replay" @click="replay++" aria-label="重播五階段循環動畫">重播循環 ↻</button>

@@ -72,19 +72,6 @@ class: talk-page
 -->
 
 ---
-title: AI 代理時代的軟體開發生命週期
-class: talk-page gateway-research-page
-hide: false
-hideInToc: false
----
-
-<AgenticLifecycle />
-
-<!--
-依官方文件歸納六類可組合的方法，並非六套互斥標準或市占率排名。AI-DLC 涵蓋完整生命週期；SDD 著重規格到驗收；人機短迴圈、測試驗證、Issue-to-PR 與 Continuous AI 是不同範圍的工作流程。這些為已存在的代理開發實務，不假設 AGI 已實現。多代理、多模型與 harness 為實作架構選擇，非另一套 SDLC。
--->
-
----
 title: Uncle Bob 的 Harness 設計原則
 class: talk-page uncle-interview-page
 hide: false
@@ -94,7 +81,7 @@ hideInToc: false
 <UncleBobInterview />
 
 <!--
-14:34–14:35。專訪日期2026年8月19日。引文依先前已直接讀取的YouTube原片轉錄稿14:56–15:14：The key with agents is to trim that initial prompt down to its absolute minimum … and then do deterministic tools after the fact. 省略號略去中間對提示優先性的說明及對談應答，保留原話、不另造句。中文為講者翻譯。語境是長篇規則可能在上下文中被忽略，確定性工具不以同樣方式消失；因此初始提示要精簡，接著用工具檢查。與第4頁對照：工具約束有價值，但模型進步後，編排負擔仍需重新評估。小標為講者歸納，非原話。視覺使用使用者提供的封面原圖，日期置於圖下，以IBM藍及底線強調。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=896s。
+14:34–14:35。專訪日期2026年8月19日。引文依先前已直接讀取的YouTube原片轉錄稿14:56–15:14：The key with agents is to trim that initial prompt down to its absolute minimum … and then do deterministic tools after the fact. 省略號略去中間對提示優先性的說明及對談應答，保留原話、不另造句。中文為講者翻譯。語境是長篇規則可能在上下文中被忽略，確定性工具不以同樣方式消失；因此初始提示要精簡，接著用工具檢查。與下一頁對照：工具約束有價值，但模型進步後，編排負擔仍需重新評估。小標為講者歸納，非原話。視覺使用使用者提供的封面原圖，日期置於圖下，以IBM藍及底線強調。來源：https://www.youtube.com/watch?v=zcLPGC-tvgk&t=896s。
 -->
 
 ---
@@ -120,6 +107,7 @@ hideInToc: false
 <WesternResearch kind="agents" />
 
 <!--
+銜接：Uncle Bob 的經驗不是孤例，但這份研究只能說明協作成本可能抵銷分工收益，不能證明他的個人案例因果。下一頁轉換問題：代理的數量與底下使用幾種模型，是兩個不同的設計選擇；減少代理不等於只能使用單一模型。
 14:37–14:38:30，正式主線研究。Kim等人，Towards a Science of Scaling Agent Systems，arXiv:2512.08296v3，2026-04-08，Google Research、Google DeepMind與MIT，預印本，不宣稱已同儕審查。引用第13–14頁正文報告的SWE-bench Verified跨模型平均值：單代理52.2%、Hybrid51.1%、Centralized50.6%、Decentralized49.4%、Independent44.4%。研究整體260配置六基準；程式修復只使用20題子集與8模型，單格信賴區間寬，不能宣稱每個模型上均顯著勝出。圖表為論文正文報告的點估計，不與Table 5跨任務tokens或成本相配，也不創造同設定費用差異。Finance-Agent可拆分任务多代理則有改善，不能據此得出多代理普遍較差或harness無用。來源：https://arxiv.org/pdf/2512.08296v3。
 -->
 
@@ -133,6 +121,7 @@ hideInToc: false
 <WesternResearch kind="routing" />
 
 <!--
+銜接：與其每次都用最昂貴的模型，可以依任務選擇模型。這裡先看整體品質與費用取捨，再看下一頁不同難度的差異；不能把評分比例當成正確率。
 14:38:30–14:40，正式主線研究。RouteLLM正式ICLR 2025論文，UC Berkeley、Anyscale、Canva。Table 1，Matrix Factorization，Arena+Judge訓練，CPT(50%)：GPT-4呼叫比例13.40%，達到MT-Bench 8.8分，GPT-4基準9.3分（約95%）。CPT(50%)是強弱模型之間performance gap recovery的50%，不是GPT-4表現的50%。其餘86.6%呼叫Mixtral 8x7B。不是品質提升，也不是節省86.6%的美元或tokens；圖上兩個指標来自同一設定。主要模型為gpt-4-1106-preview與Mixtral 8x7B，非2026最新模型，非程式生成專屬測試，不能當作Jev或IBM Bob的實測成效。原文PDF用with，正式proceedings目錄用from，此頁引用採正式目錄題名。來源：https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf。
 費用示意新增：每百萬次請求，兩模型均假設每次95輸入+264輸出tokens（採附錄D訓練集平均長度，不是MT-Bench實測長度）。GPT-4每百萬輸入$10、輸出$30；Mixtral輸入輸出均$0.24。固定GPT-4 = 95×10+264×30 = $8,870。路由 = 0.134×8870 + 0.866×359×0.24 + 3.32 = $1,266.51456，約$1,267，節省85.7214%，顯示85.7%。$3.32為Table 7 Matrix Factorization路由器每百萬次請求開銷，已含其embedding估算。此為把Table 1路由比例與附錄D價格假設結合的講者推算，不是論文直接量得的整批MT-Bench帳單；不包含訓練、重試、快取差異或其他營運成本，不是2026即時報價，也不是token節省。保留分數9.3/8.8以揭露品質取捨。Table 6的3.66倍與隨機路由比率一致，未拿來作為全部GPT-4的費用基準。研究資助揭露含IBM等多家機構，不稱為與IBM無關的獨立驗證。
 -->
@@ -151,19 +140,6 @@ hideInToc: false
 -->
 
 ---
-title: IBM Bob 的企業內部部署架構
-class: talk-page bob-onprem-page
-hide: false
-hideInToc: false
----
-
-<BobOnPremArchitecture />
-
-<!--
-使用者提供之 GA 草稿重繪，現以網頁原生 SVG 呈現，替換先前 AI 點陣圖。官方品牌素材及 IBM Db2 Carbon 圖示來源見 assets/architecture-logos/README.md。依使用者要求，頁面移除 GA DRAFT 與 IBM CONFIDENTIAL 等標示。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。
--->
-
----
 title: AI 路由在三種層次的比較：Bifrost vs Jev
 class: talk-page gateway-research-page
 hide: false
@@ -173,6 +149,7 @@ hideInToc: false
 <GatewayRoutingComparison />
 
 <!--
+銜接：研究顯示路由有節省費用的空間，落地時還要分清楚政策、語意複雜度與負載平衡。下一頁的 Bifrost 數據測量工具使用費用與 Gateway 延遲，並不是前述多模型路由研究的產品版驗證。
 Bifrost 上游现行能力不等於 IBM Bob 啟用清單。Complexity Router 為 Beta。Jev 官方 SDK 開源，未找到模型權重開源授權。Confidence 不等於被選模型成功率。依 2026-09-28 官方資料核對。
 -->
 
@@ -190,16 +167,30 @@ Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題�
 -->
 
 ---
-title: AI 結對程式設計：小步實作、持續校準
-class: talk-page
+title: IBM Bob 的企業內部部署架構
+class: talk-page bob-onprem-page
 hide: false
 hideInToc: false
 ---
 
-<CollaborationCycle />
+<BobOnPremArchitecture />
 
 <!--
-五階段為跨來源歸納，非 Bob 官方標準 SDLC。順時針由釐清、規劃、實作、驗證到回饋，回到釐清；重要決策由人掌握，AI 可連續完成一段工作，不代表每一步都要人工核准。資料：IBM AI pair programming 教學；Rahul Garg (2026-03-03), Design-First Collaboration。必要時重播一次循環，講解每階段的人與 AI 分工。
+銜接：前面看的是路由與 Gateway 的不同角色，現在把它們放回 IBM Bob 的企業部署架構，指出 Model Gateway、模型託管、稽核與計量的位置。接下來從系統如何部署，轉向人與 Bob 如何協作，再準備展示。
+使用者提供之 GA 草稿重繪，現以網頁原生 SVG 呈現，替換先前 AI 點陣圖。官方品牌素材及 IBM Db2 Carbon 圖示來源見 assets/architecture-logos/README.md。依使用者要求，頁面移除 GA DRAFT 與 IBM CONFIDENTIAL 等標示。簡報視圖省略部分輔助連線；精確語意以本機 ArchiMate 模型為準，非獨立驗證的 GA 規格。
+-->
+
+---
+title: AI 代理時代的軟體開發生命週期
+class: talk-page gateway-research-page
+hide: false
+hideInToc: false
+---
+
+<AgenticLifecycle />
+
+<!--
+依官方文件歸納六類可組合的方法，並非六套互斥標準或市占率排名。AI-DLC 涵蓋完整生命週期；SDD 著重規格到驗收；人機短迴圈、測試驗證、Issue-to-PR 與 Continuous AI 是不同範圍的工作流程。這些為已存在的代理開發實務，不假設 AGI 已實現。多代理、多模型與 harness 為實作架構選擇，非另一套 SDLC。
 -->
 
 ---
@@ -213,6 +204,20 @@ hideInToc: false
 
 <!--
 三篇為方法論與實務觀點文章，不是對照實驗。引文各自保留原意，中文為翻譯。Garg 引自 Conclusion；Fowler 引自對談中其段落的側欄摘句；Osmani 引自 Break work into small, iterative chunks。第二篇強調用 LLM 探索抽象概念，仍由人透過測試與重構塑造可演進的結構。第三篇直接將 LLM 視為需要人提供方向、上下文與監督的結對夥伴；小步實作、測試、修正有助控制錯誤的說法是作者實務觀點，非量化研究結果。作者在文中揭露參與 Google Gemini 工作。引用日期依個人網站版本 2026-01-04。三者提供互補的協作原則，不代表共同提出同一套五階段方法論。
+-->
+
+---
+title: AI 結對程式設計：小步實作、持續校準
+class: talk-page
+hide: false
+hideInToc: false
+---
+
+<CollaborationCycle />
+
+<!--
+銜接：前頁的協作原則落到這五個階段，這也是接下來 Bob 展示的觀察順序：釐清需求、規劃、實作、驗證、回饋。展示應讓聽眾看到人在何時判斷、AI 完成哪些工作，以及以何種證據驗收。
+五階段為跨來源歸納，非 Bob 官方標準 SDLC。順時針由釐清、規劃、實作、驗證到回饋，回到釐清；重要決策由人掌握，AI 可連續完成一段工作，不代表每一步都要人工核准。資料：IBM AI pair programming 教學；Rahul Garg (2026-03-03), Design-First Collaboration。必要時重播一次循環，講解每階段的人與 AI 分工。
 -->
 
 ---
