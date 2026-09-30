@@ -173,7 +173,7 @@
     "inference": {
       "label": "Inference Service",
       "x": 910,
-      "y": 120,
+      "y": 70,
       "w": 225,
       "h": 62,
       "kind": "ApplicationComponent",
@@ -183,7 +183,7 @@
     "bifrost": {
       "label": "Model Gateway\n(Bifrost)",
       "x": 910,
-      "y": 218,
+      "y": 160.5,
       "w": 225,
       "h": 75,
       "kind": "ApplicationComponent",
