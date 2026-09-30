@@ -72,6 +72,19 @@ class: talk-page
 -->
 
 ---
+title: AI 代理時代的軟體開發生命週期
+class: talk-page gateway-research-page
+hide: false
+hideInToc: false
+---
+
+<AgenticLifecycle />
+
+<!--
+依官方文件歸納六類可組合的方法，並非六套互斥標準或市占率排名。AI-DLC 涵蓋完整生命週期；SDD 著重規格到驗收；人機短迴圈、測試驗證、Issue-to-PR 與 Continuous AI 是不同範圍的工作流程。這些為已存在的代理開發實務，不假設 AGI 已實現。多代理、多模型與 harness 為實作架構選擇，非另一套 SDLC。
+-->
+
+---
 title: Uncle Bob 的 Harness 設計原則
 class: talk-page uncle-interview-page
 hide: false
@@ -174,19 +187,6 @@ hideInToc: false
 
 <!--
 Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題，tokens 累計整個 agent loop。R2 OFF 有六題重跑通過，仍有一題失敗，因此為 98.5%。費用與節省比例沿用原報告估算。ENTERPILOT 是 GoModel 相關團隊；模擬後端 p50 是 Gateway 效能，不是模型品質。尚未找到 Bifrost 模型路由費用與正確率成對公開對照，不將數據套用為 IBM Bob 成效。
--->
-
----
-title: AI 代理時代的軟體開發生命週期
-class: talk-page gateway-research-page
-hide: false
-hideInToc: false
----
-
-<AgenticLifecycle />
-
-<!--
-依官方文件歸納六類可組合的方法，並非六套互斥標準或市占率排名。AI-DLC 涵蓋完整生命週期；SDD 著重規格到驗收；人機短迴圈、測試驗證、Issue-to-PR 與 Continuous AI 是不同範圍的工作流程。這些為已存在的代理開發實務，不假設 AGI 已實現。多代理、多模型與 harness 為實作架構選擇，非另一套 SDLC。
 -->
 
 ---
