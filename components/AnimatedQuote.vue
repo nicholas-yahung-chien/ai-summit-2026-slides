@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { useSlideContext } from '@slidev/client'
 
-const props = defineProps<{ english: string; chinese: string }>()
+const props = withDefaults(defineProps<{ english: string; chinese: string; delay?: number; controls?: boolean; showAll?: boolean }>(), { delay: 0, controls: true, showAll: false })
 const { $page, $nav, $renderContext } = useSlideContext()
 const active = computed(() => $page.value === $nav.value.currentSlideNo)
 const replay = ref(0)
@@ -21,12 +21,12 @@ function restart() { instant.value = false; replay.value++ }
 </script>
 
 <template>
-  <div class="animated-quote" :class="{ instant: instant || !active || $renderContext === 'print' }">
+  <div class="animated-quote" :class="{ instant: instant || showAll || !active || $renderContext === 'print' }" :style="{ '--quote-delay': `${delay}ms` }">
     <blockquote :key="replay" :aria-label="english + ' ' + chinese">
-      <p class="quote-en" lang="en" aria-hidden="true"><span class="quotation-mark">“</span><template v-for="(word, wi) in englishWords" :key="wi"><span :class="word.space ? 'quote-space' : 'quote-word'"><span v-for="letter in word.chars" :key="letter.index" class="quote-letter" :style="{ animationDelay: `${350 + letter.index * 23}ms` }">{{ letter.char }}</span></span></template><span class="quotation-mark">”</span></p>
-      <p class="quote-zh" lang="zh-Hant" aria-hidden="true"><span v-for="(char, i) in chineseChars" :key="i" class="quote-letter" :style="{ animationDelay: `${translationDelay + i * 48}ms` }">{{ char }}</span></p>
+      <p class="quote-en" lang="en" aria-hidden="true"><span class="quotation-mark">“</span><template v-for="(word, wi) in englishWords" :key="wi"><span :class="word.space ? 'quote-space' : 'quote-word'"><span v-for="letter in word.chars" :key="letter.index" class="quote-letter" :style="{ animationDelay: `${delay + 350 + letter.index * 23}ms` }">{{ letter.char }}</span></span></template><span class="quotation-mark">”</span></p>
+      <p class="quote-zh" lang="zh-Hant" aria-hidden="true"><span v-for="(char, i) in chineseChars" :key="i" class="quote-letter" :style="{ animationDelay: `${delay + translationDelay + i * 48}ms` }">{{ char }}</span></p>
     </blockquote>
-    <div class="quote-actions" @click.stop @pointerdown.stop>
+    <div v-if="controls" class="quote-actions" @click.stop @pointerdown.stop>
       <button type="button" @click="restart">重播引文 ↻</button>
       <button type="button" @click="instant = true">顯示全文</button>
     </div>

@@ -187,7 +187,7 @@ hideInToc: false
 -->
 
 ---
-title: AI 結對程式設計的價值：共同思考、持續改善
+title: AI 結對程式設計：協作的價值與人的角色
 class: talk-page
 hide: false
 hideInToc: false
