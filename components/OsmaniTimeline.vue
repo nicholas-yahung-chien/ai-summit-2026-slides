@@ -17,7 +17,7 @@ const milestones = [
 
 <template>
   <section class="osmani-timeline" :class="{ instant: showAll || !active || $renderContext === 'print' }">
-    <p class="eyebrow">ADDY OSMANI · 2026</p>
+    <p class="eyebrow">ADDY OSMANI · Google Cloud AI Director</p>
     <h1>AI 能力持續進步，開發方法也跟著改變</h1>
     <div class="timeline-actions" @click.stop @pointerdown.stop><button @click="restart">重播時間軸 ↻</button><button @click="showAll = true">顯示全部</button></div>
     <div :key="replay" class="timeline" aria-label="Addy Osmani 2026 年一月至八月的開發方法演進，節點為文章日期，依序排列">

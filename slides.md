@@ -56,6 +56,22 @@ hideInToc: false
 -->
 
 ---
+title: AI 能力持續進步，開發方法也跟著改變
+layout: summit
+class: talk-page
+---
+
+<OsmaniTimeline />
+
+<!--
+四個節點是 Osmani 文章的發表日期，以文章順序排列，並非等距時間比例
+上方為文章的方法主張，下方為該文回顧的先前能力進展，不表示每篇文章皆由單一模型發布直接造成
+四月文章明確將上下文焦慮的減少連結到二月模型更新，但不表示上下文限制已消失
+六月與八月文章著重工具內建能力與工作流程成熟，而非宣稱全新的模型突破
+人仍負責目標、風險判斷與品質驗證，自主迴圈並不取代所有結對工作
+-->
+
+---
 title: Uncle Bob 的 Harness 設計原則
 class: talk-page uncle-interview-page
 hide: false
@@ -79,22 +95,6 @@ hideInToc: false
 
 <!--
 14:35–14:37。貼文日期2026年9月12日，使用者提供原貼文截圖。選定引文01:58.384–02:04.965：Apparently the harness is doing the damage. That's not what I expected. 以原貼文字幕及OpenAI gpt-4o-transcribe獨立音訊轉錄交叉核對一致，只補一般標點。中文為講者翻譯。頁上小標「當約束成為負擔」為講者歸納，非Uncle Bob原話。語境：他發現同一模型的單一代理優於自己建立的harness，並注意到代理能力已改善。因此本演講歸納為模型進步後應重新量測編排效益。02:28–02:50仍保留CRAP分數、mutation testing與unit tests，不是所有harness或品質關卡均無必要的結論，也不是通用基準數據。原貼文：https://x.com/unclebobmartin/status/2098744156709441896。
--->
-
----
-title: AI 能力持續進步，開發方法也跟著改變
-layout: summit
-class: talk-page
----
-
-<OsmaniTimeline />
-
-<!--
-四個節點是 Osmani 文章的發表日期，以文章順序排列，並非等距時間比例
-上方為文章的方法主張，下方為該文回顧的先前能力進展，不表示每篇文章皆由單一模型發布直接造成
-四月文章明確將上下文焦慮的減少連結到二月模型更新，但不表示上下文限制已消失
-六月與八月文章著重工具內建能力與工作流程成熟，而非宣稱全新的模型突破
-人仍負責目標、風險判斷與品質驗證，自主迴圈並不取代所有結對工作
 -->
 
 ---
