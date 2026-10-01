@@ -7,6 +7,7 @@ import openshift from '../assets/architecture-logos/openshift.svg'
 import bob from '../assets/architecture-logos/bob-mascot.webp'
 import redis from '../assets/architecture-logos/redis.svg'
 import db2 from '../assets/architecture-logos/ibm-db2.svg'
+import { buildArchitectureRoutes } from './bob-onprem-routes.mjs'
 
 const containers = ['front', 'cluster', 'service', 'data', 'ext', 'ppz']
 const source = model.nodes as Record<string, any>
@@ -19,26 +20,16 @@ const nodes = Object.entries(source).map(([id, node]) => ({ id, ...node, ...posi
 const groups = nodes.filter(n => containers.includes(n.id))
 const components = nodes.filter(n => !containers.includes(n.id) && n.parent !== 'data')
 const data = [
-  { title:'PostgreSQL', lines:['Auth config', '& sessions'], logo:postgres },
-  { title:'PostgreSQL', lines:['Bobalytics', 'Admin & config'], logo:postgres },
-  { title:'Sink', lines:['Metrics'], logo:null },
-  { title:'IBM Db2', lines:['Z Understand', 'data'], logo:db2 },
-  { title:'OpenSearch', lines:['RAG corpus'], logo:opensearch },
-  { title:'Vector', lines:['Audit data'], logo:null },
-  { title:'Postgres', lines:['Telemetry', 'storage'], logo:postgres },
-  { title:'Redis', lines:['Telemetry', 'cache'], logo:redis },
+  { id:'authdb', title:'PostgreSQL', lines:['Auth config', '& sessions'], logo:postgres },
+  { id:'admindb', title:'PostgreSQL', lines:['Bobalytics', 'Admin & config'], logo:postgres },
+  { id:'sink', title:'Sink', lines:['Metrics'], logo:null },
+  { id:'db2', title:'IBM Db2', lines:['Z Understand', 'data'], logo:db2 },
+  { id:'search', title:'OpenSearch', lines:['RAG corpus'], logo:opensearch },
+  { id:'vector', title:'Vector', lines:['Audit data'], logo:null },
+  { id:'pg', title:'Postgres', lines:['Telemetry', 'storage'], logo:postgres },
+  { id:'redis', title:'Redis', lines:['Telemetry', 'cache'], logo:redis },
 ]
-const routes = [
-  'M175 228 V401', 'M175 270 H360 V401', 'M260 432 H305',
-  'M500 228 V270 H737 V401', 'M760 228 V270', 'M1020 228 V270 H737', 'M1280 228 V270 H1020',
-  'M737 463 V503', 'M290 534 H320 V506 H345', 'M320 534 V577 H345',
-  'M525 506 H565 V543 H620', 'M525 577 H565 V543',
-  'M855 520 H895 V446 H965', 'M855 543 H965',
-  'M737 583 V638 H677 V665', 'M818 695 H828',
-  'M835 583 V608 H950 V747 H692 V757', 'M950 747 H857 V757',
-  'M1077 580.5 V665', 'M1190 543 H1220 V437.5 H1545',
-  'M1345 437.5 V520', 'M1500 437.5 V642 H1545',
-]
+const routes = buildArchitectureRoutes(model.edges)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
 function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' }
 function lineHeight(node: any) { return node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
@@ -75,7 +66,11 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
         <text :x="group.id === 'cluster' ? 800 : group.id === 'service' ? 405 : group.x+18" :y="group.y+29">{{ group.label }}</text>
         <image v-if="group.id==='cluster'" :href="openshift" :x="group.x+1200" :y="group.y+7" width="180" height="38" />
       </g>
-      <g class="connections"><path v-for="(d,i) in routes" :key="i" :d="d" :marker-end="[4,5,6,11].includes(i) ? undefined : 'url(#bob-arrow)'" /></g>
+      <g class="connections">
+        <path v-for="edge in routes" :key="edge.key" :data-edge="edge.key" :d="edge.d" :marker-end="edge.arrow ? 'url(#bob-arrow)' : undefined">
+          <title>{{ edge.source }} → {{ edge.target }}</title>
+        </path>
+      </g>
       <g v-for="node in components" :key="node.id" :data-component="node.id" class="component">
         <rect :x="node.x" :y="node.y" :width="node.w" :height="node.h" rx="3" :fill="node.fill || (node.kind==='DataObject' ? '#eee5f4' : '#edf3fc')" />
         <use v-if="hasNotation(node)" href="#bob-component" :transform="`translate(${node.x+8} ${node.y+node.h/2-7}) scale(.72)`" class="notation" />
@@ -85,7 +80,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
           <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? lineHeight(node) : 0">{{ line }}</tspan>
         </text>
       </g>
-      <g v-for="(item,i) in data" :key="i" class="data-item" :transform="`translate(${73+i*174},868)`">
+      <g v-for="(item,i) in data" :key="item.id" :data-component="item.id" class="data-item" :transform="`translate(${73+i*174},868)`">
         <rect width="163" height="80" rx="3" />
         <image v-if="item.logo && !['OpenSearch','Redis'].includes(item.title)" :href="item.logo" x="10" y="7" width="30" height="26" />
         <image v-if="['OpenSearch','Redis'].includes(item.title)" :href="item.logo!" x="10" y="8" width="143" height="23" />
