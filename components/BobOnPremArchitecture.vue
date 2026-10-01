@@ -32,7 +32,7 @@ const data = [
 const routes = buildArchitectureRoutes(model.edges)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
 function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' && node.kind !== 'Router' }
-function lineHeight(node: any) { return node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
+function lineHeight(node: any) { return node.id === 'router' ? 16 : node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
 function lines(node: any) {
   if (node.id === 'ide') return ['IBM Bob IDE']
   if (node.id === 'auth') return ['Auth Server']
@@ -47,7 +47,7 @@ function lines(node: any) {
 }
 function textY(node: any) {
   if (node.id === 'auth') return node.y + 23
-  if (node.id === 'local') return node.y + 62
+  if (node.id === 'router') return node.y + node.h / 2 - 7
   return node.y + node.h / 2 - (lines(node).length - 1) * lineHeight(node) / 2 + (node.parent === 'ppz' ? 5 : 6)
 }
 function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30 : hasNotation(node) ? 13 : 0) }
@@ -102,20 +102,20 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .architecture-canvas { position:absolute; top:94px; left:16px; width:calc(100% - 32px); height:522px; overflow:visible; font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
 .boundary rect { stroke:#bac7d2; stroke-width:1.3; }
 .boundary.cluster rect { stroke:#8ba999; }
-.boundary text { font-size:20px; font-weight:600; fill:#344b60; }
+.boundary text { font-size:18px; font-weight:600; fill:#344b60; }
 .connections path { fill:none; stroke:#526779; stroke-width:1.8; }
 .component rect { stroke:#a4b8cd; stroke-width:1.2; }
 .component circle { stroke:#f1c21b; stroke-width:1.4; }
-.component text { fill:#182c40; font-size:21px; text-anchor:middle; }
-.component text.compact { font-size:15px; }
-.component text.narrow { font-size:17px; }
-.component text.hosting { font-size:20px; }
-.component text.router { font-size:15px; font-weight:600; }
+.component text { fill:#182c40; font-size:18px; text-anchor:middle; }
+.component text.compact { font-size:13px; }
+.component text.narrow { font-size:15px; }
+.component text.hosting { font-size:17px; }
+.component text.router { font-size:13px; font-weight:600; }
 .notation { color:#7890a5; }
 .data-item rect { fill:#eef7f1; stroke:#a7bfb0; }
-.data-item text { text-anchor:middle; font-size:16px; fill:#243d33; }
-.data-item .data-title { font-weight:600; font-size:17px; }
-.routing-label { font-size:22px; fill:#0f62fe; font-weight:500; }
+.data-item text { text-anchor:middle; font-size:14px; fill:#243d33; }
+.data-item .data-title { font-weight:600; font-size:15px; }
+.routing-label { font-size:18px; fill:#0f62fe; font-weight:500; }
 .architecture-meta { position:absolute; left:72px; right:72px; bottom:78px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
 .legend { display:flex; gap:20px; }
 .legend span { display:flex; align-items:center; gap:6px; }

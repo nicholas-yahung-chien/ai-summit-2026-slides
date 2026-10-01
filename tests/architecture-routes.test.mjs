@@ -35,14 +35,19 @@ test('entry and routing nodes sit on their intended architecture boundaries', ()
   assert.equal(model.nodes.zproxy.parent, 'ppz')
   assert.equal(model.nodes.zproxy.y + model.nodes.zproxy.h / 2, 0)
 
-  assert.equal(model.nodes.router.parent, 'cluster')
-  assert.equal(model.nodes.router.x + model.nodes.router.w / 2, model.nodes.cluster.w)
+  assert.equal(model.nodes.router.parent, 'service')
+  assert.equal(model.nodes.router.x + model.nodes.router.w / 2, model.nodes.service.w)
 })
 
 test('Inference Service and Model Gateway converge on the boundary router before hosting options', () => {
-  const routeKeys = new Set(buildArchitectureRoutes(model.edges).map(route => route.key))
+  const routes = buildArchitectureRoutes(model.edges)
+  const routeKeys = new Set(routes.map(route => route.key))
   for (const key of ['inference->router', 'bifrost->router', 'router->local', 'router->public', 'router->private'])
     assert.ok(routeKeys.has(key), key)
   for (const key of ['bifrost->local', 'bifrost->public', 'bifrost->private'])
     assert.ok(!routeKeys.has(key), key)
+
+  const byKey = new Map(routes.map(route => [route.key, route]))
+  assert.match(byKey.get('inference->router').d, /H1175$/)
+  assert.match(byKey.get('bifrost->router').d, /H1175$/)
 })
