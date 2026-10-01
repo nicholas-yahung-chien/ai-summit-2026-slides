@@ -31,6 +31,9 @@ test('PPZ owns its tools and zProxy dispatches to each PPZ capability', () => {
 test('entry and routing nodes sit on their intended architecture boundaries', () => {
   assert.equal(model.nodes.ingress.parent, 'cluster')
   assert.equal(model.nodes.ingress.y + model.nodes.ingress.h / 2, 0)
+  assert.equal(model.nodes.ingress.kind, 'BoundaryInterface')
+  assert.equal(model.nodes.ingress.w, model.nodes.router.w)
+  assert.equal(model.nodes.ingress.h, model.nodes.router.h)
 
   assert.equal(model.nodes.zproxy.parent, 'ppz')
   assert.equal(model.nodes.zproxy.y + model.nodes.zproxy.h / 2, 0)
@@ -50,4 +53,6 @@ test('Inference Service and Model Gateway converge on the boundary router before
   const byKey = new Map(routes.map(route => [route.key, route]))
   assert.match(byKey.get('inference->router').d, /H1175$/)
   assert.match(byKey.get('bifrost->router').d, /H1175$/)
+  for (const key of ['router->local', 'router->public', 'router->private'])
+    assert.match(byKey.get(key).d, /^M1235 455/)
 })

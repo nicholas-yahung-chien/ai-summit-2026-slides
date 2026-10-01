@@ -31,8 +31,9 @@ const data = [
 ]
 const routes = buildArchitectureRoutes(model.edges)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
-function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' && node.kind !== 'Router' }
-function lineHeight(node: any) { return node.id === 'router' ? 16 : node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
+function isCircularBoundary(node: any) { return ['Router', 'BoundaryInterface'].includes(node.kind) }
+function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' && !isCircularBoundary(node) }
+function lineHeight(node: any) { return isCircularBoundary(node) ? 16 : node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
 function lines(node: any) {
   if (node.id === 'ide') return ['IBM Bob IDE']
   if (node.id === 'auth') return ['Auth Server']
@@ -42,12 +43,13 @@ function lines(node: any) {
   if (node.id === 'ragmcp') return ['Z RAG', 'MCP', 'Server']
   if (node.id === 'zu') return ['Z Understand']
   if (node.id === 'zr') return ['Z Refactor']
+  if (node.id === 'ingress') return ['Cluster', 'Ingress']
   if (node.id === 'router') return ['Bifrost', 'Router']
   return node.label.split('\n')
 }
 function textY(node: any) {
   if (node.id === 'auth') return node.y + 23
-  if (node.id === 'router') return node.y + node.h / 2 - 7
+  if (isCircularBoundary(node)) return node.y + node.h / 2 - 7
   return node.y + node.h / 2 - (lines(node).length - 1) * lineHeight(node) / 2 + (node.parent === 'ppz' ? 5 : 6)
 }
 function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30 : hasNotation(node) ? 13 : 0) }
@@ -73,12 +75,12 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
         </path>
       </g>
       <g v-for="node in components" :key="node.id" :data-component="node.id" class="component">
-        <circle v-if="node.kind==='Router'" :cx="node.x+node.w/2" :cy="node.y+node.h/2" :r="node.w/2" :fill="node.fill" />
+        <circle v-if="isCircularBoundary(node)" :cx="node.x+node.w/2" :cy="node.y+node.h/2" :r="node.w/2" :fill="node.fill || '#edf3fc'" :class="{ 'router-shape': node.id==='router' }" />
         <rect v-else :x="node.x" :y="node.y" :width="node.w" :height="node.h" rx="3" :fill="node.fill || (node.kind==='DataObject' ? '#eee5f4' : '#edf3fc')" />
         <use v-if="hasNotation(node)" href="#bob-component" :transform="`translate(${node.x+8} ${node.y+node.h/2-7}) scale(.72)`" class="notation" />
         <image v-if="node.id==='ide'" :href="bob" :x="node.x+12" :y="node.y+3" width="48" :height="node.h-6" />
         <image v-if="node.id==='auth'" :href="keycloak" :x="node.x+22" :y="node.y+32" :width="node.w-44" height="24" />
-        <text :x="textX(node)" :y="textY(node)" :class="{ compact:node.parent==='ppz', narrow:['zu','zr'].includes(node.id), hosting:node.kind==='Node', router:node.kind==='Router' }">
+        <text :x="textX(node)" :y="textY(node)" :class="{ compact:node.parent==='ppz', narrow:['zu','zr'].includes(node.id), hosting:node.kind==='Node', router:isCircularBoundary(node) }">
           <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? lineHeight(node) : 0">{{ line }}</tspan>
         </text>
       </g>
@@ -105,7 +107,8 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .boundary text { font-size:18px; font-weight:600; fill:#344b60; }
 .connections path { fill:none; stroke:#526779; stroke-width:1.8; }
 .component rect { stroke:#a4b8cd; stroke-width:1.2; }
-.component circle { stroke:#f1c21b; stroke-width:1.4; }
+.component circle { stroke:#a4b8cd; stroke-width:1.4; }
+.component circle.router-shape { stroke:#f1c21b; }
 .component text { fill:#182c40; font-size:18px; text-anchor:middle; }
 .component text.compact { font-size:13px; }
 .component text.narrow { font-size:15px; }
