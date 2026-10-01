@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { useSlideContext } from '@slidev/client'
 
-const props = withDefaults(defineProps<{ english: string; chinese: string; delay?: number; controls?: boolean; showAll?: boolean }>(), { delay: 0, controls: true, showAll: false })
+const props = withDefaults(defineProps<{ english: string; chinese: string; delay?: number; controls?: boolean; showAll?: boolean; syncBilingual?: boolean }>(), { delay: 0, controls: true, showAll: false, syncBilingual: false })
 const { $page, $nav, $renderContext } = useSlideContext()
 const active = computed(() => $page.value === $nav.value.currentSlideNo)
 const replay = ref(0)
@@ -16,6 +16,20 @@ const englishWords = computed(() => {
 })
 const chineseChars = computed(() => Array.from(props.chinese))
 const translationDelay = computed(() => Array.from(props.english).length * 23 + 500)
+const synchronizedSpan = computed(() => Math.max(
+  Math.max(Array.from(props.english).length - 1, 0) * 23,
+  Math.max(chineseChars.value.length - 1, 0) * 48,
+))
+function englishDelay(index: number) {
+  if (!props.syncBilingual) return props.delay + 350 + index * 23
+  const characterCount = Array.from(props.english).length
+  return props.delay + 350 + (characterCount > 1 ? index * synchronizedSpan.value / (characterCount - 1) : 0)
+}
+function chineseDelay(index: number) {
+  if (!props.syncBilingual) return props.delay + translationDelay.value + index * 48
+  const characterCount = chineseChars.value.length
+  return props.delay + 350 + (characterCount > 1 ? index * synchronizedSpan.value / (characterCount - 1) : 0)
+}
 watch(active, value => { if (value) { replay.value++; instant.value = false } })
 function restart() { instant.value = false; replay.value++ }
 </script>
@@ -23,8 +37,8 @@ function restart() { instant.value = false; replay.value++ }
 <template>
   <div class="animated-quote" :class="{ instant: instant || showAll || !active || $renderContext === 'print' }" :style="{ '--quote-delay': `${delay}ms` }">
     <blockquote :key="replay" :aria-label="english + ' ' + chinese">
-      <p class="quote-en" lang="en" aria-hidden="true"><span class="quotation-mark">“</span><template v-for="(word, wi) in englishWords" :key="wi"><span :class="word.space ? 'quote-space' : 'quote-word'"><span v-for="letter in word.chars" :key="letter.index" class="quote-letter" :style="{ animationDelay: `${delay + 350 + letter.index * 23}ms` }">{{ letter.char }}</span></span></template><span class="quotation-mark">”</span></p>
-      <p class="quote-zh" lang="zh-Hant" aria-hidden="true"><span v-for="(char, i) in chineseChars" :key="i" class="quote-letter" :style="{ animationDelay: `${delay + translationDelay + i * 48}ms` }">{{ char }}</span></p>
+      <p class="quote-en" lang="en" aria-hidden="true"><span class="quotation-mark">“</span><template v-for="(word, wi) in englishWords" :key="wi"><span :class="word.space ? 'quote-space' : 'quote-word'"><span v-for="letter in word.chars" :key="letter.index" class="quote-letter" :style="{ animationDelay: `${englishDelay(letter.index)}ms` }">{{ letter.char }}</span></span></template><span class="quotation-mark">”</span></p>
+      <p class="quote-zh" lang="zh-Hant" aria-hidden="true"><span v-for="(char, i) in chineseChars" :key="i" class="quote-letter" :style="{ animationDelay: `${chineseDelay(i)}ms` }">{{ char }}</span></p>
     </blockquote>
     <div v-if="controls" class="quote-actions" @click.stop @pointerdown.stop>
       <button type="button" @click="restart">重播引文 ↻</button>

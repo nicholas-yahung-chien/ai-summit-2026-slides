@@ -17,14 +17,14 @@ watch(active, value => { if (value) restart() })
       <article>
         <div class="theme"><span>01</span><h2>共同掌握<br>設計方向</h2></div>
         <div class="quotation">
-          <AnimatedQuote english="The developer's role changes from reverse-engineering invisible design decisions to steering them explicitly." chinese="開發者的角色，從反推隱藏的設計決策，轉為明確引導這些決策" :controls="false" :show-all="showAll" />
+          <AnimatedQuote english="The developer's role changes from reverse-engineering invisible design decisions to steering them explicitly." chinese="開發者的角色，從反推隱藏的設計決策，轉為明確引導這些決策" sync-bilingual :controls="false" :show-all="showAll" />
           <p class="attribution">Garg, R. (2026, March 3). <a href="https://www.martinfowler.com/articles/reduce-friction-ai/design-first-collaboration.html" target="_blank" rel="noopener"><cite>Design-first collaboration</cite></a>. MartinFowler.com.</p>
         </div>
       </article>
       <article>
         <div class="theme"><span>02</span><h2>更靈活地<br>探索解法</h2></div>
         <div class="quotation">
-          <AnimatedQuote english="Since LLMs can operate at a lower level of precision they allow us to explore abstractions with more fluidity." chinese="LLM 能在較低的精確度下運作，讓我們更靈活地探索抽象概念" :delay="5000" :controls="false" :show-all="showAll" />
+          <AnimatedQuote english="Since LLMs can operate at a lower level of precision they allow us to explore abstractions with more fluidity." chinese="LLM 能在較低的精確度下運作，讓我們更靈活地探索抽象概念" :delay="3300" sync-bilingual :controls="false" :show-all="showAll" />
           <p class="speaker">— Martin Fowler</p>
           <p class="attribution">Joshi, U., Parsons, R., &amp; Fowler, M. (2026, January 21). <a href="https://martinfowler.com/articles/convo-what-how.html" target="_blank" rel="noopener"><cite>Conversation: LLMs and the what/how loop</cite></a>. MartinFowler.com.</p>
         </div>
@@ -32,7 +32,7 @@ watch(active, value => { if (value) restart() })
       <article>
         <div class="theme"><span>03</span><h2>小步迭代<br>及早修正</h2></div>
         <div class="quotation">
-          <AnimatedQuote english="By iterating in small loops, we greatly reduce the chance of catastrophic errors and we can course-correct quickly." chinese="透過小步迴圈反覆改進，我們能大幅降低嚴重錯誤的機會，並迅速修正方向" :delay="10000" :controls="false" :show-all="showAll" />
+          <AnimatedQuote english="By iterating in small loops, we greatly reduce the chance of catastrophic errors and we can course-correct quickly." chinese="透過小步迴圈反覆改進，我們能大幅降低嚴重錯誤的機會，並迅速修正方向" :delay="6600" sync-bilingual :controls="false" :show-all="showAll" />
           <p class="attribution">Osmani, A. (2026, January 4). <a href="https://addyosmani.com/blog/ai-coding-workflow/" target="_blank" rel="noopener"><cite>My LLM coding workflow going into 2026</cite></a>. AddyOsmani.com.</p>
         </div>
       </article>
