@@ -34,6 +34,10 @@ const routes = buildArchitectureRoutes(model.edges)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
 function isCircularBoundary(node: any) { return ['Router', 'BoundaryInterface'].includes(node.kind) }
 function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' && !isCircularBoundary(node) }
+function hasGenericDatabaseIcon(item: any) { return ['sink', 'vector'].includes(item.id) }
+function dataTitleX(item: any) {
+  return item.logo || hasGenericDatabaseIcon(item) ? item.w * .64 : item.w / 2
+}
 function lineHeight(node: any) { return isCircularBoundary(node) ? 16 : node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
 function lines(node: any) {
   if (node.id === 'ide') return ['IBM Bob IDE']
@@ -64,6 +68,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
       <defs>
         <marker id="bob-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.5" /></marker>
         <g id="bob-component"><path d="M4 0H17V19H4 M0 4H8V9H0Z M0 12H8V17H0Z" fill="none" stroke="currentColor" stroke-width="1.3" /></g>
+        <g id="bob-database"><ellipse cx="11" cy="4" rx="9" ry="3" /><path d="M2 4V17C2 18.7 6 20 11 20S20 18.7 20 17V4 M2 10C2 11.7 6 13 11 13S20 11.7 20 10 M2 16C2 17.7 6 19 11 19S20 17.7 20 16" /></g>
       </defs>
       <g v-for="group in groups" :key="group.id" :class="['boundary',group.id]">
         <rect :x="group.x" :y="group.y" :width="group.w" :height="group.h" rx="9" :fill="group.fill" />
@@ -93,9 +98,11 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
       </g>
       <g v-for="item in data" :key="item.id" :data-component="item.id" class="data-item" :transform="`translate(${item.x},${item.y})`">
         <rect :width="item.w" :height="item.h" rx="3" />
-        <image v-if="item.logo && item.title !== 'OpenSearch'" :href="item.logo" x="10" y="7" width="30" height="26" />
+        <svg v-if="item.id === 'redis'" x="8" y="5" width="38" height="32" viewBox="0 0 100 87.8" aria-label="Redis logo"><image :href="item.logo!" width="357.8" height="87.8" /></svg>
+        <image v-if="item.logo && item.title !== 'OpenSearch' && item.id !== 'redis'" :href="item.logo" x="10" y="7" width="30" height="26" />
         <image v-if="item.title === 'OpenSearch'" :href="item.logo!" x="10" y="8" :width="item.w-20" height="23" />
-        <text v-else :x="item.logo ? item.w*.64 : item.w/2" y="26" class="data-title">{{ item.title }}</text>
+        <use v-if="hasGenericDatabaseIcon(item)" href="#bob-database" transform="translate(11 8)" class="data-generic-icon" />
+        <text v-if="item.title !== 'OpenSearch'" :x="dataTitleX(item)" y="26" class="data-title">{{ item.title }}</text>
         <text :x="item.w/2" :y="item.lines.length===1 ? 58 : 51"><tspan v-for="(line,j) in item.lines" :key="j" :x="item.w/2" :dy="j ? 16 : 0">{{ line }}</tspan></text>
       </g>
       <text x="1545" y="213" class="routing-label"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
@@ -132,6 +139,7 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .data-item rect { fill:#eef7f1; stroke:#a7bfb0; }
 .data-item text { text-anchor:middle; font-size:13px; fill:#243d33; }
 .data-item .data-title { font-weight:600; font-size:15px; }
+.data-generic-icon { fill:none; stroke:#526779; stroke-width:1.45; }
 .routing-label { font-size:18px; fill:#0f62fe; font-weight:500; }
 .architecture-meta { position:absolute; left:72px; right:72px; bottom:78px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
 .legend { display:flex; gap:16px; }
