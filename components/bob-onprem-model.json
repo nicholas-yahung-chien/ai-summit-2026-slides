@@ -225,7 +225,7 @@
       "x": 565,
       "y": 275,
       "w": 310,
-      "h": 120,
+      "h": 197,
       "kind": "Grouping",
       "parent": "service",
       "fill": "#e8edff"
@@ -372,22 +372,22 @@
     },
     "zu": {
       "label": "Z Understand",
-      "x": 565,
-      "y": 412,
+      "x": 0,
+      "y": 137,
       "w": 145,
       "h": 42,
       "kind": "ApplicationComponent",
-      "parent": "service",
+      "parent": "ppz",
       "fill": "#e0e5ff"
     },
     "zr": {
       "label": "Z Refactor",
-      "x": 730,
-      "y": 412,
+      "x": 165,
+      "y": 137,
       "w": 145,
       "h": 42,
       "kind": "ApplicationComponent",
-      "parent": "service",
+      "parent": "ppz",
       "fill": "#e0e5ff"
     }
   },
@@ -537,45 +537,24 @@
       []
     ],
     [
+      "zproxy",
+      "ragproxy",
+      []
+    ],
+    [
       "ragproxy",
       "ragmcp",
       []
     ],
     [
-      "gateway",
+      "zproxy",
       "zu",
-      [
-        [
-          940,
-          595
-        ],
-        [
-          940,
-          747
-        ],
-        [
-          692,
-          747
-        ]
-      ]
+      []
     ],
     [
-      "gateway",
+      "zproxy",
       "zr",
-      [
-        [
-          940,
-          595
-        ],
-        [
-          940,
-          747
-        ],
-        [
-          857,
-          747
-        ]
-      ]
+      []
     ],
     [
       "bifrost",
