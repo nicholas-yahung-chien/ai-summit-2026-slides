@@ -122,12 +122,12 @@
     },
     "ingress": {
       "label": "Cluster Ingress",
-      "x": 565,
-      "y": 56,
+      "x": 585,
+      "y": -31,
       "w": 235,
       "h": 62,
       "kind": "ApplicationComponent",
-      "parent": "service",
+      "parent": "cluster",
       "fill": null
     },
     "auth": {
@@ -232,13 +232,23 @@
     },
     "zproxy": {
       "label": "zProxy",
-      "x": 12,
-      "y": 45,
+      "x": 110,
+      "y": -30,
       "w": 90,
       "h": 60,
       "kind": "ApplicationComponent",
       "parent": "ppz",
       "fill": "#e0e5ff"
+    },
+    "router": {
+      "label": "Bifrost Router",
+      "x": 1415,
+      "y": 121,
+      "w": 70,
+      "h": 70,
+      "kind": "Router",
+      "parent": "cluster",
+      "fill": "#fff1d6"
     },
     "ragproxy": {
       "label": "Z RAG\nserver proxy",
@@ -562,7 +572,17 @@
       []
     ],
     [
+      "inference",
+      "router",
+      []
+    ],
+    [
       "bifrost",
+      "router",
+      []
+    ],
+    [
+      "router",
       "local",
       [
         [
@@ -580,7 +600,7 @@
       ]
     ],
     [
-      "bifrost",
+      "router",
       "public",
       [
         [
@@ -602,7 +622,7 @@
       ]
     ],
     [
-      "bifrost",
+      "router",
       "private",
       [
         [

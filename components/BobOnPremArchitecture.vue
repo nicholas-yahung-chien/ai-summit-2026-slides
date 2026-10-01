@@ -31,7 +31,7 @@ const data = [
 ]
 const routes = buildArchitectureRoutes(model.edges)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
-function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' }
+function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' && node.kind !== 'Router' }
 function lineHeight(node: any) { return node.parent === 'ppz' || ['zu','zr'].includes(node.id) ? 17 : node.id === 'metrics' ? 20 : 24 }
 function lines(node: any) {
   if (node.id === 'ide') return ['IBM Bob IDE']
@@ -42,6 +42,7 @@ function lines(node: any) {
   if (node.id === 'ragmcp') return ['Z RAG', 'MCP', 'Server']
   if (node.id === 'zu') return ['Z Understand']
   if (node.id === 'zr') return ['Z Refactor']
+  if (node.id === 'router') return ['Bifrost', 'Router']
   return node.label.split('\n')
 }
 function textY(node: any) {
@@ -63,7 +64,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
       </defs>
       <g v-for="group in groups" :key="group.id" :class="['boundary',group.id]">
         <rect :x="group.x" :y="group.y" :width="group.w" :height="group.h" rx="9" :fill="group.fill" />
-        <text :x="group.id === 'cluster' ? 800 : group.id === 'service' ? 405 : group.x+18" :y="group.y+29">{{ group.label }}</text>
+        <text :x="group.id === 'cluster' ? 930 : group.id === 'service' ? 405 : group.x+18" :y="group.y+29">{{ group.label }}</text>
         <image v-if="group.id==='cluster'" :href="openshift" :x="group.x+1200" :y="group.y+7" width="180" height="38" />
       </g>
       <g class="connections">
@@ -72,11 +73,12 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
         </path>
       </g>
       <g v-for="node in components" :key="node.id" :data-component="node.id" class="component">
-        <rect :x="node.x" :y="node.y" :width="node.w" :height="node.h" rx="3" :fill="node.fill || (node.kind==='DataObject' ? '#eee5f4' : '#edf3fc')" />
+        <circle v-if="node.kind==='Router'" :cx="node.x+node.w/2" :cy="node.y+node.h/2" :r="node.w/2" :fill="node.fill" />
+        <rect v-else :x="node.x" :y="node.y" :width="node.w" :height="node.h" rx="3" :fill="node.fill || (node.kind==='DataObject' ? '#eee5f4' : '#edf3fc')" />
         <use v-if="hasNotation(node)" href="#bob-component" :transform="`translate(${node.x+8} ${node.y+node.h/2-7}) scale(.72)`" class="notation" />
         <image v-if="node.id==='ide'" :href="bob" :x="node.x+12" :y="node.y+3" width="48" :height="node.h-6" />
         <image v-if="node.id==='auth'" :href="keycloak" :x="node.x+22" :y="node.y+32" :width="node.w-44" height="24" />
-        <text :x="textX(node)" :y="textY(node)" :class="{ compact:node.parent==='ppz', narrow:['zu','zr'].includes(node.id), hosting:node.kind==='Node' }">
+        <text :x="textX(node)" :y="textY(node)" :class="{ compact:node.parent==='ppz', narrow:['zu','zr'].includes(node.id), hosting:node.kind==='Node', router:node.kind==='Router' }">
           <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? lineHeight(node) : 0">{{ line }}</tspan>
         </text>
       </g>
@@ -103,10 +105,12 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .boundary text { font-size:20px; font-weight:600; fill:#344b60; }
 .connections path { fill:none; stroke:#526779; stroke-width:1.8; }
 .component rect { stroke:#a4b8cd; stroke-width:1.2; }
+.component circle { stroke:#f1c21b; stroke-width:1.4; }
 .component text { fill:#182c40; font-size:21px; text-anchor:middle; }
 .component text.compact { font-size:15px; }
 .component text.narrow { font-size:17px; }
 .component text.hosting { font-size:20px; }
+.component text.router { font-size:15px; font-weight:600; }
 .notation { color:#7890a5; }
 .data-item rect { fill:#eef7f1; stroke:#a7bfb0; }
 .data-item text { text-anchor:middle; font-size:16px; fill:#243d33; }
