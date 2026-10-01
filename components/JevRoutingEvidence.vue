@@ -17,8 +17,10 @@ watch(active, value => { if (value) restart() })
     <div :key="replay" class="approaches">
       <article>
         <h2><span>01</span> 多模型路由</h2>
-        <p class="question">這個任務，需要哪一種模型？</p>
-        <div class="flow"><b>任務</b><i>→</i><b class="decision">Jev 判斷</b><i>→</i><div class="options"><span>快速模型</span><span>平衡模型</span><span>高能力模型</span></div></div>
+        <div class="routing-prompt">
+          <p class="question">這個任務，需要哪一種模型？</p>
+          <div class="flow"><b>任務</b><i>→</i><b class="decision">Jev 判斷</b><i>→</i><div class="options"><span>快速模型</span><span>平衡模型</span><span>高能力模型</span></div></div>
+        </div>
         <div class="result">
           <p class="study">Vaaya 自家平台實測 · 50 題 × 3 次／組</p>
           <p class="saving"><strong>34.7<small>%</small></strong><span>用量費用減少</span></p>
@@ -30,8 +32,10 @@ watch(active, value => { if (value) restart() })
       </article>
       <article>
         <h2><span>02</span> 同模型、多強度路由</h2>
-        <p class="question">同一個模型，這次需要想多深？</p>
-        <div class="flow"><b>任務</b><i>→</i><b class="decision">Jev 判斷</b><i>→</i><div class="options effort"><span>低強度</span><span>中強度</span><span>高強度</span></div></div>
+        <div class="routing-prompt">
+          <p class="question">同一個模型，這次需要想多深？</p>
+          <div class="flow"><b>任務</b><i>→</i><b class="decision">Jev 判斷</b><i>→</i><div class="options effort"><span>低強度</span><span>中強度</span><span>高強度</span></div></div>
+        </div>
         <div class="result">
           <p class="study">社群實測 · SWE-bench 保留集 6 題 × 6 次／組</p>
           <p class="saving"><strong>16.3<small>%</small></strong><span>輸出 tokens 減少</span></p>
@@ -57,10 +61,11 @@ button{font-size:12px;color:#525252;border-bottom:1px solid #a8a8a8}button:focus
 .approaches{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 article+article{border-left:1px solid #c6c6c6;padding-left:32px}
 h2{font-size:25px;margin:0!important;font-weight:600;color:#161616}h2 span{font-size:17px;color:#0043ce;margin-right:12px}
-.question{font-size:19px;color:#525252;margin:6px 0 8px!important}
-.flow{display:flex;align-items:center;gap:13px;height:57px;margin-bottom:6px;font-size:17px}
+.routing-prompt{display:grid;grid-template-columns:minmax(170px,.78fr) minmax(0,1.42fr);align-items:center;gap:18px;min-height:82px;margin:4px 0 7px}
+.question{font-size:19px;line-height:1.42;color:#525252;margin:0!important;padding-right:4px}
+.flow{display:flex;align-items:center;gap:10px;min-width:0;height:64px;margin:0;font-size:16px}
 .flow>b{font-weight:500}.decision{color:#0043ce;border:1px solid #78a9ff;padding:9px 13px;background:#edf5ff}
-i{font-style:normal;color:#6f6f6f}.options{display:flex;flex-direction:column;gap:2px;border-left:2px solid #0f62fe;padding-left:12px;font-size:15px;color:#0043ce}
+i{font-style:normal;color:#6f6f6f}.options{display:flex;flex-direction:column;gap:2px;border-left:2px solid #0f62fe;padding-left:10px;font-size:15px;color:#0043ce;white-space:nowrap}
 .study{font-size:13px;color:#525252;margin:0 0 5px!important}
 .saving{display:flex;align-items:baseline;gap:15px;margin:0!important;color:#0043ce}.saving strong{font-size:51px;line-height:1.2;font-weight:600;font-variant-numeric:tabular-nums}.saving small{font-size:29px}.saving>span{font-size:21px}
 .comparison{display:flex;align-items:baseline;gap:10px;font-size:22px;margin:5px 0 8px!important;font-variant-numeric:tabular-nums}.comparison>span{color:#697782}.comparison b{color:#0043ce;font-weight:500}.comparison small{font-size:12px;color:#525252}
