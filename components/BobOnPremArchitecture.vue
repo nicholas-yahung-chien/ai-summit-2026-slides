@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue'
+import { useSlideContext } from '@slidev/client'
 import model from './bob-onprem-model.json'
 import postgres from '../assets/architecture-logos/postgresql.svg'
 import keycloak from '../assets/architecture-logos/keycloak.svg'
@@ -8,6 +10,11 @@ import bob from '../assets/architecture-logos/bob-mascot.webp'
 import redis from '../assets/architecture-logos/redis.svg'
 import db2 from '../assets/architecture-logos/ibm-db2.svg'
 import { buildArchitectureRoutes } from './bob-onprem-routes.mjs'
+
+const { $page, $nav, $renderContext } = useSlideContext()
+const active = computed(() => $page.value === $nav.value.currentSlideNo)
+const replay = ref(0)
+watch(active, value => { if (value) replay.value++ })
 
 const containers = ['front', 'cluster', 'service', 'data', 'ext', 'ppz']
 const source = model.nodes as Record<string, any>
@@ -32,6 +39,30 @@ const dataDefinitions = [
 const data = dataDefinitions.map(item => ({ ...item, ...nodes.find(node => node.id === item.id) }))
 const routes = buildArchitectureRoutes(model.edges)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
+const groupDelays: Record<string, number> = { front:120, cluster:260, service:420, ext:520, ppz:2250, data:3650 }
+const nodeDelays: Record<string, number> = {
+  admincli:700, ide:790, cli:880, dashboard:970, zui:1060, ingress:1180,
+  operator:1450, crd:1550, auth:1650, authz:1770, authn:1890, bobadmin:2020, metrics:2140,
+  gateway:2250, inference:2550, bifrost:2670, zproxy:2800, ragproxy:3000, ragmcp:3120,
+  zu:3240, zr:3340, audit:3480, router:3600, local:3900, public:4020, private:4140,
+}
+const dataDelays: Record<string, number> = { authdb:4000, admindb:4070, sink:4140, db2:4210, search:4280, vector:4350, pg:4420, redis:4490 }
+const entrySources = new Set(['ide', 'cli', 'dashboard', 'zui'])
+const dataTargets = ['authdb', 'admindb', 'sink', 'db2', 'search', 'vector', 'pg', 'redis']
+function revealStyle(delay: number) { return { '--reveal-delay': `${delay}ms` } }
+function edgeDelay(edge: any) {
+  if (entrySources.has(edge.source)) return 1250
+  if (['admincli', 'operator'].includes(edge.source)) return 1650
+  if (['auth', 'authz', 'authn'].includes(edge.source) && !dataTargets.includes(edge.target)) return 2050
+  if (edge.source === 'ingress') return 2350
+  if (edge.source === 'gateway') return ['bobadmin', 'metrics'].includes(edge.target) ? 2550 : 2850
+  if (['zproxy', 'ragproxy'].includes(edge.source)) return 3350
+  if (edge.source === 'bifrost' && edge.target === 'audit') return 3650
+  if (['inference', 'bifrost'].includes(edge.source) && edge.target === 'router') return 3820
+  if (edge.source === 'router') return 4200
+  const dataIndex = dataTargets.indexOf(edge.target)
+  return dataIndex >= 0 ? 4450 + dataIndex * 75 : 4600
+}
 function isCircularBoundary(node: any) { return ['Router', 'BoundaryInterface'].includes(node.kind) }
 function hasNotation(node: any) { return !logos[node.id] && node.id !== 'crd' && node.kind !== 'Node' && !isCircularBoundary(node) }
 function hasGenericDatabaseIcon(item: any) { return ['sink', 'vector'].includes(item.id) }
@@ -61,7 +92,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
 </script>
 
 <template>
-  <section class="bob-architecture" aria-label="IBM Bob On-premise 架構">
+  <section :key="replay" class="bob-architecture" :class="{ instant: !active || $renderContext === 'print' }" aria-label="IBM Bob On-premise 架構">
     <header><h1>IBM Bob 的企業內部部署架構</h1></header>
     <svg class="architecture-canvas" viewBox="25 105 1865 870" role="img" aria-labelledby="bob-architecture-title">
       <title id="bob-architecture-title">IBM Bob：前端、OpenShift 服務與資料層，以及三種模型部署選項</title>
@@ -70,23 +101,23 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
         <g id="bob-component"><path d="M4 0H17V19H4 M0 4H8V9H0Z M0 12H8V17H0Z" fill="none" stroke="currentColor" stroke-width="1.3" /></g>
         <g id="bob-database"><ellipse cx="11" cy="4" rx="9" ry="3" /><path d="M2 4V17C2 18.7 6 20 11 20S20 18.7 20 17V4 M2 10C2 11.7 6 13 11 13S20 11.7 20 10 M2 16C2 17.7 6 19 11 19S20 17.7 20 16" /></g>
       </defs>
-      <g v-for="group in groups" :key="group.id" :class="['boundary',group.id]">
+      <g v-for="group in groups" :key="group.id" :class="['boundary',group.id]" :style="revealStyle(groupDelays[group.id] || 0)">
         <rect :x="group.x" :y="group.y" :width="group.w" :height="group.h" rx="9" :fill="group.fill" />
         <text :x="group.id === 'cluster' ? 820 : group.x+18" :y="group.y+29">{{ group.label }}</text>
         <image v-if="group.id==='cluster'" :href="openshift" :x="group.x+1200" :y="group.y+7" width="180" height="38" />
       </g>
-      <g class="service-guides" aria-hidden="true">
+      <g class="service-guides" :style="revealStyle(650)" aria-hidden="true">
         <path d="M520 382 V790 M900 382 V790" />
         <text x="80" y="390">MANAGEMENT &amp; SECURITY</text>
         <text x="545" y="390">API &amp; EXTENSIONS</text>
         <text x="920" y="390">INFERENCE &amp; GOVERNANCE</text>
       </g>
       <g class="connections">
-        <path v-for="edge in routes" :key="edge.key" :data-edge="edge.key" :d="edge.d" :class="edge.role" :marker-end="edge.arrow ? 'url(#bob-arrow)' : undefined">
+        <path v-for="edge in routes" :key="edge.key" :data-edge="edge.key" :d="edge.d" :class="edge.role" pathLength="1" :style="revealStyle(edgeDelay(edge))" :marker-end="edge.arrow ? 'url(#bob-arrow)' : undefined">
           <title>{{ edge.source }} → {{ edge.target }}</title>
         </path>
       </g>
-      <g v-for="node in components" :key="node.id" :data-component="node.id" class="component">
+      <g v-for="node in components" :key="node.id" :data-component="node.id" class="component" :style="revealStyle(nodeDelays[node.id] || 2400)">
         <circle v-if="isCircularBoundary(node)" :cx="node.x+node.w/2" :cy="node.y+node.h/2" :r="node.w/2" :fill="node.fill || '#edf3fc'" :class="{ 'router-shape': node.id==='router' }" />
         <rect v-else :x="node.x" :y="node.y" :width="node.w" :height="node.h" rx="3" :fill="node.fill || (node.kind==='DataObject' ? '#eee5f4' : '#edf3fc')" />
         <use v-if="hasNotation(node)" href="#bob-component" :transform="`translate(${node.x+8} ${node.y+node.h/2-7}) scale(.72)`" class="notation" />
@@ -96,7 +127,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
           <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? lineHeight(node) : 0">{{ line }}</tspan>
         </text>
       </g>
-      <g v-for="item in data" :key="item.id" :data-component="item.id" class="data-item" :transform="`translate(${item.x},${item.y})`">
+      <g v-for="item in data" :key="item.id" :data-component="item.id" class="data-item" :style="revealStyle(dataDelays[item.id] || 4200)" :transform="`translate(${item.x},${item.y})`">
         <rect :width="item.w" :height="item.h" rx="3" />
         <svg v-if="item.id === 'redis'" x="8" y="5" width="38" height="32" viewBox="0 0 100 87.8" aria-label="Redis logo"><image :href="item.logo!" width="357.8" height="87.8" /></svg>
         <image v-if="item.logo && item.title !== 'OpenSearch' && item.id !== 'redis'" :href="item.logo" x="10" y="7" width="30" height="26" />
@@ -105,7 +136,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
         <text v-if="item.title !== 'OpenSearch'" :x="dataTitleX(item)" y="26" class="data-title">{{ item.title }}</text>
         <text :x="item.w/2" :y="item.lines.length===1 ? 58 : 51"><tspan v-for="(line,j) in item.lines" :key="j" :x="item.w/2" :dy="j ? 16 : 0">{{ line }}</tspan></text>
       </g>
-      <text x="1545" y="213" class="routing-label"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
+      <text x="1545" y="213" class="routing-label" :style="revealStyle(3750)"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
     </svg>
     <div class="architecture-meta"><div class="legend"><span><i class="application" />Application</span><span><i class="technology" />Technology</span><span><i class="ppz" />PPZ</span><span><i class="management" />Deployment management</span><span><i class="flow primary" />Main flow</span><span><i class="flow control" />Control</span><span><i class="flow storage" />Storage</span></div><span>K8s cluster support: future</span></div>
   </section>
@@ -150,4 +181,21 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .legend i.flow.primary { border-color:#0f62fe; }
 .legend i.flow.control { border-color:#8a6d3b; border-top-style:dashed; }
 .legend i.flow.storage { border-color:#70808e; }
+.bob-architecture:not(.instant) .boundary,
+.bob-architecture:not(.instant) .service-guides,
+.bob-architecture:not(.instant) .component,
+.bob-architecture:not(.instant) .routing-label { opacity:0; transform-box:fill-box; transform-origin:center; animation:architecture-enter .52s cubic-bezier(.22,1,.36,1) var(--reveal-delay) both; }
+.bob-architecture:not(.instant) .data-item { opacity:0; animation:architecture-fade .48s cubic-bezier(.22,1,.36,1) var(--reveal-delay) both; }
+.bob-architecture:not(.instant) .connections path:not(.management) { opacity:0; stroke-dasharray:1; stroke-dashoffset:1; animation:architecture-line .7s cubic-bezier(.25,1,.5,1) var(--reveal-delay) both; }
+.bob-architecture:not(.instant) .connections path.management { opacity:0; animation:architecture-fade .5s cubic-bezier(.22,1,.36,1) var(--reveal-delay) both; }
+.bob-architecture:not(.instant) .architecture-meta { opacity:0; animation:architecture-fade .45s ease-out 5050ms both; }
+@keyframes architecture-enter { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+@keyframes architecture-fade { from { opacity:0; } to { opacity:1; } }
+@keyframes architecture-line { 0% { opacity:0; stroke-dashoffset:1; } 14% { opacity:1; } 100% { opacity:1; stroke-dashoffset:0; } }
+@media (prefers-reduced-motion:reduce) {
+  .bob-architecture .boundary,.bob-architecture .service-guides,.bob-architecture .component,.bob-architecture .data-item,.bob-architecture .routing-label,.bob-architecture .connections path,.bob-architecture .architecture-meta { animation:none!important; opacity:1!important; transform:none!important; stroke-dashoffset:0!important; }
+}
+@media print {
+  .bob-architecture .boundary,.bob-architecture .service-guides,.bob-architecture .component,.bob-architecture .data-item,.bob-architecture .routing-label,.bob-architecture .connections path,.bob-architecture .architecture-meta { animation:none!important; opacity:1!important; transform:none!important; stroke-dashoffset:0!important; }
+}
 </style>
