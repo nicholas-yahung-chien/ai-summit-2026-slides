@@ -54,5 +54,5 @@ test('Inference Service and Model Gateway converge on the boundary router before
   assert.match(byKey.get('inference->router').d, /H1175$/)
   assert.match(byKey.get('bifrost->router').d, /H1175$/)
   for (const key of ['router->local', 'router->public', 'router->private'])
-    assert.match(byKey.get(key).d, /^M1235 455/)
+    assert.match(byKey.get(key).d, /^M1235 485/)
 })

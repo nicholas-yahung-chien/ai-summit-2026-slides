@@ -19,7 +19,7 @@ function position(id: string): { x: number, y: number } {
 const nodes = Object.entries(source).map(([id, node]) => ({ id, ...node, ...position(id) }))
 const groups = nodes.filter(n => containers.includes(n.id))
 const components = nodes.filter(n => !containers.includes(n.id) && n.parent !== 'data')
-const data = [
+const dataDefinitions = [
   { id:'authdb', title:'PostgreSQL', lines:['Auth config', '& sessions'], logo:postgres },
   { id:'admindb', title:'PostgreSQL', lines:['Bobalytics', 'Admin & config'], logo:postgres },
   { id:'sink', title:'Sink', lines:['Metrics'], logo:null },
@@ -29,6 +29,7 @@ const data = [
   { id:'pg', title:'Postgres', lines:['Telemetry', 'storage'], logo:postgres },
   { id:'redis', title:'Redis', lines:['Telemetry', 'cache'], logo:redis },
 ]
+const data = dataDefinitions.map(item => ({ ...item, ...nodes.find(node => node.id === item.id) }))
 const routes = buildArchitectureRoutes(model.edges)
 const logos: Record<string,string> = { ide:bob, auth:keycloak }
 function isCircularBoundary(node: any) { return ['Router', 'BoundaryInterface'].includes(node.kind) }
@@ -61,16 +62,22 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
     <svg class="architecture-canvas" viewBox="25 105 1865 870" role="img" aria-labelledby="bob-architecture-title">
       <title id="bob-architecture-title">IBM Bob：前端、OpenShift 服務與資料層，以及三種模型部署選項</title>
       <defs>
-        <marker id="bob-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#526779" stroke-width="1.5" /></marker>
+        <marker id="bob-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.5" /></marker>
         <g id="bob-component"><path d="M4 0H17V19H4 M0 4H8V9H0Z M0 12H8V17H0Z" fill="none" stroke="currentColor" stroke-width="1.3" /></g>
       </defs>
       <g v-for="group in groups" :key="group.id" :class="['boundary',group.id]">
         <rect :x="group.x" :y="group.y" :width="group.w" :height="group.h" rx="9" :fill="group.fill" />
-        <text :x="group.id === 'cluster' ? 930 : group.id === 'service' ? 405 : group.x+18" :y="group.y+29">{{ group.label }}</text>
+        <text :x="group.id === 'cluster' ? 820 : group.x+18" :y="group.y+29">{{ group.label }}</text>
         <image v-if="group.id==='cluster'" :href="openshift" :x="group.x+1200" :y="group.y+7" width="180" height="38" />
       </g>
+      <g class="service-guides" aria-hidden="true">
+        <path d="M520 382 V790 M900 382 V790" />
+        <text x="80" y="390">MANAGEMENT &amp; SECURITY</text>
+        <text x="545" y="390">API &amp; EXTENSIONS</text>
+        <text x="920" y="390">INFERENCE &amp; GOVERNANCE</text>
+      </g>
       <g class="connections">
-        <path v-for="edge in routes" :key="edge.key" :data-edge="edge.key" :d="edge.d" :marker-end="edge.arrow ? 'url(#bob-arrow)' : undefined">
+        <path v-for="edge in routes" :key="edge.key" :data-edge="edge.key" :d="edge.d" :class="edge.role" :marker-end="edge.arrow ? 'url(#bob-arrow)' : undefined">
           <title>{{ edge.source }} → {{ edge.target }}</title>
         </path>
       </g>
@@ -84,16 +91,16 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
           <tspan v-for="(line,i) in lines(node)" :key="i" :x="textX(node)" :dy="i ? lineHeight(node) : 0">{{ line }}</tspan>
         </text>
       </g>
-      <g v-for="(item,i) in data" :key="item.id" :data-component="item.id" class="data-item" :transform="`translate(${73+i*174},868)`">
-        <rect width="163" height="80" rx="3" />
-        <image v-if="item.logo && !['OpenSearch','Redis'].includes(item.title)" :href="item.logo" x="10" y="7" width="30" height="26" />
-        <image v-if="['OpenSearch','Redis'].includes(item.title)" :href="item.logo!" x="10" y="8" width="143" height="23" />
-        <text v-else :x="item.logo ? 100 : 81.5" y="26" class="data-title">{{ item.title }}</text>
-        <text x="81.5" :y="item.lines.length===1 ? 61 : 55"><tspan v-for="(line,j) in item.lines" :key="j" x="81.5" :dy="j ? 18 : 0">{{ line }}</tspan></text>
+      <g v-for="item in data" :key="item.id" :data-component="item.id" class="data-item" :transform="`translate(${item.x},${item.y})`">
+        <rect :width="item.w" :height="item.h" rx="3" />
+        <image v-if="item.logo && item.title !== 'OpenSearch'" :href="item.logo" x="10" y="7" width="30" height="26" />
+        <image v-if="item.title === 'OpenSearch'" :href="item.logo!" x="10" y="8" :width="item.w-20" height="23" />
+        <text v-else :x="item.logo ? item.w*.64 : item.w/2" y="26" class="data-title">{{ item.title }}</text>
+        <text :x="item.w/2" :y="item.lines.length===1 ? 58 : 51"><tspan v-for="(line,j) in item.lines" :key="j" :x="item.w/2" :dy="j ? 16 : 0">{{ line }}</tspan></text>
       </g>
       <text x="1545" y="213" class="routing-label"><tspan x="1545">Bifrost configuration</tspan><tspan x="1545" dy="28">routes to 3 hosting options</tspan></text>
     </svg>
-    <div class="architecture-meta"><div class="legend"><span><i class="application" />Application</span><span><i class="technology" />Technology</span><span><i class="ppz" />PPZ</span><span><i class="management" />Deployment management</span></div><span>K8s cluster support: future</span></div>
+    <div class="architecture-meta"><div class="legend"><span><i class="application" />Application</span><span><i class="technology" />Technology</span><span><i class="ppz" />PPZ</span><span><i class="management" />Deployment management</span><span><i class="flow primary" />Main flow</span><span><i class="flow control" />Control</span><span><i class="flow storage" />Storage</span></div><span>K8s cluster support: future</span></div>
   </section>
 </template>
 
@@ -105,7 +112,14 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .boundary rect { stroke:#bac7d2; stroke-width:1.3; }
 .boundary.cluster rect { stroke:#8ba999; }
 .boundary text { font-size:18px; font-weight:600; fill:#344b60; }
-.connections path { fill:none; stroke:#526779; stroke-width:1.8; }
+.service-guides path { fill:none; stroke:#d8e0e8; stroke-width:1; stroke-dasharray:5 7; }
+.service-guides text { fill:#607589; font-size:13px; font-weight:600; letter-spacing:.08em; }
+.connections path { fill:none; stroke:#526779; stroke-width:1.6; }
+.connections path.primary { stroke:#0f62fe; stroke-width:2.2; }
+.connections path.security { stroke:#486b7d; stroke-width:1.7; }
+.connections path.management { stroke:#8a6d3b; stroke-width:1.5; stroke-dasharray:6 5; }
+.connections path.extension { stroke:#6929c4; stroke-width:1.8; }
+.connections path.data { stroke:#70808e; stroke-width:1.35; }
 .component rect { stroke:#a4b8cd; stroke-width:1.2; }
 .component circle { stroke:#a4b8cd; stroke-width:1.4; }
 .component circle.router-shape { stroke:#f1c21b; }
@@ -116,12 +130,16 @@ header { position:absolute; top:26px; left:72px; right:72px; }
 .component text.router { font-size:13px; font-weight:600; }
 .notation { color:#7890a5; }
 .data-item rect { fill:#eef7f1; stroke:#a7bfb0; }
-.data-item text { text-anchor:middle; font-size:14px; fill:#243d33; }
+.data-item text { text-anchor:middle; font-size:13px; fill:#243d33; }
 .data-item .data-title { font-weight:600; font-size:15px; }
 .routing-label { font-size:18px; fill:#0f62fe; font-weight:500; }
 .architecture-meta { position:absolute; left:72px; right:72px; bottom:78px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#525252; }
-.legend { display:flex; gap:20px; }
+.legend { display:flex; gap:16px; }
 .legend span { display:flex; align-items:center; gap:6px; }
 .legend i { width:12px; height:9px; border:1px solid #b8c3cc; }
 .application { background:#edf3fc; }.technology { background:#def0e2; }.ppz { background:#e0e5ff; }.management { background:#fff1d6; }
+.legend i.flow { width:18px; height:0; border:0; border-top:2px solid; }
+.legend i.flow.primary { border-color:#0f62fe; }
+.legend i.flow.control { border-color:#8a6d3b; border-top-style:dashed; }
+.legend i.flow.storage { border-color:#70808e; }
 </style>
