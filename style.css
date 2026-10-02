@@ -87,7 +87,7 @@ html,body { font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
 .closing-copy p { font-size:30px; }
 .closing-date { display:block; font-size:21px; letter-spacing:.12em; margin-top:54px; }
 .closing-art { position:absolute; top:45px; right:-40px; width:600px; opacity:.95; }
-.slidev-layout.summit-layout.ibm-logo-closing { padding:0; background:#fff; }
+.slidev-layout.summit-layout.ibm-logo-closing { padding:0; background:#f4f4f4; }
 .ibm-logo-closing .slide-footer { display:none; }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.001ms !important; transition-duration:.001ms !important; } }
 @media print { .summit-controls,.summit-reopen { display:none !important; } }
