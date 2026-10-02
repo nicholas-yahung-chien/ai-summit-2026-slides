@@ -4,7 +4,7 @@
 
 **以代理式 AI 重塑軟體開發生命週期** — Nicholas Chien / 錢亞宏。
 分場：Build AI｜打造企業 AI 創新基礎；14:30–15:05，35 分鐘。
-21 頁內容初稿（19 頁主線與示範備援、2 頁來源），含公開講者備註、研究比較、動畫時間軸。
+20 頁正式主線，另保留隱藏備援與研究附錄，含公開講者備註、研究比較、動畫時間軸。
 研究的適用範圍見 [來源與限制](docs/sources.md)，Bob 現場操作仍需排演，見 [示範腳本](docs/demo-runbook.md)。
 
 ## 開發與發布
@@ -29,7 +29,7 @@ Pull request 只執行驗證與建置。Pages 的來源為 GitHub Actions。
 ## 播放
 
 - 方向鍵、空白鍵：Slidev 原生導覽。
-- 下方「跳至」輸入 1–21，再按 Enter 或「前往」。無效頁碼會顯示錯誤，不會跳頁。
+- 下方「跳至」輸入介面顯示範圍內的頁碼，再按 Enter 或「前往」。無效頁碼會顯示錯誤，不會跳頁。
 - `J`：聚焦頁碼輸入；`H`：隱藏／顯示自訂控制列。
 - 「開始／暫停／重設」操作 Slidev 共用計時器，預設 35 分鐘倒數；超時顯示紅色 `+MM:SS`。
 - 「講者模式」開啟另一個視窗，含原生計時、講者備註與下一頁預覽。
@@ -67,5 +67,5 @@ codex mcp add ai-summit-slidev -- node /absolute/project/node_modules/@slidev/cl
 
 依賴限制：2026-09-28 的 npm audit 回報 Slidev 53 上游依賴共 13 項通報（2 low、1 moderate、10 high），包含 Mermaid、匯出及編輯器依賴；建議的整體修復涉及退版至 Slidev 52。本專案維持已驗證的 53.0.0 MCP 功能，未執行強制降版。公開 Pages 只提供建置後靜態內容，不提供 MCP／開發伺服器；加入外來 Markdown、圖表或匯出流程前應再檢視對應通報。
 
-首頁直接使用使用者指定的高峰會主視覺，圖片從本機活動範本 `IBM AI Summit 2026_Taiwan_PPT Template.pptx` 的 `ppt/media/image3.jpeg` 原樣擷取，與對話提供圖片視覺一致。以完整構圖呈現，無重繪或色彩調整。結尾保留原創向量圖；該向量圖不是官方 logo。
+首頁直接使用使用者指定的高峰會主視覺，圖片從本機活動範本 `IBM AI Summit 2026_Taiwan_PPT Template.pptx` 的 `ppt/media/image3.jpeg` 原樣擷取，與對話提供圖片視覺一致。以完整構圖呈現，無重繪或色彩調整。正式結尾頁使用簡報既有的官方 IBM logo 圖檔。
 本專案不是 IBM 官方網站；品牌名稱的使用不表示官方背書。

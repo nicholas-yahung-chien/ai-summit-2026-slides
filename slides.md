@@ -264,19 +264,6 @@ hideInToc: false
 -->
 
 ---
-title: AI 結對程式設計：協作的價值與人的角色
-class: talk-page
-hide: false
-hideInToc: false
----
-
-<PairProgrammingPerspectives />
-
-<!--
-三篇為方法論與實務觀點文章，不是對照實驗。引文各自保留原意，中文為翻譯。Garg 引自 Conclusion；Fowler 引自對談中其段落的側欄摘句；Osmani 引自 Break work into small, iterative chunks。第二篇強調用 LLM 探索抽象概念，仍由人透過測試與重構塑造可演進的結構。第三篇直接將 LLM 視為需要人提供方向、上下文與監督的結對夥伴；小步實作、測試、修正有助控制錯誤的說法是作者實務觀點，非量化研究結果。作者在文中揭露參與 Google Gemini 工作。引用日期依個人網站版本 2026-01-04。三者提供互補的協作原則，不代表共同提出同一套五階段方法論。
--->
-
----
 title: AI 結對程式設計：小步實作、持續校準
 class: talk-page
 hide: false
@@ -286,15 +273,40 @@ hideInToc: false
 <CollaborationCycle />
 
 <!--
-銜接：前頁的協作原則落到這五個階段，這也是接下來 Bob 展示的觀察順序：釐清需求、規劃、實作、驗證、回饋。展示應讓聽眾看到人在何時判斷、AI 完成哪些工作，以及以何種證據驗收。
-五階段為跨來源歸納，非 Bob 官方標準 SDLC。順時針由釐清、規劃、實作、驗證到回饋，回到釐清；重要決策由人掌握，AI 可連續完成一段工作，不代表每一步都要人工核准。資料：IBM AI pair programming 教學；Rahul Garg (2026-03-03), Design-First Collaboration。必要時重播一次循環，講解每階段的人與 AI 分工。
+先以五個階段建立人機協作短迴圈的共同框架，這也是 Bob 展示的觀察順序：釐清需求、規劃、實作、驗證、回饋。展示應讓聽眾看到人在何時判斷、AI 完成哪些工作，以及以何種證據驗收。
+五階段為跨來源歸納，非 Bob 官方標準 SDLC。順時針由釐清、規劃、實作、驗證到回饋，回到釐清；重要決策由人掌握，AI 可連續完成一段工作，不代表每一步都要人工核准。資料：IBM AI pair programming 教學；Rahul Garg (2026-03-03), Design-First Collaboration。必要時重播一次循環，講解每階段的人與 AI 分工；下一頁再以三篇文章說明這種協作方式的價值。
 -->
 
 ---
-title: 減少協作浪費，才是節省 token 的關鍵
+title: AI 結對程式設計：協作的價值與人的角色
 class: talk-page
 hide: false
 hideInToc: false
+---
+
+<PairProgrammingPerspectives />
+
+<!--
+承接前頁的人機協作短迴圈，三篇文章從不同角度說明 AI 結對程式設計的價值。三篇為方法論與實務觀點文章，不是對照實驗。引文各自保留原意，中文為翻譯。Garg 引自 Conclusion；Fowler 引自對談中其段落的側欄摘句；Osmani 引自 Break work into small, iterative chunks。第二篇強調用 LLM 探索抽象概念，仍由人透過測試與重構塑造可演進的結構。第三篇直接將 LLM 視為需要人提供方向、上下文與監督的結對夥伴；小步實作、測試、修正有助控制錯誤的說法是作者實務觀點，非量化研究結果。作者在文中揭露參與 Google Gemini 工作。引用日期依個人網站版本 2026-01-04。三者提供互補的協作原則，不代表共同提出同一套五階段方法論。
+-->
+
+---
+title: IBM
+class: ibm-logo-closing
+hide: false
+hideInToc: false
+---
+
+<IbmLogoClosing />
+
+<!--
+正式播放的結尾頁，停留供現場致意與問答，不再顯示其他文案
+-->
+---
+title: 減少協作浪費，才是節省 token 的關鍵
+class: talk-page
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">EVIDENCE 02 · COMMUNICATION PRUNING</p>
@@ -307,8 +319,8 @@ hideInToc: false
 ---
 title: 模型路由：降低費用與減少 token 不同
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">EVIDENCE 03 · MODEL ROUTING</p>
@@ -321,8 +333,8 @@ hideInToc: false
 ---
 title: IBM Bob V2：三層產品架構
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">04 · IBM BOB</p>
@@ -335,8 +347,8 @@ hideInToc: false
 ---
 title: IBM Bob：任務分工與模型選擇
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">TASK EXECUTION · CONCEPTUAL VIEW</p>
@@ -349,8 +361,8 @@ hideInToc: false
 ---
 title: Bobalytics：看見採用與消耗
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">ENTERPRISE VISIBILITY</p>
@@ -363,8 +375,8 @@ hideInToc: false
 ---
 title: SDLC 的新重心：理解、並行與記憶
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">05 · PRACTITIONER PERSPECTIVES</p>
@@ -377,8 +389,8 @@ hideInToc: false
 ---
 title: 三種代表性的 AI 開發實務
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">THREE PRACTICAL APPROACHES</p>
@@ -391,8 +403,8 @@ hideInToc: false
 ---
 title: 今天示範：以驗收規格驅動一個小功能
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">DEMO DESIGN · SPEC-DRIVEN LOOP</p>
@@ -405,8 +417,8 @@ hideInToc: false
 ---
 title: Live demo：用 IBM Bob 完成一個交付循環
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">06 · LIVE DEMO · 7 MINUTES</p>
@@ -419,8 +431,8 @@ hideInToc: false
 ---
 title: 示範驗收：四種行為，四份證據
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">DEMO · ACCEPTANCE</p>
@@ -433,8 +445,8 @@ hideInToc: false
 ---
 title: 示範備援：保留交付軌跡
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">DEMO · FALLBACK</p>
@@ -447,8 +459,8 @@ hideInToc: false
 ---
 title: 把代理能力，轉成團隊的交付能力
 class: closing-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">BUILD AI · TAKE IT BACK TO YOUR TEAM</p><div class="closing-copy"><h1>清楚的意圖<br>適量的協作<br><span style="color:#a6c8ff">可驗證的交付</span></h1><p>Nicholas Chien / 錢亞宏</p><span class="closing-date">2026.10.23 · AI SUMMIT</span></div><SummitArt class="closing-art" />
@@ -460,8 +472,8 @@ hideInToc: false
 ---
 title: 參考資料：事件與產品
 class: talk-page reference-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">APPENDIX A · SOURCES</p>
@@ -474,8 +486,8 @@ hideInToc: false
 ---
 title: 參考資料：實驗與開發方法
 class: talk-page
-hide: false
-hideInToc: false
+hide: true
+hideInToc: true
 ---
 
 <p class="eyebrow">APPENDIX B · SOURCES</p>
