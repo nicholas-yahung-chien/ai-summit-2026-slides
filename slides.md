@@ -302,6 +302,70 @@ hideInToc: false
 <!--
 正式播放的結尾頁，停留供現場致意與問答，不再顯示其他文案
 -->
+
+---
+title: 參考文獻：AI 演進 1950–2024
+class: talk-page reference-appendix-page
+hide: false
+hideInToc: true
+---
+
+<ReferenceAppendix group="evolution1" />
+
+---
+title: 參考文獻：AI 演進 2025–2026
+class: talk-page reference-appendix-page
+hide: false
+hideInToc: true
+---
+
+<ReferenceAppendix group="evolution2" />
+
+---
+title: 參考文獻：程式開發方法的轉變
+class: talk-page reference-appendix-page
+hide: false
+hideInToc: true
+---
+
+<ReferenceAppendix group="methodology" />
+
+---
+title: 參考文獻：代理系統與模型路由研究
+class: talk-page reference-appendix-page
+hide: false
+hideInToc: true
+---
+
+<ReferenceAppendix group="research" />
+
+---
+title: 參考文獻：Bifrost 與 Jev
+class: talk-page reference-appendix-page
+hide: false
+hideInToc: true
+---
+
+<ReferenceAppendix group="routingDocs" />
+
+---
+title: 參考文獻：IBM Bob
+class: talk-page reference-appendix-page
+hide: false
+hideInToc: true
+---
+
+<ReferenceAppendix group="bob" />
+
+---
+title: 參考文獻：AI SDLC 與結對程式設計
+class: talk-page reference-appendix-page
+hide: false
+hideInToc: true
+---
+
+<ReferenceAppendix group="lifecycle" />
+
 ---
 title: 減少協作浪費，才是節省 token 的關鍵
 class: talk-page
