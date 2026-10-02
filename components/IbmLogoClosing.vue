@@ -19,14 +19,20 @@ watch(active, value => {
     :class="{ instant: !active || $renderContext === 'print' }"
     aria-label="IBM"
   >
-    <div class="abstract-field" aria-hidden="true">
-      <span class="fold fold-teal"></span>
-      <span class="fold fold-blue"></span>
-      <span class="fold fold-violet"></span>
-      <span class="fold fold-lilac"></span>
+    <div class="visual-frame" aria-hidden="true">
+      <span class="ambient ambient-cyan"></span>
+      <span class="ambient ambient-violet"></span>
+      <span class="orbit orbit-outer"></span>
+      <span class="orbit orbit-inner"></span>
+      <div class="slat-wave wave-left">
+        <i v-for="index in 15" :key="`left-${index}`" :style="{ '--i': index - 1 }"></i>
+      </div>
+      <div class="slat-wave wave-right">
+        <i v-for="index in 15" :key="`right-${index}`" :style="{ '--i': index - 1 }"></i>
+      </div>
     </div>
     <div class="logo-field">
-      <img class="ibm-mark" :src="ibmLogo" alt="IBM" width="340" height="136" />
+      <img class="ibm-mark" :src="ibmLogo" alt="IBM" width="250" height="100" />
     </div>
   </section>
 </template>
@@ -37,90 +43,102 @@ watch(active, value => {
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 50%, #ffffff 0 22%, rgba(255,255,255,.96) 40%, rgba(244,244,244,.9) 72%),
-    #f4f4f4;
+    radial-gradient(circle at 50% 50%, rgba(69,137,255,.18) 0 12%, transparent 42%),
+    #0043ce;
 }
 
-.abstract-field {
+.visual-frame {
   position: absolute;
   inset: 0;
-  animation: field-in 1.35s cubic-bezier(.22, 1, .36, 1) both;
+  overflow: hidden;
+  animation: field-in 1.45s cubic-bezier(.22, 1, .36, 1) both;
 }
 
-.abstract-field::before,
-.abstract-field::after {
-  content: '';
+.ambient {
   position: absolute;
-  width: 430px;
-  height: 430px;
+  width: 650px;
+  height: 650px;
   border-radius: 50%;
-  opacity: .36;
-  background: repeating-conic-gradient(from 18deg, rgba(15,98,254,.5) 0 2.5deg, transparent 2.5deg 7deg);
-  -webkit-mask: radial-gradient(circle, transparent 0 38%, #000 39% 62%, transparent 63%);
-  mask: radial-gradient(circle, transparent 0 38%, #000 39% 62%, transparent 63%);
+  filter: blur(12px);
 }
 
-.abstract-field::before {
-  left: -158px;
-  bottom: -184px;
-  transform: rotate(20deg) scaleY(.72);
+.ambient-cyan {
+  left: -330px;
+  bottom: -350px;
+  background: radial-gradient(circle, rgba(61,219,217,.72), rgba(15,98,254,.12) 52%, transparent 70%);
 }
 
-.abstract-field::after {
-  right: -140px;
-  top: -178px;
-  transform: rotate(-23deg) scaleY(.72);
-  background: repeating-conic-gradient(from 18deg, rgba(105,41,196,.46) 0 2.5deg, transparent 2.5deg 7deg);
+.ambient-violet {
+  right: -315px;
+  top: -360px;
+  background: radial-gradient(circle, rgba(190,149,255,.76), rgba(105,41,196,.15) 52%, transparent 70%);
 }
 
-.fold {
+.orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+}
+
+.orbit-outer {
+  width: 1030px;
+  height: 410px;
+}
+
+.orbit-inner {
+  width: 770px;
+  height: 272px;
+  border-color: rgba(166,200,255,.22);
+  transform: translate(-50%, -50%) rotate(10deg);
+}
+
+.slat-wave {
   position: absolute;
   width: 420px;
-  height: 66px;
-  border-radius: 999px;
-  filter: drop-shadow(0 13px 12px rgba(0,45,156,.09));
+  height: 430px;
+  filter: drop-shadow(0 18px 18px rgba(0,29,108,.26));
 }
 
-.fold::before,
-.fold::after {
-  content: '';
+.slat-wave i {
+  --i: 0;
   position: absolute;
-  inset: 13px 24px;
-  border-radius: inherit;
-  border: 1px solid rgba(255,255,255,.8);
+  display: block;
+  width: 340px;
+  height: 32px;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.78),
+    inset 0 -7px 12px rgba(0,45,156,.18),
+    0 7px 8px rgba(0,29,108,.14);
 }
 
-.fold::after {
-  inset: 27px 48px -14px;
-  opacity: .45;
+.wave-left {
+  left: -122px;
+  bottom: -52px;
+  transform: rotate(-8deg);
 }
 
-.fold-teal {
-  left: -125px;
-  top: 148px;
-  transform: rotate(-25deg);
-  background: linear-gradient(100deg, rgba(61,219,217,.13), rgba(0,157,154,.52), rgba(255,255,255,.28));
+.wave-left i {
+  left: calc(var(--i) * 10px);
+  top: calc(var(--i) * 24px);
+  transform: rotate(calc(-34deg + var(--i) * 2.7deg));
+  background: linear-gradient(100deg, rgba(211,255,255,.96), rgba(61,219,217,.88) 36%, rgba(120,169,255,.72) 72%, rgba(255,255,255,.2));
 }
 
-.fold-blue {
-  left: -62px;
-  bottom: 102px;
-  transform: rotate(17deg);
-  background: linear-gradient(100deg, rgba(120,169,255,.12), rgba(15,98,254,.62), rgba(255,255,255,.25));
+.wave-right {
+  right: -116px;
+  top: -62px;
+  transform: rotate(172deg);
 }
 
-.fold-violet {
-  right: -92px;
-  top: 118px;
-  transform: rotate(22deg);
-  background: linear-gradient(100deg, rgba(255,255,255,.25), rgba(138,63,252,.46), rgba(190,149,255,.18));
-}
-
-.fold-lilac {
-  right: -134px;
-  bottom: 118px;
-  transform: rotate(-20deg);
-  background: linear-gradient(100deg, rgba(255,255,255,.3), rgba(166,200,255,.48), rgba(105,41,196,.17));
+.wave-right i {
+  left: calc(var(--i) * 10px);
+  top: calc(var(--i) * 24px);
+  transform: rotate(calc(-34deg + var(--i) * 2.7deg));
+  background: linear-gradient(100deg, rgba(255,255,255,.96), rgba(190,149,255,.9) 40%, rgba(138,63,252,.7) 74%, rgba(255,255,255,.16));
 }
 
 .logo-field {
@@ -135,28 +153,29 @@ watch(active, value => {
 .logo-field::after {
   content: '';
   position: absolute;
-  width: 1px;
-  height: 94px;
-  background: linear-gradient(180deg, transparent, rgba(15,98,254,.28), transparent);
+  width: 420px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
 }
 
 .logo-field::before {
-  top: 122px;
+  top: calc(50% - 98px);
 }
 
 .logo-field::after {
-  bottom: 122px;
+  bottom: calc(50% - 98px);
 }
 
 .ibm-mark {
   position: relative;
   display: block;
-  width: 340px;
+  width: 250px;
   height: auto;
+  filter: brightness(0) invert(1) drop-shadow(0 12px 24px rgba(0,29,108,.2));
   animation: logo-in 1.1s cubic-bezier(.22, 1, .36, 1) both;
 }
 
-.instant .abstract-field,
+.instant .visual-frame,
 .instant .ibm-mark { animation: none; }
 
 @keyframes field-in {
@@ -170,7 +189,7 @@ watch(active, value => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .abstract-field,
+  .visual-frame,
   .ibm-mark { animation: none; }
 }
 </style>
