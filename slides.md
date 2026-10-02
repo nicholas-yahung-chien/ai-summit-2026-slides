@@ -196,6 +196,21 @@ hideInToc: false
 -->
 
 ---
+title: IBM Bob 的實際效益如何被量化
+class: talk-page bob-roi-page
+hide: false
+hideInToc: false
+---
+
+<BobRoiEvidence />
+
+<!--
+RevTech 為 IBM 內部生產環境的前後比較，沒有控制組，但以相同開發者、程式庫與兩個 12 週期間進行配對，並以 PR 為衡量單位
+Blue Pearl 為具名外部客戶；IDC 於 2026 年 5 月的 Bob 分析報告引用 30 天縮短至 3 天的結果，IBM 客戶案例提供 160+ 工程工時、92% 測試覆蓋率與上線後零事故等細節
+避免引用 Enterprise Payment Services，因為該案例是 IBM Payment Center 內部團隊，文章沒有具名客戶
+避免使用九個月、14 名工程師縮短為三天的版本，IBM 不同公開材料的比較基準不一致；本頁採正式客戶案例中可核對的約 30 天對 3 天
+-->
+---
 title: AI 代理時代的軟體開發生命週期
 class: talk-page gateway-research-page
 hide: false
