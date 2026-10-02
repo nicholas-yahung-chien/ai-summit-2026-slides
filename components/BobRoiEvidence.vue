@@ -24,17 +24,17 @@ watch(active, value => {
       <article class="revtech-card">
         <header>
           <span class="case-label">IBM REVTECH｜生產環境</span>
-          <h2>每投入 1 份年度成本，估算創造約 10 份效益</h2>
+          <h2>IBM 報告：ROI 約為每位開發者年度 Bob 成本的 10 倍</h2>
         </header>
 
         <div class="roi-visual" role="img" aria-label="IBM RevTech 估算的年度效益約為每位開發者使用 Bob 年度成本的十倍">
           <div class="roi-cost">
-            <span>年度總成本</span>
+            <span>年度 Bob 成本</span>
             <i />
             <b>1×</b>
           </div>
           <div class="roi-value">
-            <span>估算年度效益</span>
+            <span>IBM 報告的 ROI</span>
             <i />
             <b>約 10×</b>
           </div>
