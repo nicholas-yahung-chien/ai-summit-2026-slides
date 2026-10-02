@@ -20,19 +20,57 @@ watch(active, value => {
     aria-label="IBM"
   >
     <div class="visual-frame" aria-hidden="true">
-      <span class="ambient ambient-cyan"></span>
-      <span class="ambient ambient-violet"></span>
-      <span class="orbit orbit-outer"></span>
-      <span class="orbit orbit-inner"></span>
-      <div class="slat-wave wave-left">
-        <i v-for="index in 15" :key="`left-${index}`" :style="{ '--i': index - 1 }"></i>
-      </div>
-      <div class="slat-wave wave-right">
-        <i v-for="index in 15" :key="`right-${index}`" :style="{ '--i': index - 1 }"></i>
-      </div>
+      <svg viewBox="0 0 1280 720" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="closing-gradient-top" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#3ddbd9" />
+            <stop offset=".46" stop-color="#78a9ff" />
+            <stop offset="1" stop-color="#be95ff" />
+          </linearGradient>
+          <linearGradient id="closing-gradient-bottom" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#be95ff" />
+            <stop offset=".54" stop-color="#78a9ff" />
+            <stop offset="1" stop-color="#3ddbd9" />
+          </linearGradient>
+        </defs>
+
+        <path
+          class="wave-band wave-band-top"
+          d="M-110 112 C176 -8 404 224 681 91 S1115 3 1392 133"
+          stroke="url(#closing-gradient-top)"
+        />
+        <g class="wave-lines wave-lines-top">
+          <path
+            v-for="index in 9"
+            :key="`top-line-${index}`"
+            d="M-110 112 C176 -8 404 224 681 91 S1115 3 1392 133"
+            stroke="url(#closing-gradient-top)"
+            pathLength="1"
+            :transform="`translate(0 ${(index - 5) * 9})`"
+            :style="{ animationDelay: `${180 + index * 55}ms` }"
+          />
+        </g>
+
+        <path
+          class="wave-band wave-band-bottom"
+          d="M-116 617 C204 759 421 486 707 621 S1124 743 1392 585"
+          stroke="url(#closing-gradient-bottom)"
+        />
+        <g class="wave-lines wave-lines-bottom">
+          <path
+            v-for="index in 9"
+            :key="`bottom-line-${index}`"
+            d="M-116 617 C204 759 421 486 707 621 S1124 743 1392 585"
+            stroke="url(#closing-gradient-bottom)"
+            pathLength="1"
+            :transform="`translate(0 ${(index - 5) * 9})`"
+            :style="{ animationDelay: `${360 + index * 55}ms` }"
+          />
+        </g>
+      </svg>
     </div>
     <div class="logo-field">
-      <img class="ibm-mark" :src="ibmLogo" alt="IBM" width="250" height="100" />
+      <img class="ibm-mark" :src="ibmLogo" alt="IBM" width="220" height="88" />
     </div>
   </section>
 </template>
@@ -43,7 +81,9 @@ watch(active, value => {
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 50%, rgba(69,137,255,.18) 0 12%, transparent 42%),
+    radial-gradient(ellipse at 12% 88%, rgba(61,219,217,.2), transparent 34%),
+    radial-gradient(ellipse at 88% 12%, rgba(190,149,255,.2), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(120,169,255,.13), transparent 37%),
     #0043ce;
 }
 
@@ -54,91 +94,41 @@ watch(active, value => {
   animation: field-in 1.45s cubic-bezier(.22, 1, .36, 1) both;
 }
 
-.ambient {
+.visual-frame svg {
   position: absolute;
-  width: 650px;
-  height: 650px;
-  border-radius: 50%;
-  filter: blur(12px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.ambient-cyan {
-  left: -330px;
-  bottom: -350px;
-  background: radial-gradient(circle, rgba(61,219,217,.72), rgba(15,98,254,.12) 52%, transparent 70%);
+.wave-band,
+.wave-lines path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
 }
 
-.ambient-violet {
-  right: -315px;
-  top: -360px;
-  background: radial-gradient(circle, rgba(190,149,255,.76), rgba(105,41,196,.15) 52%, transparent 70%);
+.wave-band {
+  stroke-width: 76px;
+  opacity: .12;
+  filter: blur(10px);
+  animation: band-in 1.6s ease both;
 }
 
-.orbit {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) rotate(-12deg);
+.wave-band-bottom {
+  animation-delay: 140ms;
 }
 
-.orbit-outer {
-  width: 1030px;
-  height: 410px;
+.wave-lines path {
+  stroke-width: 1.4px;
+  stroke-linecap: round;
+  opacity: .31;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: line-draw 1.7s cubic-bezier(.4, 0, .2, 1) both;
 }
 
-.orbit-inner {
-  width: 770px;
-  height: 272px;
-  border-color: rgba(166,200,255,.22);
-  transform: translate(-50%, -50%) rotate(10deg);
-}
-
-.slat-wave {
-  position: absolute;
-  width: 420px;
-  height: 430px;
-  filter: drop-shadow(0 18px 18px rgba(0,29,108,.26));
-}
-
-.slat-wave i {
-  --i: 0;
-  position: absolute;
-  display: block;
-  width: 340px;
-  height: 32px;
-  border-radius: 999px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.78),
-    inset 0 -7px 12px rgba(0,45,156,.18),
-    0 7px 8px rgba(0,29,108,.14);
-}
-
-.wave-left {
-  left: -122px;
-  bottom: -52px;
-  transform: rotate(-8deg);
-}
-
-.wave-left i {
-  left: calc(var(--i) * 10px);
-  top: calc(var(--i) * 24px);
-  transform: rotate(calc(-34deg + var(--i) * 2.7deg));
-  background: linear-gradient(100deg, rgba(211,255,255,.96), rgba(61,219,217,.88) 36%, rgba(120,169,255,.72) 72%, rgba(255,255,255,.2));
-}
-
-.wave-right {
-  right: -116px;
-  top: -62px;
-  transform: rotate(172deg);
-}
-
-.wave-right i {
-  left: calc(var(--i) * 10px);
-  top: calc(var(--i) * 24px);
-  transform: rotate(calc(-34deg + var(--i) * 2.7deg));
-  background: linear-gradient(100deg, rgba(255,255,255,.96), rgba(190,149,255,.9) 40%, rgba(138,63,252,.7) 74%, rgba(255,255,255,.16));
+.wave-lines-bottom path {
+  opacity: .27;
 }
 
 .logo-field {
@@ -149,38 +139,43 @@ watch(active, value => {
   place-items: center;
 }
 
-.logo-field::before,
-.logo-field::after {
+.logo-field::before {
   content: '';
   position: absolute;
-  width: 420px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
-}
-
-.logo-field::before {
-  top: calc(50% - 98px);
-}
-
-.logo-field::after {
-  bottom: calc(50% - 98px);
+  width: 430px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(120,169,255,.2), transparent 67%);
+  filter: blur(8px);
 }
 
 .ibm-mark {
   position: relative;
   display: block;
-  width: 250px;
+  width: 220px;
   height: auto;
   filter: brightness(0) invert(1) drop-shadow(0 12px 24px rgba(0,29,108,.2));
   animation: logo-in 1.1s cubic-bezier(.22, 1, .36, 1) both;
 }
 
 .instant .visual-frame,
+.instant .wave-band,
+.instant .wave-lines path,
 .instant .ibm-mark { animation: none; }
+
+.instant .wave-lines path { stroke-dashoffset: 0; }
 
 @keyframes field-in {
   from { opacity: 0; transform: scale(1.035); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes band-in {
+  from { opacity: 0; }
+}
+
+@keyframes line-draw {
+  to { stroke-dashoffset: 0; }
 }
 
 @keyframes logo-in {
@@ -190,6 +185,10 @@ watch(active, value => {
 
 @media (prefers-reduced-motion: reduce) {
   .visual-frame,
+  .wave-band,
+  .wave-lines path,
   .ibm-mark { animation: none; }
+
+  .wave-lines path { stroke-dashoffset: 0; }
 }
 </style>
