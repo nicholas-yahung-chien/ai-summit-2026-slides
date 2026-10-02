@@ -113,7 +113,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
         <text x="920" y="390">INFERENCE &amp; GOVERNANCE</text>
       </g>
       <g class="connections">
-        <path v-for="edge in routes" :key="edge.key" :data-edge="edge.key" :d="edge.d" :class="edge.role" pathLength="1" :style="revealStyle(edgeDelay(edge))" :marker-end="edge.arrow ? 'url(#bob-arrow)' : undefined">
+        <path v-for="edge in routes" :key="edge.key" :data-edge="edge.key" :d="edge.d" :class="edge.role" :pathLength="edge.role === 'management' ? undefined : 1" :style="revealStyle(edgeDelay(edge))" :marker-end="edge.arrow ? 'url(#bob-arrow)' : undefined">
           <title>{{ edge.source }} → {{ edge.target }}</title>
         </path>
       </g>
