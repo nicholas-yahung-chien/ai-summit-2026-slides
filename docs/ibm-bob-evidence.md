@@ -36,4 +36,6 @@
 - The top-level structure is increased throughput value plus quality savings minus Bob cost
 - Throughput value covers feature, defect-fix and low-risk vulnerability remediation PR gains multiplied by the corresponding personnel-hour cost
 - Quality savings covers avoided production-defect losses and avoided high-risk vulnerability exposure
-- Whole cost includes Bob licensing, estimated per-run DevOps pipeline rerun costs, development and SG&A estimates
+- Whole cost includes Bob licensing, ongoing DevOps and support activities, operational maintenance, development and SG&A estimates
+- The labor-cost factors in the green column are valuation inputs for additional capacity, rather than additional expenses caused by Bob
+- The article reports an ROI of roughly ten times Bob's annual cost per developer, but does not disclose the complete arithmetic table needed to distinguish a standard net-ROI multiple from a gross benefit-cost multiple

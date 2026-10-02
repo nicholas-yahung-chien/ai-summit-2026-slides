@@ -34,19 +34,19 @@ watch(active, value => {
           <span class="formula-label">功能產出</span>
           <div class="factor">功能更新的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">功能開發投入的<br><b>人員工時成本</b></div>
+          <div class="factor">每件功能更新的<br><b>人員工時成本</b><small>用來估值</small></div>
         </article>
         <article class="formula-row">
           <span class="formula-label">缺陷修復產出</span>
           <div class="factor">非正式環境修復的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">缺陷修復投入的<br><b>人員工時成本</b></div>
+          <div class="factor">每件缺陷修復的<br><b>人員工時成本</b><small>用來估值</small></div>
         </article>
         <article class="formula-row">
           <span class="formula-label">資安修復產出</span>
           <div class="factor">低風險弱點修復的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">弱點修復投入的<br><b>人員工時成本</b></div>
+          <div class="factor">每件弱點修復的<br><b>人員工時成本</b><small>用來估值</small></div>
         </article>
       </section>
 
@@ -84,7 +84,7 @@ watch(active, value => {
           <span class="cost-label">收入成本</span>
           <div class="cost-item">Bob 授權成本上限</div>
           <i>＋</i>
-          <div class="cost-item"><span>DevOps 流水線</span><b>每次重跑成本估算</b></div>
+          <div class="cost-item"><span>DevOps 維運與支援</span><b>成本估算</b></div>
         </div>
         <div class="cost-group">
           <span class="cost-label">營業費用</span>
@@ -95,7 +95,7 @@ watch(active, value => {
       </section>
     </div>
 
-    <p class="measurement-note"><b>核心量測單位是 PR</b><span>先區分功能、缺陷與弱點修復，再把工時與業務風險換算成財務價值</span></p>
+    <p class="measurement-note"><b>核心量測單位是 PR</b><span>綠色欄以人員工時成本替新增產出估值；只有紅色欄是 Bob 的實際投入成本</span></p>
 
     <p class="citation" lang="en">McDaniel, A. (2026). <a href="https://www.ibm.com/think/perspectives/measuring-roi-ai-assisted-development-how-ibm-did-it" target="_blank" rel="noopener"><em>Measuring the ROI of AI-assisted development, and how IBM did it</em></a>. IBM Think.</p>
   </section>
@@ -226,6 +226,18 @@ watch(active, value => {
 
 .factor b {
   font-weight: 600;
+}
+
+.factor small {
+  margin-top: 2px;
+  color: #198038;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: .03em;
+}
+
+.quality-formula .factor small {
+  color: #0043ce;
 }
 
 .formula-row i,
