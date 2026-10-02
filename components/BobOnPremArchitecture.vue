@@ -104,7 +104,7 @@ function textX(node: any) { return node.x + node.w / 2 + (node.id === 'ide' ? 30
       <g v-for="group in groups" :key="group.id" :class="['boundary',group.id]" :style="revealStyle(groupDelays[group.id] || 0)">
         <rect :x="group.x" :y="group.y" :width="group.w" :height="group.h" rx="9" :fill="group.fill" />
         <text :x="group.id === 'cluster' ? 820 : group.x+18" :y="group.y+29">{{ group.label }}</text>
-        <image v-if="group.id==='cluster'" :href="openshift" :x="group.x+1200" :y="group.y+7" width="180" height="38" />
+        <image v-if="group.id==='cluster'" :href="openshift" :x="group.x+group.w-275" :y="group.y" width="260" height="80" />
       </g>
       <g class="service-guides" :style="revealStyle(650)" aria-hidden="true">
         <path d="M520 382 V790 M900 382 V790" />

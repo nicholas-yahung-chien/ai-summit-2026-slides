@@ -129,14 +129,14 @@ watch(active, value => {
 }
 
 .equation-term b {
-  font-size: 21px;
+  font-size: 23px;
   font-weight: 600;
   white-space: nowrap;
 }
 
 .equation-term span {
   color: #6f6f6f;
-  font-size: 10.5px;
+  font-size: 11.5px;
   white-space: nowrap;
 }
 
@@ -198,7 +198,7 @@ watch(active, value => {
   left: 0;
   padding: 2px 7px;
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: .02em;
   line-height: 1.35;
@@ -218,7 +218,7 @@ watch(active, value => {
   border-radius: 8px;
   color: #393939;
   background: #defbe6;
-  font-size: 11.7px;
+  font-size: 14px;
   line-height: 1.28;
   text-align: center;
 }
@@ -231,7 +231,7 @@ watch(active, value => {
 .quality-formula i,
 .cost-group i {
   color: #393939;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   text-align: center;
@@ -269,12 +269,12 @@ watch(active, value => {
 
 .loss-examples b,
 .loss-examples span {
-  min-height: 35px;
+  min-height: 43px;
   padding: 5px 6px;
   border: 1px solid #c6c6c6;
   background: #fff;
   color: #525252;
-  font-size: 9.2px;
+  font-size: 11.2px;
   font-weight: 400;
   line-height: 1.25;
   text-align: center;
@@ -287,7 +287,7 @@ watch(active, value => {
   border: 0;
   background: transparent;
   color: #0043ce;
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 600;
 }
 
@@ -311,14 +311,14 @@ watch(active, value => {
 
 .cost-item {
   display: flex;
-  min-height: 44px;
+  min-height: 48px;
   align-items: center;
   justify-content: center;
   padding: 5px 8px;
   border-radius: 8px;
   background: #ffd7d9;
   color: #393939;
-  font-size: 11.7px;
+  font-size: 14px;
   line-height: 1.25;
   text-align: center;
 }
@@ -334,14 +334,14 @@ watch(active, value => {
   padding-top: 8px;
   border-top: 1px solid #c6c6c6;
   color: #525252;
-  font-size: 12px;
+  font-size: 13.5px;
   line-height: 1.35;
   animation: row-in 480ms ease 1.08s both;
 }
 
 .measurement-note b {
   color: #0043ce;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 }
 
