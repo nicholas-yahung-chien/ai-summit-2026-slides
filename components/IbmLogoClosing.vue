@@ -55,8 +55,6 @@ watch(active, value => {
 
         <g class="wave-stack wave-stack-center">
           <path d="M-80 302C105 349 275 270 455 320C639 371 788 282 970 332C1128 375 1239 321 1360 349L1360 390C1232 369 1114 414 961 378C779 335 642 416 455 371C271 327 107 402-80 365Z" fill="url(#closing-wave-light)" />
-          <path d="M-80 354C108 319 278 398 462 361C644 324 795 401 973 366C1125 336 1243 386 1360 363L1360 408C1235 429 1111 390 966 418C782 453 646 381 459 419C276 456 107 385-80 424Z" fill="url(#closing-wave-blue)" />
-          <path d="M-80 401C105 445 272 372 454 420C639 469 785 388 968 432C1127 470 1238 424 1360 448L1360 488C1233 470 1117 509 962 477C779 439 643 510 455 470C274 432 106 499-80 466Z" fill="url(#closing-wave-bottom)" />
         </g>
 
         <g class="wave-stack wave-stack-bottom">
@@ -109,23 +107,21 @@ watch(active, value => {
 
 .wave-stack path:nth-child(even) { --wave-from:translateX(42px); }
 
-.wave-stack-top path:nth-child(1) { opacity:.16; animation-delay:70ms; }
-.wave-stack-top path:nth-child(2) { opacity:.22; animation-delay:125ms; }
-.wave-stack-top path:nth-child(3) { opacity:.18; animation-delay:180ms; }
-.wave-stack-top path:nth-child(4) { opacity:.24; animation-delay:235ms; }
-.wave-stack-top path:nth-child(5) { opacity:.2; animation-delay:290ms; }
-.wave-stack-top path:nth-child(6) { opacity:.16; animation-delay:345ms; }
+.wave-stack-top path:nth-child(1) { opacity:.48; animation-delay:70ms; }
+.wave-stack-top path:nth-child(2) { opacity:.38; animation-delay:125ms; }
+.wave-stack-top path:nth-child(3) { opacity:.28; animation-delay:180ms; }
+.wave-stack-top path:nth-child(4) { opacity:.18; animation-delay:235ms; }
+.wave-stack-top path:nth-child(5) { opacity:.1; animation-delay:290ms; }
+.wave-stack-top path:nth-child(6) { opacity:.045; animation-delay:345ms; }
 
-.wave-stack-center path:nth-child(1) { opacity:.065; animation-delay:225ms; }
-.wave-stack-center path:nth-child(2) { opacity:.05; animation-delay:290ms; }
-.wave-stack-center path:nth-child(3) { opacity:.06; animation-delay:355ms; }
+.wave-stack-center path:nth-child(1) { opacity:.022; animation-delay:300ms; }
 
-.wave-stack-bottom path:nth-child(1) { opacity:.15; animation-delay:160ms; }
-.wave-stack-bottom path:nth-child(2) { opacity:.2; animation-delay:215ms; }
-.wave-stack-bottom path:nth-child(3) { opacity:.23; animation-delay:270ms; }
-.wave-stack-bottom path:nth-child(4) { opacity:.18; animation-delay:325ms; }
-.wave-stack-bottom path:nth-child(5) { opacity:.22; animation-delay:380ms; }
-.wave-stack-bottom path:nth-child(6) { opacity:.25; animation-delay:435ms; }
+.wave-stack-bottom path:nth-child(1) { opacity:.045; animation-delay:160ms; }
+.wave-stack-bottom path:nth-child(2) { opacity:.09; animation-delay:215ms; }
+.wave-stack-bottom path:nth-child(3) { opacity:.16; animation-delay:270ms; }
+.wave-stack-bottom path:nth-child(4) { opacity:.25; animation-delay:325ms; }
+.wave-stack-bottom path:nth-child(5) { opacity:.36; animation-delay:380ms; }
+.wave-stack-bottom path:nth-child(6) { opacity:.5; animation-delay:435ms; }
 
 .logo-field {
   position: absolute;
