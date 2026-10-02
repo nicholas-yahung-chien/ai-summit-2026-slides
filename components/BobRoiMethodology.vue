@@ -34,19 +34,19 @@ watch(active, value => {
           <span class="formula-label">功能產出</span>
           <div class="factor">功能更新的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">功能開發投入的<br><b>工程工時成本</b></div>
+          <div class="factor">功能開發投入的<br><b>人員工時成本</b></div>
         </article>
         <article class="formula-row">
           <span class="formula-label">缺陷修復產出</span>
           <div class="factor">非正式環境修復的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">缺陷修復投入的<br><b>工程工時成本</b></div>
+          <div class="factor">缺陷修復投入的<br><b>人員工時成本</b></div>
         </article>
         <article class="formula-row">
           <span class="formula-label">資安修復產出</span>
           <div class="factor">低風險弱點修復的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">弱點修復投入的<br><b>工程工時成本</b></div>
+          <div class="factor">弱點修復投入的<br><b>人員工時成本</b></div>
         </article>
       </section>
 
@@ -56,7 +56,7 @@ watch(active, value => {
           <div class="quality-formula">
             <div class="factor">正式環境修復的<br><b>PR 增量</b></div>
             <i>×</i>
-            <div class="factor">缺陷修復的<br><b>淨工程工時</b></div>
+            <div class="factor">缺陷修復的<br><b>淨人員工時</b></div>
             <i>×</i>
             <div class="factor">事件或延誤造成的<br><b>每小時營運損失</b></div>
           </div>
@@ -84,7 +84,7 @@ watch(active, value => {
           <span class="cost-label">收入成本</span>
           <div class="cost-item">Bob 授權成本上限</div>
           <i>＋</i>
-          <div class="cost-item">例行 DevOps 成本估算</div>
+          <div class="cost-item"><span>DevOps 流水線</span><b>每次重跑成本估算</b></div>
         </div>
         <div class="cost-group">
           <span class="cost-label">營業費用</span>
@@ -185,6 +185,7 @@ watch(active, value => {
   align-items: center;
   gap: 5px;
   margin-top: 19px;
+  padding-top: 9px;
 }
 
 .formula-row:nth-child(1) { animation-delay: 430ms; }
@@ -240,6 +241,7 @@ watch(active, value => {
 .quality-row {
   position: relative;
   margin-top: 19px;
+  padding-top: 9px;
 }
 
 .quality-row:nth-child(1) { animation-delay: 520ms; }
@@ -258,10 +260,9 @@ watch(active, value => {
 
 .loss-examples {
   display: grid;
-  grid-template-columns: 118px 1fr 1.38fr 1.25fr;
-  align-items: center;
-  gap: 4px;
-  margin-top: 9px;
+  grid-template-columns: 1fr;
+  gap: 3px;
+  margin-top: 10px;
   padding: 5px;
   border: 1px dashed #8d8d8d;
   animation: row-in 480ms ease 940ms both;
@@ -269,12 +270,12 @@ watch(active, value => {
 
 .loss-examples b,
 .loss-examples span {
-  min-height: 43px;
-  padding: 5px 6px;
+  min-height: 28px;
+  padding: 4px 9px;
   border: 1px solid #c6c6c6;
   background: #fff;
   color: #525252;
-  font-size: 11.2px;
+  font-size: 12.8px;
   font-weight: 400;
   line-height: 1.25;
   text-align: center;
@@ -283,11 +284,11 @@ watch(active, value => {
 .loss-examples b {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border: 0;
   background: transparent;
   color: #0043ce;
-  font-size: 11.5px;
+  font-size: 12.5px;
   font-weight: 600;
 }
 
@@ -304,6 +305,7 @@ watch(active, value => {
   grid-template-columns: 1fr;
   gap: 3px;
   margin-top: 19px;
+  padding-top: 9px;
 }
 
 .cost-group:nth-child(1) { animation-delay: 620ms; }
@@ -312,6 +314,7 @@ watch(active, value => {
 .cost-item {
   display: flex;
   min-height: 48px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 5px 8px;
@@ -321,6 +324,10 @@ watch(active, value => {
   font-size: 14px;
   line-height: 1.25;
   text-align: center;
+}
+
+.cost-item b {
+  font-weight: 600;
 }
 
 .measurement-note {

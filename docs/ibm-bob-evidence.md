@@ -34,6 +34,6 @@
 - Enhanced reference asset: `assets/revtech-roi-methodology-upscaled.png` (2880 x 1620, Lanczos resampling with light unsharp masking)
 - The slide recreates the diagram with native HTML and CSS so its text and formula structure remain sharp at presentation scale
 - The top-level structure is increased throughput value plus quality savings minus Bob cost
-- Throughput value covers feature, defect-fix and low-risk vulnerability remediation PR gains multiplied by the corresponding engineering-hour cost
+- Throughput value covers feature, defect-fix and low-risk vulnerability remediation PR gains multiplied by the corresponding personnel-hour cost
 - Quality savings covers avoided production-defect losses and avoided high-risk vulnerability exposure
-- Whole cost includes Bob licensing, routine DevOps, development and SG&A estimates
+- Whole cost includes Bob licensing, estimated per-run DevOps pipeline rerun costs, development and SG&A estimates
