@@ -161,13 +161,13 @@ watch(active, value => {
 
 .cost-chart {
   position: relative;
-  padding: 24px 0 0;
+  padding: 24px 90px 0 0;
 }
 
 .axis {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 90px;
   left: 197px;
   display: flex;
   justify-content: space-between;
@@ -234,16 +234,17 @@ watch(active, value => {
 .track strong {
   position: absolute;
   top: -5px;
-  right: 4px;
+  left: calc(100% + 12px);
+  width: 74px;
   color: #393939;
   font-size: 22px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+  text-align: right;
   animation: metric-in 420ms ease 1.05s both;
 }
 
 .bob .track strong { color: #0043ce; }
-.standard .track strong { right: 12px; color: #fff; }
 
 .cost-row p {
   margin: 2px 0 0 !important;
