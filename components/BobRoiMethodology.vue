@@ -72,7 +72,7 @@ watch(active, value => {
           </div>
         </article>
         <div class="loss-examples">
-          <b>可能的業務損失</b>
+          <b>營運可能的損失有，舉例...</b>
           <span>營收轉換下降</span>
           <span>延後現代化而暴露舊弱點</span>
           <span>事件處理造成的生產力損失</span>
