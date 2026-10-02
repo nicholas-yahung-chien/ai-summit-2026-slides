@@ -225,6 +225,20 @@ IBM 以 PR 作為受治理的量測單位，先將工作分類為功能開發、
 現場說明時，先指出綠色欄不是新增成本，而是以每類 PR 的原定工時估算乘上完全負擔人力成本率，將 Bob 帶來的額外產出換算成年度產能價值；藍色欄是避免事故、營收損失與資安事件所創造的價值；紅色欄才是 Bob 的實際投入成本。IBM 將前兩項價值合計後扣除完整成本，再與每位開發人員的年度 Bob 成本比較，報告約十倍的 ROI
 -->
 ---
+title: 65,000 token 程式開發工作階段的費用比較
+class: talk-page bob-token-cost-page
+hide: false
+hideInToc: false
+---
+
+<BobTokenCostComparison />
+
+<!--
+這不是程式能力 benchmark。Anthropic 官方 Pricing 頁的 worked example 只定義一個一小時的程式開發工作階段，使用 50,000 input tokens 與 15,000 output tokens，沒有說明實際要完成的程式任務，也沒有品質、正確率或完成率
+
+原 IBM 比較資料的 USD 0.375 與 USD 0.267，分別等於把同一組 50k input、15k output token 結構套用 Claude Sonnet 4.6 的公開單價，以及把其中 40k input 視為 cache read 後的重算結果。Bob 的 USD 0.081 則採該資料所列 USD 1.25 / MTok 統一單價；目前 IBM 公開 Bobcoin 文件沒有提供固定 token 對 Bobcoin 換算，因此現場應稱為定價情境試算，不稱為客戶實測或公開 benchmark
+-->
+---
 title: AI 代理時代的軟體開發生命週期
 class: talk-page gateway-research-page
 hide: false

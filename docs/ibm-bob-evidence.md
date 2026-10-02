@@ -23,7 +23,10 @@
 ## Excluded alternatives
 
 - IBM Payment Center Enterprise Payment Services is an IBM internal team and the article names no client, so its three-month testing metrics are not used on the slide
-- The Japanese token-cost deck is a price scenario based on an assumed Bob rate of USD 1.25 per million tokens; public IBM pricing does not currently confirm that unit price, so it is retained only as a fallback
+- The Japanese token-cost deck is used only as a price scenario based on an assumed Bob rate of USD 1.25 per million tokens; public IBM pricing does not currently confirm that unit price
+- Its 65,000-token profile matches Anthropic's published one-hour coding-session billing example: 50,000 input tokens and 15,000 output tokens
+- The Claude values are derived rather than benchmark measurements: USD 0.375 uses Sonnet 4.6 rates of USD 3/MTok input and USD 15/MTok output, while USD 0.267 treats 40,000 of the input tokens as cache reads at the published 0.1x multiplier
+- The source example does not identify a concrete programming task and reports no quality, completion-rate or correctness result, so the slide labels the comparison as a pricing scenario rather than a benchmark
 - Some IBM material describes a nine-month, 14-developer plan completed in three days, while the formal client case uses a roughly 30-day comparison baseline; the slide uses the more consistently documented 30-day to 3-day comparison
 
 ## ROI methodology figure
