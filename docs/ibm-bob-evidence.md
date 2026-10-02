@@ -33,9 +33,9 @@
 - Official source asset: `assets/revtech-roi-methodology-source.png` (720 x 405)
 - Enhanced reference asset: `assets/revtech-roi-methodology-upscaled.png` (2880 x 1620, Lanczos resampling with light unsharp masking)
 - The slide recreates the diagram with native HTML and CSS so its text and formula structure remain sharp at presentation scale
-- The top-level structure is increased throughput value plus quality savings minus Bob cost
-- Throughput value covers feature, defect-fix and low-risk vulnerability remediation PR gains multiplied by the corresponding personnel-hour cost
+- The top-level structure is increased throughput value plus risk-avoidance value (labeled `Quality Savings` in the source diagram) minus Bob cost
+- Throughput value covers feature, defect-fix and low-risk vulnerability remediation PR gains multiplied by the corresponding estimated planned effort and fully loaded labor rate
 - Quality savings covers avoided production-defect losses and avoided high-risk vulnerability exposure
 - Whole cost includes Bob licensing, ongoing DevOps and support activities, operational maintenance, development and SG&A estimates
-- The labor-cost factors in the green column are valuation inputs for additional capacity, rather than additional expenses caused by Bob
+- The estimated planned-effort factors in the green column are valuation inputs for additional capacity, rather than additional expenses caused by Bob
 - The article reports an ROI of roughly ten times Bob's annual cost per developer, but does not disclose the complete arithmetic table needed to distinguish a standard net-ROI multiple from a gross benefit-cost multiple

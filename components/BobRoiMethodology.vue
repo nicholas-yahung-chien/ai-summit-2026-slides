@@ -20,10 +20,10 @@ watch(active, value => {
     <p class="eyebrow">IBM REVTECH · ROI METHODOLOGY</p>
     <h1>IBM 如何將 Bob 的產出、品質與成本換算為 ROI</h1>
 
-    <div class="value-equation" aria-label="產出提升價值加上品質節省，再扣除 Bob 總成本">
+    <div class="value-equation" aria-label="產出提升價值加上風險避免的價值，再扣除 Bob 總成本">
       <div class="equation-term throughput"><b>產出提升價值</b><span>Increased Throughput Value</span></div>
       <strong class="operator plus">＋</strong>
-      <div class="equation-term quality"><b>品質節省</b><span>Quality Savings</span></div>
+      <div class="equation-term quality"><b>風險避免的價值</b><span>Quality Savings</span></div>
       <strong class="operator minus">−</strong>
       <div class="equation-term cost"><b>Bob 總成本</b><span>Bob Cost</span></div>
     </div>
@@ -34,19 +34,19 @@ watch(active, value => {
           <span class="formula-label">功能產出</span>
           <div class="factor">功能更新的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">每件功能更新的<br><b>人員工時成本</b><small>用來估值</small></div>
+          <div class="factor">每件功能更新的<br><b>原定工時估算</b><small>用來估值</small></div>
         </article>
         <article class="formula-row">
           <span class="formula-label">缺陷修復產出</span>
           <div class="factor">非正式環境修復的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">每件缺陷修復的<br><b>人員工時成本</b><small>用來估值</small></div>
+          <div class="factor">每件缺陷修復的<br><b>原定工時估算</b><small>用來估值</small></div>
         </article>
         <article class="formula-row">
           <span class="formula-label">資安修復產出</span>
           <div class="factor">低風險弱點修復的<br><b>PR 增量</b></div>
           <i>×</i>
-          <div class="factor">每件弱點修復的<br><b>人員工時成本</b><small>用來估值</small></div>
+          <div class="factor">每件弱點修復的<br><b>原定工時估算</b><small>用來估值</small></div>
         </article>
       </section>
 
@@ -56,9 +56,9 @@ watch(active, value => {
           <div class="quality-formula">
             <div class="factor">正式環境修復的<br><b>PR 增量</b></div>
             <i>×</i>
-            <div class="factor">缺陷修復的<br><b>淨人員工時</b></div>
+            <div class="factor">缺陷修復的<br><b>原定工時估算</b></div>
             <i>×</i>
-            <div class="factor">事件或延誤造成的<br><b>每小時營運損失</b></div>
+            <div class="factor">事件或延誤造成的<br><b>每小時營運可能損失</b></div>
           </div>
         </article>
         <article class="quality-row">
@@ -68,7 +68,7 @@ watch(active, value => {
             <i>×</i>
             <div class="factor">嚴重弱點遭利用的<br><b>發生機率</b></div>
             <i>×</i>
-            <div class="factor">監管產業的<br><b>資料外洩成本</b></div>
+            <div class="factor">監管產業的<br><b>資料外洩可能成本</b></div>
           </div>
         </article>
         <div class="loss-examples">
@@ -95,7 +95,7 @@ watch(active, value => {
       </section>
     </div>
 
-    <p class="measurement-note"><b>核心量測單位是 PR</b><span>綠色欄以人員工時成本替新增產出估值；只有紅色欄是 Bob 的實際投入成本</span></p>
+    <p class="measurement-note"><b>核心量測單位是 PR</b><span>綠色欄以原定工時估算替新增產出估值；只有紅色欄是 Bob 的實際投入成本</span></p>
 
     <p class="citation" lang="en">McDaniel, A. (2026). <a href="https://www.ibm.com/think/perspectives/measuring-roi-ai-assisted-development-how-ibm-did-it" target="_blank" rel="noopener"><em>Measuring the ROI of AI-assisted development, and how IBM did it</em></a>. IBM Think.</p>
   </section>
