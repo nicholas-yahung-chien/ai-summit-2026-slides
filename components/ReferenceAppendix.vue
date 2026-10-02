@@ -5,8 +5,6 @@ const props = defineProps({
 
 const pages = {
   evolution1: {
-    kicker: 'APPENDIX A1 · REFERENCES · P2',
-    title: 'AI 演進：1950–2024',
     refs: [
       { html: 'Turing, A. M. (1950). Computing machinery and intelligence. <em>Mind, 59</em>(236), 433–460. https://doi.org/10.1093/mind/LIX.236.433', url: 'https://academic.oup.com/mind/article/LIX/236/433/986238' },
       { html: 'Feigenbaum, E. A. (n.d.). <em>A. M. Turing Award oral history interview</em> [Transcript]. Association for Computing Machinery.', url: 'https://amturing.acm.org/pdf/FiegenbaumTuringTranscript.pdf' },
@@ -21,8 +19,6 @@ const pages = {
     ],
   },
   evolution2: {
-    kicker: 'APPENDIX A2 · REFERENCES · P2',
-    title: 'AI 演進：2025–2026',
     refs: [
       { html: 'IBM. (2025). <em>What is vibe coding?</em> IBM Think.', url: 'https://www.ibm.com/think/topics/vibe-coding' },
       { html: 'GitHub. (2026, February 5). <em>Continuous AI in practice: What developers can automate today with agentic CI</em>.', url: 'https://github.blog/ai-and-ml/generative-ai/continuous-ai-in-practice-what-developers-can-automate-today-with-agentic-ci/' },
@@ -35,8 +31,6 @@ const pages = {
     ],
   },
   methodology: {
-    kicker: 'APPENDIX A3 · REFERENCES · P3–P5',
-    title: '程式開發方法的轉變',
     refs: [
       { html: 'Osmani, A. (2026, January 4). <em>My LLM coding workflow going into 2026</em>. AddyOsmani.com.', url: 'https://addyosmani.com/blog/ai-coding-workflow/' },
       { html: 'Osmani, A. (2026, April 19). <em>Agent harness engineering</em>. AddyOsmani.com.', url: 'https://addyosmani.com/blog/agent-harness-engineering/' },
@@ -47,8 +41,6 @@ const pages = {
     ],
   },
   research: {
-    kicker: 'APPENDIX B1 · REFERENCES · P6–P9',
-    title: '代理系統與模型路由研究',
     refs: [
       { html: 'Kim, Y., Gu, K., Park, C., Park, C., Schmidgall, S., Heydari, A. A., Yan, Y., Zhang, Z., Zhuang, Y., Liu, Y., Malhotra, M., Liang, P. P., Park, H. W., Yang, Y., Xu, X., Du, Y., Patel, S., Althoff, T., McDuff, D., &amp; Liu, X. (2026). <em>Towards a science of scaling agent systems</em> [Preprint, Version 3]. arXiv. https://doi.org/10.48550/arXiv.2512.08296', url: 'https://arxiv.org/pdf/2512.08296v3' },
       { html: 'Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., &amp; Stoica, I. (2025). RouteLLM: Learning to route LLMs from preference data. In <em>Proceedings of the Thirteenth International Conference on Learning Representations</em>.', url: 'https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html' },
@@ -59,8 +51,6 @@ const pages = {
     ],
   },
   routingDocs: {
-    kicker: 'APPENDIX B2 · REFERENCES · P10–P11',
-    title: 'Bifrost 與 Jev 文件及效益測試',
     refs: [
       { html: 'Maxim AI. (n.d.). <em>Routing rules</em>. Bifrost documentation.', url: 'https://docs.getbifrost.ai/providers/routing-rules' },
       { html: 'Maxim AI. (n.d.). <em>Complexity router</em>. Bifrost documentation.', url: 'https://docs.getbifrost.ai/features/governance/complexity-router' },
@@ -74,8 +64,6 @@ const pages = {
     ],
   },
   bob: {
-    kicker: 'APPENDIX C · REFERENCES · P1, P12–P16',
-    title: 'IBM Bob：架構、效益與費用',
     refs: [
       { html: 'IBM. (2026). <em>IBM AI Summit 2026 Taiwan PowerPoint template</em> [Presentation template]. Internal event material.' },
       { html: 'IBM. (2026). <em>Bob on-prem architecture for GA</em> [Architecture diagram]. Internal technical material.' },
@@ -89,8 +77,6 @@ const pages = {
     ],
   },
   lifecycle: {
-    kicker: 'APPENDIX D · REFERENCES · P17–P19',
-    title: 'AI SDLC 與結對程式設計',
     refs: [
       { html: 'Amazon Web Services. (n.d.). <em>AI-driven development life cycle</em>. AWS DevOps Blog.', url: 'https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/' },
       { html: 'GitHub. (n.d.). <em>Agentic spec-driven development</em>. Spec Kit documentation.', url: 'https://github.github.com/spec-kit/reference/agentic-sdd.html' },
@@ -114,50 +100,31 @@ const references = [...page.refs].sort((a, b) => {
 
 <template>
   <section class="reference-appendix">
-    <p class="eyebrow">{{ page.kicker }}</p>
-    <h1>{{ page.title }}</h1>
     <div class="reference-columns" lang="en">
-      <article v-for="(reference, index) in references" :key="reference.html">
-        <span class="reference-number">{{ String(index + 1).padStart(2, '0') }}</span>
+      <article v-for="reference in references" :key="reference.html">
         <a v-if="reference.url" :href="reference.url" target="_blank" rel="noopener" v-html="reference.html"></a>
         <p v-else v-html="reference.html"></p>
       </article>
     </div>
-    <p class="appendix-note">APA 7 格式整理 · 依作者排序 · 重複來源合併列示 · 網址可點選 · 查閱日期 2026-10-02</p>
   </section>
 </template>
 
 <style scoped>
-.reference-appendix h1 {
-  margin: 10px 0 22px;
-  font-size: 43px;
-  letter-spacing: -.035em;
+.reference-appendix {
+  padding-top: 2px;
 }
 
 .reference-columns {
   column-count: 2;
-  column-gap: 46px;
-  column-rule: 1px solid #d6d6d6;
+  column-gap: 42px;
 }
 
 article {
-  position: relative;
   break-inside: avoid;
-  margin: 0 0 15px;
-  padding: 0 0 0 33px;
+  margin: 0 0 12px;
   color: #393939;
-  font-size: 13.5px;
-  line-height: 1.42;
-}
-
-.reference-number {
-  position: absolute;
-  top: 1px;
-  left: 0;
-  color: #0043ce;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .08em;
+  font-size: 12px;
+  line-height: 1.38;
 }
 
 a,
@@ -167,6 +134,7 @@ article p {
   padding-left: 14px;
   color: inherit;
   font: inherit;
+  border-bottom: 0 !important;
   text-decoration: none;
   text-indent: -14px;
 }
@@ -174,16 +142,4 @@ article p {
 a:hover { color: #0043ce; }
 a:focus-visible { outline: 2px solid #0f62fe; outline-offset: 3px; }
 :deep(em) { font-style: italic; }
-
-.appendix-note {
-  position: absolute;
-  right: 72px;
-  bottom: 80px;
-  left: 72px;
-  padding-top: 9px;
-  border-top: 1px solid #c6c6c6;
-  color: #525252;
-  font-size: 12px;
-  letter-spacing: .02em;
-}
 </style>
