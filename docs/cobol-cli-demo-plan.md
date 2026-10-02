@@ -10,9 +10,19 @@
 2. Bob Shell 的公開 JSON schema 沒有逐次模型名稱或 Router 決策欄位，因此一場執行是否真的跨模型，不能由 CLI 結果自行證明
 3. IBM Bob self-hosted 的公開文件目前要求只設定一個 core inference model，Router 也只支援 `static` 策略；這與 SaaS 或 IBM 內部材料所描述的自動模型分派不能混為一談
 
+## 共用模型基準
+
+截至 2026-10-02，IBM Bob on-premises 官方支援清單沒有 `gpt-6.1-sol`，列出的 OpenAI 核心模型是 **GPT-5.6 Sol**。因此本 Demo 將兩邊都固定為 GPT-5.6 Sol，避免把底層模型世代差異誤認為 agent harness 或產品路徑的效果
+
+- Bob Shell：Bob on-premises，Model Gateway 只設定 `OpenAI GPT5.6 Sol`，並將 reasoning effort 固定為 `medium`
+- Codex CLI：固定 `gpt-5.6-sol`，`reasoning.effort=medium`
+- 執行前保存 Bob `/v1/model/info` 回應與 Codex trace 中的模型欄位，確認兩邊實際使用同一模型
+
+這個設定比較的是 **相同核心模型下，Bob 與 Codex 的代理流程、工具、提示、快取與產品能力差異**，不是多模型路由實驗。若改用 Bob SaaS，而 IBM 未提供單次執行的模型明細，就不能聲稱已控制為 GPT-5.6 Sol
+
 因此，現場應先稱為：
 
-> 同一代理任務下，Bob 管理模型路徑與 Codex 固定模型路徑的端到端比較
+> 同一核心模型下，Bob 與 Codex 兩種代理路徑的端到端比較
 
 只有在取得 IBM 端的 Bifrost／Gateway audit log、逐次模型明細或等價路由證據後，才將 Bob 一側標為「多模型路由」
 
@@ -62,6 +72,8 @@ Java 依賴應預先固定並離線可用，以免網路下載量與等待時間
 
 ### Bob Shell 2.0.4
 
+先確認 Model Gateway 只設定 GPT-5.6 Sol，並在供應端支援時將 `reasoning_effort` 固定為 `medium`。執行前保存 `/v1/model/info` 回應與實際部署設定的非敏感摘要
+
 ```powershell
 Get-Content -Raw .\prompt.txt |
   bob run `
@@ -88,7 +100,7 @@ Get-Content -Raw .\prompt.txt |
 
 ### Codex CLI 0.153.0
 
-建議固定 `gpt-6.1-sol` 與 `medium` reasoning，並關閉 multi-agent、使用全新 ephemeral session：
+固定 `gpt-5.6-sol` 與 `medium` reasoning，並關閉 multi-agent、使用全新 ephemeral session：
 
 ```powershell
 Get-Content -Raw .\prompt.txt |
@@ -97,7 +109,7 @@ Get-Content -Raw .\prompt.txt |
     --ephemeral `
     --ignore-user-config `
     --disable multi_agent `
-    -m gpt-6.1-sol `
+    -m gpt-5.6-sol `
     -c 'model_reasoning_effort="medium"' `
     -C .\runs\codex-01 `
     -s workspace-write `
@@ -185,9 +197,11 @@ IBM 對 COBOL-to-Java 的公開方法強調 source behavior 產生測試並驗�
 ## 主要資料來源
 
 - [IBM Bob Shell：非互動模式與 JSON stats](https://bob.ibm.com/docs/shell/getting-started/start-bobshell-non-interactive)
+- [IBM Bob on-premises：支援模型清單](https://bob.ibm.com/docs/ide/enterprise/on-premises/model-gateway/supported-models)
 - [IBM Bob self-hosted Model Gateway：單一 core model 與 static router](https://bob.ibm.com/docs/ide/enterprise/on-premises/model-gateway/configuration)
 - [IBM Bob Premium Package for Z：分析、文件、轉換與驗證工作流](https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index)
 - [IBM Bob：COBOL-to-Java 應以 source behavior 測試 functional equivalence](https://bob.ibm.com/blog/bob-for-z-announcement/)
 - [IBM Z Open Editor sample repository](https://github.com/IBM/zopeneditor-sample)
 - [OpenAI：以 `codex exec --json` 保存可評分的 JSONL trace](https://developers.openai.com/blog/eval-skills)
+- [OpenAI：GPT-5.6 Sol 模型規格](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
 - [OpenAI model pricing](https://developers.openai.com/api/docs/models/compare)

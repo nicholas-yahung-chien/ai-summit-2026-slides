@@ -32,14 +32,14 @@ watch(active, value => {
 
       <div class="lanes">
         <article class="bob-lane">
-          <small>ROUTED PATH</small>
+          <small>BOB PATH</small>
           <strong>Bob CLI</strong>
-          <span>單代理 · 多模型路由</span>
+          <span>GPT-5.6 Sol · medium</span>
         </article>
         <article class="codex-lane">
-          <small>FIXED PATH</small>
+          <small>CODEX PATH</small>
           <strong>Codex CLI</strong>
-          <span>單代理 · 固定單一模型</span>
+          <span>GPT-5.6 Sol · medium</span>
         </article>
       </div>
     </div>

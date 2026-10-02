@@ -248,7 +248,7 @@ hideInToc: false
 <CobolDemoOpening />
 
 <!--
-Demo 採兩份內容完全相同、彼此隔離的工作目錄，使用相同 prompt、相同輸入檔與相同驗收腳本。Bob Shell 與 Codex CLI 均關閉子代理；Codex 固定單一模型。Bob SaaS 是否在這一次執行中實際使用多個核心模型，必須由 IBM 可取得的路由遙測或模型明細證明；Bob Shell 的公開 JSON stats 僅提供 token、快取、成本、時間與工具呼叫統計，未公開逐次模型名稱，因此沒有證據時應稱為 Bob 管理路徑，不直接宣稱本次已發生多模型路由
+Demo 採兩份內容完全相同、彼此隔離的工作目錄，使用相同 prompt、相同輸入檔與相同驗收腳本。依 2026-10-02 IBM Bob on-premises 官方支援清單，GPT-6.1 Sol 尚未列入，OpenAI 核心模型為 GPT-5.6 Sol。因此 Bob on-prem 與 Codex CLI 都固定 GPT-5.6 Sol 與 medium reasoning，兩邊均關閉子代理。這一組比較控制核心模型，衡量 Bob 與 Codex 的代理流程、工具、提示、快取與產品能力差異，不宣稱是多模型路由效果。正式執行前保存 Bob /v1/model/info、Model Gateway 非敏感設定摘要與 Codex trace 的模型欄位作為證據。來源：https://bob.ibm.com/docs/ide/enterprise/on-premises/model-gateway/supported-models；https://developers.openai.com/api/docs/models/gpt-5.6-sol
 -->
 ---
 title: AI 代理時代的軟體開發生命週期
