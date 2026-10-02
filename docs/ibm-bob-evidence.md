@@ -36,4 +36,4 @@
 - The top-level structure is increased throughput value plus quality savings minus Bob cost
 - Throughput value covers feature, defect-fix and low-risk vulnerability remediation PR gains multiplied by the corresponding engineering-hour cost
 - Quality savings covers avoided production-defect losses and avoided high-risk vulnerability exposure
-- Whole cost includes Bob licensing, routing DevOps, development and SG&A estimates
+- Whole cost includes Bob licensing, routine DevOps, development and SG&A estimates

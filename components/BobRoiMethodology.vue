@@ -84,7 +84,7 @@ watch(active, value => {
           <span class="cost-label">收入成本</span>
           <div class="cost-item">Bob 授權成本上限</div>
           <i>＋</i>
-          <div class="cost-item">路由 DevOps 成本估算</div>
+          <div class="cost-item">例行 DevOps 成本估算</div>
         </div>
         <div class="cost-group">
           <span class="cost-label">營業費用</span>
