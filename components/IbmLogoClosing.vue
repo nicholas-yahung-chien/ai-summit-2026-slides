@@ -32,24 +32,40 @@ watch(active, value => {
             <stop offset=".5" stop-color="#78a9ff" />
             <stop offset="1" stop-color="#3ddbd9" />
           </linearGradient>
+          <linearGradient id="closing-wave-blue" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#a6c8ff" />
+            <stop offset=".5" stop-color="#4589ff" />
+            <stop offset="1" stop-color="#d4bbff" />
+          </linearGradient>
+          <linearGradient id="closing-wave-light" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffffff" />
+            <stop offset=".48" stop-color="#a7f0ba" />
+            <stop offset="1" stop-color="#e8daff" />
+          </linearGradient>
         </defs>
 
         <g class="wave-stack wave-stack-top">
-          <path d="M0 0H1280V205C1098 165 972 229 785 194C589 157 457 254 262 216C149 194 71 205 0 230Z" fill="url(#closing-wave-top)" />
-          <path d="M0 0H1280V170C1105 135 963 207 796 168C606 124 474 216 280 181C161 159 81 179 0 195Z" fill="url(#closing-wave-top)" />
-          <path d="M0 0H1280V134C1100 104 972 168 790 138C600 106 468 177 270 145C153 126 77 146 0 158Z" fill="url(#closing-wave-top)" />
-          <path d="M0 0H1280V100C1112 72 970 137 800 105C612 70 483 141 284 112C165 95 84 108 0 126Z" fill="url(#closing-wave-top)" />
-          <path d="M0 0H1280V67C1104 48 981 103 800 74C619 44 491 109 291 81C170 64 85 78 0 91Z" fill="url(#closing-wave-top)" />
-          <path d="M0 0H1280V36C1114 18 982 68 812 43C630 17 500 71 305 48C179 33 89 45 0 58Z" fill="url(#closing-wave-top)" />
+          <path d="M-80 4C126 55 293-27 481 31C662 87 799 2 976 42C1128 77 1245 29 1360 17L1360 91C1234 119 1103 70 949 105C778 144 643 62 463 97C272 134 122 80-80 115Z" fill="url(#closing-wave-top)" />
+          <path d="M-80 51C98 12 264 101 445 54C632 5 779 96 955 59C1111 26 1233 79 1360 50L1360 128C1225 150 1097 103 944 137C770 175 626 89 447 129C265 170 104 91-80 139Z" fill="url(#closing-wave-blue)" />
+          <path d="M-80 92C109 139 270 54 454 109C635 163 785 71 968 119C1129 161 1238 107 1360 135L1360 192C1235 172 1127 217 965 176C780 129 642 218 449 166C267 117 106 198-80 155Z" fill="url(#closing-wave-light)" />
+          <path d="M-80 132C107 94 281 180 466 139C647 99 792 183 973 145C1122 114 1240 166 1360 143L1360 219C1226 244 1103 192 962 223C779 263 648 177 462 219C278 261 107 177-80 216Z" fill="url(#closing-wave-bottom)" />
+          <path d="M-80 177C112 224 269 140 455 190C642 240 783 153 962 198C1126 240 1237 188 1360 215L1360 268C1229 248 1120 293 955 254C775 211 639 291 451 247C266 204 109 282-80 243Z" fill="url(#closing-wave-blue)" />
+          <path d="M-80 218C103 185 278 266 462 228C643 191 799 270 971 233C1129 199 1237 253 1360 229L1360 291C1225 313 1103 270 960 299C775 336 640 259 455 298C273 336 105 264-80 302Z" fill="url(#closing-wave-top)" />
+        </g>
+
+        <g class="wave-stack wave-stack-center">
+          <path d="M-80 302C105 349 275 270 455 320C639 371 788 282 970 332C1128 375 1239 321 1360 349L1360 390C1232 369 1114 414 961 378C779 335 642 416 455 371C271 327 107 402-80 365Z" fill="url(#closing-wave-light)" />
+          <path d="M-80 354C108 319 278 398 462 361C644 324 795 401 973 366C1125 336 1243 386 1360 363L1360 408C1235 429 1111 390 966 418C782 453 646 381 459 419C276 456 107 385-80 424Z" fill="url(#closing-wave-blue)" />
+          <path d="M-80 401C105 445 272 372 454 420C639 469 785 388 968 432C1127 470 1238 424 1360 448L1360 488C1233 470 1117 509 962 477C779 439 643 510 455 470C274 432 106 499-80 466Z" fill="url(#closing-wave-bottom)" />
         </g>
 
         <g class="wave-stack wave-stack-bottom">
-          <path d="M0 485C182 528 325 462 505 501C684 540 811 462 1008 500C1129 523 1206 502 1280 486V720H0Z" fill="url(#closing-wave-bottom)" />
-          <path d="M0 526C180 567 330 501 503 541C688 583 819 506 1009 543C1127 566 1205 548 1280 528V720H0Z" fill="url(#closing-wave-bottom)" />
-          <path d="M0 566C187 605 327 541 510 581C686 620 823 546 1014 582C1129 604 1206 588 1280 570V720H0Z" fill="url(#closing-wave-bottom)" />
-          <path d="M0 603C183 638 334 578 510 617C692 657 824 583 1018 622C1132 645 1208 626 1280 611V720H0Z" fill="url(#closing-wave-bottom)" />
-          <path d="M0 638C188 673 333 613 516 653C698 692 831 623 1017 658C1133 680 1209 664 1280 648V720H0Z" fill="url(#closing-wave-bottom)" />
-          <path d="M0 674C188 706 341 652 519 687C701 722 835 660 1025 694C1137 714 1210 700 1280 685V720H0Z" fill="url(#closing-wave-bottom)" />
+          <path d="M-80 458C109 423 277 503 459 466C644 429 793 506 974 471C1128 441 1241 491 1360 468L1360 532C1233 554 1110 510 963 540C782 577 642 499 457 539C274 578 106 502-80 542Z" fill="url(#closing-wave-top)" />
+          <path d="M-80 500C105 546 275 468 455 518C639 569 788 480 970 530C1128 573 1239 519 1360 547L1360 601C1232 580 1114 625 961 589C779 546 642 627 455 582C271 538 107 613-80 576Z" fill="url(#closing-wave-light)" />
+          <path d="M-80 543C108 508 278 587 462 550C644 513 795 590 973 555C1125 525 1243 575 1360 552L1360 616C1235 637 1111 598 966 626C782 661 646 589 459 627C276 664 107 593-80 632Z" fill="url(#closing-wave-blue)" />
+          <path d="M-80 580C105 624 272 551 454 599C639 648 785 567 968 611C1127 649 1238 603 1360 627L1360 678C1233 660 1117 699 962 667C779 629 643 700 455 660C274 622 106 689-80 656Z" fill="url(#closing-wave-bottom)" />
+          <path d="M-80 623C107 589 281 672 466 632C647 593 792 674 973 638C1122 608 1240 658 1360 635L1360 700C1226 724 1103 676 962 706C779 744 648 664 462 704C278 744 107 666-80 704Z" fill="url(#closing-wave-light)" />
+          <path d="M-80 666C112 709 269 631 455 677C642 723 783 644 962 686C1126 725 1237 676 1360 701V760H-80Z" fill="url(#closing-wave-blue)" />
         </g>
       </svg>
     </div>
@@ -86,28 +102,30 @@ watch(active, value => {
 
 .wave-stack path {
   transform-box: fill-box;
+  mix-blend-mode: screen;
+  --wave-from: translateX(-42px);
   animation: wave-enter 1.15s cubic-bezier(.22, 1, .36, 1) both;
 }
 
-.wave-stack-top path:nth-child(1) { opacity:.18; animation-delay:80ms; }
-.wave-stack-top path:nth-child(2) { opacity:.24; animation-delay:130ms; }
-.wave-stack-top path:nth-child(3) { opacity:.31; animation-delay:180ms; }
-.wave-stack-top path:nth-child(4) { opacity:.38; animation-delay:230ms; }
-.wave-stack-top path:nth-child(5) { opacity:.48; animation-delay:280ms; }
-.wave-stack-top path:nth-child(6) { opacity:.62; animation-delay:330ms; }
+.wave-stack path:nth-child(even) { --wave-from:translateX(42px); }
 
-.wave-stack-bottom path:nth-child(1) { opacity:.18; animation-delay:170ms; }
-.wave-stack-bottom path:nth-child(2) { opacity:.24; animation-delay:220ms; }
-.wave-stack-bottom path:nth-child(3) { opacity:.31; animation-delay:270ms; }
-.wave-stack-bottom path:nth-child(4) { opacity:.39; animation-delay:320ms; }
-.wave-stack-bottom path:nth-child(5) { opacity:.49; animation-delay:370ms; }
-.wave-stack-bottom path:nth-child(6) { opacity:.63; animation-delay:420ms; }
+.wave-stack-top path:nth-child(1) { opacity:.16; animation-delay:70ms; }
+.wave-stack-top path:nth-child(2) { opacity:.22; animation-delay:125ms; }
+.wave-stack-top path:nth-child(3) { opacity:.18; animation-delay:180ms; }
+.wave-stack-top path:nth-child(4) { opacity:.24; animation-delay:235ms; }
+.wave-stack-top path:nth-child(5) { opacity:.2; animation-delay:290ms; }
+.wave-stack-top path:nth-child(6) { opacity:.16; animation-delay:345ms; }
 
-.wave-stack-top path { transform-origin:center top; }
-.wave-stack-bottom path { transform-origin:center bottom; }
+.wave-stack-center path:nth-child(1) { opacity:.065; animation-delay:225ms; }
+.wave-stack-center path:nth-child(2) { opacity:.05; animation-delay:290ms; }
+.wave-stack-center path:nth-child(3) { opacity:.06; animation-delay:355ms; }
 
-.wave-stack-top path { --wave-from: translateY(-24px) scaleY(.9); }
-.wave-stack-bottom path { --wave-from: translateY(24px) scaleY(.9); }
+.wave-stack-bottom path:nth-child(1) { opacity:.15; animation-delay:160ms; }
+.wave-stack-bottom path:nth-child(2) { opacity:.2; animation-delay:215ms; }
+.wave-stack-bottom path:nth-child(3) { opacity:.23; animation-delay:270ms; }
+.wave-stack-bottom path:nth-child(4) { opacity:.18; animation-delay:325ms; }
+.wave-stack-bottom path:nth-child(5) { opacity:.22; animation-delay:380ms; }
+.wave-stack-bottom path:nth-child(6) { opacity:.25; animation-delay:435ms; }
 
 .logo-field {
   position: absolute;
