@@ -1,9 +1,9 @@
 <script setup>
 const props = defineProps({
-  group: { type: String, required: true },
+  page: { type: [Number, String], required: true },
 })
 
-const pages = {
+const sourceGroups = {
   evolution1: {
     refs: [
       { html: 'Turing, A. M. (1950). Computing machinery and intelligence. <em>Mind, 59</em>(236), 433–460. https://doi.org/10.1093/mind/LIX.236.433', url: 'https://academic.oup.com/mind/article/LIX/236/433/986238' },
@@ -91,11 +91,15 @@ const pages = {
   },
 }
 
-const page = pages[props.group]
-const references = [...page.refs].sort((a, b) => {
-  const plain = value => value.replace(/<[^>]+>/g, '')
-  return plain(a.html).localeCompare(plain(b.html), 'en')
-})
+const plain = value => value.replace(/<[^>]+>/g, '')
+const pageSize = 29
+const allReferences = [...new Map(
+  Object.values(sourceGroups)
+    .flatMap(group => group.refs)
+    .map(reference => [reference.url || plain(reference.html), reference]),
+).values()].sort((a, b) => plain(a.html).localeCompare(plain(b.html), 'en'))
+const pageIndex = Math.max(0, Number(props.page) - 1)
+const references = allReferences.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize)
 </script>
 
 <template>
