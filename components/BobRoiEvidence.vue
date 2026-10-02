@@ -24,17 +24,17 @@ watch(active, value => {
       <article class="revtech-card">
         <header>
           <span class="case-label">IBM REVTECH｜生產環境</span>
-          <h2>完整成本納入後，效益仍約為成本的 10 倍</h2>
+          <h2>每投入 1 份年度成本，估算創造約 10 份效益</h2>
         </header>
 
         <div class="roi-visual" role="img" aria-label="IBM RevTech 估算的年度效益約為每位開發者使用 Bob 年度成本的十倍">
           <div class="roi-cost">
-            <span>Bob 年度成本</span>
+            <span>年度總成本</span>
             <i />
             <b>1×</b>
           </div>
           <div class="roi-value">
-            <span>年度效益</span>
+            <span>估算年度效益</span>
             <i />
             <b>約 10×</b>
           </div>
@@ -71,8 +71,6 @@ watch(active, value => {
         </div>
       </article>
     </div>
-
-    <p class="boundary">兩組數據分別是 IBM 內部前後比較與客戶提供結果，適合用來說明實際效益，不代表所有專案都會得到相同成果</p>
 
     <div class="citations" lang="en">
       <p>McDaniel, A. (2026). <a href="https://www.ibm.com/think/perspectives/measuring-roi-ai-assisted-development-how-ibm-did-it" target="_blank" rel="noopener"><em>Measuring the ROI of AI-assisted development, and how IBM did it</em></a>. IBM Think.</p>
@@ -243,17 +241,6 @@ article h2 {
   color: #525252;
   font-size: 12px;
   line-height: 1.35;
-}
-
-.boundary {
-  position: absolute;
-  right: 72px;
-  bottom: 132px;
-  left: 72px;
-  margin: 0 !important;
-  color: #525252;
-  font-size: 13px;
-  line-height: 1.45;
 }
 
 .citations {
