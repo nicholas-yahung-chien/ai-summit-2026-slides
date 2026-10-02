@@ -25,3 +25,15 @@
 - IBM Payment Center Enterprise Payment Services is an IBM internal team and the article names no client, so its three-month testing metrics are not used on the slide
 - The Japanese token-cost deck is a price scenario based on an assumed Bob rate of USD 1.25 per million tokens; public IBM pricing does not currently confirm that unit price, so it is retained only as a fallback
 - Some IBM material describes a nine-month, 14-developer plan completed in three days, while the formal client case uses a roughly 30-day comparison baseline; the slide uses the more consistently documented 30-day to 3-day comparison
+
+## ROI methodology figure
+
+- Official article: https://www.ibm.com/think/perspectives/measuring-roi-ai-assisted-development-how-ibm-did-it
+- Official Adobe asset title: `Methodology Figure for Cost ROI Bob Blog`
+- Official source asset: `assets/revtech-roi-methodology-source.png` (720 x 405)
+- Enhanced reference asset: `assets/revtech-roi-methodology-upscaled.png` (2880 x 1620, Lanczos resampling with light unsharp masking)
+- The slide recreates the diagram with native HTML and CSS so its text and formula structure remain sharp at presentation scale
+- The top-level structure is increased throughput value plus quality savings minus Bob cost
+- Throughput value covers feature, defect-fix and low-risk vulnerability remediation PR gains multiplied by the corresponding engineering-hour cost
+- Quality savings covers avoided production-defect losses and avoided high-risk vulnerability exposure
+- Whole cost includes Bob licensing, routing DevOps, development and SG&A estimates

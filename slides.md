@@ -211,6 +211,18 @@ Blue Pearl 為具名外部客戶；IDC 於 2026 年 5 月的 Bob 分析報告引
 避免使用九個月、14 名工程師縮短為三天的版本，IBM 不同公開材料的比較基準不一致；本頁採正式客戶案例中可核對的約 30 天對 3 天
 -->
 ---
+title: IBM 如何將 Bob 的產出、品質與成本換算為 ROI
+class: talk-page bob-roi-methodology-page
+hide: false
+hideInToc: false
+---
+
+<BobRoiMethodology />
+
+<!--
+IBM 以 PR 作為受治理的量測單位，先將工作分類為功能開發、缺陷修復與弱點修復，再把新增產出、工程工時、營運損失與資安風險換算成年度財務價值；最後扣除授權、DevOps、開發與銷管等完整成本。這一頁依 IBM 官方方法論圖重繪，主圖使用網頁向量元件，避免原始 720 × 405 圖檔在投影時失真
+-->
+---
 title: AI 代理時代的軟體開發生命週期
 class: talk-page gateway-research-page
 hide: false
