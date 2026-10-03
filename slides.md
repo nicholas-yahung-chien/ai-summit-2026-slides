@@ -239,16 +239,16 @@ hideInToc: false
 原 IBM 比較資料的 USD 0.375 與 USD 0.267，分別等於把同一組 50k input、15k output token 結構套用 Claude Sonnet 4.6 的公開單價，以及把其中 40k input 視為 cache read 後的重算結果。Bob 的 USD 0.081 則採該資料所列 USD 1.25 / MTok 統一單價；目前 IBM 公開 Bobcoin 文件沒有提供固定 token 對 Bobcoin 換算，因此現場應稱為定價情境試算，不稱為客戶實測或公開 benchmark
 -->
 ---
-title: Demo：同一段 Prompt，兩種代理路徑
-class: statement-page demo-opening-page
+title: IBM Bob：從 COBOL 理解到 Java 驗證
+class: talk-page bob-recorded-demo-page
 hide: false
 hideInToc: false
 ---
 
-<CobolDemoOpening />
+<BobRecordedDemo />
 
 <!--
-Demo 採兩份內容完全相同、彼此隔離的工作目錄，使用相同 prompt、相同輸入檔與相同驗收腳本。依 2026-10-02 IBM Bob on-premises 官方支援清單，GPT-6.1 Sol 尚未列入，OpenAI 核心模型為 GPT-5.6 Sol。因此 Bob on-prem 與 Codex CLI 都固定 GPT-5.6 Sol 與 medium reasoning，兩邊均關閉子代理。這一組比較控制核心模型，衡量 Bob 與 Codex 的代理流程、工具、提示、快取與產品能力差異，不宣稱是多模型路由效果。正式執行前保存 Bob /v1/model/info、Model Gateway 非敏感設定摘要與 Codex trace 的模型欄位作為證據。來源：https://bob.ibm.com/docs/ide/enterprise/on-premises/model-gateway/supported-models；https://developers.openai.com/api/docs/models/gpt-5.6-sol
+預錄展示使用本機乾淨 GenApp 工作區，以 IBM Bob IDE 執行新增客戶垂直流程：理解 COBOL、留下 COBOL 規格、建立 Java 21 實作與對照文件，並產生 mock 單元測試。影片裁除開頭 slash command 輸入及尾端 Gradle 長時間等待，靜音播放。畫面呈現的是本機 Bob 工作流程；左側列出的程式理解、文件化、轉換與驗證，是 IBM Bob Premium Package for Z 官方工作流程的能力摘要，不表示這次錄影已連接 Z Understand 或完成 z/OS 整合驗證。來源：https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index；https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/workflows
 -->
 ---
 title: AI 代理時代的軟體開發生命週期

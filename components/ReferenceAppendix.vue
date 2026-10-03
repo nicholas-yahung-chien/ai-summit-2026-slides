@@ -72,6 +72,8 @@ const sourceGroups = {
       { html: 'IBM Japan. (2026). <em>IBM Bobコスト・ROI優位性</em> [Internal comparison material, Slide 2].' },
       { html: 'Anthropic. (2026). <em>Pricing</em> [Model rates, prompt caching, and coding-session example].', url: 'https://platform.claude.com/docs/en/about-claude/pricing#worked-example' },
       { html: 'IBM. (2026). <em>Supported models: Model Gateway</em>. IBM Bob documentation.', url: 'https://bob.ibm.com/docs/ide/enterprise/on-premises/model-gateway/supported-models' },
+      { html: 'IBM. (n.d.). <em>Premium Package for Z overview</em>. IBM Bob documentation.', url: 'https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index' },
+      { html: 'IBM. (n.d.). <em>Premium Package for Z workflows</em>. IBM Bob documentation.', url: 'https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/workflows' },
       { html: 'OpenAI. (2026). <em>GPT-5.6 Sol</em> [Model documentation].', url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol' },
     ],
   },
