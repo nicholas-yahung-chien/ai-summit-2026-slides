@@ -1,7 +1,7 @@
 <script setup>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useSlideContext } from '@slidev/client'
-import bobLogo from '../assets/architecture-logos/bob.svg'
+import bobLogo from '../assets/architecture-logos/bob-mascot.webp'
 
 const { $page, $nav, $renderContext } = useSlideContext()
 const video = ref(null)
@@ -51,7 +51,7 @@ onMounted(() => {
       </div>
 
       <p class="demo-label">RECORDED WORKFLOW</p>
-      <h1>從 COBOL 理解<br>到 Java 驗證</h1>
+      <h1>從 COBOL 理解<br><span>到 Java 驗證</span></h1>
 
       <ul aria-label="IBM Bob 與 Premium Package for Z 特色功能">
         <li><b>理解</b><span>梳理程式、資料與相依關係</span></li>
@@ -107,6 +107,19 @@ onMounted(() => {
   background: #3ddbd9;
 }
 
+:global(.slidev-layout.summit-layout.bob-recorded-demo-page) {
+  background: #001d6c;
+}
+
+:global(.bob-recorded-demo-page .slide-footer) {
+  color: #a6c8ff;
+  border-color: #4589ff;
+}
+
+:global(.bob-recorded-demo-page .slide-footer b) {
+  color: #3ddbd9;
+}
+
 .feature-rail {
   height: 500px;
   display: flex;
@@ -121,12 +134,10 @@ onMounted(() => {
 }
 
 .bob-brand img {
-  width: 46px;
-  height: 46px;
+  width: 58px;
+  height: 58px;
   flex: 0 0 auto;
-  box-sizing: border-box;
-  padding: 7px;
-  background: #f4f4f4;
+  object-fit: contain;
 }
 
 .bob-brand strong,
@@ -135,7 +146,7 @@ onMounted(() => {
 }
 
 .bob-brand strong {
-  color: #ffffff;
+  color: #f4f4f4;
   font-size: 24px;
   line-height: 1.08;
   font-weight: 600;
@@ -143,14 +154,14 @@ onMounted(() => {
 
 .bob-brand span {
   margin-top: 5px;
-  color: #d0e2ff;
+  color: #a6c8ff;
   font-size: 13px;
   line-height: 1.2;
 }
 
 .demo-label {
   margin-top: 30px !important;
-  color: #a6c8ff;
+  color: #3ddbd9;
   font-size: 13px;
   line-height: 1.2;
   font-weight: 600;
@@ -166,6 +177,10 @@ h1 {
   font-weight: 600 !important;
 }
 
+h1 span {
+  color: #a6c8ff;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -177,7 +192,7 @@ li {
   grid-template-columns: 48px 1fr;
   gap: 10px;
   padding: 12px 0;
-  border-top: 1px solid rgba(255, 255, 255, .28);
+  border-top: 1px solid rgba(120, 169, 255, .45);
 }
 
 li:first-child {
@@ -185,21 +200,21 @@ li:first-child {
 }
 
 li b {
-  color: #a6c8ff;
+  color: #3ddbd9;
   font-size: 17px;
   line-height: 1.45;
   font-weight: 600;
 }
 
 li span {
-  color: #ffffff;
+  color: #d0e2ff;
   font-size: 17px;
   line-height: 1.45;
 }
 
 .demo-scope {
   margin-top: auto !important;
-  color: #d0e2ff;
+  color: #78a9ff;
   font-size: 15px;
   line-height: 1.3;
 }
@@ -214,7 +229,7 @@ li span {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #161616;
-  border: 1px solid #78a9ff;
+  border: 1px solid #4589ff;
   box-shadow: 0 16px 38px rgba(0, 0, 0, .32);
 }
 
@@ -231,7 +246,7 @@ li span {
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
-  color: #d0e2ff;
+  color: #a6c8ff;
   font-size: 13px;
   line-height: 1.2;
   letter-spacing: .08em;
@@ -239,12 +254,12 @@ li span {
 
 .video-caption button {
   padding: 4px 0;
-  color: #ffffff;
+  color: #3ddbd9;
   font: inherit;
   letter-spacing: .04em;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #a6c8ff;
+  border-bottom: 1px solid #3ddbd9;
   cursor: pointer;
 }
 
