@@ -104,6 +104,7 @@ const references = allReferences.slice(pageIndex * pageSize, (pageIndex + 1) * p
 
 <template>
   <section class="reference-appendix">
+    <h1 v-if="pageIndex === 0">附錄 A 引用參考資料</h1>
     <div class="reference-columns" lang="en">
       <article v-for="reference in references" :key="reference.html">
         <a v-if="reference.url" :href="reference.url" target="_blank" rel="noopener" v-html="reference.html"></a>
@@ -116,6 +117,13 @@ const references = allReferences.slice(pageIndex * pageSize, (pageIndex + 1) * p
 <style scoped>
 .reference-appendix {
   padding-top: 2px;
+}
+
+.reference-appendix h1 {
+  margin: 0 0 18px;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -.02em;
 }
 
 .reference-columns {

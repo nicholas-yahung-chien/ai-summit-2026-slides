@@ -77,7 +77,7 @@ watch(active, value => {
           <small>相較標準情境</small>
           <b>低 78.3%</b>
         </div>
-        <p>這是定價試算，未衡量任務品質、完成率或成功率</p>
+        <p>費用成本以當時定價進行試算</p>
       </aside>
     </div>
 
@@ -127,6 +127,11 @@ watch(active, value => {
   margin-top: 5px;
   font-size: 20px;
   font-weight: 600;
+}
+
+.savings-panel .panel-label {
+  font-size: 16px;
+  letter-spacing: .04em;
 }
 
 .token-stat {

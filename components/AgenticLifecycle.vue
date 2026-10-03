@@ -20,12 +20,12 @@ const rows = [
 }))
 const order = ['AI 結對程式設計', 'AI-DLC', 'SDD', '測試與驗收驅動', 'Issue-to-PR', 'Continuous AI']
 const evidence = {
-  'AI 結對程式設計': { human: '持續討論與逐步審查', docs: '依需求產生', detail: '計畫、技術文件', steps: ['探索 → 規劃 → 修改', '驗證 → 回饋'] },
-  'AI-DLC': { human: '團隊協作與關鍵決策', docs: '明確留存', detail: '需求、計畫、設計存入儲存庫', steps: ['業務意圖 → 需求釐清', '建構驗證 → 部署營運'] },
-  'SDD': { human: '審核規格與階段成果', docs: '明確留存', detail: '規格、設計、任務清單', steps: ['規格 → 設計 → 任務拆解', '實作 → 對照規格驗收'] },
-  '測試與驗收驅動': { human: '定義驗收、處理例外', docs: '測試產物為主', detail: '測試碼、驗證結果；設計文件另訂', steps: ['成功條件 → 測試 → 實作', '驗證 → 修正'] },
-  'Issue-to-PR': { human: '委派任務與審查 PR', docs: '任務與審查紀錄', detail: 'Issue、PR、提交與執行紀錄', steps: ['任務 → 背景執行 → PR', '審查 → 合併'] },
-  'Continuous AI': { human: '設定規則與監督例外', docs: '工作流程檔必備', detail: 'Markdown 定義；報告依設定產生', steps: ['事件／排程 → 分析修正', 'CI 驗證 → 回饋'] },
+  'AI 結對程式設計': { human: '持續討論與逐步審查', docs: '計畫、技術文件', steps: ['探索 → 規劃 → 修改', '驗證 → 回饋'] },
+  'AI-DLC': { human: '團隊協作與關鍵決策', docs: '需求、計畫、設計文件', steps: ['業務意圖 → 需求釐清', '建構驗證 → 部署營運'] },
+  'SDD': { human: '審核規格與階段成果', docs: '規格、設計、任務清單', steps: ['規格 → 設計 → 任務拆解', '實作 → 對照規格驗收'] },
+  '測試與驗收驅動': { human: '定義驗收、處理例外', docs: '測試碼、驗證結果', steps: ['成功條件 → 測試 → 實作', '驗證 → 修正'] },
+  'Issue-to-PR': { human: '委派任務與審查 PR', docs: 'Issue、PR、提交與執行紀錄', steps: ['任務 → 背景執行 → PR', '審查 → 合併'] },
+  'Continuous AI': { human: '設定規則與監督例外', docs: 'Markdown 工作流程定義、執行報告', steps: ['事件／排程 → 分析修正', 'CI 驗證 → 回饋'] },
 }
 const sortedRows = order.map(name => ({ ...rows.find(row => row.name === name), ...evidence[name] }))
 </script>
@@ -44,7 +44,7 @@ const sortedRows = order.map(name => ({ ...rows.find(row => row.name === name), 
       <tbody><tr v-for="row in sortedRows" :key="row.name">
         <th><strong>{{ row.name }}</strong><small>{{ row.human }}</small></th>
         <td class="flow"><span v-for="line in row.steps" :key="line">{{ line }}</span></td>
-        <td class="documents"><b>{{ row.docs }}</b><small>{{ row.detail }}</small></td>
+        <td class="documents">{{ row.docs }}</td>
         <td><div class="examples"><a v-for="example in row.examples" :key="example.name" :href="example.url" target="_blank" rel="noopener">{{ example.name }} ↗</a></div></td>
       </tr></tbody>
     </table>
@@ -58,7 +58,7 @@ table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:18px;line
 .takeaway{font-size:24px;color:#0043ce;margin:16px 0 0!important}.sources{position:absolute;left:72px;right:72px;bottom:80px;font-size:12px;color:#525252;border-top:1px solid #c6c6c6;padding-top:10px}.sources a{color:#0043ce}
 </style>
 <style scoped>
-.intro{font-size:17px}.comparison{position:relative;padding-left:60px}table{font-size:17px}th,td{padding:8px 9px}thead th{font-size:17px}strong{font-size:19px}small{font-size:13px}.flow{font-size:17px;white-space:normal}.flow span{display:block}.documents b{font-size:18px;font-weight:500;color:#0043ce}.documents small{font-size:13px;line-height:1.45}.examples{display:flex;flex-direction:column;gap:3px;margin:0}.examples a{font-size:13px;line-height:1.4}
+.intro{font-size:17px}.comparison{position:relative;padding-left:60px}table{font-size:17px}th,td{padding:8px 9px}thead th{font-size:17px}strong{font-size:19px}small{font-size:13px}.flow{font-size:17px;white-space:normal}.flow span{display:block}.documents{font-size:14px;line-height:1.45;color:#393939}.examples{display:flex;flex-direction:column;gap:3px;margin:0}.examples a{font-size:13px;line-height:1.4}
 .involvement{position:absolute;top:45px;bottom:8px;left:0;width:42px;display:flex;align-items:center;flex-direction:column;color:#0043ce;font-size:17px}.involvement b{position:absolute;left:-20px;top:105px;writing-mode:vertical-rl;font-size:14px;font-weight:500;letter-spacing:3px}.arrow-track{position:relative;flex:1;width:3px;margin:10px 0;background:#c8d8f6}.arrow-track:after{content:'';position:absolute;bottom:0;left:-5px;width:13px;height:13px;border-right:3px solid #0f62fe;border-bottom:3px solid #0f62fe;transform:rotate(45deg)}.arrow-head{position:absolute;left:-5px;top:0;width:13px;height:13px;border-right:3px solid #0f62fe;border-bottom:3px solid #0f62fe;animation:descending 2.4s cubic-bezier(.25,1,.5,1) 2 both}
 @keyframes descending{0%{transform:translateY(0) rotate(45deg);opacity:0}12%{opacity:1}85%{opacity:1}100%{transform:translateY(285px) rotate(45deg);opacity:0}}
 .instant .arrow-head{animation:none;display:none}@media(prefers-reduced-motion:reduce){.arrow-head{animation:none;display:none}}@media print{.arrow-head{display:none}}
