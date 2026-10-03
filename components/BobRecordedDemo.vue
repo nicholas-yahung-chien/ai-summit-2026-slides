@@ -5,6 +5,7 @@ import bobLogo from '../assets/architecture-logos/bob-mascot.webp'
 
 const { $page, $nav, $renderContext } = useSlideContext()
 const video = ref(null)
+const replay = ref(0)
 const active = computed(() => $page.value === $nav.value.currentSlideNo)
 const isPrint = computed(() => $renderContext === 'print')
 const base = import.meta.env.BASE_URL
@@ -24,8 +25,9 @@ async function playFromStart() {
 }
 
 watch(active, async (value) => {
-  await nextTick()
   if (value) {
+    replay.value++
+    await nextTick()
     await playFromStart()
   }
   else if (video.value) {
@@ -40,7 +42,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="bob-recorded-demo">
+  <section
+    :key="replay"
+    class="bob-recorded-demo"
+    :class="{ instant: !active || isPrint }"
+  >
     <aside class="feature-rail">
       <div class="bob-brand">
         <img :src="bobLogo" alt="IBM Bob" />
@@ -54,13 +60,13 @@ onMounted(() => {
       <h1>從 COBOL 理解<br><span>到 Java 驗證</span></h1>
 
       <ul aria-label="IBM Bob 與 Premium Package for Z 特色功能">
-        <li><b>理解</b><span>梳理程式、資料與相依關係</span></li>
-        <li><b>文件</b><span>留下規格與業務規則依據</span></li>
-        <li><b>轉換</b><span>建立 COBOL → Java 追溯</span></li>
-        <li><b>驗證</b><span>產生 mock 測試與執行紀錄</span></li>
+        <li><b>全週期</b><span>規劃、開發、測試與現代化</span></li>
+        <li><b>智慧協作</b><span>模式、技能與子代理協同</span></li>
+        <li><b>企業治理</b><span>可重複、可控管的多步驟流程</span></li>
+        <li><b>IBM Z</b><span>理解、轉換並驗證企業主機程式</span></li>
       </ul>
 
-      <p class="demo-scope">GenApp · 新增客戶流程</p>
+      <p class="demo-scope">規劃 · 執行 · 驗證 · 治理</p>
     </aside>
 
     <div class="video-column">
@@ -131,6 +137,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 13px;
+  animation: feature-enter 520ms cubic-bezier(.2, .75, .2, 1) 80ms both;
 }
 
 .bob-brand img {
@@ -176,6 +183,7 @@ h1 {
   line-height: 1.22 !important;
   letter-spacing: -.035em !important;
   font-weight: 600 !important;
+  animation: feature-enter 600ms cubic-bezier(.2, .75, .2, 1) 260ms both;
 }
 
 h1 span {
@@ -190,11 +198,17 @@ ul {
 
 li {
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 72px 1fr;
   gap: 10px;
   padding: 12px 0;
   border-top: 1px solid rgba(120, 169, 255, .45);
+  animation: feature-enter 600ms cubic-bezier(.2, .75, .2, 1) both;
 }
+
+li:nth-child(1) { animation-delay: 620ms; }
+li:nth-child(2) { animation-delay: 800ms; }
+li:nth-child(3) { animation-delay: 980ms; }
+li:nth-child(4) { animation-delay: 1160ms; }
 
 li:first-child {
   border-top: 3px solid #3ddbd9;
@@ -218,6 +232,19 @@ li span {
   color: #78a9ff;
   font-size: 15px;
   line-height: 1.3;
+  animation: feature-enter 560ms cubic-bezier(.2, .75, .2, 1) 1380ms both;
+}
+
+.instant .bob-brand,
+.instant h1,
+.instant li,
+.instant .demo-scope {
+  animation: none;
+}
+
+@keyframes feature-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .video-column {

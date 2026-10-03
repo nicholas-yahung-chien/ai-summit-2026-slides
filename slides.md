@@ -248,7 +248,7 @@ hideInToc: false
 <BobRecordedDemo />
 
 <!--
-預錄展示使用本機乾淨 GenApp 工作區，以 IBM Bob IDE 執行新增客戶垂直流程：理解 COBOL、留下 COBOL 規格、建立 Java 21 實作與對照文件，並產生 mock 單元測試。影片裁除開頭 slash command 輸入及尾端 Gradle 長時間等待，靜音播放。畫面呈現的是本機 Bob 工作流程；左側列出的程式理解、文件化、轉換與驗證，是 IBM Bob Premium Package for Z 官方工作流程的能力摘要，不表示這次錄影已連接 Z Understand 或完成 z/OS 整合驗證。來源：https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index；https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/workflows
+預錄展示使用本機乾淨 GenApp 工作區，以 IBM Bob IDE 執行新增客戶垂直流程：理解 COBOL、留下 COBOL 規格、建立 Java 21 實作與對照文件，並產生 mock 單元測試。影片裁除開頭 slash command 輸入及尾端 Gradle 長時間等待，靜音播放。畫面呈現的是本機 Bob 工作流程；左側改為 IBM Bob 的產品能力摘要，包括跨 SDLC 的規劃、執行、驗證與治理，以及模式、技能、子代理與 Premium Package for Z 的企業主機現代化能力，不表示這次錄影已連接 Z Understand 或完成 z/OS 整合驗證。來源：https://bob.ibm.com/docs/ide；https://www.ibm.com/new/announcements/ibm-bob-expands-with-premium-packages-new-architecture-and-greater-enterprise-control；https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index
 -->
 ---
 title: AI 代理時代的軟體開發生命週期

@@ -74,6 +74,8 @@ const sourceGroups = {
       { html: 'IBM. (2026). <em>Supported models: Model Gateway</em>. IBM Bob documentation.', url: 'https://bob.ibm.com/docs/ide/enterprise/on-premises/model-gateway/supported-models' },
       { html: 'IBM. (n.d.). <em>Premium Package for Z overview</em>. IBM Bob documentation.', url: 'https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index' },
       { html: 'IBM. (n.d.). <em>Premium Package for Z workflows</em>. IBM Bob documentation.', url: 'https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/workflows' },
+      { html: 'IBM. (n.d.). <em>Welcome to IBM Bob</em>. IBM Bob documentation.', url: 'https://bob.ibm.com/docs/ide' },
+      { html: 'IBM. (2026, July 9). <em>IBM Bob advances agentic software development with Premium Packages and a new enterprise AI foundation</em>. IBM Newsroom.', url: 'https://www.ibm.com/new/announcements/ibm-bob-expands-with-premium-packages-new-architecture-and-greater-enterprise-control' },
       { html: 'OpenAI. (2026). <em>GPT-5.6 Sol</em> [Model documentation].', url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol' },
     ],
   },
@@ -93,7 +95,7 @@ const sourceGroups = {
 }
 
 const plain = value => value.replace(/<[^>]+>/g, '')
-const pageSize = 29
+const pageSize = 30
 const allReferences = [...new Map(
   Object.values(sourceGroups)
     .flatMap(group => group.refs)
