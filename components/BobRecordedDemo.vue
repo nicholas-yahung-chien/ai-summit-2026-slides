@@ -47,10 +47,10 @@ onMounted(() => {
         <div>
           <strong>IBM Bob</strong>
           <span>Premium Package for Z</span>
+          <small>RECORDED WORKFLOW</small>
         </div>
       </div>
 
-      <p class="demo-label">RECORDED WORKFLOW</p>
       <h1>從 COBOL 理解<br><span>到 Java 驗證</span></h1>
 
       <ul aria-label="IBM Bob 與 Premium Package for Z 特色功能">
@@ -94,7 +94,7 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 252px minmax(0, 1fr);
   gap: 30px;
-  align-items: center;
+  align-items: start;
 }
 
 .bob-recorded-demo::after {
@@ -141,7 +141,8 @@ onMounted(() => {
 }
 
 .bob-brand strong,
-.bob-brand span {
+.bob-brand span,
+.bob-brand small {
   display: block;
 }
 
@@ -153,23 +154,23 @@ onMounted(() => {
 }
 
 .bob-brand span {
-  margin-top: 5px;
+  margin-top: 3px;
   color: #a6c8ff;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.2;
 }
 
-.demo-label {
-  margin-top: 30px !important;
+.bob-brand small {
+  margin-top: 5px;
   color: #3ddbd9;
-  font-size: 13px;
+  font-size: 10px;
   line-height: 1.2;
   font-weight: 600;
   letter-spacing: .12em;
 }
 
 h1 {
-  margin: 10px 0 23px !important;
+  margin: 14px 0 18px !important;
   color: #ffffff;
   font-size: 34px !important;
   line-height: 1.22 !important;
