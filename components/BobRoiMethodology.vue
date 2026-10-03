@@ -125,7 +125,7 @@ watch(active, value => {
   border: 2px solid;
   border-radius: 13px;
   background: #fff;
-  animation: equation-in 520ms cubic-bezier(.2, .75, .2, 1) both;
+  animation: equation-in 1040ms cubic-bezier(.2, .75, .2, 1) both;
 }
 
 .equation-term b {
@@ -141,19 +141,19 @@ watch(active, value => {
 }
 
 .throughput { border-color: #42be65; }
-.quality { border-color: #4589ff; animation-delay: 140ms; }
-.cost { border-color: #fa4d56; animation-delay: 280ms; }
+.quality { border-color: #4589ff; animation-delay: 280ms; }
+.cost { border-color: #fa4d56; animation-delay: 560ms; }
 
 .operator {
   text-align: center;
   color: #161616;
   font-size: 31px;
   line-height: 1;
-  animation: operator-in 360ms ease both;
+  animation: operator-in 720ms ease both;
 }
 
-.plus { animation-delay: 90ms; }
-.minus { animation-delay: 230ms; }
+.plus { animation-delay: 180ms; }
+.minus { animation-delay: 460ms; }
 
 .method-grid {
   display: grid;
@@ -175,7 +175,7 @@ watch(active, value => {
 .formula-row,
 .quality-row,
 .cost-group {
-  animation: row-in 480ms cubic-bezier(.2, .75, .2, 1) both;
+  animation: row-in 960ms cubic-bezier(.2, .75, .2, 1) both;
 }
 
 .formula-row {
@@ -188,9 +188,9 @@ watch(active, value => {
   padding-top: 9px;
 }
 
-.formula-row:nth-child(1) { animation-delay: 430ms; }
-.formula-row:nth-child(2) { animation-delay: 600ms; }
-.formula-row:nth-child(3) { animation-delay: 770ms; }
+.formula-row:nth-child(1) { animation-delay: 860ms; }
+.formula-row:nth-child(2) { animation-delay: 1200ms; }
+.formula-row:nth-child(3) { animation-delay: 1540ms; }
 
 .formula-label,
 .cost-label {
@@ -256,8 +256,8 @@ watch(active, value => {
   padding-top: 9px;
 }
 
-.quality-row:nth-child(1) { animation-delay: 520ms; }
-.quality-row:nth-child(2) { animation-delay: 720ms; }
+.quality-row:nth-child(1) { animation-delay: 1040ms; }
+.quality-row:nth-child(2) { animation-delay: 1440ms; }
 
 .quality-formula {
   display: grid;
@@ -277,7 +277,7 @@ watch(active, value => {
   margin-top: 10px;
   padding: 5px;
   border: 1px dashed #8d8d8d;
-  animation: loss-shell-in 360ms ease 1.72s both;
+  animation: loss-shell-in 720ms ease 3.44s both;
 }
 
 .loss-examples b,
@@ -302,16 +302,16 @@ watch(active, value => {
   color: #0043ce;
   font-size: 12.5px;
   font-weight: 600;
-  animation: loss-title-in 420ms cubic-bezier(.2, .75, .2, 1) 1.82s both;
+  animation: loss-title-in 840ms cubic-bezier(.2, .75, .2, 1) 3.64s both;
 }
 
 .loss-examples span {
-  animation: loss-item-in 560ms cubic-bezier(.2, .75, .2, 1) both;
+  animation: loss-item-in 1120ms cubic-bezier(.2, .75, .2, 1) both;
 }
 
-.loss-examples span:nth-of-type(1) { animation-delay: 2.16s; }
-.loss-examples span:nth-of-type(2) { animation-delay: 2.52s; }
-.loss-examples span:nth-of-type(3) { animation-delay: 2.88s; }
+.loss-examples span:nth-of-type(1) { animation-delay: 4.32s; }
+.loss-examples span:nth-of-type(2) { animation-delay: 5.04s; }
+.loss-examples span:nth-of-type(3) { animation-delay: 5.76s; }
 
 .cost-column {
   display: grid;
@@ -329,8 +329,8 @@ watch(active, value => {
   padding-top: 9px;
 }
 
-.cost-group:nth-child(1) { animation-delay: 620ms; }
-.cost-group:nth-child(2) { animation-delay: 820ms; }
+.cost-group:nth-child(1) { animation-delay: 1240ms; }
+.cost-group:nth-child(2) { animation-delay: 1640ms; }
 
 .cost-item {
   display: flex;
@@ -364,7 +364,7 @@ watch(active, value => {
   color: #525252;
   font-size: 13.5px;
   line-height: 1.35;
-  animation: row-in 480ms ease 1.08s both;
+  animation: row-in 960ms ease 2.16s both;
 }
 
 .measurement-note b {
