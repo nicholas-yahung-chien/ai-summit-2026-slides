@@ -16,13 +16,11 @@ const tiers = [
     <p class="eyebrow">RESEARCH 03 · ROUTERARENA</p>
     <h1>不同任務難度下的準確率與費用比較</h1>
     <ArenaScatter :tiers="tiers" />
-    <p class="takeaway">路由能省下不少費用；準確率的差距，還要看任務難度</p>
-    <p class="limits">這裡比較一般問答，不是完整的程式開發流程；兩者可使用的模型也不同</p>
+    <p class="takeaway">多模型路由能省下不少費用；在較難任務的表現上準確率也差距不大</p>
     <ResearchCitation source="arena" />
   </section>
 </template>
 <style scoped>
 .arena h1 {font-size:43px;margin:14px 0 16px;letter-spacing:-.035em}
 .arena .takeaway {font-size:23px;color:#0043ce;margin:15px 0 7px;padding:0;border:0}
-.limits {font-size:16px;color:#525252;margin:0}
 </style>

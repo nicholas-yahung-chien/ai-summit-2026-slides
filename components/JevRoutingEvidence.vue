@@ -12,7 +12,7 @@ watch(active, value => { if (value) restart() })
 <template>
   <section class="jev-evidence" :class="{ instant: showAll || !active || $renderContext === 'print' }">
     <p class="eyebrow">JEV · TWO ROUTING APPROACHES</p>
-    <h1>Jev 路由：選擇模型，也能調整推理強度</h1>
+    <h1>AI 路由：多模型與推理強度 -- 以 Jev 為例</h1>
     <div class="actions" @click.stop @pointerdown.stop><button @click="restart">重播 ↻</button><button @click="showAll = true">顯示全部</button></div>
     <div :key="replay" class="approaches">
       <article>
@@ -27,7 +27,7 @@ watch(active, value => { if (value) restart() })
           <p class="comparison"><span>$0.257437</span><i>→</i><b>$0.168121</b><small>USD／整組測試</small></p>
           <p class="quality">規則檢查通過率 <b>75.3% → 80.0%</b></p>
           <p class="quality">p95 延遲 <b>11.47 → 15.36 秒</b></p>
-          <p class="limit">含 Jev 呼叫與平台 3% 加價<br>文字任務測試，非完整程式開發流程</p>
+          <p class="limit">含 Jev 呼叫與平台 3% 加價</p>
         </div>
       </article>
       <article>
@@ -42,11 +42,10 @@ watch(active, value => { if (value) restart() })
           <p class="comparison"><span>1,800</span><i>→</i><b>1,507</b><small>tokens／次 · 含推理</small></p>
           <p class="quality">固定 high 與動態強度均通過 <b>36 / 36</b></p>
           <p class="quality">平均耗時 <b>118.4 → 111.0 秒</b></p>
-          <p class="limit">同為 GPT-6 Astra · 平均耗時含路由<br>未報告美元節費率，不能將 tokens 當成帳單</p>
+          <p class="limit">同為 GPT-6 Astra · 平均耗時含路由</p>
         </div>
       </article>
     </div>
-    <p class="scope">兩組為不同工作負載的早期實測，不能直接比較節省幅度；分流與呼叫仍由應用程式執行</p>
     <div class="citations">
       <p>Khanna, A. (2026, September 20). <a href="https://vaaya.ai/blog/jev-ai-model-routing-vaaya-benchmark" target="_blank" rel="noopener"><cite>Jev model routing: What 450 real calls revealed</cite></a> [Benchmark report]. Vaaya. <a href="https://vaaya.ai/blog/assets/jev-model-routing-current/summary.json" target="_blank" rel="noopener">Data</a>.</p>
       <p>robertn702. (2026, September 25). <a href="https://github.com/robertn702/opencode-jev-router/blob/main/eval/results/router-consolidated-2026-09-25.md" target="_blank" rel="noopener"><cite>Jev router: Consolidated Astra evaluation</cite></a> [Benchmark report; preselected holdout]. GitHub.</p>
@@ -71,7 +70,6 @@ i{font-style:normal;color:#6f6f6f}.options{display:flex;flex-direction:column;ga
 .comparison{display:flex;align-items:baseline;gap:10px;font-size:22px;margin:5px 0 8px!important;font-variant-numeric:tabular-nums}.comparison>span{color:#697782}.comparison b{color:#0043ce;font-weight:500}.comparison small{font-size:12px;color:#525252}
 .quality{font-size:17px;line-height:1.5;margin:3px 0!important}.quality b{font-weight:500}
 .limit{font-size:14px;line-height:1.45;color:#525252;margin:6px 0 0!important}
-.scope{font-size:14px;color:#525252;margin:10px 0 0!important}
 .citations{position:absolute;bottom:80px;left:72px;right:72px;border-top:1px solid #c6c6c6;padding-top:8px;font-size:11px;line-height:1.5;color:#393939}.citations p{margin:0 0 3px!important;padding-left:14px;text-indent:-14px}.citations a{color:inherit;border-bottom:1px dotted #8d8d8d;text-decoration:none}
 .flow{animation:jev-enter .7s ease .2s both}.result{animation:jev-enter .8s ease 1s both}article+article .flow{animation-delay:2s}article+article .result{animation-delay:2.8s}
 @keyframes jev-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}

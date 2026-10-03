@@ -27,7 +27,8 @@ html,body { font-family:'IBM Plex Sans','Noto Sans TC',sans-serif; }
 .cover-copy { position:absolute; top:148px; left:72px; z-index:1; }
 .cover-copy h1 { font-size:78px; line-height:1.17; margin:20px 0 28px; letter-spacing:-.055em; }
 .cover-copy .cover-subtitle { font-size:28px; font-weight:400; }
-.draft-label { display:inline-block; font-size:17px; color:#525252; margin-top:24px !important; }
+.cover-copy .cover-role { font-size:17px; line-height:1.4; color:#525252; margin-top:6px !important; }
+.draft-label { display:inline-block; font-size:17px; color:#525252; margin-top:18px !important; }
 .cover-art { position:absolute; width:630px; height:640px; right:-15px; top:8px; }
 .cover-index { position:absolute; right:70px; bottom:88px; font-size:25px; color:#0043ce; }
 .cover-index span { font-size:14px; letter-spacing:.09em; }
