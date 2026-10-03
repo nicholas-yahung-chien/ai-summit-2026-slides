@@ -65,7 +65,6 @@ const sourceGroups = {
   },
   bob: {
     refs: [
-      { html: 'IBM. (2026). <em>IBM AI Summit 2026 Taiwan PowerPoint template</em> [Presentation template]. Internal event material.' },
       { html: 'IBM. (2026). <em>Bob on-prem architecture for GA</em> [Architecture diagram]. Internal technical material.' },
       { html: 'McDaniel, A. (2026). <em>Measuring the ROI of AI-assisted development, and how IBM did it</em>. IBM Think.', url: 'https://www.ibm.com/think/perspectives/measuring-roi-ai-assisted-development-how-ibm-did-it' },
       { html: 'IDC. (2026, May). <em>IBM Bob advances IBM’s position in agentic SDLC development</em> [Analyst report, Document IA20260502000000060].' },
