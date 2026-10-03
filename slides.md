@@ -35,7 +35,7 @@ hideInToc: false
 ---
 
 <div class="cover-kicker">AI SUMMIT <span>2026</span></div>
-<div class="cover-copy"><p class="eyebrow">Build AI｜打造企業 AI 創新基礎</p><h1>以代理式 AI<br>重塑軟體開發<br><span class="blue-text">生命週期</span></h1><p class="cover-subtitle">Nicholas Chien / 錢亞宏</p><p class="cover-role">Solution Architect｜專家實驗室</p><p class="draft-label">2026.10.23 · 14:30–15:05</p></div><SummitKeyVisual class="cover-art" /><div class="cover-index">BUILD AI <span>／ FROM INTENT TO DELIVERY</span></div>
+<div class="cover-copy"><p class="eyebrow">Build AI｜打造企業 AI 創新基礎</p><h1>以代理式 AI<br>重塑軟體開發<br><span class="blue-text">生命週期</span></h1><p class="cover-subtitle">Nicholas Chien / 錢亞宏</p><p class="cover-role">Solution Architect｜Expert Labs 專家實驗室</p><p class="draft-label">2026.10.23 · 14:30–15:05</p></div><SummitKeyVisual class="cover-art" /><div class="cover-index">BUILD AI <span>／ FROM INTENT TO DELIVERY</span></div>
 
 <!--
 14:30–14:31（1 分鐘）。開場：當寫程式的速度大幅改變，團隊的需求、驗收與交付方式也必須跟著改變。這場演講從近期事件走到企業開發流程，最後用 IBM Bob 示範。
