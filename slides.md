@@ -182,6 +182,18 @@ Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題�
 -->
 
 ---
+title: IBM Bob：從 COBOL 理解到 Java 驗證
+class: statement-page bob-recorded-demo-page
+hide: false
+hideInToc: false
+---
+
+<BobRecordedDemo />
+
+<!--
+預錄展示使用本機乾淨 GenApp 工作區，以 IBM Bob IDE 執行新增客戶垂直流程：理解 COBOL、留下 COBOL 規格、建立 Java 21 實作與對照文件，並產生 mock 單元測試。影片裁除開頭 slash command 輸入及尾端 Gradle 長時間等待，靜音播放。畫面呈現的是本機 Bob 工作流程；左側改為 IBM Bob 的產品能力摘要，包括跨 SDLC 的規劃、執行、驗證與治理，以及模式、技能、子代理與 Premium Package for Z 的企業主機現代化能力，不表示這次錄影已連接 Z Understand 或完成 z/OS 整合驗證。來源：https://bob.ibm.com/docs/ide；https://www.ibm.com/new/announcements/ibm-bob-expands-with-premium-packages-new-architecture-and-greater-enterprise-control；https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index
+-->
+---
 title: IBM Bob 的企業內部部署架構
 class: talk-page bob-onprem-page
 hide: false
@@ -237,18 +249,6 @@ hideInToc: false
 這不是程式能力 benchmark。Anthropic 官方 Pricing 頁的 worked example 只定義一個一小時的程式開發工作階段，使用 50,000 input tokens 與 15,000 output tokens，沒有說明實際要完成的程式任務，也沒有品質、正確率或完成率
 
 原 IBM 比較資料的 USD 0.375 與 USD 0.267，分別等於把同一組 50k input、15k output token 結構套用 Claude Sonnet 4.6 的公開單價，以及把其中 40k input 視為 cache read 後的重算結果。Bob 的 USD 0.081 則採該資料所列 USD 1.25 / MTok 統一單價；目前 IBM 公開 Bobcoin 文件沒有提供固定 token 對 Bobcoin 換算，因此現場應稱為定價情境試算，不稱為客戶實測或公開 benchmark
--->
----
-title: IBM Bob：從 COBOL 理解到 Java 驗證
-class: statement-page bob-recorded-demo-page
-hide: false
-hideInToc: false
----
-
-<BobRecordedDemo />
-
-<!--
-預錄展示使用本機乾淨 GenApp 工作區，以 IBM Bob IDE 執行新增客戶垂直流程：理解 COBOL、留下 COBOL 規格、建立 Java 21 實作與對照文件，並產生 mock 單元測試。影片裁除開頭 slash command 輸入及尾端 Gradle 長時間等待，靜音播放。畫面呈現的是本機 Bob 工作流程；左側改為 IBM Bob 的產品能力摘要，包括跨 SDLC 的規劃、執行、驗證與治理，以及模式、技能、子代理與 Premium Package for Z 的企業主機現代化能力，不表示這次錄影已連接 Z Understand 或完成 z/OS 整合驗證。來源：https://bob.ibm.com/docs/ide；https://www.ibm.com/new/announcements/ibm-bob-expands-with-premium-packages-new-architecture-and-greater-enterprise-control；https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index
 -->
 ---
 title: AI 代理時代的軟體開發生命週期
