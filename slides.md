@@ -240,7 +240,7 @@ hideInToc: false
 -->
 ---
 title: IBM Bob：從 COBOL 理解到 Java 驗證
-class: talk-page bob-recorded-demo-page
+class: statement-page bob-recorded-demo-page
 hide: false
 hideInToc: false
 ---

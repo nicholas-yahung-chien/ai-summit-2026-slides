@@ -89,11 +89,22 @@ onMounted(() => {
 
 <style scoped>
 .bob-recorded-demo {
+  position: relative;
   height: 100%;
   display: grid;
   grid-template-columns: 252px minmax(0, 1fr);
   gap: 30px;
   align-items: center;
+}
+
+.bob-recorded-demo::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 100%;
+  background: #3ddbd9;
 }
 
 .feature-rail {
@@ -113,6 +124,9 @@ onMounted(() => {
   width: 46px;
   height: 46px;
   flex: 0 0 auto;
+  box-sizing: border-box;
+  padding: 7px;
+  background: #f4f4f4;
 }
 
 .bob-brand strong,
@@ -121,7 +135,7 @@ onMounted(() => {
 }
 
 .bob-brand strong {
-  color: #161616;
+  color: #ffffff;
   font-size: 24px;
   line-height: 1.08;
   font-weight: 600;
@@ -129,14 +143,14 @@ onMounted(() => {
 
 .bob-brand span {
   margin-top: 5px;
-  color: #525252;
+  color: #d0e2ff;
   font-size: 13px;
   line-height: 1.2;
 }
 
 .demo-label {
   margin-top: 30px !important;
-  color: #0043ce;
+  color: #a6c8ff;
   font-size: 13px;
   line-height: 1.2;
   font-weight: 600;
@@ -145,7 +159,7 @@ onMounted(() => {
 
 h1 {
   margin: 10px 0 23px !important;
-  color: #161616;
+  color: #ffffff;
   font-size: 34px !important;
   line-height: 1.22 !important;
   letter-spacing: -.035em !important;
@@ -163,29 +177,29 @@ li {
   grid-template-columns: 48px 1fr;
   gap: 10px;
   padding: 12px 0;
-  border-top: 1px solid #c6c6c6;
+  border-top: 1px solid rgba(255, 255, 255, .28);
 }
 
 li:first-child {
-  border-top: 3px solid #0f62fe;
+  border-top: 3px solid #3ddbd9;
 }
 
 li b {
-  color: #0043ce;
+  color: #a6c8ff;
   font-size: 17px;
   line-height: 1.45;
   font-weight: 600;
 }
 
 li span {
-  color: #393939;
+  color: #ffffff;
   font-size: 17px;
   line-height: 1.45;
 }
 
 .demo-scope {
   margin-top: auto !important;
-  color: #525252;
+  color: #d0e2ff;
   font-size: 15px;
   line-height: 1.3;
 }
@@ -200,8 +214,8 @@ li span {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #161616;
-  border: 1px solid #8d8d8d;
-  box-shadow: 0 14px 34px rgba(22, 22, 22, .18);
+  border: 1px solid #78a9ff;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .32);
 }
 
 .video-frame video,
@@ -217,7 +231,7 @@ li span {
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
-  color: #525252;
+  color: #d0e2ff;
   font-size: 13px;
   line-height: 1.2;
   letter-spacing: .08em;
@@ -225,12 +239,12 @@ li span {
 
 .video-caption button {
   padding: 4px 0;
-  color: #0043ce;
+  color: #ffffff;
   font: inherit;
   letter-spacing: .04em;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #0043ce;
+  border-bottom: 1px solid #a6c8ff;
   cursor: pointer;
 }
 
