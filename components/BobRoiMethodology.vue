@@ -81,16 +81,16 @@ watch(active, value => {
 
       <section class="method-column cost-column">
         <div class="cost-group">
-          <span class="cost-label">收入成本</span>
-          <div class="cost-item">Bob 授權成本上限</div>
+          <span class="cost-label">產生價值所需成本</span>
+          <div class="cost-item">Bob 授權成本</div>
           <i>＋</i>
-          <div class="cost-item"><span>DevOps 維運與支援</span><b>成本估算</b></div>
+          <div class="cost-item">產生價值所需<br>DevOps 執行次數成本</div>
         </div>
         <div class="cost-group">
-          <span class="cost-label">營業費用</span>
-          <div class="cost-item">Bob 開發費用</div>
+          <span class="cost-label">維運成本</span>
+          <div class="cost-item">採用 Bob 後的開發成本</div>
           <i>＋</i>
-          <div class="cost-item">Bob 銷管費用估算</div>
+          <div class="cost-item">Bob 的行政管理成本</div>
         </div>
       </section>
     </div>

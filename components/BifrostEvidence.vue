@@ -15,7 +15,7 @@ const gateways = [{ name: 'LiteLLM', version: '1.101.0', value: 44.05 }, { name:
 <template>
   <section :key="replay" class="bifrost-evidence" :class="{ instant: !active || $renderContext === 'print' }">
     <p class="eyebrow">05 · BIFROST EVIDENCE</p>
-    <h1>Bifrost 效益比較：使用費用與傳輸效能</h1>
+    <h1>Bifrost 效益比較：使用費用與 Gateway 處理效能</h1>
     <div class="evidence-content">
       <section>
         <h2>開啟 Bifrost Code Mode 能降低工具使用費用</h2>
@@ -36,17 +36,17 @@ const gateways = [{ name: 'LiteLLM', version: '1.101.0', value: 44.05 }, { name:
         <p class="limit">Bifrost 觀察：第二輪關閉 Code Mode 時，6 題呼叫了不存在的工具；<br>重新執行並選用正確工具後，6 題全數通過</p>
       </section>
       <section class="external">
-        <h2>使用 Bifrost 後能減低傳輸延遲</h2>
-        <p class="context">ENTERPILOT · 模擬後端 · p50（ms）↓</p>
-        <div class="latency-chart" role="img" aria-label="Gateway p50 延遲：LiteLLM 1.101.0 為 44.05 毫秒，Bifrost 2.2.1 為 4.30 毫秒。共用 0 至 50 毫秒刻度">
+        <h2>Bifrost 降低 Gateway 額外處理延遲</h2>
+        <p class="context">ENTERPILOT · 模擬後端 · Gateway overhead p50（ms）↓</p>
+        <div class="latency-chart" role="img" aria-label="Gateway 額外處理延遲 p50：LiteLLM 1.101.0 為 44.05 毫秒，Bifrost 2.2.1 為 4.30 毫秒。共用 0 至 50 毫秒刻度">
           <div v-for="(item, index) in gateways" :key="item.name" class="latency-row" :class="{ winner: index === 1 }" :style="{ '--delay': `${850 + index * 350}ms` }">
             <div class="latency-label"><span>{{ item.name }} <small>{{ item.version }}</small></span><b>{{ item.value.toFixed(2) }} <small>ms</small></b></div>
             <div class="track"><i :style="{ width: `${item.value / 50 * 100}%` }" /></div>
           </div>
           <div class="axis"><span>0</span><span>25</span><span>50 ms</span></div>
         </div>
-        <p class="latency-finding">p50 延遲低 <strong>90.2%</strong></p>
-        <p class="limit">相較 LiteLLM，依上列數據計算<br>AWS c7i.large · 併發 10 · 5 輪測試<br>GoModel 團隊測試，未比較答案品質</p>
+        <p class="latency-finding">p50 處理延遲低 <strong>90.2%</strong></p>
+        <p class="limit">相較 LiteLLM，依上列數據計算<br>模擬後端排除模型與外部網路延遲<br>AWS c7i.large · 併發 10 · 5 輪測試</p>
       </section>
     </div>
     <div class="citations" lang="en">

@@ -169,7 +169,7 @@ Bifrost 上游现行能力不等於 IBM Bob 啟用清單。Complexity Router 為
 -->
 
 ---
-title: Bifrost 效益比較：使用費用與傳輸效能
+title: Bifrost 效益比較：使用費用與 Gateway 處理效能
 class: talk-page gateway-research-page
 hide: false
 hideInToc: false
@@ -178,7 +178,7 @@ hideInToc: false
 <BifrostEvidence />
 
 <!--
-Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題，tokens 累計整個 agent loop。R2 OFF 有六題重跑通過，仍有一題失敗，因此為 98.5%。費用與節省比例沿用原報告估算。ENTERPILOT 是 GoModel 相關團隊；模擬後端 p50 是 Gateway 效能，不是模型品質。尚未找到 Bifrost 模型路由費用與正確率成對公開對照，不將數據套用為 IBM Bob 成效。
+Code Mode 不是多模型路由實驗。固定 Sonnet 4.6，每輪 64/65/65 題，tokens 累計整個 agent loop。R2 OFF 有六題重跑通過，仍有一題失敗，因此為 98.5%。費用與節省比例沿用原報告估算。ENTERPILOT 是 GoModel 相關團隊；模擬後端 p50 是 Gateway 額外處理延遲，涵蓋路由、協定與格式轉換、串流處理，不包含模型推論與外部網路延遲，也不是模型品質。尚未找到 Bifrost 模型路由費用與正確率成對公開對照，不將數據套用為 IBM Bob 成效。
 -->
 
 ---
@@ -220,7 +220,7 @@ hideInToc: false
 <BobRoiMethodology />
 
 <!--
-IBM 以 PR 作為受治理的量測單位，先將工作分類為功能開發、缺陷修復與弱點修復，再把新增產出、原定工時估算、營運可能損失與資安風險換算成年度財務價值；最後扣除授權、持續性的 DevOps 與支援、開發及銷管等完整成本。這一頁依 IBM 官方方法論圖重繪，主圖使用網頁向量元件，避免原始 720 × 405 圖檔在投影時失真
+IBM 以 PR 作為受治理的量測單位，先將工作分類為功能開發、缺陷修復與弱點修復，再把新增產出、原定工時估算、營運可能損失與資安風險換算成年度財務價值；最後從採用方觀點扣除 Bob 授權、產生價值所需的 DevOps 執行次數、採用 Bob 後的開發及行政管理等完整成本。這一頁依 IBM 官方方法論圖重繪，主圖使用網頁向量元件，避免原始 720 × 405 圖檔在投影時失真
 
 現場說明時，先指出綠色欄不是新增成本，而是以每類 PR 的原定工時估算乘上完全負擔人力成本率，將 Bob 帶來的額外產出換算成年度產能價值；藍色欄是避免事故、營收損失與資安事件所創造的價值；紅色欄才是 Bob 的實際投入成本。IBM 將前兩項價值合計後扣除完整成本，再與每位開發人員的年度 Bob 成本比較，報告約十倍的 ROI
 -->
