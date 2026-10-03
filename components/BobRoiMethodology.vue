@@ -277,7 +277,7 @@ watch(active, value => {
   margin-top: 10px;
   padding: 5px;
   border: 1px dashed #8d8d8d;
-  animation: row-in 480ms ease 940ms both;
+  animation: loss-shell-in 360ms ease 1.72s both;
 }
 
 .loss-examples b,
@@ -302,7 +302,16 @@ watch(active, value => {
   color: #0043ce;
   font-size: 12.5px;
   font-weight: 600;
+  animation: loss-title-in 420ms cubic-bezier(.2, .75, .2, 1) 1.82s both;
 }
+
+.loss-examples span {
+  animation: loss-item-in 560ms cubic-bezier(.2, .75, .2, 1) both;
+}
+
+.loss-examples span:nth-of-type(1) { animation-delay: 2.16s; }
+.loss-examples span:nth-of-type(2) { animation-delay: 2.52s; }
+.loss-examples span:nth-of-type(3) { animation-delay: 2.88s; }
 
 .cost-column {
   display: grid;
@@ -393,6 +402,22 @@ watch(active, value => {
 @keyframes row-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loss-shell-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes loss-title-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes loss-item-in {
+  0% { opacity: 0; transform: translateY(7px) scale(.985); background: #edf5ff; border-color: #78a9ff; }
+  62% { opacity: 1; transform: translateY(0) scale(1); background: #edf5ff; border-color: #78a9ff; }
+  100% { opacity: 1; transform: translateY(0) scale(1); background: #fff; border-color: #c6c6c6; }
 }
 
 .instant * { animation: none !important; }
